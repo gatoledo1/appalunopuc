@@ -4,7 +4,7 @@ import { Table, TableWrapper, Row, Col } from 'react-native-table-component';
 import styles from './styles';
  
 
-function TableView(){
+function TableHorarios(){
 
   return (
 
@@ -12,7 +12,7 @@ function TableView(){
 
         <View style={styles.table}>
           <Table>
-          <Col data={['Código', 'Disciplina', 'CRD', 'Curso', 'Turno', 'Prédio/ Sala', 'Aulas']} style={styles.titleHead} heightArr={50} textStyle={styles.textHead}></Col>
+          <Col data={['Horário', 'Semestre', '2ª Feira', '3ª Feira', '4ª Feira', '5ª Feira', '6ª Feira']} style={styles.titleHead} heightArr={50} textStyle={styles.textHead}></Col>
           </Table>
 
           <ScrollView horizontal={true}>
@@ -45,7 +45,7 @@ function TableView(){
   )
 }
 
-export default TableView;
+export default TableHorarios;
 
 
 

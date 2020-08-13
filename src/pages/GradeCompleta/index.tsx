@@ -2,8 +2,10 @@ import React from 'react';
 import { View, Image, Text} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import PageHeader from '../../components/PageHeader';
-import TableView from '../../components/Tables';
+import TableDisciplinas from '../../components/TableDisciplinas';
+import TableHorarios from '../../components/TableHorarios';
 import backIcon from '../../assets/images/icons/arrow.png';
+import backIconBlue from '../../assets/images/icons/arrow-blue.png';
 import styles from './styles';
 
 
@@ -26,7 +28,24 @@ function GradeCompleta() {
                     <Image source={backIcon} style={styles.arrowRotate} />
                 </View>
                 
-            <TableView />
+            <TableDisciplinas />
+
+            <Text>
+                {'\n'}{'\n'}
+            </Text>
+
+            <View style={styles.head}>
+                    <Text style={styles.tableHead2}> Horários </Text>
+                    <Image source={backIconBlue} style={styles.arrowRotate} />
+                </View>
+                
+            <TableHorarios />
+
+            <View style={styles.footer}>
+                <Text style={styles.footerText}>
+                    PUC-CAMPINAS
+                </Text>
+            </View>
 
             </ScrollView>
         </View>

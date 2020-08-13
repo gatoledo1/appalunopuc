@@ -15,6 +15,13 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         paddingVertical: 8,
     },
+    tableHead2: {
+      fontFamily: 'Poppins_400Regular',
+      color: '#367DFF',
+      fontSize: 18,
+      paddingLeft: 15,
+      paddingVertical: 8,
+  },
     arrowRotate: {
         transform: [{ rotate: "180deg" }],
     },
@@ -24,18 +31,28 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 8,
-      },
-      text: { 
+    },
+    text: { 
         textAlign: 'center', 
         fontWeight: '200' 
-      },
-      dataWrapper: { 
+    },
+    dataWrapper: { 
         marginTop: -1 
-      },
-      row: { 
+    },
+    row: { 
         height: 40, 
         backgroundColor: '#F7F8FA' 
-      }
+    },
+    footer: {
+        marginTop: 22,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    footerText: {
+        color: '#DADADA',
+        fontFamily: 'Poppins_400Regular',
+        fontSize: 14,
+    }
 
 });
 
