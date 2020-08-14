@@ -21,9 +21,18 @@ function ComunicadosNoticias() {
                     paddingBottom: 16,
                 }}
             >
-                <CardsComunicados />
-                <CardsComunicados />
-                <CardsComunicados />
+                <CardsComunicados title="Gabriel Toledo" subject="O encantador de Orangotangos" 
+                    bodyText="A técnica de encantamentos dos orangotangos foi desenvolvida pelo mestre Kunig Jong da Republica do Congo em 1963.
+                    Gabriel vem aplicando as técnicas com os primatas locais e obtendo resultados impressionantes." 
+                />
+                <CardsComunicados title="Gabriel Toledo" subject="O encantador de Orangotangos" 
+                    bodyText="A técnica de encantamentos dos orangotangos foi desenvolvida pelo mestre Kunig Jong da Republica do Congo em 1963.
+                    Gabriel vem aplicando as técnicas com os primatas locais e obtendo resultados impressionantes." 
+                />
+                <CardsComunicados title="Gabriel Toledo" subject="O encantador de Orangotangos" 
+                    bodyText="A técnica de encantamentos dos orangotangos foi desenvolvida pelo mestre Kunig Jong da Republica do Congo em 1963.
+                    Gabriel vem aplicando as técnicas com os primatas locais e obtendo resultados impressionantes." 
+                />
 
             </ScrollView>
             

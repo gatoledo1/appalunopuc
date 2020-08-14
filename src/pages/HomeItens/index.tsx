@@ -26,6 +26,9 @@ function HomeItens() {
     function hundleNavigateGradeCompleta() {
         navigate('GradeCompleta');
     }
+    function hundleNavigateGradeSemanal() {
+        navigate('GradeSemanal');
+    }
 
     return (
         <View style={styles.container}>
@@ -40,7 +43,7 @@ function HomeItens() {
                 }}
             >
                 <View style={styles.row}>
-                    <RectButton style={styles.links}>
+                    <RectButton onPress={hundleNavigateGradeSemanal} style={styles.links}>
                         <View style={styles.card}>
                             <Image source={gradeSemanal} style={styles.icon} />
                             <Text style={styles.textCard}>

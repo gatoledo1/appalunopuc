@@ -7,8 +7,13 @@ import heartIcon from '../../assets/images/icons/heart-outline.png';
 import unfavoriteIcon from '../../assets/images/icons/unfavorite.png';
 import symbolPUC from '../../assets/images/symbol-logo-puc.png';
 
+interface CardsComunicadosProps {
+    title: string;
+    subject: string;
+    bodyText: string;
+}
 
-function CardsComunicados(){
+const CardsComunicados: React.FC<CardsComunicadosProps> = ({ title, subject, bodyText }) => {
     return (
         <View style={styles.container}>
             <View style={styles.profile}>
@@ -17,15 +22,13 @@ function CardsComunicados(){
                 </View>
         
                 <View style={styles.profileInfo}>
-                    <Text style={styles.name}>Gabriel Toledo</Text>
-                    <Text style={styles.subject}>O encantador de Orangotangos</Text>
+                    <Text style={styles.name}>{ title }</Text>
+                    <Text style={styles.subject}>{  subject }</Text>
                 </View>
             </View>
 
                 <Text style={styles.bio}>
-                    A técnica de encantamentos dos orangotangos foi desenvolvida pelo mestre Kunig Jong da Republica do Congo em 1963.
-                    {'\n'}
-                    Gabriel vem aplicando as técnicas com os primatas locais e obtendo resultados impressionantes.
+                    { bodyText }
                 </Text> 
 
             <View style={styles.footer}>
