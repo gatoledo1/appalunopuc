@@ -17,8 +17,11 @@ function GradeSemanal() {
         <View style={styles.container}>
             <PageHeader title="Grade Semanal"></PageHeader>
 
-            <TabViewScroll />
-
+      
+            
+                <TabViewScroll/>
+            
+        
             
         </View>
     );

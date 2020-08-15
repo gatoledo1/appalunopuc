@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     content: {
-        
+        marginTop: -80
     },
     footer: {
         marginTop: 22,
