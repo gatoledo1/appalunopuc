@@ -1,93 +1,56 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
-import {
-  TabView,
-  TabBar,
-  SceneMap,
-  NavigationState,
-  SceneRendererProps,
-} from 'react-native-tab-view';
-import Article from './Shared/Article';
-import Albums from './Shared/Albums';
-import Chat from './Shared/Chat';
-import Contacts from './Shared/Contacts';
+import React from 'react';
+import { View, Dimensions } from 'react-native';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import ItensGradeSemanal from '../../components/TabView/Dias/ItensGradeSemanal';
 
-type State = NavigationState<{
-  key: string;
-  title: string;
-}>;
+import styles from './styles';
 
-export default class DynamicWidthTabBarExample extends React.Component<
-  {},
-  State
-> {
-  // eslint-disable-next-line react/sort-comp
-  static title = 'Scrollable tab bar (auto width)';
-  static backgroundColor = '#3f51b5';
-  static appbarElevation = 0;
+const FirstRoute = () => (
+  <ItensGradeSemanal frequencia="75%" materia="Quimica B"></ItensGradeSemanal>
+);
 
-  state = {
-    index: 1,
-    routes: [
-      { key: 'article', title: 'Article' },
-      { key: 'contacts', title: 'Contacts' },
-      { key: 'albums', title: 'Albums' },
-      { key: 'chat', title: 'Chat' },
-      { key: 'long', title: 'long long long title' },
-      { key: 'medium', title: 'medium title' },
-    ],
-  };
+const SecondRoute = () => (
+  <ItensGradeSemanal frequencia="100%" materia="Análise Instrumental"></ItensGradeSemanal>
+);
 
-  private handleIndexChange = (index: number) =>
-    this.setState({
-      index,
-    });
+const initialLayout = { width: Dimensions.get('window').width };
 
-  private renderTabBar = (
-    props: SceneRendererProps & { navigationState: State }
-  ) => (
-    <TabBar
-      {...props}
-      scrollEnabled
-      indicatorStyle={styles.indicator}
-      style={styles.tabbar}
-      labelStyle={styles.label}
-      tabStyle={styles.tabStyle}
-    />
-  );
 
-  private renderScene = SceneMap({
-    albums: Albums,
-    contacts: Contacts,
-    article: Article,
-    chat: Chat,
-    long: Article,
-    medium: Article,
+const renderTabBar = props => (
+  <TabBar
+    {...props}
+    scrollEnabled
+    indicatorStyle={{ backgroundColor: 'white' }}
+    style={{ backgroundColor: '#367DFF', marginTop: 0 }}
+    tabStyle={{width: 100}}
+  />
+);
+
+export default function TabViewScroll() {
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    { key: 'segunda', title: '2ª Feira' },
+    { key: 'terca', title: '3ª Feira' },
+    { key: 'quarta', title: '4ª Feira' },
+    { key: 'quinta', title: '5ª Feira' },
+    { key: 'sexta', title: '6ª Feira' },
+  ]);
+
+  const renderScene = SceneMap({
+    segunda: FirstRoute,
+    terca: SecondRoute,
+    quarta: FirstRoute,
+    quinta: SecondRoute,
+    sexta: SecondRoute,
   });
 
-  render() {
-    return (
-      <TabView
-        navigationState={this.state}
-        renderScene={this.renderScene}
-        renderTabBar={this.renderTabBar}
-        onIndexChange={this.handleIndexChange}
-      />
-    );
-  }
+  return (
+    <TabView
+      navigationState={{ index, routes }}
+      renderScene={renderScene}
+      onIndexChange={setIndex}
+      initialLayout={initialLayout}
+      renderTabBar={renderTabBar}
+    />
+  );
 }
-
-const styles = StyleSheet.create({
-  tabbar: {
-    backgroundColor: '#3f51b5',
-  },
-  indicator: {
-    backgroundColor: '#ffeb3b',
-  },
-  label: {
-    fontWeight: '400',
-  },
-  tabStyle: {
-    width: 'auto',
-  },
-});
