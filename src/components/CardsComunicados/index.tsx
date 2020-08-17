@@ -22,7 +22,7 @@ const CardsComunicados: React.FC<CardsComunicadosProps> = ({ title, subject, bod
                 </View>
         
                 <View style={styles.profileInfo}>
-                    <Text style={styles.name}>{ title }</Text>
+                    <Text style={styles.title}>{ title }</Text>
                     <Text style={styles.subject}>{  subject }</Text>
                 </View>
             </View>

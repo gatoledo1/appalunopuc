@@ -2,66 +2,32 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff', 
-        borderWidth: 1, 
-        borderColor: '#e6e6f0',
-        borderRadius: 12, 
-        marginBottom: 25, 
-        overflow: 'hidden',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 12,
-        elevation: 6,
+        paddingHorizontal: 24,
     },
-    profile: { 
-        flexDirection: 'row', 
-        alignItems: 'center', 
-        padding: 24, 
-        width: '100%'
-    },
-    imgProfile: {
-        padding: 12,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 12,
-        elevation: 6,
-        borderRadius: 50,
-        backgroundColor: '#F7FAFF',
-    },
-    avatar: { 
-        width: 42, 
-        height: 42, 
-    },
-    profileInfo: {
-        marginLeft: 12,
-        
+    
+    horas: {
+        fontFamily: 'Poppins_400Regular',
+        color: '#bbb',
+        fontSize: 12,
     },
     title: {
+        borderTopColor: '#e7f0ff',
+        borderTopWidth: 1,
+        paddingTop: 12,
         fontFamily: 'Poppins_600SemiBold',
         color: '#32264d',
-        fontSize: 18,
-    },
-    subject: {
-        fontFamily: 'Poppins_400Regular',
-        color: '#6a6180',
-        fontSize: 12,
-        maxWidth: '85%'
-    },
-    bio: {
-        fontFamily: 'Poppins_400Regular',
-        color: '#6a6180',
         fontSize: 14,
-        marginHorizontal: 24,
         lineHeight: 27,
-        textAlign: 'justify',
+    },
+    condicaoA: {
+        fontFamily: 'Poppins_400Regular_Italic',
+        color: '#2CC272',
+        fontSize: 14,
+    },
+    condicaoR: {
+        fontFamily: 'Poppins_300Light_Italic',
+        color: '#F12020',
+        fontSize: 13,
     },
     footer: {
         paddingHorizontal: 24,

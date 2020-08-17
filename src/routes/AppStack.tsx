@@ -7,6 +7,7 @@ import HomeItens from '../pages/HomeItens';
 import ComunicadosNoticias from '../pages/ComunicadosNoticias';
 import GradeCompleta from '../pages/GradeCompleta';
 import GradeSemanal from '../pages/GradeSemanal';
+import Cursados from '../pages/Cursados';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -19,6 +20,7 @@ function AppStack() {
                 <Screen name="ComunicadosNoticias" component={ComunicadosNoticias} />
                 <Screen name="GradeCompleta" component={GradeCompleta} />
                 <Screen name="GradeSemanal" component={GradeSemanal} />
+                <Screen name="Cursados" component={Cursados} />
             </Navigator>
         </NavigationContainer>
     )

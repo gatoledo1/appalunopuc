@@ -1,4 +1,3 @@
 declare module '*.png';
 declare module 'react-native-table-component';
-declare module 'react-native-scrollable-tab-view';
-declare module 'react-native-svg-charts';
+declare module 'native-base';

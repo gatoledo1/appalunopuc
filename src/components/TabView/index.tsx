@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Dimensions } from 'react-native';
-import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import * as  React  from  'react'
+import { View, Dimensions, Text } from 'react-native';
+import { TabView, SceneMap, TabBar, ScrollPager } from 'react-native-tab-view';
 import ItensGradeSemanal from '../../components/TabView/Dias/ItensGradeSemanal';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -8,54 +8,70 @@ import styles from './styles';
 
 const infoArr = [
   {
-    frequencia: 60,
-    materia: "Quimica B",
-    local:"Sala: P28 / Prédio: CENT. TECN",
-    data: "06/05/2020 até 30/06/2020",
-    atualizacao: "Frequência atualizada até 05/06/2020"
+    frequencia: 60, materia: "Quimica B", local:"Sala: P28 / Prédio: CENT. TECN", data: "06/05/2020 até 30/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
   },
   {
-    frequencia: 90,
-    materia: "Análise Instrumental",
-    local:"Sala: P232 / Prédio: CENT. TECN",
-    data: "08/05/2020 até 28/06/2020",
-    atualizacao: "Frequência atualizada até 05/06/2020"
+    frequencia: 90, materia: "Análise Instrumental", local:"Sala: P232 / Prédio: CENT. TECN", data: "08/05/2020 até 28/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
   },
   {
-    frequencia: 45,
-    materia: "Bioquímica II",
-    local:"Sala: P230 / Prédio: CENT. TECN",
-    data: "08/05/2020 até 28/06/2020",
-    atualizacao: "Frequência atualizada até 05/06/2020"
+    frequencia: 45, materia: "Bioquímica II", local:"Sala: P230 / Prédio: CENT. TECN", data: "08/05/2020 até 28/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
   },
   {
-    frequencia: 75,
-    materia: "Físico-Química",
-    local:"Sala: P231 / Prédio: CENT. TECN",
-    data: "09/05/2020 até 29/06/2020",
-    atualizacao: "Frequência atualizada até 05/06/2020"
+    frequencia: 75, materia: "Físico-Química", local:"Sala: P231 / Prédio: CENT. TECN", data: "09/05/2020 até 29/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
   },
 ];
 
 let ListArr = [];
 
 const PrimeiraRota = () => (
+
     ListArr = infoArr.map(Info => (
-    <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
-    data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
+      <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
+      data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
     ))
+    
 );
 
 const SegundaRota = () => (
-  
-  <ItensGradeSemanal frequencia={100} materia="Análise Instrumental" local="Sala: P28 / Prédio: CENT. TECN" 
-  data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-
+<ScrollView>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+  </ScrollView>
 );
 
 const TerceiraRota = () => (
-  <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-  data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+  <ScrollView>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
+    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+  </ScrollView>
 );
 
 const QuartaRota = () => (
@@ -70,45 +86,43 @@ const QuintaRota = () => (
 
 const initialLayout = { width: Dimensions.get('window').width };
 
-
 const renderTabBar = props => (
   <TabBar
     {...props}
     scrollEnabled
-    indicatorStyle={{ backgroundColor: 'white' }}
-    style={{ backgroundColor: '#367DFF'}}
-    tabStyle={{width: 100}}
+    indicatorStyle={{ backgroundColor: 'white', elevation: 0}}
+    style={{ backgroundColor: '#367DFF', elevation: 0}}
+    tabStyle={{width: 105, elevation: 0}}
   />
 );
 
 export default function TabViewScroll() {
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    { key: 'segunda', title: '2ª Feira' },
-    { key: 'terca', title: '3ª Feira' },
-    { key: 'quarta', title: '4ª Feira' },
-    { key: 'quinta', title: '5ª Feira' },
-    { key: 'sexta', title: '6ª Feira' },
-  ]);
 
-  const renderScene = SceneMap({
-    segunda: PrimeiraRota,
-    terca: SegundaRota,
-    quarta: TerceiraRota,
-    quinta: QuartaRota,
-    sexta: QuintaRota,
-  });
+    const [index, setIndex] = React.useState(0);
+    const [routes] = React.useState([
+      { key: 'segunda', title: '2ª Feira' },
+      { key: 'terca', title: '3ª Feira' },
+      { key: 'quarta', title: '4ª Feira' },
+      { key: 'quinta', title: '5ª Feira' },
+      { key: 'sexta', title: '6ª Feira' },
+    ]);
 
-  return (
-    <ScrollView style={styles.content}>
-      <TabView
-        navigationState={{ index, routes }}
-        renderScene={renderScene}
-        onIndexChange={setIndex}
-        initialLayout={initialLayout}
-        renderTabBar={renderTabBar}
-        tabBarPosition="bottom"
-      />
-    </ScrollView>
-  );
+    const renderScene = SceneMap({
+      segunda: PrimeiraRota,
+      terca: SegundaRota,
+      quarta: TerceiraRota,
+      quinta: QuartaRota,
+      sexta: QuintaRota,
+    });
+
+    return (
+        <TabView style={styles.content}
+          navigationState={{ index, routes }}
+          renderScene={renderScene}
+          onIndexChange={setIndex}
+          initialLayout={initialLayout}
+          renderTabBar={renderTabBar}
+        />
+    );
+
 }

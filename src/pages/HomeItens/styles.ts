@@ -46,7 +46,10 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins_400Regular',
         fontSize: 14,
         width: 120,
-        paddingLeft: '10%'
+
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
     },
     footer: {
         marginTop: 12,

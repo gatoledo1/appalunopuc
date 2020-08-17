@@ -5,11 +5,15 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F7FAFF',
     },
+    back: {
+        backgroundColor: '#367DFF',
+        color: '#367DFF'
+    },
     scene: {
-        flex: 1,
+        backgroundColor: '#333'
     },
     content: {
-        marginTop: -80
+        marginTop: -100
     },
     footer: {
         marginTop: 22,

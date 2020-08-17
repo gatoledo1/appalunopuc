@@ -54,7 +54,7 @@ function Login() {
 
                 <View style={styles.footer}>
                     <RectButton onPress={hundleNavigationToStudyPage} style={styles.button}>
-                        <Text style={styles.buttonText}>Entrar</Text>
+                        <Text onPress={hundleNavigationToStudyPage} style={styles.buttonText}>Entrar</Text>
                     </RectButton>
                 </View>
 

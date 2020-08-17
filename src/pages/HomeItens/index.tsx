@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Image, Text} from 'react-native';
+import { View, Image, Text, Linking } from 'react-native';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
 
-
+import canvasIcon from '../../assets/images/icons/canvas.png';
+import areaLogada from '../../assets/images/icons/area-logada.png';
 import gradeSemanal from '../../assets/images/icons/listine-dots.png';
 import gradeCompleta from '../../assets/images/icons/list.png';
 import bookAlt from '../../assets/images/icons/book-alt.png';
@@ -29,6 +30,9 @@ function HomeItens() {
     function hundleNavigateGradeSemanal() {
         navigate('GradeSemanal');
     }
+    function hundleNavigateCursados() {
+        navigate('Cursados');
+    }
 
     return (
         <View style={styles.container}>
@@ -42,6 +46,39 @@ function HomeItens() {
                     paddingBottom: 16,
                 }}
             >
+
+                <View style={styles.row}>
+                    <RectButton
+                    onPress={() => {
+                        Linking.openURL(
+                          'https://arealogada.sis.puc-campinas.edu.br/'
+                        );
+                    }}
+                    style={styles.links}>
+                        <View style={styles.card}>
+                            <Image source={areaLogada} style={styles.icon} />
+                            <Text style={styles.textCard}>
+                                Área Logada
+                            </Text>
+                        </View>
+                    </RectButton>
+                    
+                    <RectButton 
+                    onPress={() => {
+                        Linking.openURL(
+                          'https://puc-campinas.instructure.com/login/microsoft'
+                        );
+                    }}
+                    style={styles.links}>
+                        <View style={styles.card}>
+                            <Image source={canvasIcon} style={styles.icon} />
+                            <Text style={styles.textCard}>
+                                Canvas
+                            </Text>
+                        </View>
+                    </RectButton>
+                </View>
+
                 <View style={styles.row}>
                     <RectButton onPress={hundleNavigateGradeSemanal} style={styles.links}>
                         <View style={styles.card}>
@@ -72,7 +109,12 @@ function HomeItens() {
                         </View>
                     </RectButton>
 
-                    <RectButton style={styles.links}>
+                    <RectButton style={styles.links} 
+                    onPress={() => {
+                        Linking.openURL(
+                          'http://ead.puc-campinas.edu.br/'
+                        );
+                    }}>
                         <View style={styles.card}>
                                 <Image source={cap} style={styles.icon} />
                                 <Text style={styles.textCard}>
@@ -92,7 +134,7 @@ function HomeItens() {
                         </View>
                     </RectButton>
                     
-                    <RectButton style={styles.links}>
+                    <RectButton style={styles.links} onPress={hundleNavigateCursados}>
                         <View style={styles.card}>
                             <Image source={check} style={styles.icon} />
                             <Text style={styles.textCard}>
@@ -103,7 +145,12 @@ function HomeItens() {
                 </View>
 
                 <View style={styles.row}>
-                    <RectButton style={styles.links}>
+                    <RectButton style={styles.links}
+                    onPress={() => {
+                        Linking.openURL(
+                          'https://www.puc-campinas.edu.br/calendario/'
+                        );
+                    }}>
                         <View style={styles.card}>
                             <Image source={calendar} style={styles.icon} />
                             <Text style={styles.textCard}>
