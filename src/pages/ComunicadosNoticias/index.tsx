@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, ScrollView } from 'react-native';
+import React, {useState} from 'react';
+import { View, ScrollView, Animated, Easing } from 'react-native';
 import styles from './styles';
 import PageHeader from '../../components/PageHeader';
 import CardsComunicados from '../../components/CardsComunicados';
@@ -7,12 +7,23 @@ import CardsComunicados from '../../components/CardsComunicados';
 
 function ComunicadosNoticias() {
 
+    const [animaTop, setTop] = useState(new Animated.Value(150));
+
+    Animated.timing(
+        animaTop,
+        {
+            toValue: -60,
+            duration: 800,
+            easing: Easing.bezier(0.33, 1, 0.68, 1),
+            useNativeDriver: false
+        }
+    ).start();
 
     return (
         <View style={styles.container}>
             <PageHeader title="Notícias e Comunicados"></PageHeader>
             
-            <ScrollView style={styles.comunicados}
+            <Animated.ScrollView style={{ marginTop: animaTop }}
                 contentContainerStyle={{
                     paddingHorizontal: 16,
                     paddingBottom: 16,
@@ -28,7 +39,7 @@ function ComunicadosNoticias() {
                     Apresentações de bandas e corais do CCA, cantinho da arte e apresentação teatral. Não haverá consumo de bebidas alcóolicas no local." 
                 />
 
-            </ScrollView>
+            </Animated.ScrollView>
             
         </View>
     );

@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Image, Text, Linking } from 'react-native';
+import React, {useState} from 'react';
+import { View, Image, Text, Linking, Animated, Easing } from 'react-native';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
@@ -18,6 +18,7 @@ import paper from '../../assets/images/icons/paper.png';
 import calendar from '../../assets/images/icons/ui-calendar.png';
 import styles from './styles';
 
+
 function HomeItens() {
     const { navigate } = useNavigation();
 
@@ -34,13 +35,25 @@ function HomeItens() {
         navigate('Cursados');
     }
 
+    const [animaTop, setTop] = useState(new Animated.Value(150));
+
+    Animated.timing(
+        animaTop,
+        {
+            toValue: -60,
+            duration: 800,
+            easing: Easing.bezier(0.33, 1, 0.68, 1),
+            useNativeDriver: false
+        }
+    ).start();
+
     return (
         <View style={styles.container}>
             <PageHeader title="Olá Gabriel!">
                 <Text>Que bom vê-lo por aqui</Text>
             </PageHeader>
 
-            <ScrollView style={styles.cardsBlock}
+            <Animated.ScrollView style={{ marginTop: animaTop }}
                 contentContainerStyle={{
                     paddingHorizontal: 30,
                     paddingBottom: 16,
@@ -195,7 +208,7 @@ function HomeItens() {
                     </Text>
                 </View>
 
-            </ScrollView>
+            </Animated.ScrollView>
         </View>
     );
 }

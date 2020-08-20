@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Image, Text} from 'react-native';
+import React, {useState} from 'react';
+import { View, Image, Text, Animated, Easing} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import PageHeader from '../../components/PageHeader';
 import TableDisciplinas from '../../components/TableDisciplinas';
@@ -10,13 +10,25 @@ import styles from './styles';
 
 
 function GradeCompleta() {
+
+    const [animaTop, setTop] = useState(new Animated.Value(150));
+
+    Animated.timing(
+        animaTop,
+        {
+            toValue: -60,
+            duration: 800,
+            easing: Easing.bezier(0.33, 1, 0.68, 1),
+            useNativeDriver: false
+        }
+    ).start();
+
     return (
         <View style={styles.container}>
             <PageHeader title="Grade Completa"></PageHeader>
 
            
-
-            <ScrollView style={styles.content}
+            <Animated.ScrollView style={{ marginTop: animaTop }}
                 contentContainerStyle={{
                     paddingLeft: 16,
                     paddingBottom: 16,
@@ -55,7 +67,7 @@ function GradeCompleta() {
                 </Text>
             </View>
 
-            </ScrollView>
+            </Animated.ScrollView>
         </View>
     );
 }

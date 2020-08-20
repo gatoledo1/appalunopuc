@@ -1,15 +1,28 @@
-import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, ScrollView, Animated, Easing } from 'react-native';
 import styles from './styles';
 import PageHeader from '../../components/PageHeader';
 import DisciplinasCursadas from '../../components/DisciplinasCursadas';
 
 function Cursados() {
+
+    const [animaTop, setTop] = useState(new Animated.Value(150));
+
+    Animated.timing(
+        animaTop,
+        {
+            toValue: -60,
+            duration: 800,
+            easing: Easing.bezier(0.33, 1, 0.68, 1),
+            useNativeDriver: false
+        }
+    ).start();
+
     return (
         <View style={styles.container}>
             <PageHeader title="Disciplinas Cursadas"></PageHeader>
             
-            <ScrollView style={styles.content}
+            <Animated.ScrollView style={{ marginTop: animaTop }}
                 contentContainerStyle={{
                     paddingHorizontal: 16,
                     paddingBottom: 16,
@@ -39,7 +52,7 @@ function Cursados() {
                     </Text>
                 </View>
 
-            </ScrollView>
+            </Animated.ScrollView>
             
         </View>
     );

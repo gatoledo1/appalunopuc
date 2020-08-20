@@ -21,67 +21,62 @@ const infoArr = [
   },
 ];
 
-let ListArr = [];
 
 const PrimeiraRota = () => (
 
-    ListArr = infoArr.map(Info => (
+  <ScrollView>
+  {
+    infoArr.map(Info => (
       <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
       data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
     ))
+  }
+  </ScrollView>
     
 );
 
 const SegundaRota = () => (
 <ScrollView>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+  {
+    infoArr.map(Info => (
+      <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
+      data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
+    ))
+  }
   </ScrollView>
 );
 
 const TerceiraRota = () => (
-  <ScrollView>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
-    <ItensGradeSemanal frequencia={60} materia="Quimica B" local="Sala: P28 / Prédio: CENT. TECN" 
-    data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+<ScrollView>
+  {
+    infoArr.map(Info => (
+      <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
+      data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
+    ))
+  }
   </ScrollView>
 );
 
 const QuartaRota = () => (
-  <ItensGradeSemanal frequencia={100} materia="Análise Instrumental" local="Sala: P28 / Prédio: CENT. TECN" 
-  data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+<ScrollView>
+  {
+    infoArr.map(Info => (
+      <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
+      data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
+    ))
+  }
+  </ScrollView>
 );
 
 const QuintaRota = () => (
-  <ItensGradeSemanal frequencia={100} materia="Análise Instrumental" local="Sala: P28 / Prédio: CENT. TECN" 
-  data="06/05/2020 até 30/06/2020" atualizacao="Frequência atualizada até 05/06/2020"></ItensGradeSemanal>
+<ScrollView>
+  {
+    infoArr.map(Info => (
+      <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
+      data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
+    ))
+  }
+  </ScrollView>
 );
 
 const initialLayout = { width: Dimensions.get('window').width };
@@ -91,7 +86,8 @@ const renderTabBar = props => (
     {...props}
     scrollEnabled
     indicatorStyle={{ backgroundColor: 'white', elevation: 0}}
-    style={{ backgroundColor: '#367DFF', elevation: 0}}
+    textStyle={{color: 'red'}}
+    style={{ backgroundColor: 'transparent', elevation: 0}}
     tabStyle={{width: 105, elevation: 0}}
   />
 );

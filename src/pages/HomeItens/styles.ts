@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F7FAFF',
     },
     cardsBlock:{
-        marginTop: -60,
+        
     },
     row: {
         width: '100%',

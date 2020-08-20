@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
         paddingBottom: 40,
         paddingHorizontal: 20,
         backgroundColor: '#367DFF',
+        borderBottomRightRadius: 100,
     },
     topBar: {
         flexDirection:'row',
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     },
     headerBackground: {
         width: '100%',
-        height: 180
+        height: 180,
     },
     title: {
         fontFamily: 'Poppins_600SemiBold',

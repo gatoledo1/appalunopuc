@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F7FAFF',
     },
     comunicados: {
-        marginTop: -70,
+       
     },
 
     searchForm: { 

@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   },
     arrowRotate: {
         transform: [{ rotate: "180deg" }],
+        marginRight: 30,
     },
 
     head: { 
