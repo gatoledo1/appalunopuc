@@ -19,15 +19,10 @@ const styles = StyleSheet.create({
         fontSize: 14,
         lineHeight: 27,
     },
-    condicaoA: {
+    condicao: {
         fontFamily: 'Poppins_400Regular_Italic',
-        color: '#2CC272',
+        color: '#367DFF',
         fontSize: 14,
-    },
-    condicaoR: {
-        fontFamily: 'Poppins_300Light_Italic',
-        color: '#F12020',
-        fontSize: 13,
     },
     footer: {
         paddingHorizontal: 24,

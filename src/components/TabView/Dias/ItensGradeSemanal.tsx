@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Easing } from 'react-native';
 import styles from './styles';
 import ProgressCircle from 'react-native-progress-circle';
 

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { View, Image, Text, ImageBackground } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
 
@@ -11,10 +11,11 @@ import { useNavigation } from '@react-navigation/native';
 
 interface PageHeaderProps {
     title: string;
-    headerRight?: ReactNode; //não obrigatório
+    backColor: string;
 }
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title, headerRight, children }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ title, backColor, children }) => {
+
     const { navigate } = useNavigation();
 
     function hudleGoBack() {
@@ -22,7 +23,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, headerRight, children })
     }
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: backColor}]}>
             <ImageBackground resizeMode="cover" source={headerBackground} style={styles.headerBackground}>  
             <View style={styles.topBar}>
                 <BorderlessButton onPress={hudleGoBack}>
@@ -34,7 +35,6 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, headerRight, children })
 
             <View style={styles.header}>
                 <Text style={styles.title}>{ title }</Text>
-                {headerRight }
             </View>
 
             <Text style={styles.titleChildren}>{ children }</Text>

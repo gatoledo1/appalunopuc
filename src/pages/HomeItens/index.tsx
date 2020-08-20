@@ -49,7 +49,7 @@ function HomeItens() {
 
     return (
         <View style={styles.container}>
-            <PageHeader title="Olá Gabriel!">
+            <PageHeader title="Olá Gabriel!" backColor="#367DFF">
                 <Text>Que bom vê-lo por aqui</Text>
             </PageHeader>
 
@@ -142,7 +142,7 @@ function HomeItens() {
                         <View style={styles.card}>
                             <Image source={barGraph} style={styles.icon} />
                             <Text style={styles.textCard}>
-                                Notas e Faltas
+                                Práticas de Formação
                             </Text>
                         </View>
                     </RectButton>

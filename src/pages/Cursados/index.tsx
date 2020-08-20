@@ -11,7 +11,7 @@ function Cursados() {
     Animated.timing(
         animaTop,
         {
-            toValue: -60,
+            toValue: -80,
             duration: 800,
             easing: Easing.bezier(0.33, 1, 0.68, 1),
             useNativeDriver: false
@@ -20,7 +20,7 @@ function Cursados() {
 
     return (
         <View style={styles.container}>
-            <PageHeader title="Disciplinas Cursadas"></PageHeader>
+            <PageHeader title="Disciplinas Cursadas" backColor="#767676"></PageHeader>
             
             <Animated.ScrollView style={{ marginTop: animaTop }}
                 contentContainerStyle={{
@@ -33,13 +33,13 @@ function Cursados() {
                     <DisciplinasCursadas titleCourse="00634 - Química Orgânica B" notaCondicao="7.2 Aprovado" horas="68 horas" />
                     <DisciplinasCursadas titleCourse="06541 - Análise Instrumental II" notaCondicao="6.5 Aprovado" horas="68 horas" />
                     <DisciplinasCursadas titleCourse="00415 - Matemática Básica B" notaCondicao="8.5 Aprovado" horas="105 horas" />
-                    <DisciplinasCursadas titleCourse="00634 - Físico-Química" notaCondicao="6.0 Aprovado" horas="68 horas" />
+                    <DisciplinasCursadas titleCourse="00634 - Físico-Química" notaCondicao="4.0 Reprovado" horas="68 horas" />
                     <DisciplinasCursadas titleCourse="00634 - Laboratório B" notaCondicao="7.0 Aprovado" horas="105 horas" />
                 </View>
 
                 <View style={styles.card}>
                     <Text style={styles.ano}>2018</Text>
-                    <DisciplinasCursadas titleCourse="00634 - Química Orgânica A" notaCondicao="6.0 Aprovado" horas="68 horas" />
+                    <DisciplinasCursadas titleCourse="00634 - Química Orgânica A" notaCondicao="4.5 Reprovado" horas="68 horas" />
                     <DisciplinasCursadas titleCourse="06541 - Análise Instrumental I" notaCondicao="7.5 Aprovado" horas="105 horas" />
                     <DisciplinasCursadas titleCourse="00415 - Matemática Básica A" notaCondicao="8.5 Aprovado" horas="68 horas" />
                     <DisciplinasCursadas titleCourse="00634 - Física Básica" notaCondicao="6.75 Aprovado" horas="68 horas" />

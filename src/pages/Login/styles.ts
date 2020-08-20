@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     },
 
     banner: {
-        height: 200,
+        height: 150,
         resizeMode: 'contain',
     },
 
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        paddingBottom: 34,
+        paddingBottom: 62,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 34,
+        marginHorizontal: 30,
     }, 
 
     buttonText: { 
@@ -71,9 +72,11 @@ const styles = StyleSheet.create({
     },
 
     logo: {
-        justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
+        bottom: 0,
+        top: 60,
+        position: 'absolute'
     },
     imgLogo: {
         resizeMode: 'contain',

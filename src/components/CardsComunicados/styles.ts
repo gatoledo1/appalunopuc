@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         alignItems: 'center', 
         padding: 24, 
-        width: '100%'
+        width: '100%',
     },
     imgProfile: {
         padding: 12,
@@ -41,8 +41,9 @@ const styles = StyleSheet.create({
         height: 42, 
     },
     profileInfo: {
-        marginLeft: 12,
-        
+        alignItems: 'center', 
+        padding: 24, 
+        width: '100%',
     },
     title: {
         fontFamily: 'Poppins_600SemiBold',
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins_400Regular',
         color: '#6a6180',
         fontSize: 12,
-        maxWidth: '85%'
+        maxWidth: '100%'
     },
     bio: {
         fontFamily: 'Poppins_400Regular',

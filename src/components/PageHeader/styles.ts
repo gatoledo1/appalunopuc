@@ -5,8 +5,22 @@ const styles = StyleSheet.create({
         paddingTop: 50,
         paddingBottom: 40,
         paddingHorizontal: 20,
+        borderBottomRightRadius: 120,
+    },
+    azul: {
         backgroundColor: '#367DFF',
-        borderBottomRightRadius: 100,
+    },
+    amarelo: {
+        backgroundColor: '#FFC300'
+    },
+    verde: {
+        backgroundColor: '#2CC272'
+    },
+    cinza: {
+        backgroundColor: '#767676'
+    },
+    vermelho: {
+        backgroundColor: '#F12020'
     },
     topBar: {
         flexDirection:'row',

@@ -26,7 +26,7 @@ function Login() {
             <ImageBackground resizeMode="cover" source={backLogin} style={styles.backgroungLogin}>
                 
                 <View style={styles.imgCover}>
-                    <Image source={loginImg} style={styles.banner} />
+                    <Image source={logoLogin} style={styles.banner} />
                 </View>
 
                 <View style={styles.title}>
@@ -52,15 +52,14 @@ function Login() {
                         />
                 </View>
 
-                <View style={styles.footer}>
                     <RectButton onPress={hundleNavigationToStudyPage} style={styles.button}>
-                        <Text onPress={hundleNavigationToStudyPage} style={styles.buttonText}>Entrar</Text>
+                        <Text style={styles.buttonText}>Entrar</Text>
                     </RectButton>
-                </View>
+                
 
-                <View style={styles.logo}>
+               {/* <View style={styles.logo}>
                     <Image source={logoLogin} style={styles.imgLogo} />
-                </View>
+                    </View>*/}
             </ImageBackground>
         </View>
     );

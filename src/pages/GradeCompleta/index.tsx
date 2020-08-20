@@ -16,7 +16,7 @@ function GradeCompleta() {
     Animated.timing(
         animaTop,
         {
-            toValue: -60,
+            toValue: -90,
             duration: 800,
             easing: Easing.bezier(0.33, 1, 0.68, 1),
             useNativeDriver: false
@@ -25,7 +25,7 @@ function GradeCompleta() {
 
     return (
         <View style={styles.container}>
-            <PageHeader title="Grade Completa"></PageHeader>
+            <PageHeader title="Grade Completa" backColor="#2CC272"></PageHeader>
 
            
             <Animated.ScrollView style={{ marginTop: animaTop }}

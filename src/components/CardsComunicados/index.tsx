@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, Linking } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
 import styles from './styles';
@@ -16,16 +16,12 @@ interface CardsComunicadosProps {
 const CardsComunicados: React.FC<CardsComunicadosProps> = ({ title, subject, bodyText }) => {
     return (
         <View style={styles.container}>
-            <View style={styles.profile}>
-                <View style={styles.imgProfile}>
-                    <Image style={styles.avatar} source={symbolPUC} />
-                </View>
-        
+
                 <View style={styles.profileInfo}>
                     <Text style={styles.title}>{ title }</Text>
                     <Text style={styles.subject}>{  subject }</Text>
                 </View>
-            </View>
+
 
                 <Text style={styles.bio}>
                     { bodyText }
@@ -38,8 +34,13 @@ const CardsComunicados: React.FC<CardsComunicadosProps> = ({ title, subject, bod
                        {/* <Image source={unfavoriteIcon} /> */}                  
                     </RectButton>
 
-                    <RectButton style={styles.contactButton}>
-                        <Text style={styles.contactButtonText}> Acessar</Text>                      
+                    <RectButton style={styles.contactButton}
+                    onPress={() => {
+                        Linking.openURL(
+                          'https://www.puc-campinas.edu.br/puc-campinas-divulga-protocolos-sanitarios-e-de-protecao/'
+                        );
+                    }}>
+                        <Text style={styles.contactButtonText}> Ler mais</Text>                      
                     </RectButton>
                 </View>
             </View>
