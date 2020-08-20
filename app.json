@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "App do Aluno",
-    "slug": "App do Aluno",
+    "slug": "app-aluno",
     "version": "0.7.0",
     "privacy": "public",
     "platforms": [
@@ -23,10 +23,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "PUC-Campinas"
+      "bundleIdentifier": "com.puccampinas.appaluno"
     },
     "android": {
-      "package": "PUC-Campinas"
+      "package": "com.puccampinas.appaluno"
     }
   }
 }

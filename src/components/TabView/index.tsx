@@ -19,6 +19,28 @@ const infoArr = [
   {
     frequencia: 75, materia: "Físico-Química", local:"Sala: P231 / Prédio: CENT. TECN", data: "09/05/2020 até 29/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
   },
+  {
+    frequencia: 100, materia: "Laboratório II", local:"Sala: P225 / Prédio: CENT. TECN", data: "08/05/2020 até 29/06/2020", atualizacao: "Frequência atualizada até 04/06/2020"
+  },
+  {
+    frequencia: 95, materia: "Química Orgânica B", local:"Sala: P231 / Prédio: CENT. TECN", data: "06/05/2020 até 29/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
+  },
+];
+
+const infoArr2 = [
+  {
+    frequencia: 100, materia: "Laboratório II", local:"Sala: P225 / Prédio: CENT. TECN", data: "08/05/2020 até 29/06/2020", atualizacao: "Frequência atualizada até 04/06/2020"
+  },
+  {
+    frequencia: 95, materia: "Química Orgânica B", local:"Sala: P231 / Prédio: CENT. TECN", data: "06/05/2020 até 29/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
+  },
+  {
+    frequencia: 60, materia: "Quimica B", local:"Sala: P28 / Prédio: CENT. TECN", data: "06/05/2020 até 30/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
+  },
+  {
+    frequencia: 90, materia: "Análise Instrumental", local:"Sala: P232 / Prédio: CENT. TECN", data: "08/05/2020 até 28/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
+  },
+  
 ];
 
 
@@ -38,7 +60,7 @@ const PrimeiraRota = () => (
 const SegundaRota = () => (
 <ScrollView>
   {
-    infoArr.map(Info => (
+    infoArr2.map(Info => (
       <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
       data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
     ))
@@ -60,7 +82,7 @@ const TerceiraRota = () => (
 const QuartaRota = () => (
 <ScrollView>
   {
-    infoArr.map(Info => (
+    infoArr2.map(Info => (
       <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
       data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
     ))
@@ -85,7 +107,7 @@ const renderTabBar = props => (
   <TabBar
     {...props}
     scrollEnabled
-    indicatorStyle={{ backgroundColor: 'white', elevation: 0}}
+    indicatorStyle={{ backgroundColor: 'white', height: 4}}
     textStyle={{color: 'red'}}
     style={{ backgroundColor: 'transparent', elevation: 0}}
     tabStyle={{width: 105, elevation: 0}}

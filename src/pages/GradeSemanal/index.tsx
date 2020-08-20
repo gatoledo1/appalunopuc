@@ -15,7 +15,7 @@ function GradeSemanal() {
     return (
         
         <View style={styles.container}>
-            <PageHeader title="Grade Semanal" backColor="#ecb400"></PageHeader>
+            <PageHeader title="Grade Semanal" backColor="#f2bf1c"></PageHeader>
             
                 <TabViewScroll/>
             

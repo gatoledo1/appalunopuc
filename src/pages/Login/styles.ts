@@ -4,26 +4,24 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F7FAFF',
-        justifyContent: 'space-between',
-        padding: 40,
-        height: '100%'
+        paddingHorizontal: 40,
+        justifyContent: 'center'
     },
-
     backgroungLogin: {
         flex: 1,
         width: '100%',
+        justifyContent: 'space-evenly',
     },
 
     imgCover: {
         justifyContent: 'center',
         alignItems: 'center',
-        width: '100%',
-        height: 250,
-        
+        width: '100%',        
     },
 
     banner: {
-        height: 150,
+        height: 120,
+        marginBottom: 24,
         resizeMode: 'contain',
     },
 
@@ -37,13 +35,12 @@ const styles = StyleSheet.create({
         borderRadius: 8, 
         justifyContent: 'center', 
         paddingHorizontal: 16, 
-        marginTop: 4, 
         borderBottomColor: '#B6CEFF',
         borderBottomWidth: 1,
     },
 
     title: {
-        paddingBottom: 62,
+        paddingBottom: 45,
         justifyContent: 'center',
         alignItems: 'center',
     },

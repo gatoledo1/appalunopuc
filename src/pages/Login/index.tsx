@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Image, Text, TextInput, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { RectButton } from 'react-native-gesture-handler';
+import { RectButton, ScrollView } from 'react-native-gesture-handler';
  
 import styles from './styles';
 
@@ -22,44 +22,44 @@ function Login() {
     }
 
     return (
+        
         <View style={styles.container} >
-            <ImageBackground resizeMode="cover" source={backLogin} style={styles.backgroungLogin}>
-                
-                <View style={styles.imgCover}>
-                    <Image source={logoLogin} style={styles.banner} />
-                </View>
+                    <ImageBackground source={backLogin} style={styles.backgroungLogin}>
+                        <View style={styles.imgCover}>
+                            <Image source={logoLogin} style={styles.banner} />
+                        </View>
 
-                <View style={styles.title}>
-                    <Text style={styles.titleBold}>
-                        Seja bem-vindo!
-                    </Text>
-                </View>
+                        <View style={styles.title}>
+                            <Text style={styles.titleBold}>
+                                Seja bem-vindo!
+                            </Text>
+                        </View>
 
-                <View>
-                    <Text style={styles.label}>Seu RA</Text>
-                        <TextInput style={styles.input}
-                            value={ra}
-                            onChangeText={text => setRa(text)}
-                        />
-                    <Text>
-                        {'\n'}{'\n'}
-                    </Text>
-                    <Text style={styles.label}>Senha</Text>
-                        <TextInput style={styles.input}
-                            secureTextEntry={true}
-                            value={pwd}
-                            onChangeText={text => setPwd(text)}
-                        />
-                </View>
+                        <View>
+                            <Text style={styles.label}>Seu RA</Text>
+                                <TextInput style={styles.input}
+                                    value={ra}
+                                    onChangeText={text => setRa(text)}
+                                />
+                            <Text>
+                                {'\n'}{'\n'}
+                            </Text>
+                            <Text style={styles.label}>Senha</Text>
+                                <TextInput style={styles.input}
+                                    secureTextEntry={true}
+                                    value={pwd}
+                                    onChangeText={text => setPwd(text)}
+                                />
+                        </View>
 
-                    <RectButton onPress={hundleNavigationToStudyPage} style={styles.button}>
-                        <Text style={styles.buttonText}>Entrar</Text>
-                    </RectButton>
-                
+                            <RectButton onPress={hundleNavigationToStudyPage} style={styles.button}>
+                                <Text style={styles.buttonText}>Entrar</Text>
+                            </RectButton>
+                        
 
-               {/* <View style={styles.logo}>
-                    <Image source={logoLogin} style={styles.imgLogo} />
-                    </View>*/}
+                    {/* <View style={styles.logo}>
+                            <Image source={logoLogin} style={styles.imgLogo} />
+                            </View>*/}
             </ImageBackground>
         </View>
     );

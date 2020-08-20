@@ -40,7 +40,7 @@ function HomeItens() {
     Animated.timing(
         animaTop,
         {
-            toValue: -60,
+            toValue: -70,
             duration: 800,
             easing: Easing.bezier(0.33, 1, 0.68, 1),
             useNativeDriver: false

@@ -2,25 +2,10 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 50,
+        paddingTop: 40,
         paddingBottom: 40,
         paddingHorizontal: 20,
         borderBottomRightRadius: 120,
-    },
-    azul: {
-        backgroundColor: '#367DFF',
-    },
-    amarelo: {
-        backgroundColor: '#FFC300'
-    },
-    verde: {
-        backgroundColor: '#2CC272'
-    },
-    cinza: {
-        backgroundColor: '#767676'
-    },
-    vermelho: {
-        backgroundColor: '#F12020'
     },
     topBar: {
         flexDirection:'row',
@@ -29,7 +14,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'space-between',
     },
     headerBackground: {
@@ -43,7 +28,7 @@ const styles = StyleSheet.create({
         lineHeight: 32,
         maxWidth: 250,
         marginBottom: 40,
-        marginTop: 20,
+        marginTop: 10,
         marginLeft: 20,
     },
     titleChildren: {
