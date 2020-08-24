@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { View, Image, Text, TextInput, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
+
  
 import styles from './styles';
 
 import backLogin from '../../assets/images/back-login.png';
 import logoLogin from '../../assets/images/logo-login.png';
 import loginImg from '../../assets/images/login.png';
-
-
 
 function Login() {
     const [ra, setRa] = useState('');

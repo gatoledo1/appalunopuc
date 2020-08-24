@@ -3,6 +3,7 @@ import { View, Image, Text, Linking, Animated, Easing } from 'react-native';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
+import Carousel from '../../components/Carousel';
 
 import canvasIcon from '../../assets/images/icons/canvas.png';
 import areaLogada from '../../assets/images/icons/area-logada.png';
@@ -16,6 +17,7 @@ import document from '../../assets/images/icons/document-folder.png';
 import cap from '../../assets/images/icons/hat-alt.png';
 import paper from '../../assets/images/icons/paper.png';
 import calendar from '../../assets/images/icons/ui-calendar.png';
+import backIconBlue from '../../assets/images/icons/arrow-blue.png';
 import styles from './styles';
 
 
@@ -33,6 +35,9 @@ function HomeItens() {
     }
     function hundleNavigateCursados() {
         navigate('Cursados');
+    }
+    function hundleNavigateGesturePWDAreaLogada() {
+        navigate('PWDAreaLogada');
     }
 
     const [animaTop, setTop] = useState(new Animated.Value(150));
@@ -55,19 +60,12 @@ function HomeItens() {
 
             <Animated.ScrollView style={{ marginTop: animaTop }}
                 contentContainerStyle={{
-                    paddingHorizontal: 30,
                     paddingBottom: 16,
                 }}
             >
 
                 <View style={styles.row}>
-                    <RectButton
-                    onPress={() => {
-                        Linking.openURL(
-                          'https://arealogada.sis.puc-campinas.edu.br/'
-                        );
-                    }}
-                    style={styles.links}>
+                    <RectButton onPress={hundleNavigateGesturePWDAreaLogada} style={styles.links}>
                         <View style={styles.card}>
                             <Image source={areaLogada} style={styles.icon} />
                             <Text style={styles.textCard}>
@@ -207,6 +205,8 @@ function HomeItens() {
                         PUC-CAMPINAS
                     </Text>
                 </View>
+
+                <Carousel />
 
             </Animated.ScrollView>
         </View>

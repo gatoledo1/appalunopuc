@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from '../pages/Login';
 import HomeItens from '../pages/HomeItens';
+import PWDAreaLogada from '../pages/AreaLogada';
 import ComunicadosNoticias from '../pages/ComunicadosNoticias';
 import GradeCompleta from '../pages/GradeCompleta';
 import GradeSemanal from '../pages/GradeSemanal';
@@ -21,6 +22,7 @@ function AppStack() {
                 <Screen name="GradeCompleta" component={GradeCompleta} />
                 <Screen name="GradeSemanal" component={GradeSemanal} />
                 <Screen name="Cursados" component={Cursados} />
+                <Screen name="PWDAreaLogada" component={PWDAreaLogada} />
             </Navigator>
         </NavigationContainer>
     )

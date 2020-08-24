@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
     row: {
         width: '100%',
         flexDirection: 'row',
-        padding: 10,
+        paddingHorizontal: 32,
+        paddingVertical: 15,
         alignItems: 'center',
         justifyContent: 'space-between',
     },
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     footer: {
-        marginTop: 12,
+        marginVertical: 12,
         justifyContent: 'center',
         alignItems: 'center'
     },
