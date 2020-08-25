@@ -8,6 +8,15 @@ const styles = StyleSheet.create({
     cardsBlock:{
         
     },
+    titleChildren: {
+        fontFamily: 'Poppins_400Regular',
+        color: '#fff',
+        fontSize: 14,
+        lineHeight: 18,
+        marginBottom: 40,
+        marginTop: -30,
+        marginLeft: 20,
+    },
     row: {
         width: '100%',
         flexDirection: 'row',
@@ -15,6 +24,17 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         alignItems: 'center',
         justifyContent: 'space-between',
+    },
+    badge: {
+        backgroundColor: '#F12020',
+        color: '#fff',
+        paddingVertical: 4,
+        paddingHorizontal: 6,
+        lineHeight: 10,
+        borderRadius: 50,
+        marginLeft: 20,
+        top: -35,
+        fontSize: 9,
     },
     links: {
         width: '47%',
@@ -61,7 +81,8 @@ const styles = StyleSheet.create({
         color: '#DADADA',
         fontFamily: 'Poppins_400Regular',
         fontSize: 14,
-    }
+    },
+
 
 });
 

@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import { View, Image, Text, Linking, Animated, Easing } from 'react-native';
-import { RectButton, ScrollView } from 'react-native-gesture-handler';
+import { View, Image, Text, Linking, Animated, Easing, TextInput } from 'react-native';
+import { RectButton, BorderlessButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import { Feather } from '@expo/vector-icons';
 import PageHeader from '../../components/PageHeader';
 import Carousel from '../../components/Carousel';
 
@@ -17,7 +18,7 @@ import document from '../../assets/images/icons/document-folder.png';
 import cap from '../../assets/images/icons/hat-alt.png';
 import paper from '../../assets/images/icons/paper.png';
 import calendar from '../../assets/images/icons/ui-calendar.png';
-import backIconBlue from '../../assets/images/icons/arrow-blue.png';
+
 import styles from './styles';
 
 
@@ -36,8 +37,11 @@ function HomeItens() {
     function hundleNavigateCursados() {
         navigate('Cursados');
     }
-    function hundleNavigateGesturePWDAreaLogada() {
+    function hundleNavigatePWDAreaLogada() {
         navigate('PWDAreaLogada');
+    }
+    function hundleNavigateNotrify() {
+        navigate('NotifyTabs');
     }
 
     const [animaTop, setTop] = useState(new Animated.Value(150));
@@ -52,10 +56,18 @@ function HomeItens() {
         }
     ).start();
 
+
     return (
         <View style={styles.container}>
-            <PageHeader title="Olá Gabriel!" backColor="#367DFF">
-                <Text>Que bom vê-lo por aqui</Text>
+            <PageHeader title="Olá Gabriel!" backColor="#367DFF" 
+            headerRight={(
+                    <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 20, padding: 10}}>
+                        <Feather name="bell" size={30} color="#FFF" />
+                        <Text style={styles.badge}>3</Text>
+                    </BorderlessButton>
+                 )}>
+
+            <Text style={styles.titleChildren}>Que bom vê-lo aqui</Text>      
             </PageHeader>
 
             <Animated.ScrollView style={{ marginTop: animaTop }}
@@ -65,7 +77,7 @@ function HomeItens() {
             >
 
                 <View style={styles.row}>
-                    <RectButton onPress={hundleNavigateGesturePWDAreaLogada} style={styles.links}>
+                    <RectButton onPress={hundleNavigatePWDAreaLogada} style={styles.links}>
                         <View style={styles.card}>
                             <Image source={areaLogada} style={styles.icon} />
                             <Text style={styles.textCard}>

@@ -11,7 +11,15 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'space-evenly',
     },
-
+    titleChildren: {
+        fontFamily: 'Poppins_400Regular',
+        color: '#fff',
+        fontSize: 14,
+        lineHeight: 18,
+        marginBottom: 40,
+        marginTop: -30,
+        marginLeft: 20,
+    },
     titleBold: {
         fontFamily: 'Poppins_400Regular',
         fontSize: 15,

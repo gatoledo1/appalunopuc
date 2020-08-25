@@ -48,7 +48,7 @@ import backLogin from '../../assets/images/back-login.png';
         return (
           <View style={styles.container}>
             <PageHeader title="Verificação de Segurança" backColor="#2CC272">
-                <Text>Para sua segurança, sempre perguntaremos sua senha.</Text>
+              <Text style={styles.titleChildren}>Para sua segurança, sempre perguntaremos sua senha.</Text>
             </PageHeader>
             
             <ImageBackground source={backLogin} style={styles.backgroungLogin}>

@@ -1,19 +1,18 @@
 import React from 'react';
 import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import ComunicadosNoticias from '../pages/ComunicadosNoticias';
-import Favorites from '../pages/Favorites';
 import { Ionicons } from '@expo/vector-icons';
+import NotifyCurso from '../pages/Notificacoes/Curso';
+import NotifyIndividual from '../pages/Notificacoes/Individual';
 
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
-function StudyTabs() {
+function NotifyTabs() {
     return (
-        <View></View>
-        /* <Navigator tabBarOptions={{
+         <Navigator tabBarOptions={{
             style: {
-                height: 64,
+                height: 55,
             },
             tabStyle: {
                 flexDirection: 'row',
@@ -35,27 +34,27 @@ function StudyTabs() {
             inactiveTintColor: '#c1bccc',
             activeTintColor: '#32264d',
         }}>
-            <Screen name="ComunicadosNoticias" component={ComunicadosNoticias} 
+            <Screen name="NotifyIndividual" component={NotifyIndividual} 
             options={{
-                tabBarLabel: 'Proffys',
+                tabBarLabel: 'Suas notificações',
                 tabBarIcon: ({ color, size, focused }) => {
                     return (
-                        <Ionicons name="ios-easel" size={size} color={focused ? '#8257e5' : color} />
+                        <Ionicons name="ios-easel" size={size} color={focused ? '#367DFF' : color} />
                     );
                 }
             }}
             />
-            <Screen name="Favorites" component={Favorites}
+            <Screen name="NotifyCurso" component={NotifyCurso}
             options={{
-                tabBarLabel: 'Proffys',
+                tabBarLabel: 'De seu Curso',
                 tabBarIcon: ({ color, size, focused }) => {
                     return (
-                        <Ionicons name="ios-heart" size={size} color={focused ? '#8257e5' : color} />
+                        <Ionicons name="ios-heart" size={size} color={focused ? '#367DFF' : color} />
                     );
                 }
             }} />
-        </Navigator> */
+        </Navigator> 
     );
 }
 
-export default StudyTabs;
+export default NotifyTabs;

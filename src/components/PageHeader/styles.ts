@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     topBar: {
         flexDirection:'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     header: {
         flexDirection: 'row',
@@ -29,15 +29,6 @@ const styles = StyleSheet.create({
         maxWidth: 250,
         marginBottom: 40,
         marginTop: 10,
-        marginLeft: 20,
-    },
-    titleChildren: {
-        fontFamily: 'Poppins_400Regular',
-        color: '#fff',
-        fontSize: 14,
-        lineHeight: 18,
-        marginBottom: 40,
-        marginTop: -30,
         marginLeft: 20,
     },
     imgHeader: {

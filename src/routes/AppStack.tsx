@@ -9,13 +9,14 @@ import ComunicadosNoticias from '../pages/ComunicadosNoticias';
 import GradeCompleta from '../pages/GradeCompleta';
 import GradeSemanal from '../pages/GradeSemanal';
 import Cursados from '../pages/Cursados';
+import NotifyTabs from './NotifyTabs';
 
 const { Navigator, Screen } = createStackNavigator();
 
 function AppStack() {
     return(
         <NavigationContainer>
-            <Navigator screenOptions={{ headerShown: false }}>  
+            <Navigator screenOptions={{ headerShown: false }}>
                 <Screen name="Login" component={Login} />
                 <Screen name="HomeItens" component={HomeItens} />
                 <Screen name="ComunicadosNoticias" component={ComunicadosNoticias} />
@@ -23,6 +24,7 @@ function AppStack() {
                 <Screen name="GradeSemanal" component={GradeSemanal} />
                 <Screen name="Cursados" component={Cursados} />
                 <Screen name="PWDAreaLogada" component={PWDAreaLogada} />
+                <Screen name="NotifyTabs" component={NotifyTabs} />
             </Navigator>
         </NavigationContainer>
     )
