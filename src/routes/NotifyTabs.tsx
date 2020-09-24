@@ -39,7 +39,7 @@ function NotifyTabs() {
                 tabBarLabel: 'Suas notificações',
                 tabBarIcon: ({ color, size, focused }) => {
                     return (
-                        <Ionicons name="ios-easel" size={size} color={focused ? '#367DFF' : color} />
+                        <Ionicons name="ios-notifications-outline" size={size} color={focused ? '#367DFF' : color} />
                     );
                 }
             }}
@@ -49,7 +49,7 @@ function NotifyTabs() {
                 tabBarLabel: 'De seu Curso',
                 tabBarIcon: ({ color, size, focused }) => {
                     return (
-                        <Ionicons name="ios-heart" size={size} color={focused ? '#367DFF' : color} />
+                        <Ionicons name="ios-school" size={size} color={focused ? '#367DFF' : color} />
                     );
                 }
             }} />

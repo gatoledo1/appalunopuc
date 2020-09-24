@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native';
+import Colors from "../cores-global";
+import { color } from 'react-native-reanimated';
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F7FAFF',
+        backgroundColor: Colors.azulBack,
     },
     cardsBlock:{
         
@@ -26,13 +28,15 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     badge: {
-        backgroundColor: '#F12020',
+        backgroundColor: Colors.vermelho,
+        width: 17,
+        height: 17,
         color: '#fff',
         paddingVertical: 4,
         paddingHorizontal: 6,
-        lineHeight: 10,
+        lineHeight: 9,
         borderRadius: 50,
-        marginLeft: 20,
+
         top: -35,
         fontSize: 9,
     },
@@ -49,21 +53,13 @@ const styles = StyleSheet.create({
         paddingVertical: 35,
         alignItems: 'center',
         justifyContent: 'center',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 12,
-        elevation: 6,
     },
     icon: {
         height: 50,
         marginBottom: 14,
     },
     textCard: {
-        color: '#367DFF',
+        color: Colors.azulPrimary,
         fontFamily: 'Poppins_400Regular',
         fontSize: 14,
         width: 120,

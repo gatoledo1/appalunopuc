@@ -1,5 +1,5 @@
 export default {
-  bg: "#F7FAFF",
+  bg: "#f1f6ff",
   textInputBG: "#f2f7ff",
   purple: "#367DFF"
 };

@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
-import Colors from "./colors";
+import Colors from "../cores-global";
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.bg,
+        backgroundColor: Colors.azulBack,
     },
     backgroungLogin: {
         flex: 1,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         paddingHorizontal: 60,
         paddingBottom: 20,
-        color: '#367DFF',
+        color: Colors.azulPrimary,
         textAlign: 'center',
     },
     content: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 
     button: { 
         height: 24, 
-        backgroundColor: '#367DFF', 
+        backgroundColor: Colors.azulPrimary, 
         borderRadius: 50, 
         paddingVertical: 24, 
         paddingHorizontal: 60,

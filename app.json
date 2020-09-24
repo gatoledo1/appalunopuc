@@ -2,7 +2,7 @@
   "expo": {
     "name": "App do Aluno",
     "slug": "app-aluno",
-    "version": "0.7.0",
+    "version": "0.7.3",
     "privacy": "public",
     "platforms": [
       "ios",

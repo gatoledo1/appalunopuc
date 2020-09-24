@@ -1,5 +1,5 @@
 azulPrimary: #367DFF,
-azulBack: #F7FAFF,
+azulBack: #f1f6ff,
 azulShadow: #B6CEFF
 amareloSecundary: #FFC300,
 verdeText: #2CC272,

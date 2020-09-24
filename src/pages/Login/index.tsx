@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Image, Text, TextInput, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
-
+import { StatusBar } from 'expo-status-bar';
  
 import styles from './styles';
 
@@ -23,43 +23,44 @@ function Login() {
     return (
         
         <View style={styles.container} >
-                    <ImageBackground source={backLogin} style={styles.backgroungLogin}>
-                        <View style={styles.imgCover}>
-                            <Image source={logoLogin} style={styles.banner} />
-                        </View>
 
-                        <View style={styles.title}>
-                            <Text style={styles.titleBold}>
-                                Seja bem-vindo!
-                            </Text>
-                        </View>
+                <ImageBackground source={backLogin} style={styles.backgroungLogin}>
+                    <View style={styles.imgCover}>
+                        <Image source={logoLogin} style={styles.banner} />
+                    </View>
 
-                        <View>
-                            <Text style={styles.label}>Seu RA</Text>
-                                <TextInput style={styles.input}
-                                    value={ra}
-                                    onChangeText={text => setRa(text)}
-                                />
-                            <Text>
-                                {'\n'}{'\n'}
-                            </Text>
-                            <Text style={styles.label}>Senha</Text>
-                                <TextInput style={styles.input}
-                                    secureTextEntry={true}
-                                    value={pwd}
-                                    onChangeText={text => setPwd(text)}
-                                />
-                        </View>
+                    <View style={styles.title}>
+                        <Text style={styles.titleBold}>
+                            Seja bem-vindo!
+                        </Text>
+                    </View>
 
-                            <RectButton onPress={hundleNavigationToStudyPage} style={styles.button}>
-                                <Text style={styles.buttonText}>Entrar</Text>
-                            </RectButton>
-                        
+                    <View>
+                        <Text style={styles.label}>Seu RA</Text>
+                            <TextInput style={styles.input}
+                                value={ra}
+                                onChangeText={text => setRa(text)}
+                            />
+                        <Text>
+                            {'\n'}{'\n'}
+                        </Text>
+                        <Text style={styles.label}>Senha</Text>
+                            <TextInput style={styles.input}
+                                secureTextEntry={true}
+                                value={pwd}
+                                onChangeText={text => setPwd(text)}
+                            />
+                    </View>
 
-                    {/* <View style={styles.logo}>
-                            <Image source={logoLogin} style={styles.imgLogo} />
-                            </View>*/}
-            </ImageBackground>
+                        <RectButton onPress={hundleNavigationToStudyPage} style={styles.button}>
+                            <Text style={styles.buttonText}>Entrar</Text>
+                        </RectButton>
+                    
+
+                {/* <View style={styles.logo}>
+                        <Image source={logoLogin} style={styles.imgLogo} />
+                        </View>*/}
+                </ImageBackground>
         </View>
     );
 }

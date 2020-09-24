@@ -10,6 +10,7 @@ import GradeCompleta from '../pages/GradeCompleta';
 import GradeSemanal from '../pages/GradeSemanal';
 import Cursados from '../pages/Cursados';
 import NotifyTabs from './NotifyTabs';
+import AreaFinanceira from '../pages/AreaFinanceira';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -25,6 +26,7 @@ function AppStack() {
                 <Screen name="Cursados" component={Cursados} />
                 <Screen name="PWDAreaLogada" component={PWDAreaLogada} />
                 <Screen name="NotifyTabs" component={NotifyTabs} />
+                <Screen name="AreaFinanceira" component={AreaFinanceira} />
             </Navigator>
         </NavigationContainer>
     )

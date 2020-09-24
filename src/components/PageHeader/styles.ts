@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     arrowHeader: {
         height: 30,
         width: 30,
+
     },
 
 

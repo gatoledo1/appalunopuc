@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import Colors from "../../pages/cores-global";
 
 const styles = StyleSheet.create({
     container: {
@@ -8,14 +9,6 @@ const styles = StyleSheet.create({
         borderRadius: 12, 
         marginBottom: 25, 
         overflow: 'hidden',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 12,
-        elevation: 6,
     },
     profile: { 
         flexDirection: 'row', 
@@ -84,7 +77,7 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
     },
     favorited: {
-        backgroundColor: '#367DFF',
+        backgroundColor: Colors.cinzaText,
     },
     
     contactButton: {

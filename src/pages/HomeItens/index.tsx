@@ -3,6 +3,7 @@ import { View, Image, Text, Linking, Animated, Easing, TextInput } from 'react-n
 import { RectButton, BorderlessButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
+
 import PageHeader from '../../components/PageHeader';
 import Carousel from '../../components/Carousel';
 
@@ -18,6 +19,7 @@ import document from '../../assets/images/icons/document-folder.png';
 import cap from '../../assets/images/icons/hat-alt.png';
 import paper from '../../assets/images/icons/paper.png';
 import calendar from '../../assets/images/icons/ui-calendar.png';
+import caa from '../../assets/images/icons/caa-help.png';
 
 import styles from './styles';
 
@@ -43,6 +45,10 @@ function HomeItens() {
     function hundleNavigateNotrify() {
         navigate('NotifyTabs');
     }
+    function hundleNavigateAreaFinanceira() {
+        navigate('AreaFinanceira');
+    }
+    
 
     const [animaTop, setTop] = useState(new Animated.Value(150));
 
@@ -61,7 +67,7 @@ function HomeItens() {
         <View style={styles.container}>
             <PageHeader title="Olá Gabriel!" backColor="#367DFF" 
             headerRight={(
-                    <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 20, padding: 10}}>
+                    <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 20, paddingTop: 12}}>
                         <Feather name="bell" size={30} color="#FFF" />
                         <Text style={styles.badge}>3</Text>
                     </BorderlessButton>
@@ -132,16 +138,11 @@ function HomeItens() {
                         </View>
                     </RectButton>
 
-                    <RectButton style={styles.links} 
-                    onPress={() => {
-                        Linking.openURL(
-                          'http://ead.puc-campinas.edu.br/'
-                        );
-                    }}>
+                    <RectButton style={styles.links} >
                         <View style={styles.card}>
-                                <Image source={cap} style={styles.icon} />
+                                <Image source={caa} style={styles.icon} />
                                 <Text style={styles.textCard}>
-                                    Ambiente Virtual do Aluno
+                                    Central de Atendimento ao Aluno
                                 </Text>
                             </View>
                     </RectButton>
@@ -182,7 +183,7 @@ function HomeItens() {
                         </View>
                     </RectButton>
 
-                    <RectButton style={styles.links}>
+                    <RectButton onPress={hundleNavigateAreaFinanceira} style={styles.links}>
                         <View style={styles.card}>
                             <Image source={card} style={styles.icon} />
                             <Text style={styles.textCard}>

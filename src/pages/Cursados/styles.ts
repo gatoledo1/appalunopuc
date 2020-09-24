@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
+import Colors from "../cores-global";
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F7FAFF',
+        backgroundColor: Colors.azulBack,
     },
     content: {
         marginTop: -80,
@@ -16,14 +17,6 @@ const styles = StyleSheet.create({
         borderRadius: 12, 
         marginBottom: 25, 
         overflow: 'hidden',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 12,
-        elevation: 6,
     },
     ano: {
         paddingHorizontal: 24,

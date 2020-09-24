@@ -27,7 +27,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, backColor, headerRight, 
         <View style={[styles.container, {backgroundColor: backColor}]}>
             <ImageBackground resizeMode="cover" source={headerBackground} style={styles.headerBackground}>  
             <View style={styles.topBar}>
-                <BorderlessButton onPress={hudleGoBack}>
+                <BorderlessButton onPress={hudleGoBack} style={{padding: 6}}>
                     <Image source={backIcon} style={styles.arrowHeader} resizeMode="contain" />
                 </BorderlessButton>
 

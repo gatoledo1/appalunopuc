@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
+import Colors from "../cores-global";
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F7FAFF',
+        backgroundColor: Colors.azulBack,
     },
     content: {
         marginTop: -80,

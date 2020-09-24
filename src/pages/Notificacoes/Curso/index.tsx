@@ -1,32 +1,40 @@
 import React, { Component, useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { View, Text, FlatList, StyleSheet, Animated, Easing } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { ScrollView, RectButton } from 'react-native-gesture-handler';
 import PageHeader from '../../../components/PageHeader';
+import { Feather } from '@expo/vector-icons'; 
+import styles from '../styles'
 
 export default class NotifyCurso extends Component {
 
     
   state = {
     data: [
-      { id: 0, full_name: 'Repo 6' },
-      { id: 1, full_name: 'Repo 7' },
-      { id: 2, full_name: 'Repo 8' },
-      { id: 3, full_name: 'Repo 9' },
-      { id: 4, full_name: 'Repo 10' },
-      { id: 5, full_name: 'Repo 11' },
-      { id: 6, full_name: 'Repo 12' },
-      { id: 7, full_name: 'Repo 13' },
-      { id: 8, full_name: 'Repo 14' },
-      { id: 9, full_name: 'Repo 15' },
+      { id: 0, title: 'Nunc facilisis tristique viverra', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum justo ut aliquet pulvinar. Praesent vel elit vel purus maximus dictum blandit quis nisi. Mauris quis pellentesque est. Nunc facilisis tristique viverra.' },
+      { id: 1, title: 'Mauris quis pellentesque est', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum justo ut aliquet pulvinar.' },
+      { id: 2, title: 'Praesent vel elit vel purus maximus', text: 'Etiam interdum justo ut aliquet pulvinar. Praesent vel elit vel purus maximus dictum blandit quis nisi.' },
+      { id: 3, title: 'Lorem Ipsum Dolor', text: 'Praesent vel elit vel purus maximus dictum blandit quis nisi. Mauris quis pellentesque est. Nunc facilisis tristique viverra.' },
+      { id: 4, title: 'Etiam interdum justo ut aliquet', text: 'Etiam interdum justo ut aliquet pulvinar.' },
+      { id: 5, title: 'Nunc facilisis tristique viverra', text: 'Mauris quis pellentesque est. Nunc facilisis tristique viverra.' },
+      { id: 6, title: 'Praesent vel elit vel purus maximus', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+      { id: 7, title: 'Lorem Ipsum Dolor', text: 'Etiam interdum justo ut aliquet pulvinar. Praesent vel elit vel purus maximus dictum blandit quis nisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+      { id: 8, title: 'Mauris quis pellentesque est', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Etiam interdum justo ut aliquet pulvinar.' },
+      { id: 9, title: 'Lorem Ipsum Dolor', text: 'Mauris quis pellentesque est. Nunc facilisis tristique viverra.' },
       
     ],
   };
 
   renderItem = ({ item }) => (
-    <View style={styles.listItem}>
-      <Text>{item.full_name}</Text>
-    </View>
+    <RectButton style={styles.cardItem}>
+        <View style={styles.listItem}>
+          <View style={styles.icon}>
+            <Feather name="info" size={24} color="#2CC272" />
+          </View>
+          <Text style={styles.titleItem}>{item.title}</Text>
+          <Text style={styles.textItem}>{item.text}</Text>
+        </View>
+    </RectButton>
+    
   );
 
   render() {
@@ -36,7 +44,6 @@ export default class NotifyCurso extends Component {
             <PageHeader title="Notificações" backColor="#367DFF"></PageHeader>
 
                 <ScrollView style={{ marginTop: -90 }}>
-                    <StatusBar style="dark" />
                     <FlatList
                         contentContainerStyle={styles.list}
                         data={this.state.data}
@@ -49,28 +56,3 @@ export default class NotifyCurso extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F7FAFF',
-  },
-  list: {
-    paddingHorizontal: 20,
-  },
-
-  listItem: {
-    backgroundColor: '#FFF',
-    marginTop: 10,
-    padding: 30,
-    borderRadius: 8,
-    shadowColor: "#000",
-    shadowOffset: {
-        width: 0,
-        height: 3,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 12,
-    elevation: 3,
-  },
-});

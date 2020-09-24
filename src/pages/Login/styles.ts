@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
+import Colors from "../cores-global";
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F7FAFF',
+        backgroundColor: Colors.azulBack,
         paddingHorizontal: 40,
         justifyContent: 'center'
     },
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     },
 
     label: { 
-        color: '#367DFF',
+        color: Colors.azulPrimary,
         fontFamily: 'Poppins_400Regular',
     },
 
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
         borderRadius: 8, 
         justifyContent: 'center', 
         paddingHorizontal: 16, 
-        borderBottomColor: '#B6CEFF',
+        borderBottomColor: Colors.azulShadow,
         borderBottomWidth: 1,
     },
 
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
 
     button: { 
         height: 24, 
-        backgroundColor: '#367DFF', 
+        backgroundColor: Colors.azulPrimary, 
         borderRadius: 50, 
         padding: 24, 
         alignItems: 'center',

@@ -1,18 +1,7 @@
 import React, { Component } from "react";
 import {
-  Animated,
-  View,
-  Dimensions,
-  Image,
-  Text,
-  Easing,
-  PixelRatio,
-  TextInput,
-  TouchableWithoutFeedback,
-  StyleSheet
-} from "react-native";
+  Animated, View, Dimensions, Image, Text, TextInput, TouchableWithoutFeedback, StyleSheet} from "react-native";
 import Lottie from 'lottie-react-native';
-import Colors from "./colors";
 
 
 
@@ -165,7 +154,7 @@ const styles = StyleSheet.create({
     height: BOX_HEIGHT,
     padding: 8,
     borderRadius: 8,
-    backgroundColor: Colors.textInputBG,
+    backgroundColor: "#f2f7ff",
     overflow: "hidden",
     borderWidth: 1,
     borderColor: '#B6CEFF',
@@ -179,7 +168,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     width: BOX_WIDTH,
     height: BOX_HEIGHT,
-    backgroundColor: Colors.textInputBG,
+    backgroundColor: "#f2f7ff",
   },
   image: {
     width: IMAGE_SIZE,
@@ -206,7 +195,7 @@ const styles = StyleSheet.create({
     zIndex: -100
   },
   textInput: {
-    color: Colors.purple,
+    color: '#367DFF',
     flex: 1,
     marginLeft: 8
   },
