@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { AppLoading } from 'expo';
 import { Poppins_400Regular_Italic, Poppins_400Regular, Poppins_600SemiBold, useFonts } from '@expo-google-fonts/poppins';
-import AppStack from './src/routes/AppStack';
+import Routes from './src/routes';
+import { AuthProvider } from './src/Contexts/auth'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -16,10 +18,11 @@ export default function App() {
   } else {
 
     return (
-      <>
-        <AppStack />
-        <StatusBar style="light" />
-      </>
+      <NavigationContainer>
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
+      </NavigationContainer>
     );
   }
 }

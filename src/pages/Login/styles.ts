@@ -1,10 +1,17 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewProps } from 'react-native';
 import Colors from "../cores-global";
+import styled from 'styled-components/native';
+
+interface WrapperType extends ViewProps {
+    backgroundColor: string;
+  }
+
+
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.azulBack,
+        /*backgroundColor: Colors.azulBack,*/
         paddingHorizontal: 40,
         justifyContent: 'center'
     },
@@ -54,7 +61,7 @@ const styles = StyleSheet.create({
     button: { 
         height: 24, 
         backgroundColor: Colors.azulPrimary, 
-        borderRadius: 50, 
+        borderRadius: 25, 
         padding: 24, 
         alignItems: 'center',
         justifyContent: 'center',

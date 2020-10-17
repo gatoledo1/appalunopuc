@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     },
     list: {
       paddingHorizontal: 20,
+      paddingBottom: 60,
     },
     cardItem: {
       backgroundColor: '#FFF',

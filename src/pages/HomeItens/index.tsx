@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { View, Image, Text, Linking, Animated, Easing, TextInput } from 'react-native';
 import { RectButton, BorderlessButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
+import AuthContext from '../../Contexts/auth';
 
 import PageHeader from '../../components/PageHeader';
 import Carousel from '../../components/Carousel';
@@ -26,6 +27,9 @@ import styles from './styles';
 
 function HomeItens() {
     const { navigate } = useNavigation();
+
+    const {nome} = useContext(AuthContext);
+    const firstName = nome.split(' ')[0];
 
     function hundleNavigateNews() {
         navigate('ComunicadosNoticias');
@@ -65,7 +69,7 @@ function HomeItens() {
 
     return (
         <View style={styles.container}>
-            <PageHeader title="Olá Gabriel!" backColor="#367DFF" 
+            <PageHeader title={`Olá ${firstName}`} backColor="#367DFF" 
             headerRight={(
                     <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 20, paddingTop: 12}}>
                         <Feather name="bell" size={30} color="#FFF" />
@@ -73,7 +77,7 @@ function HomeItens() {
                     </BorderlessButton>
                  )}>
 
-            <Text style={styles.titleChildren}>Que bom vê-lo aqui</Text>      
+            <Text style={styles.titleChildren}>Que bom te ver aqui</Text>      
             </PageHeader>
 
             <Animated.ScrollView style={{ marginTop: animaTop }}

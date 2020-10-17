@@ -12,12 +12,18 @@ function NotifyTabs() {
     return (
          <Navigator tabBarOptions={{
             style: {
-                height: 55,
+                position: 'absolute',
+                bottom: 10,
+                marginHorizontal: 30,
+                borderRadius: 25,
             },
             tabStyle: {
+                width: '80%',
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
+                borderRadius: 25,
+
             },
             iconStyle: {
                 flex: 0,
@@ -26,11 +32,10 @@ function NotifyTabs() {
             },
             labelStyle: {
                 fontFamily: 'Poppins_400Regular',
-                fontSize: 13,
-                marginLeft: 16,
+                fontSize: 11,
+                marginLeft: 6,
             },
-            inactiveBackgroundColor: '#fafafc',
-            activeBackgroundColor: '#ebebf5',
+            activeBackgroundColor: '#f1f6ff',
             inactiveTintColor: '#c1bccc',
             activeTintColor: '#32264d',
         }}>
@@ -39,7 +44,7 @@ function NotifyTabs() {
                 tabBarLabel: 'Suas notificações',
                 tabBarIcon: ({ color, size, focused }) => {
                     return (
-                        <Ionicons name="ios-notifications-outline" size={size} color={focused ? '#367DFF' : color} />
+                        <Ionicons name="ios-notifications" size={size} color={focused ? '#367DFF' : color} />
                     );
                 }
             }}
