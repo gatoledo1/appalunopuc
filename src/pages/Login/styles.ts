@@ -1,14 +1,12 @@
 import { StyleSheet, ViewProps } from 'react-native';
 import Colors from "../cores-global";
-import styled from 'styled-components/native';
-
-interface WrapperType extends ViewProps {
-    backgroundColor: string;
-  }
-
 
 
 const styles = StyleSheet.create({
+    activityIndicator: {
+        position: 'absolute',
+        right: 10,
+     },
     container: {
         flex: 1,
         /*backgroundColor: Colors.azulBack,*/
@@ -65,7 +63,6 @@ const styles = StyleSheet.create({
         padding: 24, 
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 34,
         marginHorizontal: 30,
     }, 
 

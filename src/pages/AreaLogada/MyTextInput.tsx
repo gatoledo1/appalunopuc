@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import {
-  Animated, View, Dimensions, Image, Text, TextInput, TouchableWithoutFeedback, StyleSheet} from "react-native";
+import { Animated, View, Dimensions, Image, Text, TextInput, TouchableWithoutFeedback, StyleSheet, Linking } from "react-native";
+import { RectButton } from 'react-native-gesture-handler';
 import Lottie from 'lottie-react-native';
-
+import AsyncStorage from '@react-native-community/async-storage';
 
 
 const { width, height } = Dimensions.get("window");
@@ -22,6 +22,21 @@ export default class MyTextInput extends Component {
     showing: false,
     secureTextEntry: true
   };
+
+  checkPwd(){
+    const pwd = AsyncStorage.getItem('senha');
+
+    let { text } = this.state;
+    text = this.state.text;
+    
+    if(text == pwd){
+      () => {
+        Linking.openURL(
+          'https://google.com'
+        );
+      }
+    }
+  }
 
   show() {
     let { text } = this.state;
@@ -124,7 +139,8 @@ export default class MyTextInput extends Component {
     const { text, showing, secureTextEntry } = this.state;
 
     return (
-      <View style={styles.container}>
+      <View>
+        <View style={styles.container}>
         {this.renderEye()}
         {this.renderLock()}
         <TextInput
@@ -140,7 +156,14 @@ export default class MyTextInput extends Component {
         >
           <View style={styles.touch} />
         </TouchableWithoutFeedback>
+
       </View>
+
+        <RectButton onPress={() => this.checkPwd} style={styles.button}>
+            <Text style={styles.buttonText}>Acessar</Text>
+        </RectButton>
+      </View>
+      
     );
   }
 }
@@ -202,5 +225,22 @@ const styles = StyleSheet.create({
   touch: {
     width: LOTTIE_SIZE,
     height: LOTTIE_SIZE
-  }
+  },
+  button: { 
+    height: 24, 
+    backgroundColor: '#367DFF', 
+    borderRadius: 25, 
+    paddingVertical: 24, 
+    paddingHorizontal: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 50,
+}, 
+
+buttonText: { 
+    fontFamily: 'Poppins_400Regular', 
+    color: '#FFF',
+    fontSize: 18, 
+    justifyContent: 'center'
+},
 });

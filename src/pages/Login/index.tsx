@@ -1,38 +1,45 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { View, Image, Text, TextInput, ImageBackground } from 'react-native';
+import { View, Image, Text, TextInput, ImageBackground, ActivityIndicator } from 'react-native';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
+import { StatusBar } from 'expo-status-bar';
 import AuthContext from '../../Contexts/auth';
  
 import styles from './styles';
-import { Envia } from '../../Services/login';
 
 import backLogin from '../../assets/images/back-login.png';
 import logoLogin from '../../assets/images/logo-login.png';
 import loginImg from '../../assets/images/login.png';
 import AsyncStorage from '@react-native-community/async-storage';
+import base64 from 'react-native-base64';
 
 const Login: React.FC = () => {
-    const {signed, nome, signIn} = useContext(AuthContext);
+    const {erroLogin, nome, signIn} = useContext(AuthContext);
 
 
-    const [ra, setRa] = useState('17013996');
-    const [pwd, setPwd] = useState('UIE01!#C');
-   
+    const [ra, setRa] = useState< string | null>('17013996');
+    const [pwd, setPwd] = useState< string | null>('UIE01!#C');
+    const [load, setLoad] = useState(false);
+
     //console.log(nome);
 
-    async function SubmitLogin(){
-        await AsyncStorage.setItem('ra', ra);
-        await AsyncStorage.setItem('senha', pwd);
+    function SubmitLogin(){
 
-        signIn();
+        setLoad(true);
+
+        const token = `Basic ${base64.encode(`${ra}:${pwd}`)}`;
+
+        signIn(token);
     }
 
     useEffect(() => {
 
         async function getStore(){
-            const pwdStorage = AsyncStorage.getItem('senha');
-            if (pwdStorage !== null){
-                const response = await Envia();
+            const token = await AsyncStorage.getItem('token');
+            
+            if (token !== null){
+                setLoad(true);
+                
+                signIn(token);
             }
         }
 
@@ -43,7 +50,7 @@ const Login: React.FC = () => {
     return (
         
         <View style={styles.container} >
-
+          <StatusBar style="dark" />
             <ImageBackground source={backLogin} style={styles.backgroungLogin}>
                 <View style={styles.imgCover}>
                     <Image source={logoLogin} style={styles.banner} />
@@ -72,8 +79,11 @@ const Login: React.FC = () => {
                         />
                 </View>
 
+                    <Text style={{color: 'red'}}> { erroLogin } </Text>
+
                     <RectButton onPress={SubmitLogin} style={styles.button}>
                         <Text style={styles.buttonText}>Entrar</Text>
+                        <ActivityIndicator animating={load} size="large" color="#ffffff" style={styles.activityIndicator} />
                     </RectButton>
                 
 

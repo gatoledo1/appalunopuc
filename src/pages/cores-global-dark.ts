@@ -1,7 +1,7 @@
 export default {
-    cardsTable: '#fff',
-    azulPrimary: '#367DFF',
-    azulBack: '#f1f6ff',
+    cardsTable: '#232D3E',
+    azulPrimary: '#94BAFF',
+    azulBack: '#13171E',
     azulShadow: '#B6CEFF',
     amareloSecundary: '#FFC300',
     verdeText: '#2CC272',

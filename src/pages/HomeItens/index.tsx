@@ -28,8 +28,13 @@ import styles from './styles';
 function HomeItens() {
     const { navigate } = useNavigation();
 
-    const {nome} = useContext(AuthContext);
+    const {nome, signOut} = useContext(AuthContext);
     const firstName = nome.split(' ')[0];
+
+    function hundleSignOut(){
+        signOut();
+    }
+
 
     function hundleNavigateNews() {
         navigate('ComunicadosNoticias');
@@ -69,7 +74,7 @@ function HomeItens() {
 
     return (
         <View style={styles.container}>
-            <PageHeader title={`Olá ${firstName}`} backColor="#367DFF" 
+            <PageHeader title={`Olá ${firstName}`} backColor="#002975" 
             headerRight={(
                     <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 20, paddingTop: 12}}>
                         <Feather name="bell" size={30} color="#FFF" />
@@ -222,6 +227,12 @@ function HomeItens() {
                         PUC-CAMPINAS
                     </Text>
                 </View>
+
+                <RectButton style={styles.logout} onPress={hundleSignOut}>
+                    <Text style={styles.loguotText}>
+                        Desconectar app
+                    </Text>
+                </RectButton>
 
                 <Carousel />
 

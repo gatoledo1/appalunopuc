@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     card: {
         width: '100%',
         height: 160,
-        backgroundColor: '#fff',
+        backgroundColor: Colors.cardsTable,
         borderRadius: 8,
         paddingHorizontal: 8,
         paddingVertical: 35,
@@ -75,6 +75,18 @@ const styles = StyleSheet.create({
     },
     footerText: {
         color: '#DADADA',
+        fontFamily: 'Poppins_400Regular',
+        fontSize: 14,
+    },
+    logout: {
+        height: 45,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 25,
+    },
+    loguotText: {
+        marginVertical: 15,
+        color: Colors.vermelho,
         fontFamily: 'Poppins_400Regular',
         fontSize: 14,
     },
