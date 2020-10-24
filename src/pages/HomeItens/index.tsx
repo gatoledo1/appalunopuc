@@ -1,6 +1,7 @@
-import React, {useState, useContext} from 'react';
-import { View, Image, Text, Linking, Animated, Easing, TextInput } from 'react-native';
-import { RectButton, BorderlessButton } from 'react-native-gesture-handler';
+import React, {useState, useContext, useEffect} from 'react';
+import { View, Image, Text, Linking, Animated, Easing, Switch } from 'react-native';
+import { ThemeContext } from 'styled-components';
+import { BorderlessButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import AuthContext from '../../Contexts/auth';
@@ -10,7 +11,7 @@ import Carousel from '../../components/Carousel';
 
 import canvasIcon from '../../assets/images/icons/canvas.png';
 import areaLogada from '../../assets/images/icons/area-logada.png';
-import gradeSemanal from '../../assets/images/icons/listine-dots.png';
+import gradeSemanalImg from '../../assets/images/icons/listine-dots.png';
 import gradeCompleta from '../../assets/images/icons/list.png';
 import bookAlt from '../../assets/images/icons/book-alt.png';
 import card from '../../assets/images/icons/card.png';
@@ -22,19 +23,23 @@ import paper from '../../assets/images/icons/paper.png';
 import calendar from '../../assets/images/icons/ui-calendar.png';
 import caa from '../../assets/images/icons/caa-help.png';
 
-import styles from './styles';
+import { Container, TitleChildren, Row, Badge, Links, Card, Icon, TextCard, Footer, FooterText, Logout, LoguotText } from './styles';
 
 
 function HomeItens() {
     const { navigate } = useNavigation();
 
-    const {nome, signOut} = useContext(AuthContext);
+    const {nome, authToken, signOut, gradeSemanal} = useContext(AuthContext);
+    const { colors } = useContext(ThemeContext);
     const firstName = nome.split(' ')[0];
+
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
 
     function hundleSignOut(){
         signOut();
     }
-
 
     function hundleNavigateNews() {
         navigate('ComunicadosNoticias');
@@ -59,6 +64,13 @@ function HomeItens() {
     }
     
 
+    useEffect(() => {
+           
+        gradeSemanal(authToken);
+
+    }, []);
+
+
     const [animaTop, setTop] = useState(new Animated.Value(150));
 
     Animated.timing(
@@ -73,16 +85,26 @@ function HomeItens() {
 
 
     return (
-        <View style={styles.container}>
-            <PageHeader title={`Olá ${firstName}`} backColor="#002975" 
+        <Container>
+            <PageHeader title={`Olá ${firstName}`} backColor={colors.headerAzul}
             headerRight={(
+                <View>
+                    <Switch
+                        trackColor={{ false: "#767577", true: "#81b0ff" }}
+                        thumbColor={isEnabled ? "#555" : "#f4f3f4"}
+                        ios_backgroundColor="#3e3e3e"
+                        onValueChange={toggleSwitch}
+                        value={isEnabled}
+                    />
                     <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 20, paddingTop: 12}}>
                         <Feather name="bell" size={30} color="#FFF" />
-                        <Text style={styles.badge}>3</Text>
+                        <Badge>3</Badge>
                     </BorderlessButton>
+                </View>
                  )}>
 
-            <Text style={styles.titleChildren}>Que bom te ver aqui</Text>      
+            <TitleChildren>Que bom te ver aqui</TitleChildren>     
+
             </PageHeader>
 
             <Animated.ScrollView style={{ marginTop: animaTop }}
@@ -91,153 +113,152 @@ function HomeItens() {
                 }}
             >
 
-                <View style={styles.row}>
-                    <RectButton onPress={hundleNavigatePWDAreaLogada} style={styles.links}>
-                        <View style={styles.card}>
-                            <Image source={areaLogada} style={styles.icon} />
-                            <Text style={styles.textCard}>
+                <Row>
+                    <Links onPress={hundleNavigatePWDAreaLogada}>
+                        <Card>
+                            <Icon source={areaLogada}/>
+                            <TextCard>
                                 Área Logada
-                            </Text>
-                        </View>
-                    </RectButton>
+                            </TextCard>
+                        </Card>
+                    </Links>
                     
-                    <RectButton 
-                    onPress={() => {
-                        Linking.openURL(
-                          'https://puc-campinas.instructure.com/login/microsoft'
-                        );
-                    }}
-                    style={styles.links}>
-                        <View style={styles.card}>
-                            <Image source={canvasIcon} style={styles.icon} />
-                            <Text style={styles.textCard}>
+                    <Links 
+                        onPress={() => {
+                            Linking.openURL(
+                            'https://puc-campinas.instructure.com/login/microsoft'
+                            );
+                        }}>
+                        <Card>
+                            <Icon source={canvasIcon}/>
+                            <TextCard>
                                 Canvas
-                            </Text>
-                        </View>
-                    </RectButton>
-                </View>
+                            </TextCard>
+                        </Card>
+                    </Links>
+                </Row>
 
-                <View style={styles.row}>
-                    <RectButton onPress={hundleNavigateGradeSemanal} style={styles.links}>
-                        <View style={styles.card}>
-                            <Image source={gradeSemanal} style={styles.icon} />
-                            <Text style={styles.textCard}>
+                <Row>
+                    <Links onPress={hundleNavigateGradeSemanal}>
+                        <Card>
+                            <Icon source={gradeSemanalImg}/>
+                            <TextCard>
                                 Grade Semanal
-                            </Text>
-                        </View>
-                    </RectButton>
+                            </TextCard>
+                        </Card>
+                    </Links>
                     
-                    <RectButton onPress={hundleNavigateGradeCompleta} style={styles.links}>
-                        <View style={styles.card}>
-                            <Image source={gradeCompleta} style={styles.icon} />
-                            <Text style={styles.textCard}>
+                    <Links onPress={hundleNavigateGradeCompleta}>
+                        <Card>
+                            <Icon source={gradeCompleta} />
+                            <TextCard>
                                 Grade Completa
-                            </Text>
-                        </View>
-                    </RectButton>
-                </View>
+                            </TextCard>
+                        </Card>
+                    </Links>
+                </Row>
 
-                <View style={styles.row}>
-                    <RectButton onPress={hundleNavigateNews} style={styles.links}>
-                        <View style={styles.card}>
-                            <Image source={paper} style={styles.icon} />
-                            <Text style={styles.textCard}>
+                <Row>
+                    <Links onPress={hundleNavigateNews}>
+                        <Card>
+                            <Icon source={paper} />
+                            <TextCard>
                                 Comunicados e Notícias
-                            </Text>
-                        </View>
-                    </RectButton>
+                            </TextCard>
+                        </Card>
+                    </Links>
 
-                    <RectButton style={styles.links} >
-                        <View style={styles.card}>
-                                <Image source={caa} style={styles.icon} />
-                                <Text style={styles.textCard}>
-                                    Central de Atendimento ao Aluno
-                                </Text>
-                            </View>
-                    </RectButton>
-                </View>
+                    <Links >
+                        <Card>
+                            <Icon source={caa} />
+                            <TextCard>
+                                Central de Atendimento ao Aluno
+                            </TextCard>
+                        </Card>
+                    </Links>
+                </Row>
 
-                <View style={styles.row}>
-                    <RectButton style={styles.links}>
-                        <View style={styles.card}>
-                            <Image source={barGraph} style={styles.icon} />
-                            <Text style={styles.textCard}>
+                <Row>
+                    <Links>
+                        <Card>
+                            <Icon source={barGraph} />
+                            <TextCard>
                                 Práticas de Formação
-                            </Text>
-                        </View>
-                    </RectButton>
+                            </TextCard>
+                        </Card>
+                    </Links>
                     
-                    <RectButton style={styles.links} onPress={hundleNavigateCursados}>
-                        <View style={styles.card}>
-                            <Image source={check} style={styles.icon} />
-                            <Text style={styles.textCard}>
+                    <Links onPress={hundleNavigateCursados}>
+                        <Card>
+                            <Icon source={check} />
+                            <TextCard>
                                 Disciplinas Cursadas
-                            </Text>
-                        </View>
-                    </RectButton>
-                </View>
+                            </TextCard>
+                        </Card>
+                    </Links>
+                </Row>
 
-                <View style={styles.row}>
-                    <RectButton style={styles.links}
-                    onPress={() => {
-                        Linking.openURL(
-                          'https://www.puc-campinas.edu.br/calendario/'
-                        );
-                    }}>
-                        <View style={styles.card}>
-                            <Image source={calendar} style={styles.icon} />
-                            <Text style={styles.textCard}>
+                <Row>
+                    <Links
+                        onPress={() => {
+                            Linking.openURL(
+                            'https://www.puc-campinas.edu.br/calendario/'
+                            );
+                        }}>
+                        <Card>
+                            <Icon source={calendar} />
+                            <TextCard>
                                 Calendário Acadêmico
-                            </Text>
-                        </View>
-                    </RectButton>
+                            </TextCard>
+                        </Card>
+                    </Links>
 
-                    <RectButton onPress={hundleNavigateAreaFinanceira} style={styles.links}>
-                        <View style={styles.card}>
-                            <Image source={card} style={styles.icon} />
-                            <Text style={styles.textCard}>
+                    <Links onPress={hundleNavigateAreaFinanceira}>
+                        <Card>
+                            <Icon source={card} />
+                            <TextCard>
                                 Área Financeira
-                            </Text>
-                        </View>
-                    </RectButton>
-                </View>
+                            </TextCard>
+                        </Card>
+                    </Links>
+                </Row>
 
-                <View style={styles.row}>
-                    <RectButton style={styles.links}>
-                        <View style={styles.card}>
-                            <Image source={document} style={styles.icon} />
-                            <Text style={styles.textCard}>
+                <Row>
+                    <Links>
+                        <Card>
+                            <Icon source={document} />
+                            <TextCard>
                                 Documentos do Aluno
-                            </Text>
-                        </View>
-                    </RectButton>
+                            </TextCard>
+                        </Card>
+                    </Links>
 
-                    <RectButton style={styles.links}>
-                        <View style={styles.card}>
-                            <Image source={bookAlt} style={styles.icon} />
-                            <Text style={styles.textCard}>
+                    <Links>
+                        <Card>
+                            <Icon source={bookAlt} />
+                            <TextCard>
                                 Biblioteca
-                            </Text>
-                        </View>
-                    </RectButton>
-                </View>
+                            </TextCard>
+                        </Card>
+                    </Links>
+                </Row>
 
-                <View style={styles.footer}>
-                    <Text style={styles.footerText}>
+                <Footer>
+                    <FooterText>
                         PUC-CAMPINAS
-                    </Text>
-                </View>
+                    </FooterText>
+                </Footer>
 
-                <RectButton style={styles.logout} onPress={hundleSignOut}>
-                    <Text style={styles.loguotText}>
+                <Logout onPress={hundleSignOut}>
+                    <LoguotText>
                         Desconectar app
-                    </Text>
-                </RectButton>
+                    </LoguotText>
+                </Logout>
 
                 <Carousel />
 
             </Animated.ScrollView>
-        </View>
+        </Container>
     );
 }
 

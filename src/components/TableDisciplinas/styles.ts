@@ -1,21 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    container: { 
-        flex: 1,
-        alignItems: 'center', 
-        backgroundColor: '#ffffff',
-        borderTopLeftRadius: 14,
-        borderBottomLeftRadius: 14,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 12,
-        elevation: 9,
-    },
     table: {
         flexDirection: 'row',        
     },

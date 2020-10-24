@@ -1,118 +1,121 @@
-import * as  React  from  'react'
+import React from  'react';
 import { View, Dimensions, Text } from 'react-native';
 import { TabView, SceneMap, TabBar, ScrollPager } from 'react-native-tab-view';
 import ItensGradeSemanal from '../../components/TabView/Dias/ItensGradeSemanal';
 import { ScrollView } from 'react-native-gesture-handler';
+import AuthContext from '../../Contexts/auth';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import styles from './styles';
 
-const infoArr = [
-  {
-    frequencia: 60, materia: "Quimica B", local:"Sala: P28 / Prédio: CENT. TECN", data: "06/05/2020 até 30/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
-  },
-  {
-    frequencia: 90, materia: "Análise Instrumental", local:"Sala: P232 / Prédio: CENT. TECN", data: "08/05/2020 até 28/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
-  },
-  {
-    frequencia: 45, materia: "Bioquímica II", local:"Sala: P230 / Prédio: CENT. TECN", data: "08/05/2020 até 28/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
-  },
-  {
-    frequencia: 75, materia: "Físico-Química", local:"Sala: P231 / Prédio: CENT. TECN", data: "09/05/2020 até 29/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
-  },
-  {
-    frequencia: 100, materia: "Laboratório II", local:"Sala: P225 / Prédio: CENT. TECN", data: "08/05/2020 até 29/06/2020", atualizacao: "Frequência atualizada até 04/06/2020"
-  },
-  {
-    frequencia: 95, materia: "Química Orgânica B", local:"Sala: P231 / Prédio: CENT. TECN", data: "06/05/2020 até 29/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
-  },
-];
+interface ArrayGrade {
+  [index: number]: string;
+  frequencia: number;
+  nomeDisciplina: string;
+  sala: string;
+  predio: string;
+  dataRodizio: string;
+  dataUltimoLancFreq: string;
+}
 
-const infoArr2 = [
-  {
-    frequencia: 100, materia: "Laboratório II", local:"Sala: P225 / Prédio: CENT. TECN", data: "08/05/2020 até 29/06/2020", atualizacao: "Frequência atualizada até 04/06/2020"
-  },
-  {
-    frequencia: 95, materia: "Química Orgânica B", local:"Sala: P231 / Prédio: CENT. TECN", data: "06/05/2020 até 29/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
-  },
-  {
-    frequencia: 60, materia: "Quimica B", local:"Sala: P28 / Prédio: CENT. TECN", data: "06/05/2020 até 30/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
-  },
-  {
-    frequencia: 90, materia: "Análise Instrumental", local:"Sala: P232 / Prédio: CENT. TECN", data: "08/05/2020 até 28/06/2020", atualizacao: "Frequência atualizada até 05/06/2020"
-  },
-  
-];
+let itensGradeSegunda = new Array<ArrayGrade>();
+let itensGradeTerca = new Array<ArrayGrade>();
+let itensGradeQuarta = new Array<ArrayGrade>();
+let itensGradeQuinta = new Array<ArrayGrade>();
+let itensGradeSexta = new Array<ArrayGrade>();
+
+objGradeSemanal();
 
 
-const PrimeiraRota = () => (
-
-  <ScrollView>
-  {
-    infoArr.map(Info => (
-      <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
-      data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
-    ))
-  }
-  </ScrollView>
+  async function objGradeSemanal(){
     
-);
+    const stringGradeSemanal = await AsyncStorage.getItem('gradeSemanal');
 
-const SegundaRota = () => (
-<ScrollView>
-  {
-    infoArr2.map(Info => (
-      <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
-      data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
-    ))
-  }
-  </ScrollView>
-);
+    if(stringGradeSemanal !== null){
 
-const TerceiraRota = () => (
-<ScrollView>
-  {
-    infoArr.map(Info => (
-      <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
-      data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
-    ))
-  }
-  </ScrollView>
-);
+      const arrayGradeSemanal = JSON.parse(stringGradeSemanal);
+      
+      itensGradeSegunda = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 2; });
+      itensGradeTerca = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 3; });
+      itensGradeQuarta = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 4; });
+      itensGradeQuinta = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 5; });
+      itensGradeSexta = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 6; });    
+    }
 
-const QuartaRota = () => (
-<ScrollView>
-  {
-    infoArr2.map(Info => (
-      <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
-      data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
-    ))
+    if(stringGradeSemanal === null){
+      setTimeout(objGradeSemanal, 3000) 
+    }
   }
-  </ScrollView>
-);
 
-const QuintaRota = () => (
-<ScrollView>
-  {
-    infoArr.map(Info => (
-      <ItensGradeSemanal frequencia={Info.frequencia} materia={Info.materia} local={Info.local}
-      data={Info.data} atualizacao={Info.atualizacao}></ItensGradeSemanal>
-    ))
-  }
-  </ScrollView>
-);
+
+function PrimeiraRota() {
+    return (
+      <ScrollView>
+        {itensGradeSegunda.map((Info, index) => (
+          <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+        ))}
+      </ScrollView>
+    );  
+}
+
+function SegundaRota() {
+  return (
+    <ScrollView>
+      {itensGradeTerca.map((Info, index) => (
+        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+          data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+      ))}
+    </ScrollView>
+  );  
+}
+
+function TerceiraRota() {
+  return (
+    <ScrollView>
+      {itensGradeQuarta.map((Info, index) => (
+        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+          data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+      ))}
+    </ScrollView>
+  );  
+}
+
+function QuartaRota() {
+  return (
+    <ScrollView>
+      {itensGradeQuinta.map((Info, index) => (
+        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+          data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+      ))}
+    </ScrollView>
+  );  
+}
+
+function QuintaRota() {
+  return (
+    <ScrollView>
+      {itensGradeSexta.map((Info, index) => (
+        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+          data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+      ))}
+    </ScrollView>
+  );  
+}
 
 const initialLayout = { width: Dimensions.get('window').width };
 
-const renderTabBar = props => (
-  <TabBar
-    {...props}
-    scrollEnabled
-    indicatorStyle={{ backgroundColor: 'white', height: 4}}
-    textStyle={{color: 'red'}}
-    style={{ backgroundColor: 'transparent', elevation: 0}}
-    tabStyle={{width: 105, elevation: 0}}
-  />
-);
+function renderTabBar(props) {
+  return (
+    <TabBar
+      {...props}
+      scrollEnabled
+      indicatorStyle={{ backgroundColor: 'white', height: 4 }}
+      textStyle={{ color: 'red' }}
+      style={{ backgroundColor: 'transparent', elevation: 0 }}
+      tabStyle={{ width: 105, elevation: 0 }} />
+  );
+}
 
 export default function TabViewScroll() {
 

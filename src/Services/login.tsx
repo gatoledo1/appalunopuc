@@ -1,4 +1,3 @@
-import base64 from 'react-native-base64';
 
 export async function Envia(token){  
 

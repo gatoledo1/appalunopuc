@@ -9,8 +9,7 @@ import TabViewScroll from '../../components/TabView';
 import styles from './styles';
 
   
-function GradeSemanal() {
-    
+function GradeSemanal() {    
 
     return (
         

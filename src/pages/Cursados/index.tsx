@@ -1,12 +1,47 @@
-import React, {useState} from 'react';
+import React, {Component, useState, useContext, useEffect} from 'react';
 import { View, Text, ScrollView, Animated, Easing } from 'react-native';
 import styles from './styles';
 import PageHeader from '../../components/PageHeader';
 import DisciplinasCursadas from '../../components/DisciplinasCursadas';
+import AuthContext from '../../Contexts/auth';
+import { EnviaDisciplinasCursadas } from '../../Services/disciplinasCursadas';
 
 function Cursados() {
 
     const [animaTop, setTop] = useState(new Animated.Value(150));
+    const [contador, setContador] = useState(0);
+
+    interface DisciplinasCursadasProps {
+        [index: number]: string;
+        codCurso: string;
+        nome: string;
+        media: string;
+        decSitcli: string;
+        cargaHoraria: string;
+    }
+    
+    let cursados = new Array<DisciplinasCursadasProps>();
+
+    const {authToken} = useContext(AuthContext);
+    
+    funcDisciplinasCursadas(authToken);
+
+       async function funcDisciplinasCursadas(token){
+
+            const responseDisciplinasCursadas = await EnviaDisciplinasCursadas(token);
+
+            const disciplinaCursada = await responseDisciplinasCursadas.json();
+
+            cursados = disciplinaCursada.filter((ano) => { return ano.aass === '20181'; });
+
+            if(cursados.length === 11) {
+                console.log(contador)
+                setContador(1)
+            }
+            
+
+        }
+
 
     Animated.timing(
         animaTop,
@@ -28,24 +63,20 @@ function Cursados() {
                     paddingBottom: 16,
                 }}
             >
+                    
                 <View style={styles.card}>
                     <Text style={styles.ano}>2019</Text>
-                    <DisciplinasCursadas titleCourse="00634 - Química Orgânica B" notaCondicao="7.2 Aprovado" horas="68 horas" />
-                    <DisciplinasCursadas titleCourse="06541 - Análise Instrumental II" notaCondicao="6.5 Aprovado" horas="68 horas" />
-                    <DisciplinasCursadas titleCourse="00415 - Matemática Básica B" notaCondicao="8.5 Aprovado" horas="105 horas" />
-                    <DisciplinasCursadas titleCourse="00634 - Físico-Química" notaCondicao="4.0 Reprovado" horas="68 horas" />
-                    <DisciplinasCursadas titleCourse="00634 - Laboratório B" notaCondicao="7.0 Aprovado" horas="105 horas" />
+                    {
+                        useEffect(() => {
+                                //cursados.map(Info => (
+                                //    <DisciplinasCursadas codCurso={Info.codCurso} nome={Info.nome} media={Info.media}
+                                //    decSitcli={Info.decSitcli} cargaHoraria={Info.cargaHoraria}></DisciplinasCursadas>
+                                //))
+                                
+                        }, [contador])
+                    }
                 </View>
-
-                <View style={styles.card}>
-                    <Text style={styles.ano}>2018</Text>
-                    <DisciplinasCursadas titleCourse="00634 - Química Orgânica A" notaCondicao="4.5 Reprovado" horas="68 horas" />
-                    <DisciplinasCursadas titleCourse="06541 - Análise Instrumental I" notaCondicao="7.5 Aprovado" horas="105 horas" />
-                    <DisciplinasCursadas titleCourse="00415 - Matemática Básica A" notaCondicao="8.5 Aprovado" horas="68 horas" />
-                    <DisciplinasCursadas titleCourse="00634 - Física Básica" notaCondicao="6.75 Aprovado" horas="68 horas" />
-                    <DisciplinasCursadas titleCourse="00634 - Laboratório A" notaCondicao="7.0 Aprovado" horas="105 horas" />
-                </View>
-
+                
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>
                         PUC-CAMPINAS
