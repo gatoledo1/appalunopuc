@@ -9,9 +9,17 @@ import { EnviaDisciplinasCursadas } from '../../Services/disciplinasCursadas';
 function Cursados() {
 
     const [animaTop, setTop] = useState(new Animated.Value(150));
-    const [contador, setContador] = useState(0);
+    const [listaDisciplinas, setListaDisciplinas] = useState([]);
+    const {authToken} = useContext(AuthContext);
+    
 
-    interface DisciplinasCursadasProps {
+    useEffect(() => {
+
+        funcDisciplinasCursadas(authToken);
+
+    }, []);
+
+    /* interface DisciplinasCursadasProps {
         [index: number]: string;
         codCurso: string;
         nome: string;
@@ -20,27 +28,31 @@ function Cursados() {
         cargaHoraria: string;
     }
     
-    let cursados = new Array<DisciplinasCursadasProps>();
+    let cursados = new Array<DisciplinasCursadasProps>(); */
 
-    const {authToken} = useContext(AuthContext);
-    
-    funcDisciplinasCursadas(authToken);
 
-       async function funcDisciplinasCursadas(token){
+    async function funcDisciplinasCursadas(token){
 
-            const responseDisciplinasCursadas = await EnviaDisciplinasCursadas(token);
+        const responseDisciplinasCursadas = await EnviaDisciplinasCursadas(token);
 
-            const disciplinaCursada = await responseDisciplinasCursadas.json();
+        const disciplinaCursada = await responseDisciplinasCursadas.json();
 
-            cursados = disciplinaCursada.filter((ano) => { return ano.aass === '20181'; });
+        setListaDisciplinas(disciplinaCursada.filter((ano) => { return ano.aass; }));
 
-            if(cursados.length === 11) {
-                console.log(contador)
-                setContador(1)
-            }
-            
+    }
 
-        }
+    function Disciplinas(){
+        return (
+            <View>
+                {
+                    listaDisciplinas.map((Info, index) => (
+                        <DisciplinasCursadas key={index} codCurso={Info.codigo} nome={Info.nome} media={Info.media}
+                        decSitcli={Info.decSitcli} cargaHoraria={`${Info.cargaHoraria} horas`}></DisciplinasCursadas>
+                    ))
+                }
+            </View>
+        );
+    }
 
 
     Animated.timing(
@@ -65,16 +77,10 @@ function Cursados() {
             >
                     
                 <View style={styles.card}>
-                    <Text style={styles.ano}>2019</Text>
-                    {
-                        useEffect(() => {
-                                //cursados.map(Info => (
-                                //    <DisciplinasCursadas codCurso={Info.codCurso} nome={Info.nome} media={Info.media}
-                                //    decSitcli={Info.decSitcli} cargaHoraria={Info.cargaHoraria}></DisciplinasCursadas>
-                                //))
-                                
-                        }, [contador])
-                    }
+                    <Text style={styles.ano}>Ano</Text>
+                        
+                        <Disciplinas />
+
                 </View>
                 
                 <View style={styles.footer}>

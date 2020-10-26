@@ -43,8 +43,16 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16, 
         borderBottomColor: Colors.azulShadow,
         borderBottomWidth: 1,
+        width: '100%'
     },
+    passwordContainer: {
+        flexDirection: 'row',
+        width: '88%'
+      },
+    iconEye: {
 
+        
+    },
     title: {
         paddingBottom: 45,
         justifyContent: 'center',

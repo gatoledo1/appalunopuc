@@ -16,11 +16,7 @@ interface TableDisciplinasProps {
 const TableDisciplinas: React.FC<TableDisciplinasProps> = ({ codigoDisciplina, nomeDisciplina, codCurso, turno, predioSala, aulasDadas }) => {
 
   return (
-    <View>
-      <Table style={styles.table}>
-        <Col data={ [codigoDisciplina, nomeDisciplina, codCurso, turno, predioSala, aulasDadas] } style={styles.title} heightArr={50} textStyle={styles.text}></Col>
-      </Table>
-    </View>
+        <Col data={ [codigoDisciplina, nomeDisciplina, '4', codCurso, turno, predioSala, aulasDadas] } style={styles.title} heightArr={50} textStyle={styles.text}></Col>
   )
 }
 

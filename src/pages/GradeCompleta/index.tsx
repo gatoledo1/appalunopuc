@@ -14,6 +14,7 @@ import styles from './styles';
 function GradeCompleta() {
 
     const [listaDisciplinas, setListaDisciplinas] = useState([]);
+    const [listaHorarios, setListaHorarios] = useState([]);
 
  /*interface ArrayGradeCompleta {
     [index: number]: string;
@@ -29,7 +30,12 @@ function GradeCompleta() {
     
     let arrayGradeCompleta = new Array<ArrayGradeCompleta>();*/
 
-    
+    let segunda = [];
+    let terca = [];
+    let quarta = [];
+    let quinta = [];
+    let sexta = [];
+
     useEffect(() => {
 
         objGradeCompleta();
@@ -46,28 +52,32 @@ function GradeCompleta() {
 
         let arrayGradeCompleta = []
     
-        arrayGradeCompleta = JSON.parse(stringGradeSemanal);
+        arrayGradeCompleta = JSON.parse(stringGradeSemanal)
         
-        setListaDisciplinas(arrayGradeCompleta.filter((dia) => { return dia.diaSemana === 2; }));
+        segunda = arrayGradeCompleta.filter((dia) => { return dia.diaSemana === 2 });
+        terca = arrayGradeCompleta.filter((dia) => { return dia.diaSemana === 3 });
+        quarta = arrayGradeCompleta.filter((dia) => { return dia.diaSemana === 4 });
+        quinta = arrayGradeCompleta.filter((dia) => { return dia.diaSemana === 5 });
+        sexta = arrayGradeCompleta.filter((dia) => { return dia.diaSemana === 6 });
+        
+        setListaDisciplinas(JSON.parse(stringGradeSemanal));
+
+        setListaHorarios([segunda, terca, quarta, quinta, sexta]);
         
         }
-    
-       // if(stringGradeSemanal === null){
-       //  setTimeout(objGradeCompleta, 3000) 
-       // }
 
     }
 
     function TableDisciplinasWrapper(){
         return(
-            <View style={styles.table}>
+            <Table style={styles.table}>
                 {
-                listaDisciplinas.map((Info, index) => (
-                    <TableDisciplinas key={index} codigoDisciplina={Info.codigoDisciplina} nomeDisciplina={Info.nomeDisciplina}
-                    codCurso={Info.codCurso} turno={Info.turno} predioSala={`${Info.predio}/${Info.sala}`} aulasDadas={Info.aulasDadas}
-                />))
+                    listaDisciplinas.map((Info, index) => (
+                        <TableDisciplinas key={index} codigoDisciplina={Info.codigoDisciplina} nomeDisciplina={Info.nomeDisciplina}
+                        codCurso={Info.codCurso} turno={Info.turno} predioSala={`${Info.predio}/${Info.sala}`} aulasDadas={Info.aulasDadas}
+                    />))
                 }
-            </View>
+            </Table>
         )
     }
 

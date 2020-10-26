@@ -18,10 +18,8 @@ const DisciplinasCursadas: React.FC<DisciplinasCursadasProps> = ({ codCurso, nom
     return (
         <View style={styles.container}>
             
-            <Text style={styles.title}>{ codCurso }</Text>
-            <Text style={styles.title}>{ nome }</Text>
-            <Text style={styles.condicao}>{ media }</Text>
-            <Text style={styles.condicao}>{ decSitcli }</Text>
+            <Text style={styles.title}>{ [codCurso," - ", nome] }</Text>
+            <Text style={styles.condicao}>{ [media, " - ", decSitcli] }</Text>
             <Text style={styles.horas}>{ cargaHoraria }</Text>  
         </View>
     );

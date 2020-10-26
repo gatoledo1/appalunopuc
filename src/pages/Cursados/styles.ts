@@ -2,6 +2,10 @@ import { StyleSheet } from 'react-native';
 import Colors from "../cores-global";
 
 const styles = StyleSheet.create({
+    activityIndicator: {
+        position: 'absolute',
+        right: 10,
+     },
     container: {
         flex: 1,
         backgroundColor: Colors.azulBack,
