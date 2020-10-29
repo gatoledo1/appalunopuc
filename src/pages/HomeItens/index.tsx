@@ -53,14 +53,19 @@ function HomeItens() {
     function hundleNavigateCursados() {
         navigate('Cursados');
     }
-    function hundleNavigatePWDAreaLogada() {
-        navigate('PWDAreaLogada');
+    function hundleNavigatePWDAreaLogada(link:string) {
+        navigate('PWDAreaLogada', {
+            returnUrl: link
+        });
     }
     function hundleNavigateNotrify() {
         navigate('NotifyTabs');
     }
     function hundleNavigateAreaFinanceira() {
         navigate('AreaFinanceira');
+    }
+    function hundleNavigateCentralAtendimento() {
+        navigate('CentralAtendimento');
     }
     
 
@@ -88,7 +93,7 @@ function HomeItens() {
         <Container>
             <PageHeader title={`Olá ${firstName}`} backColor={colors.headerAzul}
             headerRight={(
-                <View>
+                <View style={{position: 'absolute', right: 15, top: 10}}>
                     <Switch
                         trackColor={{ false: "#767577", true: "#81b0ff" }}
                         thumbColor={isEnabled ? "#555" : "#f4f3f4"}
@@ -96,7 +101,7 @@ function HomeItens() {
                         onValueChange={toggleSwitch}
                         value={isEnabled}
                     />
-                    <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 20, paddingTop: 12}}>
+                    <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 8, paddingTop: 12}}>
                         <Feather name="bell" size={30} color="#FFF" />
                         <Badge>3</Badge>
                     </BorderlessButton>
@@ -114,7 +119,7 @@ function HomeItens() {
             >
 
                 <Row>
-                    <Links onPress={hundleNavigatePWDAreaLogada}>
+                    <Links onPress={ () => { hundleNavigatePWDAreaLogada('https://arealogada.sis.puc-campinas.edu.br') }}>
                         <Card>
                             <Icon source={areaLogada}/>
                             <TextCard>
@@ -168,7 +173,7 @@ function HomeItens() {
                         </Card>
                     </Links>
 
-                    <Links >
+                    <Links onPress={hundleNavigateCentralAtendimento}>
                         <Card>
                             <Icon source={caa} />
                             <TextCard>

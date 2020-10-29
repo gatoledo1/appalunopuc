@@ -1,50 +1,62 @@
-import React from "react";
-import { Image, Text, View, ImageBackground } from "react-native";
+import React, {useState, useEffect, useContext} from "react";
+import { Image, Text, View, ImageBackground, TextInput, Linking } from "react-native";
 import { AppLoading } from "expo";
-import { Asset } from "expo-asset";
-import { RectButton } from 'react-native-gesture-handler';
-import MyTextInput from "./MyTextInput";
+import { RectButton, TouchableOpacity } from 'react-native-gesture-handler';
 import styles from "./styles";
 import PageHeader from '../../components/PageHeader';
 import backLogin from '../../assets/images/back-login.png';
+import AuthContext from '../../Contexts/auth';
+import { Feather } from '@expo/vector-icons';
+import base64 from 'react-native-base64';
 
 
- 
-function cacheImages(images) {
-  return images.map(image => {
-    if (typeof image === "string") {
-      return Image.prefetch(image);
-    } else {
-      return Asset.fromModule(image).downloadAsync();
+export default function PWDAreaLogada({ route }) {
+
+  let { returnUrl } = route.params;
+  let UrlAreaLogada = returnUrl;
+
+  const [passwordShow, setPasswordShow] = useState(false);
+  const [erroPwd, setErroPwd] = useState('');
+  const [pwd, setPwd] = useState< string | null>('');
+  const {ra, authToken, authTokenAreaLogada, tokenAreaLogada} = useContext(AuthContext);
+
+    useEffect(() => {
+
+        tokenAreaLogada(authToken);
+
+    }, []);
+
+  function SubmitAreaLogada(){
+
+    const compara = `Basic ${base64.encode(`${ra}:${pwd}`)}`;
+
+    if(compara == authToken){
+        Linking.openURL(
+          `https://arealogada.sis.puc-campinas.edu.br/login-silencioso?token=${authTokenAreaLogada}&returnUrl=${UrlAreaLogada}`
+        );
+    }else{
+      setErroPwd('A senha informada, não corresponde senha de login');
     }
-  });
-}
 
-export default class PWDAreaLogada extends React.Component {
-  state = {
-    isReady: false
-  };
-
-  async _loadAssetsAsync() {
-    const imageAssets = cacheImages([
-      require("../../assets/images/icons/icon.png"),
-      require("../../assets/images/icons/icons8-lock-black.png"),
-      require("../../assets/images/icons/icons8-lock-white.png")
-    ]);
-
-    await Promise.all([...imageAssets]);
   }
 
-  render() {
-    if (!this.state.isReady) {
-      return (
-        <AppLoading
-          startAsync={this._loadAssetsAsync}
-          onFinish={() => this.setState({ isReady: true })}
-          onError={console.warn}
-        />
-      );
+    const togglePasswordVisiblity = () => {
+        setPasswordShow(passwordShow ? false : true);
+      }
+        
+      function ShowHidePWD() {
+        if(passwordShow == false){
+            return (
+                <Feather name="eye-off" size={30} color="#367DFF" style={styles.iconEye} />
+            )   
+        }else{
+            return (
+                <Feather name="eye" size={30} color="#367DFF" style={styles.iconEye} />
+            )
+        }
+        
     }
+  
 
     return (
       <View style={styles.container}>
@@ -58,9 +70,24 @@ export default class PWDAreaLogada extends React.Component {
                 Para acessar a área logada, digite sua senha novamente
                 </Text>
 
-                <MyTextInput />
+                <Text style={styles.label}>Senha</Text>
+                    <View style={styles.passwordContainer}>
+                        <TextInput style={styles.input}
+                            secureTextEntry={passwordShow ? false : true}
+                            value={pwd}
+                            onChangeText={text => setPwd(text)}
+                        />
+                        <TouchableOpacity onPress={togglePasswordVisiblity}>
+                            <ShowHidePWD />
+                        </TouchableOpacity>
+                        
+                    </View>  
 
-                
+                    <Text style={{marginTop: 16, color: 'red'}}> { erroPwd } </Text>
+
+                <RectButton onPress={SubmitAreaLogada} style={styles.button}>
+                  <Text style={styles.buttonText}>Acessar</Text>
+                </RectButton>         
 
             </View>
 
@@ -68,4 +95,3 @@ export default class PWDAreaLogada extends React.Component {
       </View>
     );
   }
-}

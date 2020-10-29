@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins_400Regular',
         fontSize: 15,
         paddingHorizontal: 60,
-        paddingBottom: 20,
+        paddingBottom: 40,
         color: Colors.azulPrimary,
         textAlign: 'center',
     },
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 60,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 50,
+        marginTop: 20,
     }, 
 
     buttonText: { 
@@ -50,6 +50,28 @@ const styles = StyleSheet.create({
         color: '#FFF',
         fontSize: 18, 
         justifyContent: 'center'
+    },
+    label: { 
+        color: Colors.azulPrimary,
+        fontFamily: 'Poppins_400Regular',
+    },
+    input: { 
+    height: 40, 
+    borderRadius: 8,
+    fontSize: 18, 
+    justifyContent: 'center', 
+    paddingHorizontal: 16, 
+    borderBottomColor: Colors.azulShadow,
+    borderBottomWidth: 1,
+    width: '93%'
+    },
+    passwordContainer: {
+        flexDirection: 'row',
+        width: '70%'
+    },
+    iconEye: {
+
+        
     },
 
 });

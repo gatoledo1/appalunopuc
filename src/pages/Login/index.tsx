@@ -14,13 +14,12 @@ import AsyncStorage from '@react-native-community/async-storage';
 import base64 from 'react-native-base64';
 
 const Login: React.FC = () => {
-    const {erroLogin, nome, signIn} = useContext(AuthContext);
+    const {erroLogin, signIn} = useContext(AuthContext);
 
 
     const [ra, setRa] = useState< string | null>('17013996');
     const [pwd, setPwd] = useState< string | null>('UIE01!#C');
     const [load, setLoad] = useState(false);
-    let eyePwd = "eye-off";
     const [passwordShow, setPasswordShow] = useState(false);
 
 

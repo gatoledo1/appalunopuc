@@ -9,6 +9,7 @@ import GradeSemanal from '../pages/GradeSemanal';
 import Cursados from '../pages/Cursados';
 import NotifyTabs from './NotifyTabs';
 import AreaFinanceira from '../pages/AreaFinanceira';
+import CentralAtendimento from '../pages/CentralAtendimento';
 
 const AppStack = createStackNavigator();
 
@@ -19,9 +20,10 @@ const AppRoutes: React.FC = () => (
         <AppStack.Screen name="GradeCompleta" component={GradeCompleta} />
         <AppStack.Screen name="GradeSemanal" component={GradeSemanal} />
         <AppStack.Screen name="Cursados" component={Cursados} />
-        <AppStack.Screen name="PWDAreaLogada" component={PWDAreaLogada} />
+        <AppStack.Screen name="PWDAreaLogada" component={PWDAreaLogada} initialParams={{ returnUrl: 'https://arealogada.sis.puc-campinas.edu.br' }}/>
         <AppStack.Screen name="NotifyTabs" component={NotifyTabs} />
         <AppStack.Screen name="AreaFinanceira" component={AreaFinanceira} />
+        <AppStack.Screen name="CentralAtendimento" component={CentralAtendimento} />
     </AppStack.Navigator>
 );
 

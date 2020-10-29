@@ -1,5 +1,5 @@
 
-export async function Envia(token){  
+export async function Envia(token:string){  
 
     const response = await fetch('http://mobile-pucapi-v3.docker1.puc-campinas.edu.br/alunos/autenticado', {
         method: 'POST',

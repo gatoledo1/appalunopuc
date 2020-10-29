@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 22,
         lineHeight: 32,
-        maxWidth: 250,
+        maxWidth: 280,
         marginBottom: 40,
         marginTop: 10,
         marginLeft: 20,

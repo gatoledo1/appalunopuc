@@ -1,54 +1,22 @@
 import React from 'react';
-import { Text, View, ScrollView } from 'react-native';
-import { Table, Col } from 'react-native-table-component';
+import { Col } from 'react-native-table-component';
 import styles from './styles';
  
-
 interface TableHorariosProps {
-  titleHead: string[];
-  values: string[];
-  values2?: string[]; //não obrigatório
-  values3?: string[]; //não obrigatório
+  diaSemana: number;
+  semestre?: string;
+  materia1?: string;
+  materia2?: string;
+  materia3?: string;
+  materia4?: string;
+  materia5?: string;
+  materia6?: string;
 }
 
-const TableHorarios: React.FC<TableHorariosProps> = ({ titleHead, values, values2, values3 }) => {
+const TableHorarios: React.FC<TableHorariosProps> = ({ diaSemana, semestre, materia1, materia2, materia3, materia4, materia5, materia6 }) => {
 
   return (
-
-    <View style={styles.container}>
-
-        <View style={styles.table}>
-          <Table>
-          <Col data={ titleHead } style={styles.titleHead} heightArr={50} textStyle={styles.textHead}>  </Col>
-          </Table>
-
-          <ScrollView horizontal={true}>
-        
-            <View style={styles.table}>
-              <Table>
-              <Col data={ values } style={styles.title} heightArr={50} textStyle={styles.text}></Col>
-                { /*<Row data={state.rowData} widthArr={state.widthArr} style={styles.row}/>*/}
-              </Table>
-            </View>
-            <View style={styles.table}>
-              <Table>
-              <Col data={ values2 } style={styles.title} heightArr={50} textStyle={styles.text}></Col>
-                { /*<Row data={state.rowData} widthArr={state.widthArr} style={styles.row}/>*/}
-              </Table>
-            </View>
-            <View style={styles.table}>
-              <Table>
-              <Col data={ values3 } style={styles.title} heightArr={50} textStyle={styles.text}></Col>
-                { /*<Row data={state.rowData} widthArr={state.widthArr} style={styles.row}/>*/}
-              </Table>
-            </View>
-            
-
-          </ScrollView>
-        </View>
-
-      
-    </View>
+        <Col data={ [diaSemana, '2', materia1, materia2, materia3, materia4, materia5, materia6] } style={styles.title} heightArr={50} textStyle={styles.text}></Col>
   )
 }
 

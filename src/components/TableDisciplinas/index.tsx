@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, View, ScrollView } from 'react-native';
-import { Table, TableWrapper, Row, Col } from 'react-native-table-component';
+import { Col } from 'react-native-table-component';
 import styles from './styles';
  
 interface TableDisciplinasProps {

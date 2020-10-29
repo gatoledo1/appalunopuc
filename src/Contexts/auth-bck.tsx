@@ -1,30 +1,24 @@
 import React, { createContext, useState } from 'react';
 import { Envia } from '../Services/login';
 import { EnviaGrade } from '../Services/gradeSemanal';
-import { RetornaTokenAreaLogada } from '../Services/tokenAreaLogada';
 import AsyncStorage from '@react-native-community/async-storage';
 
 interface AuthContextData {
     signed: boolean;
     erroLogin: string | null;
     nome: string | null;
-    ra: number | null;
     authToken: string | null;
-    authTokenAreaLogada: string | null;
     signIn(token: string): Promise<void>;
     signOut(): void;
     gradeSemanal(token: string): Promise<void>;
-    tokenAreaLogada(token: string): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
     const [nome, setNome] = useState<string | null>(null);
-    const [ra, setRa] = useState<number | null>(null);
     const [authToken, setAuthToken] = useState<string | null>(null);
     const [erroLogin, setErrologin] = useState('');
-    const [authTokenAreaLogada, setAuthTokenAreaLogada] = useState('')
 
     async function signIn(token){
 
@@ -38,7 +32,6 @@ export const AuthProvider: React.FC = ({ children }) => {
         setErrologin('RA ou senha incorretos');
        }else{
             setNome(responseJson.nome);
-            setRa(responseJson.ra);
        
             await AsyncStorage.setItem('token', token);
        }
@@ -53,7 +46,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         setNome(null);
     }
 
-    async function gradeSemanal(token: string){
+    async function gradeSemanal(token){
 
         const responseGradeSemanal = await EnviaGrade(token);
 
@@ -62,18 +55,10 @@ export const AuthProvider: React.FC = ({ children }) => {
        await AsyncStorage.setItem('gradeSemanal', JSON.stringify(responseGradeSemanalJson));
     }
 
-    async function tokenAreaLogada(token: string){
-
-        const responsePessoa = await RetornaTokenAreaLogada(token);
- 
-        const responseresponsePessoaJson = await responsePessoa.json();
- 
-        setAuthTokenAreaLogada(responseresponsePessoaJson.token);
- 
-     }
+    
 
     return (
-        <AuthContext.Provider value={{ signed: !!nome, erroLogin, nome, ra, authToken, authTokenAreaLogada, signIn, signOut, gradeSemanal, tokenAreaLogada}}>
+        <AuthContext.Provider value={{ signed: !!nome, erroLogin, nome, authToken, signIn, signOut, gradeSemanal}}>
             {children}
         </AuthContext.Provider>
     );
