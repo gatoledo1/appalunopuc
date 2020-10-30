@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         marginHorizontal: 24,
         lineHeight: 27,
-        textAlign: 'justify',
     },
     footer: {
         paddingHorizontal: 24,

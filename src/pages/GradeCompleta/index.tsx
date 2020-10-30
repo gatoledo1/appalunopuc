@@ -64,7 +64,7 @@ function GradeCompleta() {
     }
 
     function TableDisciplinasWrapper(){
-        listaHorarios
+
         return(
             <Table style={styles.table}>
                 {

@@ -11,9 +11,10 @@ interface CardsComunicadosProps {
     title: string;
     subject: string;
     bodyText: string;
+    link: string;
 }
 
-const CardsComunicados: React.FC<CardsComunicadosProps> = ({ title, subject, bodyText }) => {
+const CardsComunicados: React.FC<CardsComunicadosProps> = ({ title, subject, bodyText, link }) => {
     return (
         <View style={styles.container}>
 
@@ -37,7 +38,7 @@ const CardsComunicados: React.FC<CardsComunicadosProps> = ({ title, subject, bod
                     <RectButton style={styles.contactButton}
                     onPress={() => {
                         Linking.openURL(
-                          'https://www.puc-campinas.edu.br/puc-campinas-divulga-protocolos-sanitarios-e-de-protecao/'
+                          link
                         );
                     }}>
                         <Text style={styles.contactButtonText}> Ler mais</Text>                      
