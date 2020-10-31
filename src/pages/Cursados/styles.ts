@@ -4,7 +4,8 @@ import Colors from "../cores-global";
 const styles = StyleSheet.create({
     activityIndicator: {
         position: 'absolute',
-        right: 10,
+        right: 30,
+        top: 20,
      },
     container: {
         flex: 1,

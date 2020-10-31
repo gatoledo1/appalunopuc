@@ -30,10 +30,10 @@ const CardsComunicados: React.FC<CardsComunicadosProps> = ({ title, subject, bod
 
             <View style={styles.footer}>
                 <View style={styles.buttonsContainer}>
-                    <RectButton style={[styles.favoriteButton, styles.favorited]}>
+                   {/* <RectButton style={[styles.favoriteButton, styles.favorited]}>
                         <Image source={heartIcon} /> 
-                       {/* <Image source={unfavoriteIcon} /> */}                  
-                    </RectButton>
+                        <Image source={unfavoriteIcon} />           
+                    </RectButton> */}
 
                     <RectButton style={styles.contactButton}
                     onPress={() => {

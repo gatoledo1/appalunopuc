@@ -78,18 +78,18 @@ function GradeCompleta() {
     }
 
     function TableHorariosWrapper(){
-        //listaHorarios.map((Info, index) => (console.log(Info.diaSemana)))
+
         return(
             <Table style={styles.table}>
                 {
                     listaHorarios.map((Info, index) => (
                         <TableHorarios key={index} diaSemana={Info.diaSemana}
                         materia1={Info.nomeDisciplina} materia2={Info.nomeDisciplina} materia3={Info.nomeDisciplina}
-                        materia4={Info.nomeDisciplina} materia5={Info.nomeDisciplina}
                     />))
                 }
             </Table>
         )
+        
     }
 
     const [animaTop, setTop] = useState(new Animated.Value(150));

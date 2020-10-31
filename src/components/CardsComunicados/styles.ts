@@ -52,9 +52,10 @@ const styles = StyleSheet.create({
     bio: {
         fontFamily: 'Poppins_400Regular',
         color: '#6a6180',
-        fontSize: 14,
+        fontSize: 13,
         marginHorizontal: 24,
         lineHeight: 27,
+        textAlign: 'left',
     },
     footer: {
         paddingHorizontal: 24,
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     favoriteButton: {
-        backgroundColor: '#367DFF',
+        backgroundColor: Colors.vermelho,
         width: 42, 
         height: 42, 
         borderRadius: 25, 
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
     },
     favorited: {
-        backgroundColor: Colors.cinzaText,
+        backgroundColor: Colors.vermelho,
     },
     
     contactButton: {

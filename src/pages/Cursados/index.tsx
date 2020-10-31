@@ -1,5 +1,5 @@
 import React, {Component, useState, useContext, useEffect} from 'react';
-import { View, Text, ScrollView, Animated, Easing } from 'react-native';
+import { View, Text, ScrollView, Animated, Easing, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import PageHeader from '../../components/PageHeader';
 import DisciplinasCursadas from '../../components/DisciplinasCursadas';
@@ -11,6 +11,7 @@ function Cursados() {
     const [animaTop, setTop] = useState(new Animated.Value(150));
     const [listaDisciplinas, setListaDisciplinas] = useState([]);
     const {authToken} = useContext(AuthContext);
+    const [load, setLoad] = useState(true);
     
 
     useEffect(() => {
@@ -18,17 +19,6 @@ function Cursados() {
         funcDisciplinasCursadas(authToken);
 
     }, []);
-
-    /* interface DisciplinasCursadasProps {
-        [index: number]: string;
-        codCurso: string;
-        nome: string;
-        media: string;
-        decSitcli: string;
-        cargaHoraria: string;
-    }
-    
-    let cursados = new Array<DisciplinasCursadasProps>(); */
 
 
     async function funcDisciplinasCursadas(token){
@@ -38,6 +28,8 @@ function Cursados() {
         const disciplinaCursada = await responseDisciplinasCursadas.json();
 
         setListaDisciplinas(disciplinaCursada.filter((ano) => { return ano.aass; }));
+
+        setLoad(false)
 
     }
 
@@ -78,6 +70,7 @@ function Cursados() {
                     
                 <View style={styles.card}>
                     <Text style={styles.ano}>Ano</Text>
+                    <ActivityIndicator animating={load} size="large" color="#367DFF" style={styles.activityIndicator} />    
                         
                         <Disciplinas />
 

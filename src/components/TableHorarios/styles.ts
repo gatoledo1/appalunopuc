@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         flex: 1, 
         paddingHorizontal: 16,
         minWidth: 80,
-        maxWidth: 200,
+        maxWidth: 260,
         borderLeftWidth: 1,
         borderLeftColor: '#B6CEFF',
         width: '100%',
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ecf3ff',
         borderBottomWidth: 1,
         width: '100%',
+        textTransform: 'capitalize'
     }
 
   });

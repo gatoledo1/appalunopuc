@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col } from 'react-native-table-component';
+import { Col, Rows } from 'react-native-table-component';
 import styles from './styles';
  
 interface TableHorariosProps {
@@ -16,7 +16,8 @@ interface TableHorariosProps {
 const TableHorarios: React.FC<TableHorariosProps> = ({ diaSemana, semestre, materia1, materia2, materia3, materia4, materia5, materia6 }) => {
 
   return (
-        <Col data={ [diaSemana, '2', materia1, materia2, materia3, materia4, materia5, materia6] } style={styles.title} heightArr={50} textStyle={styles.text}></Col>
+        <Col data={ [diaSemana, '2', materia1, materia2, materia3, materia4, materia5, materia6] } 
+        style={styles.title} heightArr={50} textStyle={styles.text}></Col>
   )
 }
 

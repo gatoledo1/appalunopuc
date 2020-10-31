@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ecf3ff',
         borderBottomWidth: 1,
         width: '100%',
+        textTransform: 'capitalize'
     }
 
   });

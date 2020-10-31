@@ -24,6 +24,7 @@ let itensGradeQuarta = new Array<ArrayGrade>();
 let itensGradeQuinta = new Array<ArrayGrade>();
 let itensGradeSexta = new Array<ArrayGrade>();
 
+
 objGradeSemanal();
 
 
@@ -43,7 +44,8 @@ objGradeSemanal();
     }
 
     if(stringGradeSemanal === null){
-      setTimeout(objGradeSemanal, 3000) 
+      console.log('é null')
+      setTimeout(objGradeSemanal, 10000) 
     }
   }
 

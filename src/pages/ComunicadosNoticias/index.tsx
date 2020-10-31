@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { View, ScrollView, Animated, Easing } from 'react-native';
+import { View, ScrollView, Animated, Easing, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import PageHeader from '../../components/PageHeader';
 import CardsComunicados from '../../components/CardsComunicados';
@@ -8,6 +8,7 @@ import * as rssParser from 'react-native-rss-parser';
 
 function ComunicadosNoticias() {
     const [feedPortal, setFeedPortal] = useState([])
+    const [load, setLoad] = useState(true);
 
     useEffect(() => {
 
@@ -20,6 +21,7 @@ function ComunicadosNoticias() {
             // if(!!responseData){
                 setFeedPortal(responseData.items)
             // }
+            setLoad(false);
         }
 
         getRSSFeed()
@@ -32,7 +34,8 @@ function ComunicadosNoticias() {
                 {
                     feedPortal.map((Info, index) => (
                         <CardsComunicados key={index} title={Info.title} subject={Info.description} 
-                        bodyText={Info.content.replace(/(<([^>]+)>)/gi, '')} link="https://puc-campinas.edu.br/noticias"
+                        bodyText={Info.content.replace(/(<([^>]+)>)/gi, '').replace(/(^\s+|\s+$)/g, '').substring(0, 240) + " . . . leia mais"} 
+                        link={Info.id}
                     />))
                     /* {Info.link.map(linkUrl => linkUrl.url)} */
                 }
@@ -63,6 +66,7 @@ function ComunicadosNoticias() {
                     paddingBottom: 16,
                 }}
             >
+                <ActivityIndicator animating={load} size="large" color="#367DFF" />
                 <FeedNewsPortalPUC />
 
             </Animated.ScrollView>
