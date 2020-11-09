@@ -5,6 +5,10 @@ export default {
 
   colors: {
     headerAzul: '#0c2d92',
+    headerVerde: '#2CC272',
+    headerVermelho: '#ca1313',
+    headerAmarelo: '#382970',
+    headerCinza: '#767676',
     cardsTable: '#232D3E',
     azulPrimary: '#94BAFF',
     azulBack: '#13171E',
@@ -12,7 +16,7 @@ export default {
     amareloSecundary: '#FFC300',
     verdeText: '#2CC272',
     vermelho: '#F12020',
-    cinzaText: '#767676',
+    cinzaText: '#f1f6ff',
   },
 };
 

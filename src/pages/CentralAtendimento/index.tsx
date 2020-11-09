@@ -73,8 +73,8 @@ function CentralAtendimento({ navigation }) {
                     <View style={styles.icon}>
                         <Feather name="info" size={24} color="#2CC272" />
                     </View>
-                    <Text style={styles.titleItem}>Histórico de atendimento</Text>
-                    <Text style={styles.textItem}>Histórico de atendimento</Text>
+                    <Text style={styles.titleItem}>Solicitação de documentos</Text>
+                    <Text style={styles.textItem}>Confira o histórico de solicitação, ou abra novos pedidos</Text>
                     </View>
                 </RectButton>
 

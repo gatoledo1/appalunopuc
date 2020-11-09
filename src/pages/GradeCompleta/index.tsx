@@ -16,50 +16,27 @@ function GradeCompleta() {
     const [listaDisciplinas, setListaDisciplinas] = useState([]);
     const [listaHorarios, setListaHorarios] = useState([]);
 
-    let segunda = [];
-    let terca = [];
-    let quarta = [];
-    let quinta = [];
-    let sexta = [];
-
     useEffect(() => {
 
         objGradeCompleta();
 
     }, []);
-    
-    
+
     
     async function objGradeCompleta(){
+
+        let arrayGradeCompleta = []
         
         const stringGradeSemanal = await AsyncStorage.getItem('gradeSemanal');
-    
-        if(stringGradeSemanal !== null){
 
-        setListaDisciplinas(JSON.parse(stringGradeSemanal));
+            arrayGradeCompleta = await JSON.parse(stringGradeSemanal)
+
+            setListaDisciplinas(arrayGradeCompleta);
 
         
-        let arrayGradeCompleta = []
-    
-        arrayGradeCompleta = JSON.parse(stringGradeSemanal)
-        
-        segunda = arrayGradeCompleta.filter((dia) => { return dia.diaSemana === 2 });
-        terca = arrayGradeCompleta.filter((dia) => { return dia.diaSemana === 3 });
-        quarta = arrayGradeCompleta.filter((dia) => { return dia.diaSemana === 4 });
-        quinta = arrayGradeCompleta.filter((dia) => { return dia.diaSemana === 5 });
-        sexta = arrayGradeCompleta.filter((dia) => { return dia.diaSemana === 6 });
-        
+            const ordenado = arrayGradeCompleta.sort((c, d) => parseFloat(c.diaSemana) - parseFloat(d.diaSemana));
 
-        segunda = segunda.sort((a, b) => parseFloat(a.horario) - parseFloat(b.horario));
-        terca = terca.sort((a, b) => parseFloat(a.horario) - parseFloat(b.horario));
-        quarta = quarta.sort((a, b) => parseFloat(a.horario) - parseFloat(b.horario));
-        quinta = quinta.sort((a, b) => parseFloat(a.horario) - parseFloat(b.horario));
-        sexta = sexta.sort((a, b) => parseFloat(a.horario) - parseFloat(b.horario));
-
-
-        setListaHorarios(segunda);
-        
-        }
+            setListaHorarios(ordenado);
 
     }
 
@@ -70,7 +47,8 @@ function GradeCompleta() {
                 {
                     listaDisciplinas.map((Info, index) => (
                         <TableDisciplinas key={index} codigoDisciplina={Info.codigoDisciplina} nomeDisciplina={Info.nomeDisciplina}
-                        codCurso={Info.codCurso} turno={Info.turno} predioSala={`${Info.predio}/${Info.sala}`} aulasDadas={Info.aulasDadas}
+                        codCurso={Info.codCurso} turno={Info.turno} predio={Info.predio} sala={Info.sala} aulasDadas={Info.aulasDadas}
+                        professor={Info.professor} turma={Info.turma}
                     />))
                 }
             </Table>
@@ -84,7 +62,7 @@ function GradeCompleta() {
                 {
                     listaHorarios.map((Info, index) => (
                         <TableHorarios key={index} diaSemana={Info.diaSemana}
-                        materia1={Info.nomeDisciplina} materia2={Info.nomeDisciplina} materia3={Info.nomeDisciplina}
+                        materia1={Info.nomeDisciplina} materia2={Info.nomeDisciplina}
                     />))
                 }
             </Table>
@@ -104,9 +82,10 @@ function GradeCompleta() {
         }
     ).start();
 
+
     return (
         <View style={styles.container}>
-            <PageHeader title="Grade Completa" backColor="#2CC272"></PageHeader>
+            <PageHeader title="Grade de Disciplinas" backColor="#2CC272"></PageHeader>
 
            
             <Animated.ScrollView style={{ marginTop: animaTop }}
@@ -121,24 +100,21 @@ function GradeCompleta() {
                 </View>
                 
                 <View style={styles.containerTable}>
-                    <View style={styles.table}>
-                        <Table>
-                            <Col data={ ['Código', 'Disciplina', 'CRD', 'Curso', 'Turno', 'Prédio/ Sala', 'Aulas'] } style={styles.titleHead} heightArr={50} textStyle={styles.textHead}>  </Col>
-                        </Table>
+                  
 
                         <ScrollView horizontal={true}>
 
                             <TableDisciplinasWrapper />
                 
                         </ScrollView>
-                    </View>
+               
                 </View>
 
             <Text>
                 {'\n'}{'\n'}
             </Text>
 
-            <View style={styles.head}>
+          {/*  <View style={styles.head}>
                 <Text style={styles.tableHead2}> Horários </Text>
                 <Image source={backIconBlue} style={styles.arrowRotate} />
             </View>
@@ -146,7 +122,7 @@ function GradeCompleta() {
                 <View style={styles.containerTable}>
                     <View style={styles.table}>
                         <Table>
-                            <Col data={ ['Dia', 'Semestre', '19:20', '20:05', '21:00', '21:45', '22:30'] } style={styles.titleHead} heightArr={50} textStyle={styles.textHead}>  </Col>
+                            <Col data={ ['Dia', 'Semestre', '19:20 às 20:50', '21:05 às 22:35'] } style={styles.titleHead} heightArr={50} textStyle={styles.textHead}>  </Col>
                         </Table>
 
                         <ScrollView horizontal={true}>
@@ -155,7 +131,7 @@ function GradeCompleta() {
                 
                         </ScrollView>
                     </View>
-                </View>
+                </View> */}
 
             <View style={styles.footer}>
                 <Text style={styles.footerText}>

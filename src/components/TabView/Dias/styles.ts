@@ -1,48 +1,48 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native'
 
-const styles = StyleSheet.create({
-    container: {
-        paddingHorizontal: 16,
-        marginVertical: 12,
-    },
-    scene: {
-        flex: 1,
-    },
-    content: {
-        paddingLeft: 12,
-        flex: 1
-    },
-    card: {
-        padding: 20,
-        borderRadius: 16,
-        backgroundColor: '#fff',
-    },
-    grid: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    title: {
-        fontFamily: 'Poppins_600SemiBold',
-        fontSize: 14,
-        color: '#767676',
-    },
-    text: {
-        fontFamily: 'Poppins_400Regular',
-        fontSize: 14,
-        color: '#767676',
-    },
-    footer: {
-        marginTop: 22,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    footerText: {
-        color: '#DADADA',
-        fontFamily: 'Poppins_400Regular',
-        fontSize: 14,
-    },
+export const Container = styled.View`
+    padding-horizontal: 16px;
+    margin-vertical: 12px;
+`;
 
-});
+export const Content = styled.View`
+    padding-left: 12px;
+    flex: 1;
+`;
 
-export default styles;
+export const Card = styled.View`
+    padding: 20px;
+    border-radius: 16px;
+    background-color: ${props => props.theme.colors.cardsTable};
+`;
+
+export const Grid = styled.View`
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const Title = styled.Text`
+    font-family: 'Poppins_600SemiBold';
+    font-size: 14px;
+    color: ${props => props.theme.colors.cinzaText};
+    text-transform: capitalize;
+`;
+
+export const Texto = styled.Text`
+    font-family: 'Poppins_400Regular';
+    font-size: 14px;
+    color: ${props => props.theme.colors.cinzaText};
+`;
+
+export const Footer = styled.View`
+    margin-top: 22px;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const FooterText = styled.Text`
+    color: #DADADA,
+    font-family: 'Poppins_400Regular',
+    font-size: 14px,
+`;

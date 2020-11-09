@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @types/react-native-switch
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @types/react-native-styled-components
 
 PATH: 
   C:\Python38\Scripts\;C:\Python38\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\app\Oracle\product\12.1.0\dbhome_2\bin;c:\Program Files (x86)\Intel\iCLS Client\;c:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;c:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\dotnet\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\AMD\ATI.ACE\Core-Static;C:\Program Files\PuTTY\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Git\cmd;C:\Users\Gabriel\AppData\Local\Microsoft\WindowsApps;C:\Users\Gabriel\AppData\Local\Microsoft\WindowsApps;C:\Users\Gabriel\AppData\Roaming\npm;C:\Users\Gabriel\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Gabriel\AppData\Local\Yarn\bin
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2freact-native-switch: Not found
+  Error: https://registry.yarnpkg.com/@types%2freact-native-styled-components: Not found
       at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66096:18)
       at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140748:22)
       at Request.emit (events.js:315:20)
@@ -44,6 +44,8 @@ npm manifest:
       "@react-navigation/native": "^5.7.3",
       "@react-navigation/stack": "^5.9.0",
       "@types/react-native-base64": "^0.1.0",
+      "@types/react-native-rss-parser": "^1.4.0",
+      "@types/react-native-table-component": "^1.2.0",
       "@types/styled-components": "^5.1.3",
       "base-64": "^0.1.0",
       "expo": "^38.0.0",
@@ -55,19 +57,21 @@ npm manifest:
       "react": "16.11.0",
       "react-dom": "16.11.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
+      "react-native-appearance": "~0.3.3",
       "react-native-base64": "^0.1.0",
       "react-native-gesture-handler": "~1.6.0",
       "react-native-progress-circle": "^2.1.0",
       "react-native-reanimated": "~1.9.0",
+      "react-native-rss-parser": "^1.5.1",
       "react-native-safe-area-context": "~3.0.7",
       "react-native-screens": "~2.9.0",
       "react-native-swipeable": "^0.6.0",
       "react-native-swipeout": "^2.3.6",
       "react-native-swiper": "^1.6.0",
-      "react-native-switch": "^2.0.0",
       "react-native-tab-view": "^2.15.1",
       "react-native-table-component": "^1.2.1",
       "react-native-web": "~0.11.7",
+      "react-switch": "^5.0.1",
       "styled-components": "^5.2.0"
     },
     "devDependencies": {
@@ -1477,6 +1481,20 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/react-native-base64/-/react-native-base64-0.1.0.tgz#e26b579c34f9840f43b5e97ddb5200c04e84fc3a"
     integrity sha512-i93+Zir+aL65XYo8FYEJj/jJXucqoNnKZVqWzZtjoPuXQ39orYDlGL2/2djUbiB8efYa9TXPfE70aCXc5CEk+g==
   
+  "@types/react-native-rss-parser@^1.4.0":
+    version "1.4.0"
+    resolved "https://registry.yarnpkg.com/@types/react-native-rss-parser/-/react-native-rss-parser-1.4.0.tgz#a9150fe136fb0fd2304b6383c947f2e3a7fb3e66"
+    integrity sha512-5zs5MPBrMLZJ8tvtLaadVxVsO14jQuHnubQe2Dmf8Fa0wxsEBXRD43AbzLAGfXyuJQjhjtMTXxESWUDEgbqBcw==
+  
+  "@types/react-native-table-component@^1.2.0":
+    version "1.2.0"
+    resolved "https://registry.yarnpkg.com/@types/react-native-table-component/-/react-native-table-component-1.2.0.tgz#9328052cf95d5d710fc13b4b95459ab1ef82daf1"
+    integrity sha512-7uFDcUdYUGY9DH0WgbptklqsOX3xdVCbJJuom6tBmvcdKrCUirvezWkSY5NlMVdMxRqsDCZYOnN5gVm3KeiKwg==
+    dependencies:
+      "@types/react" "*"
+      "@types/react-native" "*"
+      csstype "^3.0.3"
+  
   "@types/react-native@*":
     version "0.63.15"
     resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.63.15.tgz#f86ce87a0afc53bec7c6bc96282e698e0a03ce1b"
@@ -2350,7 +2368,15 @@ Lockfile:
       js-yaml "^3.13.1"
       parse-json "^4.0.0"
   
-  create-react-class@^15.6.0, create-react-class@^15.6.2, create-react-class@^15.6.3:
+  create-react-class@^15.6.0:
+    version "15.7.0"
+    resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.7.0.tgz#7499d7ca2e69bb51d13faf59bd04f0c65a1d6c1e"
+    integrity sha512-QZv4sFWG9S5RUvkTYWbflxeZX+JG7Cz0Tn33rQBJ+WFQTqTfUTjMjiv9tnfXazjsO5r0KhPs+AqCjyrQX6h2ng==
+    dependencies:
+      loose-envify "^1.3.1"
+      object-assign "^4.1.1"
+  
+  create-react-class@^15.6.2, create-react-class@^15.6.3:
     version "15.6.3"
     resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.3.tgz#2d73237fb3f970ae6ebe011a9e66f46dbca80036"
     integrity sha512-M+/3Q6E6DLO6Yx3OwrWjwHBnvfXXYA7W+dFjt/ZDBemHO1DDZhsalX/NUtnTYclN6GfnBDRh4qRHjcDHmlJBJg==
@@ -2405,6 +2431,11 @@ Lockfile:
     version "3.0.3"
     resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.3.tgz#2b410bbeba38ba9633353aff34b05d9755d065f8"
     integrity sha512-jPl+wbWPOWJ7SXsWyqGRk3lGecbar0Cb0OvZF/r/ZU011R4YqiRehgkQ9p4eQfo9DSDLqLL3wHwfxeJiuIsNag==
+  
+  csstype@^3.0.3:
+    version "3.0.4"
+    resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.4.tgz#b156d7be03b84ff425c9a0a4b1e5f4da9c5ca888"
+    integrity sha512-xc8DUsCLmjvCfoD7LTGE0ou2MIWLx0K9RCZwSHMOdynqRsP4MtUcLeqh1HcQ2dInwDTqn+3CE0/FZh1et+p4jA==
   
   dayjs@^1.8.15:
     version "1.8.34"
@@ -4916,6 +4947,13 @@ Lockfile:
     dependencies:
       fbjs "^1.0.0"
   
+  react-native-rss-parser@^1.5.1:
+    version "1.5.1"
+    resolved "https://registry.yarnpkg.com/react-native-rss-parser/-/react-native-rss-parser-1.5.1.tgz#4221d578477dc267e228dd73219b0b29ab3a4148"
+    integrity sha512-47JcRW8utdnA0nhxnj1FNRy5o0UNPQP7UT1OBJKYq0LEkzbQIVi44LlUivazCmGQnxlAKLXo0imepsM39WxwTQ==
+    dependencies:
+      xmldom "^0.3.0"
+  
   react-native-safe-area-context@~3.0.7:
     version "3.0.7"
     resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.0.7.tgz#0f53de7a30d626d82936000f3f6db374ecc4b800"
@@ -4955,13 +4993,6 @@ Lockfile:
     integrity sha512-OnkTTZi+9uZUgy0uz1I9oYDhCU3z36lZn+LFsk9FXPRelxb/KeABzvPs3r3SrHWy1aA67KGtSFj0xNK2QD0NJQ==
     dependencies:
       prop-types "^15.5.10"
-  
-  react-native-switch@^2.0.0:
-    version "2.0.0"
-    resolved "https://registry.yarnpkg.com/react-native-switch/-/react-native-switch-2.0.0.tgz#028371b946ba0520e421f02caa7685878cf4bd4e"
-    integrity sha512-Yy8GQBazGBz/VI/Xl2LkyO/4wElnt9hRQ+gY3j/7ZkdfIQftY6IAtvSpU2NEksezUxs4DgNAkcmeDfRO0t2wbg==
-    dependencies:
-      prop-types "^15.6.0"
   
   react-native-tab-view@^2.15.1:
     version "2.15.1"
@@ -5037,6 +5068,13 @@ Lockfile:
     version "0.4.3"
     resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.4.3.tgz#966f1750c191672e76e16c2efa569150cc73ab53"
     integrity sha512-Hwln1VNuGl/6bVwnd0Xdn1e84gT/8T9aYNL+HAKDArLCS7LWjwr7StE30IEYbIkx0Vi3vs+coQxe+SQDbGbbpA==
+  
+  react-switch@^5.0.1:
+    version "5.0.1"
+    resolved "https://registry.yarnpkg.com/react-switch/-/react-switch-5.0.1.tgz#449277f4c3aed5286fffd0f50d5cbc2a23330406"
+    integrity sha512-Pa5kvqRfX85QUCK1Jv0rxyeElbC3aNpCP5hV0LoJpU/Y6kydf0t4kRriQ6ZYA4kxWwAYk/cH51T4/sPzV9mCgQ==
+    dependencies:
+      prop-types "^15.6.2"
   
   react-timer-mixin@^0.13.4:
     version "0.13.4"
@@ -6137,6 +6175,11 @@ Lockfile:
     version "0.1.31"
     resolved "https://registry.yarnpkg.com/xmldom/-/xmldom-0.1.31.tgz#b76c9a1bd9f0a9737e5a72dc37231cf38375e2ff"
     integrity sha512-yS2uJflVQs6n+CyjHoaBmVSqIDevTAWrzMmjG1Gc7h1qQ7uVozNhEPJAwZXWyGQ/Gafo3fCwrcaokezLPupVyQ==
+  
+  xmldom@^0.3.0:
+    version "0.3.0"
+    resolved "https://registry.yarnpkg.com/xmldom/-/xmldom-0.3.0.tgz#e625457f4300b5df9c2e1ecb776147ece47f3e5a"
+    integrity sha512-z9s6k3wxE+aZHgXYxSTpGDo7BYOUfJsIRyoZiX6HTjwpwfS2wpQBQKa2fD+ShLyPkqDYo5ud7KitmLZ2Cd6r0g==
   
   xpipe@^1.0.5:
     version "1.0.5"

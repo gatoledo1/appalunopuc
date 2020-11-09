@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col } from 'react-native-table-component';
+import { View, Text } from 'react-native';
 import styles from './styles';
  
 interface TableDisciplinasProps {
@@ -7,15 +7,29 @@ interface TableDisciplinasProps {
   nomeDisciplina: string;
   //crd: string;
   codCurso: string;
+  turma: string;
   turno: string;
-  predioSala: string;
+  predio: string;
+  sala: string;
+  professor: string;
   aulasDadas: string;
 }
 
-const TableDisciplinas: React.FC<TableDisciplinasProps> = ({ codigoDisciplina, nomeDisciplina, codCurso, turno, predioSala, aulasDadas }) => {
+const TableDisciplinas: React.FC<TableDisciplinasProps> = ({ codigoDisciplina, nomeDisciplina, codCurso, turma, turno, predio, sala, professor, aulasDadas }) => {
 
   return (
-        <Col data={ [codigoDisciplina, nomeDisciplina, '4', codCurso, turno, predioSala, aulasDadas] } style={styles.title} heightArr={50} textStyle={styles.text}></Col>
+        <View style={styles.card}>
+          <View style={styles.codigos}>
+            <Text style={styles.codText}>Cod: { codigoDisciplina }   Curso: { codCurso } </Text>
+          </View>
+          <Text style={styles.titleCard}> { nomeDisciplina } </Text>
+          <Text style={styles.textProf}>Professor: { professor } </Text>
+          <Text style={styles.textCard}>Turma: { turma } </Text>
+          <Text style={styles.textCard}>Turno: { turno } </Text>
+          <Text style={styles.textCard}>Prédio: { predio } </Text>
+          <Text style={styles.textCard}>Sala: { sala } </Text>
+          <Text style={styles.textCard}>Aulas dadas: { aulasDadas } </Text>
+        </View>
   )
 }
 

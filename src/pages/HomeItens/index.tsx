@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
-import { View, Image, Text, Linking, Animated, Easing, Switch } from 'react-native';
+import { View, Image, Text, Linking, Animated, Easing} from 'react-native';
 import { ThemeContext } from 'styled-components';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -32,9 +32,6 @@ function HomeItens() {
     const {nome, authToken, signOut, gradeSemanal} = useContext(AuthContext);
     const { colors } = useContext(ThemeContext);
     const firstName = nome.split(' ')[0];
-
-    const [isEnabled, setIsEnabled] = useState(false);
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
 
     function hundleSignOut(){
@@ -94,13 +91,7 @@ function HomeItens() {
             <PageHeader title={`Olá ${firstName}`} backColor={colors.headerAzul}
             headerRight={(
                 <View style={{position: 'absolute', right: 15, top: 10}}>
-                    <Switch
-                        trackColor={{ false: "#767577", true: "#81b0ff" }}
-                        thumbColor={isEnabled ? "#555" : "#f4f3f4"}
-                        ios_backgroundColor="#3e3e3e"
-                        onValueChange={toggleSwitch}
-                        value={isEnabled}
-                    />
+
                     <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 8, paddingTop: 12}}>
                         <Feather name="bell" size={30} color="#FFF" />
                         <Badge>3</Badge>
@@ -157,7 +148,7 @@ function HomeItens() {
                         <Card>
                             <Icon source={gradeCompleta} />
                             <TextCard>
-                                Grade Completa
+                                Grade de Disciplinas
                             </TextCard>
                         </Card>
                     </Links>

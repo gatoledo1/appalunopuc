@@ -8,16 +8,24 @@ const styles = StyleSheet.create({
     horas: {
         fontFamily: 'Poppins_400Regular',
         color: '#bbb',
-        fontSize: 12,
+        fontSize: 13,
+        paddingBottom: 14,
+        borderBottomColor: '#e7f0ff',
+        borderBottomWidth: 1,
+    },
+    ano: {
+        paddingTop: 12,
+        fontFamily: 'Poppins_600SemiBold',
+        color: '#367DFF',
+        fontSize: 14,
+        lineHeight: 27,
     },
     title: {
-        borderTopColor: '#e7f0ff',
-        borderTopWidth: 1,
-        paddingTop: 12,
         fontFamily: 'Poppins_600SemiBold',
         color: '#32264d',
         fontSize: 14,
         lineHeight: 27,
+        textTransform: 'capitalize',
     },
     condicao: {
         fontFamily: 'Poppins_400Regular_Italic',

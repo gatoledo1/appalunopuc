@@ -1,5 +1,5 @@
 import { RectButton } from 'react-native-gesture-handler';
-import styled  from 'styled-components/native'
+import styled from 'styled-components/native'
 
 export const Container = styled.View`
     flex: 1;
@@ -9,68 +9,68 @@ export const Container = styled.View`
 export const TitleChildren = styled.Text`
     font-family: 'Poppins_400Regular';
     color: #fff;
-    font-size: 14;
-    line-height: 18;
-    margin-bottom: 40;
-    margin-top: -30;
-    margin-left: 20;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 40px;
+    margin-top: -30px;
+    margin-left: 20px;
 `;
 
 export const Row = styled.View`
     width: 100%;
     flex-direction: row;
-    padding-horizontal: 32;
-    padding-vertical: 15;
+    padding-horizontal: 32px;
+    padding-vertical: 15px;
     align-items: center;
     justify-content: space-between;
 `;
 
 export const Badge = styled.Text`
     background-color: ${props => props.theme.colors.vermelho};
-    width: 17;
-    height: 17;
+    width: 17px;
+    height: 17px;
     color: #fff;
-    padding-vertical: 4;
-    padding-horizontal: 6;
-    line-height: 9;
-    border-radius: 24;
-    top: -35;
-    font-size: 9;
+    padding-vertical: 4px;
+    padding-horizontal: 6px;
+    line-height: 9px;
+    border-radius: 24px;
+    top: -35px;
+    font-size: 9px;
 `;
 
 export const Links = styled(RectButton)`
     width: 47%;
-    max-height: 165; 
+    max-height: 165px; 
 `;
 
 export const Card = styled.View`
     width: 100%;
-    height: 160;
+    height: 160px;
     background-color: ${props => props.theme.colors.cardsTable};
-    border-radius: 8;
-    padding-horizontal: 8;
-    padding-vertical: 35;
+    border-radius: 8px;
+    padding-horizontal: 8px;
+    padding-vertical: 35px;
     align-items: center;
     justify-content: center; 
 `;
 
 export const Icon = styled.Image`
-    height: 50;
-    margin-bottom: 14; 
+    height: 50px;
+    margin-bottom: 14px; 
 `;
 
 export const TextCard = styled.Text`
     color: ${props => props.theme.colors.azulPrimary};
     font-family: 'Poppins_400Regular';
-    font-size: 14;
-    width: 120;
+    font-size: 14px;
+    width: 120px;
     align-items: center;
     justify-content: center;
     text-align: center;
 `;
 
 export const Footer = styled.View`
-    margin-vertical: 12;
+    margin-vertical: 12px;
     justify-content: center;
     align-items: center;
 `;
@@ -78,21 +78,21 @@ export const Footer = styled.View`
 export const FooterText = styled.Text`
     color: #DADADA;
     font-family: 'Poppins_400Regular';
-    font-size: 14; 
+    font-size: 14px; 
 `;
 
 export const Logout = styled(RectButton)`
-    height: 45;
+    height: 45px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 25; 
+    margin-bottom: 25px; 
 `;
 
 export const LoguotText = styled.Text`
-    margin-vertical: 15;
+    margin-vertical: 15px;
     color: ${props => props.theme.colors.vermelho};
     font-family: 'Poppins_400Regular';
-    font-size: 14;
+    font-size: 14px;
 `;
 
 

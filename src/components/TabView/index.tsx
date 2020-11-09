@@ -6,12 +6,13 @@ import { ScrollView } from 'react-native-gesture-handler';
 import AuthContext from '../../Contexts/auth';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import styles from './styles';
+//import styles from './styles';
 
 interface ArrayGrade {
   [index: number]: string;
   frequencia: number;
   nomeDisciplina: string;
+  horario: string;
   sala: string;
   predio: string;
   dataRodizio: string;
@@ -54,7 +55,7 @@ function PrimeiraRota() {
     return (
       <ScrollView>
         {itensGradeSegunda.map((Info, index) => (
-          <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+          <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
             data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
         ))}
       </ScrollView>
@@ -65,7 +66,7 @@ function SegundaRota() {
   return (
     <ScrollView>
       {itensGradeTerca.map((Info, index) => (
-        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
           data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
       ))}
     </ScrollView>
@@ -76,7 +77,7 @@ function TerceiraRota() {
   return (
     <ScrollView>
       {itensGradeQuarta.map((Info, index) => (
-        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
           data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
       ))}
     </ScrollView>
@@ -87,7 +88,7 @@ function QuartaRota() {
   return (
     <ScrollView>
       {itensGradeQuinta.map((Info, index) => (
-        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
           data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
       ))}
     </ScrollView>
@@ -98,7 +99,7 @@ function QuintaRota() {
   return (
     <ScrollView>
       {itensGradeSexta.map((Info, index) => (
-        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
           data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
       ))}
     </ScrollView>
@@ -139,7 +140,7 @@ export default function TabViewScroll() {
     });
 
     return (
-        <TabView style={styles.content}
+        <TabView style={{marginTop: -100}}
           navigationState={{ index, routes }}
           renderScene={renderScene}
           onIndexChange={setIndex}

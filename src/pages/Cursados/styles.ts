@@ -4,18 +4,15 @@ import Colors from "../cores-global";
 const styles = StyleSheet.create({
     activityIndicator: {
         position: 'absolute',
-        right: 30,
-        top: 20,
+        right: 0,
+        left: 0,
      },
     container: {
         flex: 1,
         backgroundColor: Colors.azulBack,
     },
-    content: {
-        marginTop: -80,
-    },
     card: {
-        paddingVertical: 24,
+        paddingVertical: 20,
         backgroundColor: '#fff', 
         borderWidth: 1, 
         borderColor: '#e6e6f0',

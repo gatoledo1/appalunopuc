@@ -1,47 +1,47 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    table: {
-        flexDirection: 'row',        
+    card: {
+        backgroundColor: '#fff',
+        width: 260,
+        height: 400,
+        borderRadius: 12,
+        padding: 26,
+        justifyContent: 'space-between',
+        marginRight: 25
+        
     },
-    
-    header: {
-
+    codigos: {
+        flexDirection: 'row',
+        borderBottomWidth: 1,
+        borderColor: '#eee',
+        marginBottom: 10,
     },
-    titleHead: { 
-        flex: 1, 
-        paddingHorizontal: 16,
-        minWidth: 80,
-        maxWidth: 130,
-        borderRightWidth: 1,
-        borderRightColor: '#B6CEFF',
-        width: '100%',
+    codText: {
+        fontFamily: 'Poppins_400Regular',
+        fontSize: 12,
     },
-    title: { 
-        flex: 1, 
-        paddingHorizontal: 16,
-        minWidth: 80,
-        maxWidth: 250,
-        borderLeftWidth: 1,
-        borderLeftColor: '#B6CEFF',
-        width: '100%',
-    },
-    textHead: {
-        color: '#367DFF',
+    titleCard: {
         fontFamily: 'Poppins_600SemiBold',
-        paddingVertical: 12,
-        borderBottomColor: '#ecf3ff',
+        fontSize: 14,
+        textTransform: 'capitalize',
         borderBottomWidth: 1,
-        width: '100%',
+        borderColor: '#eee',
+        marginBottom: 10,
     },
-    text: { 
-        fontFamily: 'Poppins_400Regular', 
-        paddingVertical: 12,
-        borderBottomColor: '#ecf3ff',
+    textCard: {
+        fontFamily: 'Poppins_400Regular',
+        fontSize: 14,
+    },
+    textProf: {
+        fontFamily: 'Poppins_400Regular',
+        fontSize: 14,
+        textTransform: 'capitalize', 
+        paddingBottom: 8,
         borderBottomWidth: 1,
-        width: '100%',
-        textTransform: 'capitalize'
-    }
+        borderColor: '#eee',
+        marginBottom: 10,
+    },
 
   });
 

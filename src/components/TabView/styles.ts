@@ -1,31 +1,7 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native'
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F7FAFF',
-    },
-    back: {
-        backgroundColor: '#367DFF',
-        color: '#367DFF'
-    },
-    scene: {
-        backgroundColor: '#333'
-    },
-    content: {
-        marginTop: -100
-    },
-    footer: {
-        marginTop: 22,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    footerText: {
-        color: '#DADADA',
-        fontFamily: 'Poppins_400Regular',
-        fontSize: 14,
-    },
+export const Container = styled.View`
+    flex: 1;
+    background-color: ${props => props.theme.colors.azulBack};
+`;
 
-});
-
-export default styles;

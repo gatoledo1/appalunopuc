@@ -1,44 +1,46 @@
-import React from 'react';
-import { View, Text, Easing } from 'react-native';
-import styles from './styles';
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
+import { Container, Content, Card, Grid, Title, Texto, Footer, FooterText } from './styles';
 import ProgressCircle from 'react-native-progress-circle';
+import styles from '../../PageHeader/styles';
 
 interface GradeSegundaProps {
     frequencia: number;
     materia: string;
+    horario: string;
     local: string;
     data: string;
     atualizacao: string;
 
 }
 
-const ItensGradeSemanal: React.FC<GradeSegundaProps> = ({ frequencia, materia, local, data, atualizacao }) => {
+const ItensGradeSemanal: React.FC<GradeSegundaProps> = ({ frequencia, materia, horario, local, data, atualizacao }) => {
     
-    let freqColor = '#367DFF';
-
+    const { colors } = useContext(ThemeContext);
     return(
-        <View style={styles.container}>
+        <Container>
                 
-                <View style={styles.card}>
-                    <View style={styles.grid}>
-                        <ProgressCircle percent={frequencia} radius={40} borderWidth={8} color={freqColor} 
-                            shadowColor="#e5efff" bgColor="#fff">
-                            <Text style={{ fontSize: 18 }}>{ frequencia }%</Text>
+                <Card>
+                    <Grid>
+                        <ProgressCircle percent={frequencia} radius={40} borderWidth={8} color={frequencia >= 70 ? '#2CC272' : '#367DFF'} 
+                            shadowColor="#e5efff" bgColor={colors.cardsTable}>
+                            <Texto>{ frequencia }%</Texto>
                         </ProgressCircle>
 
-                        <View style={styles.content}>
-                            <Text style={styles.title}> { materia } </Text>
-                            <Text style={styles.text}>
-                            { local } {'\n'}
-                            { data } {'\n'}{'\n'}
-                            <Text style={{ fontSize: 10 }}> { atualizacao } </Text>
-                            </Text>
-                        </View>
-                    </View>
+                        <Content>
+                            <Title> { materia } </Title>
+                            <Texto style={{fontFamily: 'Poppins_600SemiBold', color: '#367DFF'}}> { horario } </Texto>
+                            <Texto>
+                                { local } {'\n'}
+                                { data } {'\n'}{'\n'}
+                                <Texto style={{fontSize: 10}}> { atualizacao } </Texto>
+                            </Texto>
+                        </Content>
+                    </Grid>
                 
-                </View>
+                </Card>
 
-        </View>
+        </Container>
     );
 }
 

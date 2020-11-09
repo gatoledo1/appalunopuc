@@ -27,7 +27,9 @@ function Cursados() {
 
         const disciplinaCursada = await responseDisciplinasCursadas.json();
 
-        setListaDisciplinas(disciplinaCursada.filter((ano) => { return ano.aass; }));
+        const asd = disciplinaCursada.filter((ano) => { return ano.aass; })
+
+        setListaDisciplinas(asd.sort((a, b) => parseFloat(b.aass) - parseFloat(a.aass)));
 
         setLoad(false)
 
@@ -39,7 +41,7 @@ function Cursados() {
                 {
                     listaDisciplinas.map((Info, index) => (
                         <DisciplinasCursadas key={index} codCurso={Info.codigo} nome={Info.nome} media={Info.media}
-                        decSitcli={Info.decSitcli} cargaHoraria={`${Info.cargaHoraria} horas`}></DisciplinasCursadas>
+                        decSitcli={Info.decSitcli} ano={`${Info.aass.slice(0, 4)}-0${Info.aass.slice(4, 5)}`} cargaHoraria={`${Info.cargaHoraria} horas`}></DisciplinasCursadas>
                     ))
                 }
             </View>
@@ -69,7 +71,6 @@ function Cursados() {
             >
                     
                 <View style={styles.card}>
-                    <Text style={styles.ano}>Ano</Text>
                     <ActivityIndicator animating={load} size="large" color="#367DFF" style={styles.activityIndicator} />    
                         
                         <Disciplinas />

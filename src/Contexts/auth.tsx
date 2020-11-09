@@ -3,6 +3,8 @@ import { Envia } from '../Services/login';
 import { EnviaGrade } from '../Services/gradeSemanal';
 import { RetornaTokenAreaLogada } from '../Services/tokenAreaLogada';
 import AsyncStorage from '@react-native-community/async-storage';
+import light from '../Tema/light';
+import dark from '../Tema/dark';
 
 interface AuthContextData {
     signed: boolean;
@@ -25,6 +27,14 @@ export const AuthProvider: React.FC = ({ children }) => {
     const [authToken, setAuthToken] = useState<string | null>(null);
     const [erroLogin, setErrologin] = useState('');
     const [authTokenAreaLogada, setAuthTokenAreaLogada] = useState('')
+    // const [theme, setTheme] = useState(light)
+    
+   // const toggleTheme = () => {
+    //    setTheme(theme.title === 'light' ? dark : light)
+
+        //AsyncStorage.setItem('theme', JSON.stringify(theme));
+    //}
+
 
     async function signIn(token){
 
@@ -73,7 +83,8 @@ export const AuthProvider: React.FC = ({ children }) => {
      }
 
     return (
-        <AuthContext.Provider value={{ signed: !!nome, erroLogin, nome, ra, authToken, authTokenAreaLogada, signIn, signOut, gradeSemanal, tokenAreaLogada}}>
+        <AuthContext.Provider value={{ signed: !!nome, erroLogin, nome, ra, authToken, authTokenAreaLogada, signIn, 
+        signOut, gradeSemanal, tokenAreaLogada}}>
             {children}
         </AuthContext.Provider>
     );

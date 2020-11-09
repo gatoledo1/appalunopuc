@@ -10,17 +10,19 @@ interface DisciplinasCursadasProps {
     media: string;
     decSitcli: string;
     cargaHoraria: string;
+    ano: string;
 }
 
-const DisciplinasCursadas: React.FC<DisciplinasCursadasProps> = ({ codCurso, nome, media, decSitcli, cargaHoraria }) => {
+const DisciplinasCursadas: React.FC<DisciplinasCursadasProps> = ({ codCurso, nome, media, decSitcli, cargaHoraria, ano }) => {
 
     
     return (
         <View style={styles.container}>
             
-            <Text style={styles.title}>{ [codCurso," - ", nome] }</Text>
+            <Text style={styles.ano}>{ ano }</Text>
+            <Text style={styles.title}>{ nome }</Text>
             <Text style={styles.condicao}>{ [media, " - ", decSitcli] }</Text>
-            <Text style={styles.horas}>{ cargaHoraria }</Text>  
+            <Text style={styles.horas}>{ [codCurso, " - ", cargaHoraria ] }</Text>  
         </View>
     );
 }

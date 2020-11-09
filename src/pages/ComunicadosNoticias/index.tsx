@@ -51,6 +51,7 @@ function ComunicadosNoticias() {
         {
             toValue: -70,
             duration: 800,
+            delay: 100,
             easing: Easing.bezier(0.33, 1, 0.68, 1),
             useNativeDriver: false
         }
@@ -66,7 +67,7 @@ function ComunicadosNoticias() {
                     paddingBottom: 16,
                 }}
             >
-                <ActivityIndicator animating={load} size="large" color="#367DFF" />
+                <ActivityIndicator animating={load} size="large" color="#367DFF" style={styles.activityIndicator} />
                 <FeedNewsPortalPUC />
 
             </Animated.ScrollView>

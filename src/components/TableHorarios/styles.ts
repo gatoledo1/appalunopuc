@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         flex: 1, 
         paddingHorizontal: 16,
         minWidth: 80,
-        maxWidth: 260,
+        maxWidth: 250,
         borderLeftWidth: 1,
         borderLeftColor: '#B6CEFF',
         width: '100%',
