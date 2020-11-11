@@ -42,15 +42,12 @@ export default class NotifyCurso extends Component {
 
         <View style={styles.container}>
             <PageHeader title="Notificações" backColor="#367DFF"></PageHeader>
-
-                <ScrollView style={{ marginTop: -90 }}>
-                    <FlatList
-                        contentContainerStyle={styles.list}
-                        data={this.state.data}
-                        renderItem={this.renderItem}
-                        keyExtractor={item => item.id}
-                    />
-                </ScrollView >
+                <FlatList style={{ marginTop: -100 }}
+                    contentContainerStyle={styles.list}
+                    data={this.state.data}
+                    renderItem={this.renderItem}
+                    keyExtractor={item => item.id.toString()}
+                />
         </View>
       
     );

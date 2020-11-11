@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { View, Image, Text, Animated, Easing, } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, RectButton } from 'react-native-gesture-handler';
 import PageHeader from '../../components/PageHeader';
 import TableDisciplinas from '../../components/TableDisciplinas';
 import TableHorarios from '../../components/TableHorarios';
@@ -11,7 +11,7 @@ import { Table, TableWrapper, Row, Col } from 'react-native-table-component';
 import styles from './styles';
 
 
-function GradeCompleta() {
+function GradeCompleta({ navigation }) {
 
     const [listaDisciplinas, setListaDisciplinas] = useState([]);
     const [listaHorarios, setListaHorarios] = useState([]);
@@ -21,6 +21,12 @@ function GradeCompleta() {
         objGradeCompleta();
 
     }, []);
+
+    function hundleNavigateAreaLogada(link:string) {
+        navigation.navigate('PWDAreaLogada', {
+            returnUrl: link
+        });
+    }
 
     
     async function objGradeCompleta(){
@@ -75,7 +81,7 @@ function GradeCompleta() {
     Animated.timing(
         animaTop,
         {
-            toValue: -90,
+            toValue: -100,
             duration: 800,
             easing: Easing.bezier(0.33, 1, 0.68, 1),
             useNativeDriver: false
@@ -90,7 +96,6 @@ function GradeCompleta() {
            
             <Animated.ScrollView style={{ marginTop: animaTop }}
                 contentContainerStyle={{
-                    paddingLeft: 16,
                     paddingBottom: 16,
                 }}
             >
@@ -110,9 +115,21 @@ function GradeCompleta() {
                
                 </View>
 
-            <Text>
-                {'\n'}{'\n'}
-            </Text>
+                <Text>
+                    {'\n'}{'\n'}
+                </Text>
+
+                <View>
+                    <Text style={styles.tableHead2}>
+                        Para mais informações de sua grade, inclusive sobre Práticas de Formação, acesse a Área Logada.
+                    </Text>
+
+                    <RectButton style={styles.button} onPress={() => {
+                        hundleNavigateAreaLogada('https://arealogada.sis.puc-campinas.edu.br/wl/websist/academico/grade_disciplinas/index.asp')
+                    }}>
+                        <Text style={styles.buttonText}>Acessar Área Logada</Text>
+                    </RectButton>
+                </View>
 
           {/*  <View style={styles.head}>
                 <Text style={styles.tableHead2}> Horários </Text>

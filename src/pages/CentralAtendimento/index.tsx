@@ -42,7 +42,7 @@ function CentralAtendimento({ navigation }) {
                     paddingBottom: 16,
                 }}
             >
-                <RectButton style={styles.cardItem} onPress={() => { hundleNavigateAreaLogada('https://arealogada.sis.puc-campinas.edu.br') }}>
+                <RectButton style={styles.cardItem} onPress={() => { hundleNavigateAreaLogada('https://wl.sis.puc-campinas.edu.br/sistemas/puc/academico/CAA') }}>
                     <View>
                     <View style={styles.icon}>
                         <Feather name="package" size={24} color="#2CC272" />
@@ -65,9 +65,7 @@ function CentralAtendimento({ navigation }) {
                 </RectButton>
 
                 <RectButton style={styles.cardItem} onPress={() => {
-                    Linking.openURL(
-                    `https://arealogada.sis.puc-campinas.edu.br/login-silencioso?token=${authTokenAreaLogada}&returnUrl=https://arealogada.sis.puc-campinas.edu.br`
-                    );
+                    hundleNavigateAreaLogada('https://wl.sis.puc-campinas.edu.br/sistemas/puc/academico/CAA/Frame.aspx?app=20538666-d909-4841-9b6a-5e26484edf6d')
                 }}>
                     <View>
                     <View style={styles.icon}>

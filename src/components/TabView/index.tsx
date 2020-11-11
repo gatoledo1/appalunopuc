@@ -24,6 +24,8 @@ let itensGradeTerca = new Array<ArrayGrade>();
 let itensGradeQuarta = new Array<ArrayGrade>();
 let itensGradeQuinta = new Array<ArrayGrade>();
 let itensGradeSexta = new Array<ArrayGrade>();
+let itensGradeSabado = new Array<ArrayGrade>();
+let itensGradeDomingo = new Array<ArrayGrade>();
 
 
 objGradeSemanal();
@@ -41,12 +43,13 @@ objGradeSemanal();
       itensGradeTerca = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 3; });
       itensGradeQuarta = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 4; });
       itensGradeQuinta = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 5; });
-      itensGradeSexta = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 6; });    
+      itensGradeSexta = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 6; });
+      itensGradeSabado = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 7; });
+      itensGradeDomingo = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 1; }); 
     }
 
     if(stringGradeSemanal === null){
-      console.log('é null')
-      setTimeout(objGradeSemanal, 10000) 
+      setTimeout(objGradeSemanal, 8000) 
     }
   }
 
@@ -106,6 +109,28 @@ function QuintaRota() {
   );  
 }
 
+function SextaRota() {
+  return (
+    <ScrollView>
+      {itensGradeSabado.map((Info, index) => (
+        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+          data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+      ))}
+    </ScrollView>
+  );  
+}
+
+function SetimaRota() {
+  return (
+    <ScrollView>
+      {itensGradeDomingo.map((Info, index) => (
+        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+          data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+      ))}
+    </ScrollView>
+  );  
+}
+
 const initialLayout = { width: Dimensions.get('window').width };
 
 function renderTabBar(props) {
@@ -129,6 +154,8 @@ export default function TabViewScroll() {
       { key: 'quarta', title: '4ª Feira' },
       { key: 'quinta', title: '5ª Feira' },
       { key: 'sexta', title: '6ª Feira' },
+      { key: 'sabado', title: 'Sábado' },
+      { key: 'domingo', title: 'Domingo' },
     ]);
 
     const renderScene = SceneMap({
@@ -137,6 +164,8 @@ export default function TabViewScroll() {
       quarta: TerceiraRota,
       quinta: QuartaRota,
       sexta: QuintaRota,
+      sabado: SextaRota,
+      domingo: SetimaRota,
     });
 
     return (

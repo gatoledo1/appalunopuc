@@ -37,7 +37,6 @@ function ComunicadosNoticias() {
                         bodyText={Info.content.replace(/(<([^>]+)>)/gi, '').replace(/(^\s+|\s+$)/g, '').substring(0, 240) + " . . . leia mais"} 
                         link={Info.id}
                     />))
-                    /* {Info.link.map(linkUrl => linkUrl.url)} */
                 }
             </View>
                   
@@ -49,7 +48,7 @@ function ComunicadosNoticias() {
     Animated.timing(
         animaTop,
         {
-            toValue: -70,
+            toValue: -100,
             duration: 800,
             delay: 100,
             easing: Easing.bezier(0.33, 1, 0.68, 1),

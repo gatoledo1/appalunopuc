@@ -33,7 +33,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
+    biometria: {
+        flexDirection: 'row',
+        width: 210,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingVertical: 12,
+    },
     button: { 
         height: 24, 
         backgroundColor: Colors.azulPrimary, 
@@ -49,6 +55,12 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins_400Regular', 
         color: '#FFF',
         fontSize: 18, 
+        justifyContent: 'center'
+    },
+    fingerText: { 
+        fontFamily: 'Poppins_400Regular', 
+        color: '#aaa',
+        fontSize: 14, 
         justifyContent: 'center'
     },
     label: { 

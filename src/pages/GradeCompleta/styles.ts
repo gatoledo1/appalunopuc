@@ -41,10 +41,10 @@ const styles = StyleSheet.create({
     },
     tableHead2: {
       fontFamily: 'Poppins_400Regular',
-      color: Colors.azulPrimary,
-      fontSize: 18,
-      paddingLeft: 15,
-      paddingVertical: 8,
+      color: Colors.cinzaText,
+      fontSize: 13,
+      paddingHorizontal: 25,
+      paddingBottom: 14,
   },
     arrowRotate: {
         transform: [{ rotate: "180deg" }],
@@ -67,6 +67,22 @@ const styles = StyleSheet.create({
     row: { 
         height: 40, 
         backgroundColor: Colors.azulBack 
+    },
+    button: { 
+        height: 24, 
+        backgroundColor: Colors.azulPrimary, 
+        borderRadius: 25, 
+        padding: 24, 
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginHorizontal: 30,
+    }, 
+
+    buttonText: { 
+        fontFamily: 'Poppins_400Regular', 
+        color: '#FFF',
+        fontSize: 18, 
+        justifyContent: 'center'
     },
     footer: {
         marginTop: 22,

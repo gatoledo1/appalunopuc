@@ -1,13 +1,13 @@
 import React, {useState, useEffect, useContext} from "react";
 import { Image, Text, View, ImageBackground, TextInput, Linking } from "react-native";
-import { AppLoading } from "expo";
 import { RectButton, TouchableOpacity } from 'react-native-gesture-handler';
 import styles from "./styles";
 import PageHeader from '../../components/PageHeader';
 import backLogin from '../../assets/images/back-login.png';
 import AuthContext from '../../Contexts/auth';
-import { Feather } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import base64 from 'react-native-base64';
+import * as LocalAuthentication from 'expo-local-authentication';
 
 
 export default function PWDAreaLogada({ route }) {
@@ -40,6 +40,25 @@ export default function PWDAreaLogada({ route }) {
 
   }
 
+  async function Biometric(){
+      let compatible = await LocalAuthentication.hasHardwareAsync();
+      if(compatible){
+          let biometricRecords = await LocalAuthentication.isEnrolledAsync();
+          if(!biometricRecords){
+              alert('Biometria não cadastrada');
+          }else{
+              let result = await  LocalAuthentication.authenticateAsync();
+              if(result.success){
+                Linking.openURL(
+                  `https://arealogada.sis.puc-campinas.edu.br/login-silencioso?token=${authTokenAreaLogada}&returnUrl=${UrlAreaLogada}`
+                );
+              }else{
+                
+              }
+          }
+      }
+  }
+
     const togglePasswordVisiblity = () => {
         setPasswordShow(passwordShow ? false : true);
       }
@@ -47,14 +66,13 @@ export default function PWDAreaLogada({ route }) {
       function ShowHidePWD() {
         if(passwordShow == false){
             return (
-                <Feather name="eye-off" size={30} color="#367DFF" style={styles.iconEye} />
+                <Ionicons name="md-eye-off" size={30} color="#367DFF" style={styles.iconEye} />
             )   
         }else{
             return (
-                <Feather name="eye" size={30} color="#367DFF" style={styles.iconEye} />
+                <Ionicons name="md-eye" size={30} color="#367DFF" style={styles.iconEye} />
             )
         }
-        
     }
   
 
@@ -85,9 +103,14 @@ export default function PWDAreaLogada({ route }) {
 
                     <Text style={{marginTop: 16, color: 'red'}}> { erroPwd } </Text>
 
+                <TouchableOpacity onPress={Biometric} style={styles.biometria}>
+                  <Text style={styles.fingerText}>Acessar com biometria</Text>
+                  <Ionicons name="md-finger-print" size={28} color="#aaa" />
+                </TouchableOpacity>    
+                
                 <RectButton onPress={SubmitAreaLogada} style={styles.button}>
                   <Text style={styles.buttonText}>Acessar</Text>
-                </RectButton>         
+                </RectButton>      
 
             </View>
 

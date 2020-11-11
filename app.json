@@ -3,7 +3,7 @@
     "name": "App do Aluno",
     "slug": "app-aluno",
     "userInterfaceStyle": "automatic",
-    "version": "0.7.3",
+    "version": "0.8.5",
     "privacy": "public",
     "platforms": [
       "ios",

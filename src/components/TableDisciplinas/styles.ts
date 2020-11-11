@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         padding: 26,
         justifyContent: 'space-between',
-        marginRight: 25
+        marginHorizontal: 15
         
     },
     codigos: {
