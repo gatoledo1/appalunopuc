@@ -1,100 +1,75 @@
-import { StyleSheet } from 'react-native';
-import Colors from "../cores-global";
+import { RectButton } from 'react-native-gesture-handler';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: Colors.azulBack,
-    },
-    content: {
-        marginTop: -90,
-    },
-    tableHead: {
-        fontFamily: 'Poppins_400Regular',
-        color: '#fff',
-        fontSize: 18,
-        paddingLeft: 15,
-        paddingVertical: 8,
-    },
-    titleHead: { 
-        flex: 1, 
-        paddingHorizontal: 12,
-        minWidth: 50,
-        maxWidth: 120,
-        borderRightWidth: 1,
-        borderRightColor: '#B6CEFF',
-        width: '100%',
-    },
-    containerTable: { 
-        flex: 1,
-    },
-    textHead: {
-        color: '#367DFF',
-        fontFamily: 'Poppins_600SemiBold',
-        paddingVertical: 12,
-        borderBottomColor: '#ecf3ff',
-        borderBottomWidth: 1,
-        width: '100%',
-    },
-    table: {
-        flexDirection: 'row',        
-    },
-    tableHead2: {
-      fontFamily: 'Poppins_400Regular',
-      color: Colors.cinzaText,
-      fontSize: 13,
-      paddingHorizontal: 25,
-      paddingBottom: 14,
-  },
-    arrowRotate: {
-        transform: [{ rotate: "180deg" }],
-        marginRight: 30,
-    },
+export const Container = styled.View`
+    flex: 1;
+    background-color: ${props => props.theme.colors.azulBack};
+`;
 
-    head: { 
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingHorizontal: 8,
-    },
-    text: { 
-        textAlign: 'center', 
-        fontWeight: '200' 
-    },
-    dataWrapper: { 
-        marginTop: -1 
-    },
-    row: { 
-        height: 40, 
-        backgroundColor: Colors.azulBack 
-    },
-    button: { 
-        height: 24, 
-        backgroundColor: Colors.azulPrimary, 
-        borderRadius: 25, 
-        padding: 24, 
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginHorizontal: 30,
-    }, 
+export const ContainerTable = styled.View`
+    flex: 1;
+`;
 
-    buttonText: { 
-        fontFamily: 'Poppins_400Regular', 
-        color: '#FFF',
-        fontSize: 18, 
-        justifyContent: 'center'
-    },
-    footer: {
-        marginTop: 22,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    footerText: {
-        color: '#DADADA',
-        fontFamily: 'Poppins_400Regular',
-        fontSize: 14,
-    }
+export const Cards = styled.View`
+    flex-direction: row;
+    margin-bottom: 15px;
+`;
 
-});
+export const TableHead = styled.Text`
+    font-family: 'Poppins_400Regular';
+    color: #fff;
+    font-size: 18px;
+    padding-left: 15px;
+    padding-vertical: 8px;
+`;
 
-export default styles;
+export const TableHead2 = styled.Text`
+    font-family: 'Poppins_400Regular';
+    color: ${props => props.theme.colors.cinzaText};
+    font-size: 13px;
+    padding-top: 25px;
+    padding-horizontal: 25px;
+    padding-bottom: 14px;
+    text-align: justify;
+`;
+
+export const ArrowRotate = styled.Image`
+    transform: rotate(180deg);
+    margin-right: 30px;
+`;
+
+export const Head = styled.View`
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-horizontal: 8px;
+`;
+
+export const Button = styled(RectButton)`
+    height: 24px;
+    background-color: ${props => props.theme.colors.azulPrimaryBtn};
+    border-radius: 25px; 
+    padding: 24px; 
+    align-items: center;
+    justify-content: center;
+    margin-horizontal: 30px;
+`;
+
+export const ButtonText = styled.Text`
+    font-family: 'Poppins_400Regular'; 
+    color: #FFF;
+    font-size: 18px;
+    justify-content: center;
+`;
+
+export const Footer = styled.View`
+    margin-top: 22px;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const FooterText = styled.Text`
+    color: #DADADA;
+    font-family: 'Poppins_400Regular';
+    font-size: 14px;
+`;

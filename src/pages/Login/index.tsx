@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { View, Image, Text, TextInput, ImageBackground, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { View, Image, Text, TextInput, ImageBackground, ActivityIndicator, TouchableOpacity, Alert } from 'react-native';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import AuthContext from '../../Contexts/auth';
@@ -60,6 +60,14 @@ const Login: React.FC = () => {
                 setLoad(true);
                 
                 signIn(token);
+            } else {
+                Alert.alert(
+                    "Atenção",
+                    "Seu login e sua senha são informações que não devem ser compartilhadas. A PUC-Campinas não se responsabilza pelo uso indevido dos seus dados, acessados por meios de responsabilidade dos estudantes.",
+                    [
+                      { text: "OK", onPress: () => console.log("OK Pressed") }
+                    ],
+                  );
             }
         }
 

@@ -5,12 +5,13 @@ export default {
 
   colors: {
     headerAzul: '#0c2d92',
-    headerVerde: '#2CC272',
+    headerVerde: '#005c40',
     headerVermelho: '#ca1313',
     headerAmarelo: '#382970',
     headerCinza: '#767676',
     cardsTable: '#232D3E',
     azulPrimary: '#94BAFF',
+    azulPrimaryBtn: '#002871',
     azulBack: '#13171E',
     azulShadow: '#B6CEFF',
     amareloSecundary: '#FFC300',

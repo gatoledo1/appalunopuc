@@ -1,20 +1,44 @@
-import React, {useState, useEffect} from 'react';
-import { View, Image, Text, Animated, Easing, } from 'react-native';
-import { ScrollView, RectButton } from 'react-native-gesture-handler';
+import React, {useState, useEffect, useContext, useRef} from 'react';
+import { Animated, Easing, } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import PageHeader from '../../components/PageHeader';
 import TableDisciplinas from '../../components/TableDisciplinas';
-import TableHorarios from '../../components/TableHorarios';
+//import TableHorarios from '../../components/TableHorarios';
 import backIcon from '../../assets/images/icons/arrow.png';
-import backIconBlue from '../../assets/images/icons/arrow-blue.png';
+import mapMarker from '../../assets/images/icons/marker-puc.png';
+import pessoaMarker from '../../assets/images/icons/marker-pessoa.png';
+//import backIconBlue from '../../assets/images/icons/arrow-blue.png';
 import AsyncStorage from '@react-native-community/async-storage';
-import { Table, TableWrapper, Row, Col } from 'react-native-table-component';
-import styles from './styles';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import { Container, ContainerTable, Head, Cards, TableHead, TableHead2, Button, ButtonText, Footer, FooterText, ArrowRotate } from './styles';
+import { ThemeContext } from 'styled-components';
+import AuthContext from '../../Contexts/auth';
+import { Modalize } from 'react-native-modalize';
+import styleMap from './styleMap';
+
+interface ArrayGradeItens {
+    [index: number]: string;
+    codigoDisciplina: string;
+    nomeDisciplina: string;
+    codCurso: string;
+    predio: string;
+    turno: string;
+    sala: string;
+    aulasDadas: string;
+    turma: string;
+    professor: string;
+    latitude: string;
+    longitude: string;
+  }
 
 
 function GradeCompleta({ navigation }) {
 
-    const [listaDisciplinas, setListaDisciplinas] = useState([]);
-    const [listaHorarios, setListaHorarios] = useState([]);
+    const [listaDisciplinas, setListaDisciplinas] = useState(new Array<ArrayGradeItens>());
+    
+
+    const { colors } = useContext(ThemeContext);
+    const { latitudeSala, longitudeSala, latitudePessoa, longitudePessoa, modalizeRef } = useContext(AuthContext);
 
     useEffect(() => {
 
@@ -39,41 +63,21 @@ function GradeCompleta({ navigation }) {
 
             setListaDisciplinas(arrayGradeCompleta);
 
-        
-            const ordenado = arrayGradeCompleta.sort((c, d) => parseFloat(c.diaSemana) - parseFloat(d.diaSemana));
-
-            setListaHorarios(ordenado);
-
     }
 
     function TableDisciplinasWrapper(){
 
         return(
-            <Table style={styles.table}>
+            <Cards>
                 {
                     listaDisciplinas.map((Info, index) => (
                         <TableDisciplinas key={index} codigoDisciplina={Info.codigoDisciplina} nomeDisciplina={Info.nomeDisciplina}
                         codCurso={Info.codCurso} turno={Info.turno} predio={Info.predio} sala={Info.sala} aulasDadas={Info.aulasDadas}
-                        professor={Info.professor} turma={Info.turma}
+                        professor={Info.professor} turma={Info.turma} latitude={Info.latitude} longitude={Info.longitude}
                     />))
                 }
-            </Table>
+            </Cards>
         )
-    }
-
-    function TableHorariosWrapper(){
-
-        return(
-            <Table style={styles.table}>
-                {
-                    listaHorarios.map((Info, index) => (
-                        <TableHorarios key={index} diaSemana={Info.diaSemana}
-                        materia1={Info.nomeDisciplina} materia2={Info.nomeDisciplina}
-                    />))
-                }
-            </Table>
-        )
-        
     }
 
     const [animaTop, setTop] = useState(new Animated.Value(150));
@@ -90,74 +94,78 @@ function GradeCompleta({ navigation }) {
 
 
     return (
-        <View style={styles.container}>
-            <PageHeader title="Grade de Disciplinas" backColor="#2CC272"></PageHeader>
-
-           
+        <Container>
+            <PageHeader title="Grade de Disciplinas" backColor={colors.headerVerde}></PageHeader>
+   
             <Animated.ScrollView style={{ marginTop: animaTop }}
                 contentContainerStyle={{
                     paddingBottom: 16,
                 }}
             >
-                <View style={styles.head}>
-                    <Text style={styles.tableHead}> Disciplinas </Text>
-                    <Image source={backIcon} style={styles.arrowRotate} />
-                </View>
+                <Head>
+                    <TableHead> Disciplinas </TableHead>
+                    <ArrowRotate source={backIcon}/>
+                </Head>
                 
-                <View style={styles.containerTable}>
-                  
-
-                        <ScrollView horizontal={true}>
-
-                            <TableDisciplinasWrapper />
+                <ContainerTable>
                 
-                        </ScrollView>
+                    <ScrollView horizontal={true}>
+
+                        <TableDisciplinasWrapper />
+            
+                    </ScrollView>
                
-                </View>
+                </ContainerTable>
 
-                <Text>
-                    {'\n'}{'\n'}
-                </Text>
+                <TableHead2>Toque na disciplina para visualizar o local da sua sala de aula no mapa</TableHead2>
 
-                <View>
-                    <Text style={styles.tableHead2}>
-                        Para mais informações de sua grade, inclusive sobre Práticas de Formação, acesse a Área Logada.
-                    </Text>
+                <Modalize ref={modalizeRef}>
+                    <TableHead2>Local da sala de aula</TableHead2>
+                    <MapView style={{ width: '90%', height: 450, margin: 16, borderRadius: 14 }}
+                        loadingEnabled={true}
+                        providor={PROVIDER_GOOGLE}
+                        initialRegion={{
+                            latitude: latitudePessoa,
+                            longitude: longitudePessoa,
+                            latitudeDelta: 0.006,
+                            longitudeDelta: 0.006,
+                        }}
+                    >
+                        <Marker
+                            icon={mapMarker}
+                            coordinate={{
+                                latitude: Number(latitudeSala),
+                                longitude: Number(longitudeSala),
+                            }}
+                            title="Sua sala está aqui!"
+                        />
+                        <Marker
+                            icon={pessoaMarker}
+                            coordinate={{
+                                latitude: latitudePessoa,
+                                longitude: longitudePessoa,
+                            }}
+                            title="Você está aqui"
+                        />
+                    </MapView>  
+                </Modalize>
 
-                    <RectButton style={styles.button} onPress={() => {
+                
+                    <TableHead2>Para mais informações de sua grade, inclusive sobre Práticas de Formação, acesse a Área Logada.</TableHead2>
+
+                    <Button onPress={() => {
                         hundleNavigateAreaLogada('https://arealogada.sis.puc-campinas.edu.br/wl/websist/academico/grade_disciplinas/index.asp')
                     }}>
-                        <Text style={styles.buttonText}>Acessar Área Logada</Text>
-                    </RectButton>
-                </View>
+                        <ButtonText>Acessar Área Logada</ButtonText>
+                    </Button>
 
-          {/*  <View style={styles.head}>
-                <Text style={styles.tableHead2}> Horários </Text>
-                <Image source={backIconBlue} style={styles.arrowRotate} />
-            </View>
 
-                <View style={styles.containerTable}>
-                    <View style={styles.table}>
-                        <Table>
-                            <Col data={ ['Dia', 'Semestre', '19:20 às 20:50', '21:05 às 22:35'] } style={styles.titleHead} heightArr={50} textStyle={styles.textHead}>  </Col>
-                        </Table>
-
-                        <ScrollView horizontal={true}>
-
-                            <TableHorariosWrapper />
-                
-                        </ScrollView>
-                    </View>
-                </View> */}
-
-            <View style={styles.footer}>
-                <Text style={styles.footerText}>
-                    PUC-CAMPINAS
-                </Text>
-            </View>
+            <Footer>
+                <FooterText>PUC-CAMPINAS</FooterText>
+            </Footer>
 
             </Animated.ScrollView>
-        </View>
+        </Container>
     );
 }
 

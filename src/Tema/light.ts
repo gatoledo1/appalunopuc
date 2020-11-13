@@ -9,6 +9,7 @@ export default {
     headerCinza: '#767676',
     cardsTable: '#fff',
     azulPrimary: '#367DFF',
+    azulPrimaryBtn: '#367DFF',
     azulBack: '#f1f6ff',
     azulShadow: '#B6CEFF',
     amareloSecundary: '#FFC300',

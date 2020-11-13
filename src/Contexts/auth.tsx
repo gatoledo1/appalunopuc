@@ -1,10 +1,10 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useRef } from 'react';
 import { Envia } from '../Services/login';
 import { EnviaGrade } from '../Services/gradeSemanal';
 import { RetornaTokenAreaLogada } from '../Services/tokenAreaLogada';
 import AsyncStorage from '@react-native-community/async-storage';
-import light from '../Tema/light';
-import dark from '../Tema/dark';
+import { Modalize } from 'react-native-modalize';
+import * as Location from 'expo-location';
 
 interface AuthContextData {
     signed: boolean;
@@ -17,6 +17,12 @@ interface AuthContextData {
     signOut(): void;
     gradeSemanal(token: string): Promise<void>;
     tokenAreaLogada(token: string): Promise<void>;
+    localizacaoSala(lat: string, long: string): void;
+    latitudeSala: string;
+    longitudeSala: string;
+    latitudePessoa: number;
+    longitudePessoa: number;
+    modalizeRef: any;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -27,13 +33,11 @@ export const AuthProvider: React.FC = ({ children }) => {
     const [authToken, setAuthToken] = useState<string | null>(null);
     const [erroLogin, setErrologin] = useState('');
     const [authTokenAreaLogada, setAuthTokenAreaLogada] = useState('')
-    // const [theme, setTheme] = useState(light)
-    
-   // const toggleTheme = () => {
-    //    setTheme(theme.title === 'light' ? dark : light)
-
-        //AsyncStorage.setItem('theme', JSON.stringify(theme));
-    //}
+    const [latitudeSala, setlatitudeSala] = useState<string>('-22.833951');
+    const [longitudeSala, setlongitudeSala] = useState<string>('-47.0503008');
+    const [latitudePessoa, setlatitudePessoa] = useState(0);
+    const [longitudePessoa, setlongitudePessoa] = useState(0);
+    const modalizeRef = useRef<Modalize>(null);
 
 
     async function signIn(token){
@@ -55,9 +59,9 @@ export const AuthProvider: React.FC = ({ children }) => {
     }
 
     function signOut(){
-        AsyncStorage.setItem('token', '');
         AsyncStorage.setItem('gradeSemanal', '');
-
+        AsyncStorage.setItem('token', '');
+        
         setErrologin('Desconectado');
         
         setNome(null);
@@ -82,9 +86,42 @@ export const AuthProvider: React.FC = ({ children }) => {
  
      }
 
+    function localizacaoSala(lat: string, long: string){
+        setlatitudeSala(lat);
+        setlongitudeSala(long);
+
+        console.log('função localizacaoSala')
+        localizacaoAluno();
+
+        async function localizacaoAluno(){
+            let { status } = await Location.requestPermissionsAsync()
+            console.log('função localizacaoAluno')
+            if (status !== 'granted') {
+                console.log('sem permissão')
+                return
+            }
+            const location = await Location.getCurrentPositionAsync()
+
+            const { latitude, longitude } = location.coords;
+
+            setLocationPessoa();
+
+                function setLocationPessoa(){
+                    console.log('função setLocationPessoa')
+                    setlatitudePessoa(latitude);
+                    setlongitudePessoa(longitude)
+
+                    setTimeout(setLocationPessoa, 15000);
+                }
+            
+        }
+
+        modalizeRef.current?.open();
+    }
+
     return (
         <AuthContext.Provider value={{ signed: !!nome, erroLogin, nome, ra, authToken, authTokenAreaLogada, signIn, 
-        signOut, gradeSemanal, tokenAreaLogada}}>
+        signOut, gradeSemanal, tokenAreaLogada, localizacaoSala, latitudeSala, longitudeSala, latitudePessoa, longitudePessoa, modalizeRef}}>
             {children}
         </AuthContext.Provider>
     );

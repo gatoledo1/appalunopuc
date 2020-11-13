@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import styles from './styles';
+import React, { useContext } from 'react';
+import AuthContext from '../../Contexts/auth';
+import { Card, Codigos, CodText, TitleCard, TextCard, TextProf } from './styles';
  
 interface TableDisciplinasProps {
   codigoDisciplina: string;
@@ -13,23 +13,29 @@ interface TableDisciplinasProps {
   sala: string;
   professor: string;
   aulasDadas: string;
+  latitude: string;
+  longitude: string;
 }
 
-const TableDisciplinas: React.FC<TableDisciplinasProps> = ({ codigoDisciplina, nomeDisciplina, codCurso, turma, turno, predio, sala, professor, aulasDadas }) => {
+const TableDisciplinas: React.FC<TableDisciplinasProps> = ({ codigoDisciplina, nomeDisciplina, codCurso, turma, turno, predio, sala, professor, aulasDadas, latitude, longitude }) => {
+  
+  const { localizacaoSala } = useContext(AuthContext);
 
   return (
-        <View style={styles.card}>
-          <View style={styles.codigos}>
-            <Text style={styles.codText}>Cod: { codigoDisciplina }   Curso: { codCurso } </Text>
-          </View>
-          <Text style={styles.titleCard}> { nomeDisciplina } </Text>
-          <Text style={styles.textProf}>Professor: { professor } </Text>
-          <Text style={styles.textCard}>Turma: { turma } </Text>
-          <Text style={styles.textCard}>Turno: { turno } </Text>
-          <Text style={styles.textCard}>Prédio: { predio } </Text>
-          <Text style={styles.textCard}>Sala: { sala } </Text>
-          <Text style={styles.textCard}>Aulas dadas: { aulasDadas } </Text>
-        </View>
+        <Card onPress={
+          ()=>{ localizacaoSala(latitude, longitude); }
+        }>
+          <Codigos>
+            <CodText>Cod: { codigoDisciplina }   Curso: { codCurso } </CodText>
+          </Codigos>
+          <TitleCard> { nomeDisciplina } </TitleCard>
+          <TextProf>Professor: { professor } </TextProf>
+          <TextCard>Turma: { turma } </TextCard>
+          <TextCard>Turno: { turno } </TextCard>
+          <TextCard>Prédio: { predio } </TextCard>
+          <TextCard>Sala: { sala } </TextCard>
+          <TextCard>Aulas dadas: { aulasDadas } </TextCard>
+        </Card>
   )
 }
 

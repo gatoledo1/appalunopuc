@@ -49,7 +49,7 @@ objGradeSemanal();
     }
 
     if(stringGradeSemanal === null){
-      setTimeout(objGradeSemanal, 8000) 
+      setTimeout(objGradeSemanal, 3000) 
     }
   }
 
