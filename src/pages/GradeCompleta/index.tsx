@@ -117,41 +117,9 @@ function GradeCompleta({ navigation }) {
                
                 </ContainerTable>
 
-                <TableHead2>Toque na disciplina para visualizar o local da sua sala de aula no mapa</TableHead2>
-
-                <Modalize ref={modalizeRef}>
-                    <TableHead2>Local da sala de aula</TableHead2>
-                    <MapView style={{ width: '90%', height: 450, margin: 16, borderRadius: 14 }}
-                        loadingEnabled={true}
-                        providor={PROVIDER_GOOGLE}
-                        initialRegion={{
-                            latitude: latitudePessoa,
-                            longitude: longitudePessoa,
-                            latitudeDelta: 0.006,
-                            longitudeDelta: 0.006,
-                        }}
-                    >
-                        <Marker
-                            icon={mapMarker}
-                            coordinate={{
-                                latitude: Number(latitudeSala),
-                                longitude: Number(longitudeSala),
-                            }}
-                            title="Sua sala está aqui!"
-                        />
-                        <Marker
-                            icon={pessoaMarker}
-                            coordinate={{
-                                latitude: latitudePessoa,
-                                longitude: longitudePessoa,
-                            }}
-                            title="Você está aqui"
-                        />
-                    </MapView>  
-                </Modalize>
-
-                
-                    <TableHead2>Para mais informações de sua grade, inclusive sobre Práticas de Formação, acesse a Área Logada.</TableHead2>
+                <TableHead2 style={{paddingTop: 10}}>Toque na disciplina para visualizar o local da sua sala de aula no mapa</TableHead2>
+              
+                    <TableHead2 style={{borderTopWidth: 1, borderColor: '#aaa'}}>Para mais informações de sua grade, inclusive sobre Práticas de Formação, acesse a Área Logada.</TableHead2>
 
                     <Button onPress={() => {
                         hundleNavigateAreaLogada('https://arealogada.sis.puc-campinas.edu.br/wl/websist/academico/grade_disciplinas/index.asp')
@@ -165,6 +133,42 @@ function GradeCompleta({ navigation }) {
             </Footer>
 
             </Animated.ScrollView>
+
+            <Modalize ref={modalizeRef}>
+                <TableHead2 style={{fontSize: 18, paddingBottom: 10}}>Local da sala de aula</TableHead2>
+                    <ContainerTable style={{ width: '90%', height: 450, marginHorizontal: 20, borderRadius: 16, overflow: 'hidden', borderWidth: 1, borderColor: '#DADADA' }}>
+                        <MapView style={{ width: '100%', height: 450 }}
+                            loadingEnabled={true}
+                            providor={PROVIDER_GOOGLE}
+                            initialRegion={{
+                                latitude: latitudePessoa,
+                                longitude: longitudePessoa,
+                                latitudeDelta: 0.006,
+                                longitudeDelta: 0.006,
+                            }}
+                        >
+                            <Marker
+                                icon={mapMarker}
+                                coordinate={{
+                                    latitude: Number(latitudeSala),
+                                    longitude: Number(longitudeSala),
+                                }}
+                                title="Sua sala está aqui!"
+                            />
+                            <Marker
+                                icon={pessoaMarker}
+                                coordinate={{
+                                    latitude: latitudePessoa,
+                                    longitude: longitudePessoa,
+                                }}
+                                title="Você está aqui"
+                            />
+                        </MapView>
+                    </ContainerTable>
+                    <TableHead2 style={{fontSize: 13, paddingBottom: 0, paddingTop: 15}}>Ampliar zoom: Toque 2x no mapa.</TableHead2>
+                    <TableHead2 style={{fontSize: 13, paddingTop: 8, textAlign: 'left',}}>Reduzir zoom: No segundo toque, mantenha pressionado, em seguida arraste para cima.</TableHead2>
+                </Modalize>
+
         </Container>
     );
 }

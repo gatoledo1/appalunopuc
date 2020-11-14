@@ -27,9 +27,9 @@ export const TableHead2 = styled.Text`
     font-family: 'Poppins_400Regular';
     color: ${props => props.theme.colors.cinzaText};
     font-size: 13px;
-    padding-top: 25px;
-    padding-horizontal: 25px;
-    padding-bottom: 14px;
+    padding-top: 32px;
+    margin-horizontal: 25px;
+    padding-bottom: 30px;
     text-align: justify;
 `;
 

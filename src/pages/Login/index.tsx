@@ -4,6 +4,7 @@ import { RectButton, ScrollView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import AuthContext from '../../Contexts/auth';
 import { Feather } from '@expo/vector-icons';
+
  
 import styles from './styles';
 
@@ -15,13 +16,10 @@ import base64 from 'react-native-base64';
 
 const Login: React.FC = () => {
     const {erroLogin, signIn} = useContext(AuthContext);
-
-
     const [ra, setRa] = useState< string | null>('17013996');
     const [pwd, setPwd] = useState< string | null>('UIE01!#C');
     const [load, setLoad] = useState(false);
     const [passwordShow, setPasswordShow] = useState(false);
-
 
     const togglePasswordVisiblity = () => {
         setPasswordShow(passwordShow ? false : true);
@@ -39,8 +37,6 @@ const Login: React.FC = () => {
         }
         
     }
-
-    //console.log(nome);
 
     function SubmitLogin(){
 
@@ -60,14 +56,6 @@ const Login: React.FC = () => {
                 setLoad(true);
                 
                 signIn(token);
-            } else {
-                Alert.alert(
-                    "Atenção",
-                    "Seu login e sua senha são informações que não devem ser compartilhadas. A PUC-Campinas não se responsabilza pelo uso indevido dos seus dados, acessados por meios de responsabilidade dos estudantes.",
-                    [
-                      { text: "OK", onPress: () => console.log("OK Pressed") }
-                    ],
-                  );
             }
         }
 
@@ -76,7 +64,6 @@ const Login: React.FC = () => {
     }, []);
 
     return (
-        
         <View style={styles.container} >
           <StatusBar style="dark" />
             <ImageBackground source={backLogin} style={styles.backgroungLogin}>

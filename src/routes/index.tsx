@@ -13,7 +13,9 @@ const { Navigator, Screen } = createStackNavigator();
 
 const Routes: React.FC = () => {
     const scheme = useColorScheme();
-    const { signed } = useContext(AuthContext);
+    const { signed, introOuLogin } = useContext(AuthContext);
+
+    introOuLogin();
  
     return signed ? <ThemeProvider theme={scheme === 'dark' ? dark : light}><AppRoutes /></ThemeProvider> : <AuthRoutes />;
 }

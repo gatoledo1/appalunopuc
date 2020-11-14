@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeItens from '../pages/HomeItens';
 import PWDAreaLogada from '../pages/AreaLogada';

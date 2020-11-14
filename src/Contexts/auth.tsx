@@ -23,6 +23,8 @@ interface AuthContextData {
     latitudePessoa: number;
     longitudePessoa: number;
     modalizeRef: any;
+    introOuLogin(): void;
+    introLogin: string | null;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -35,9 +37,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     const [authTokenAreaLogada, setAuthTokenAreaLogada] = useState('')
     const [latitudeSala, setlatitudeSala] = useState<string>('-22.833951');
     const [longitudeSala, setlongitudeSala] = useState<string>('-47.0503008');
-    const [latitudePessoa, setlatitudePessoa] = useState(0);
-    const [longitudePessoa, setlongitudePessoa] = useState(0);
+    const [latitudePessoa, setlatitudePessoa] = useState<number>(-22.833951);
+    const [longitudePessoa, setlongitudePessoa] = useState<number>(-47.0503008);
     const modalizeRef = useRef<Modalize>(null);
+    const [introLogin, setIntroLogin] = useState<string | null>(null);
 
 
     async function signIn(token){
@@ -58,9 +61,10 @@ export const AuthProvider: React.FC = ({ children }) => {
        }
     }
 
-    function signOut(){
-        AsyncStorage.setItem('gradeSemanal', '');
-        AsyncStorage.setItem('token', '');
+    async function signOut(){
+        await AsyncStorage.clear().then(() => console.log('Cleared'))
+        await AsyncStorage.setItem('gradeSemanal', '');
+        await AsyncStorage.setItem('token', '');
         
         setErrologin('Desconectado');
         
@@ -119,9 +123,17 @@ export const AuthProvider: React.FC = ({ children }) => {
         modalizeRef.current?.open();
     }
 
+    async function introOuLogin() {
+        const intro = await AsyncStorage.getItem('teste3');
+
+        setIntroLogin(intro);
+        
+    }
+
     return (
         <AuthContext.Provider value={{ signed: !!nome, erroLogin, nome, ra, authToken, authTokenAreaLogada, signIn, 
-        signOut, gradeSemanal, tokenAreaLogada, localizacaoSala, latitudeSala, longitudeSala, latitudePessoa, longitudePessoa, modalizeRef}}>
+        signOut, gradeSemanal, tokenAreaLogada, localizacaoSala, latitudeSala, longitudeSala, latitudePessoa, longitudePessoa, 
+        modalizeRef, introOuLogin, introLogin}}>
             {children}
         </AuthContext.Provider>
     );
