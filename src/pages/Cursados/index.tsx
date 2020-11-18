@@ -27,9 +27,9 @@ function Cursados() {
 
         const disciplinaCursada = await responseDisciplinasCursadas.json();
 
-        const asd = disciplinaCursada.filter((ano) => { return ano.aass; })
+        const listaCursados = disciplinaCursada.filter((ano) => { return ano.aass; })
 
-        setListaDisciplinas(asd.sort((a, b) => parseFloat(b.aass) - parseFloat(a.aass)));
+        setListaDisciplinas(listaCursados.sort((a, b) => parseFloat(b.aass) - parseFloat(a.aass)));
 
         setLoad(false)
 

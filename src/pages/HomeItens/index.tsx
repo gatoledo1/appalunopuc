@@ -51,6 +51,7 @@ function HomeItens() {
         navigate('Cursados');
     }
     function hundleNavigatePWDAreaLogada(link:string) {
+        //Na tela PWDAreaLogada, a variavel returnUrl é obrigatória
         navigate('PWDAreaLogada', {
             returnUrl: link
         });
@@ -64,16 +65,19 @@ function HomeItens() {
     function hundleNavigateCentralAtendimento() {
         navigate('CentralAtendimento');
     }
-    
+
 
     useEffect(() => {
-           
-        gradeSemanal(authToken);
+        // A grade de disciplinas é gravada no AsyncStorage, então demora um pouco, por esse motivo a função é chamada
+        // logo na tela inicial, evitando delay no carregamento das informações nas telas
+
+        // "authToken" já é o valor do formulario em Base64
+        gradeSemanal(authToken)
 
     }, []);
 
 
-    const [animaTop, setTop] = useState(new Animated.Value(150));
+    const [animaTop, setTop] = useState(new Animated.Value(80));
 
     Animated.timing(
         animaTop,
@@ -88,27 +92,26 @@ function HomeItens() {
 
     return (
         <Container>
-            <PageHeader title={`Olá ${firstName}`} backColor={colors.headerAzul}
+            <PageHeader title={`Olá ${firstName}!`} backColor={colors.headerAzul}
             headerRight={(
                 <View style={{position: 'absolute', right: 15, top: 10}}>
-
                     <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 8, paddingTop: 12}}>
                         <Feather name="bell" size={30} color="#FFF" />
                         <Badge>3</Badge>
                     </BorderlessButton>
                 </View>
-                 )}>
+            )}>
 
             <TitleChildren>Que bom te ver aqui</TitleChildren>     
 
             </PageHeader>
 
             <Animated.ScrollView style={{ marginTop: animaTop }}
+                scrollEventThrottle={16}
                 contentContainerStyle={{
                     paddingBottom: 16,
                 }}
             >
-
                 <Row>
                     <Links onPress={ () => { hundleNavigatePWDAreaLogada('https://arealogada.sis.puc-campinas.edu.br') }}>
                         <Card>
@@ -175,11 +178,16 @@ function HomeItens() {
                 </Row>
 
                 <Row>
-                    <Links>
+                    <Links
+                        onPress={() => {
+                            Linking.openURL(
+                            'https://www.puc-campinas.edu.br/calendario/'
+                            );
+                        }}>
                         <Card>
-                            <Icon source={barGraph} />
+                            <Icon source={calendar} />
                             <TextCard>
-                                Práticas de Formação
+                                Calendário Acadêmico
                             </TextCard>
                         </Card>
                     </Links>
@@ -195,16 +203,11 @@ function HomeItens() {
                 </Row>
 
                 <Row>
-                    <Links
-                        onPress={() => {
-                            Linking.openURL(
-                            'https://www.puc-campinas.edu.br/calendario/'
-                            );
-                        }}>
+                    <Links>
                         <Card>
-                            <Icon source={calendar} />
+                            <Icon source={bookAlt} />
                             <TextCard>
-                                Calendário Acadêmico
+                                Biblioteca
                             </TextCard>
                         </Card>
                     </Links>
@@ -219,25 +222,6 @@ function HomeItens() {
                     </Links>
                 </Row>
 
-                <Row>
-                    <Links>
-                        <Card>
-                            <Icon source={document} />
-                            <TextCard>
-                                Documentos do Aluno
-                            </TextCard>
-                        </Card>
-                    </Links>
-
-                    <Links>
-                        <Card>
-                            <Icon source={bookAlt} />
-                            <TextCard>
-                                Biblioteca
-                            </TextCard>
-                        </Card>
-                    </Links>
-                </Row>
 
                 <Footer>
                     <FooterText>

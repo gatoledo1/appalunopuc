@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext, useRef} from 'react';
-import { Animated, Easing, } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Animated, Easing, ActivityIndicator, StyleSheet, Text, Alert } from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import PageHeader from '../../components/PageHeader';
 import TableDisciplinas from '../../components/TableDisciplinas';
 //import TableHorarios from '../../components/TableHorarios';
@@ -10,10 +10,12 @@ import pessoaMarker from '../../assets/images/icons/marker-pessoa.png';
 //import backIconBlue from '../../assets/images/icons/arrow-blue.png';
 import AsyncStorage from '@react-native-community/async-storage';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { Container, ContainerTable, Head, Cards, TableHead, TableHead2, Button, ButtonText, Footer, FooterText, ArrowRotate } from './styles';
+import { Container, ContainerTable, ContainerMap, Head, Cards, TableHead, TableHead2, ModalHeader, InfoMap, Button, ButtonText, ButtonLocation, ButtonTextLocation, Footer, FooterText, ArrowRotate } from './styles';
 import { ThemeContext } from 'styled-components';
 import AuthContext from '../../Contexts/auth';
 import { Modalize } from 'react-native-modalize';
+import * as Location from 'expo-location';
+
 import styleMap from './styleMap';
 
 interface ArrayGradeItens {
@@ -35,23 +37,26 @@ interface ArrayGradeItens {
 function GradeCompleta({ navigation }) {
 
     const [listaDisciplinas, setListaDisciplinas] = useState(new Array<ArrayGradeItens>());
-    
+    const [load, setLoad] = useState(true);
+    const [latitudePessoa, setlatitudePessoa] = useState<number>(0);
+    const [longitudePessoa, setlongitudePessoa] = useState<number>(0);
 
     const { colors } = useContext(ThemeContext);
-    const { latitudeSala, longitudeSala, latitudePessoa, longitudePessoa, modalizeRef } = useContext(AuthContext);
+    const { latitudeSala, longitudeSala, modalizeRef } = useContext(AuthContext);
 
-    useEffect(() => {
-
-        objGradeCompleta();
-
-    }, []);
+    let timeout = useRef<number>();
 
     function hundleNavigateAreaLogada(link:string) {
         navigation.navigate('PWDAreaLogada', {
             returnUrl: link
         });
     }
+    
+    useEffect(() => {
 
+        objGradeCompleta();
+
+    }, []);
     
     async function objGradeCompleta(){
 
@@ -62,6 +67,8 @@ function GradeCompleta({ navigation }) {
             arrayGradeCompleta = await JSON.parse(stringGradeSemanal)
 
             setListaDisciplinas(arrayGradeCompleta);
+
+            setLoad(false)
 
     }
 
@@ -80,7 +87,36 @@ function GradeCompleta({ navigation }) {
         )
     }
 
-    const [animaTop, setTop] = useState(new Animated.Value(150));
+    async function localizacaoAluno(){
+        let { status } = await Location.requestPermissionsAsync()
+
+        if (status !== 'granted') {
+            //Quando rejeitar
+        }
+
+        const location = await Location.getCurrentPositionAsync()
+
+        SetLocationPessoa();
+
+            function SetLocationPessoa(){
+
+                const { latitude, longitude } = location.coords;
+
+                setlatitudePessoa(latitude);
+                setlongitudePessoa(longitude)
+                console.log("Localização pessoa")
+                timeout.current = setTimeout(SetLocationPessoa, 6000);
+            }
+    }
+
+    const handleClose = () => {
+        clearTimeout(timeout.current);
+        modalizeRef.current.close();
+        
+    };
+
+
+    const [animaTop, setTop] = useState(new Animated.Value(50));
 
     Animated.timing(
         animaTop,
@@ -114,60 +150,77 @@ function GradeCompleta({ navigation }) {
                         <TableDisciplinasWrapper />
             
                     </ScrollView>
+
+                    <ActivityIndicator animating={load} size="large" color="#367DFF" />
                
                 </ContainerTable>
 
-                <TableHead2 style={{paddingTop: 10}}>Toque na disciplina para visualizar o local da sua sala de aula no mapa</TableHead2>
+                <TableHead2 style={{paddingTop: 0}}>Toque na disciplina para visualizar o local da sua sala de aula no mapa</TableHead2>
               
-                    <TableHead2 style={{borderTopWidth: 1, borderColor: '#aaa'}}>Para mais informações de sua grade, inclusive sobre Práticas de Formação, acesse a Área Logada.</TableHead2>
+                <TableHead2 style={{borderTopWidth: 1, borderColor: '#B6CEFF'}}>Para mais informações de sua grade, inclusive sobre Práticas de Formação, acesse a Área Logada.</TableHead2>
 
-                    <Button onPress={() => {
-                        hundleNavigateAreaLogada('https://arealogada.sis.puc-campinas.edu.br/wl/websist/academico/grade_disciplinas/index.asp')
-                    }}>
-                        <ButtonText>Acessar Área Logada</ButtonText>
-                    </Button>
+                <Button onPress={() => {
+                    hundleNavigateAreaLogada('https://arealogada.sis.puc-campinas.edu.br/wl/websist/academico/grade_disciplinas/index.asp')
+                }}>
+                    <ButtonText>Acessar Área Logada</ButtonText>
+                </Button>
 
 
-            <Footer>
-                <FooterText>PUC-CAMPINAS</FooterText>
-            </Footer>
+                <Footer>
+                    <FooterText>PUC-CAMPINAS</FooterText>
+                </Footer>
 
             </Animated.ScrollView>
 
+            
             <Modalize ref={modalizeRef}>
-                <TableHead2 style={{fontSize: 18, paddingBottom: 10}}>Local da sala de aula</TableHead2>
-                    <ContainerTable style={{ width: '90%', height: 450, marginHorizontal: 20, borderRadius: 16, overflow: 'hidden', borderWidth: 1, borderColor: '#DADADA' }}>
-                        <MapView style={{ width: '100%', height: 450 }}
-                            loadingEnabled={true}
-                            providor={PROVIDER_GOOGLE}
-                            initialRegion={{
+                
+                <Cards style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+                    <ModalHeader onPress={handleClose} >
+                        <Text style={{color: '#ea4335', fontSize: 12}}>Fechar</Text>
+                    </ModalHeader>
+                </Cards>
+
+                <InfoMap style={{position: 'absolute', top: 20, fontSize: 18, paddingBottom: 10, paddingTop: -6}}>Local da sala de aula</InfoMap>
+                    
+                <ContainerMap style={{borderWidth: 1, borderColor: '#ccc'}}>
+                    
+                    <MapView style={{ width: '100%', height: 350 }} loadingEnabled={true} providor={PROVIDER_GOOGLE}
+                        initialRegion={{
+                            latitude: Number(latitudeSala),
+                            longitude: Number(longitudeSala),
+                            latitudeDelta: 0.006,
+                            longitudeDelta: 0.006,
+                        }}>
+                        
+                        <Marker
+                            icon={mapMarker}
+                            coordinate={{
+                                latitude: Number(latitudeSala),
+                                longitude: Number(longitudeSala),
+                            }}
+                            title="Sua sala está aqui!"
+                        />
+
+                        <Marker
+                            icon={pessoaMarker}
+                            coordinate={{
                                 latitude: latitudePessoa,
                                 longitude: longitudePessoa,
-                                latitudeDelta: 0.006,
-                                longitudeDelta: 0.006,
                             }}
-                        >
-                            <Marker
-                                icon={mapMarker}
-                                coordinate={{
-                                    latitude: Number(latitudeSala),
-                                    longitude: Number(longitudeSala),
-                                }}
-                                title="Sua sala está aqui!"
-                            />
-                            <Marker
-                                icon={pessoaMarker}
-                                coordinate={{
-                                    latitude: latitudePessoa,
-                                    longitude: longitudePessoa,
-                                }}
-                                title="Você está aqui"
-                            />
-                        </MapView>
-                    </ContainerTable>
-                    <TableHead2 style={{fontSize: 13, paddingBottom: 0, paddingTop: 15}}>Ampliar zoom: Toque 2x no mapa.</TableHead2>
-                    <TableHead2 style={{fontSize: 13, paddingTop: 8, textAlign: 'left',}}>Reduzir zoom: No segundo toque, mantenha pressionado, em seguida arraste para cima.</TableHead2>
-                </Modalize>
+                            title="Você está aqui"
+                        />
+                    </MapView>
+                
+                </ContainerMap>
+
+                <ButtonLocation onPress={localizacaoAluno}>
+                    <ButtonTextLocation>Me ajude a chegar! 😃</ButtonTextLocation>
+                </ButtonLocation>
+
+                    <InfoMap style={{fontSize: 13, paddingBottom: 0, paddingTop: 15}}>Ampliar zoom: Toque 2x no mapa.</InfoMap>
+                    <InfoMap style={{fontSize: 13, paddingTop: 8, textAlign: 'left',}}>Reduzir zoom: No segundo toque, mantenha pressionado, em seguida arraste para cima.</InfoMap>
+            </Modalize>
 
         </Container>
     );

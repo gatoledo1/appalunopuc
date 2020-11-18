@@ -6,7 +6,10 @@ import { ScrollView } from 'react-native-gesture-handler';
 import AuthContext from '../../Contexts/auth';
 import AsyncStorage from '@react-native-community/async-storage';
 
-//import styles from './styles';
+/*===============================================================================================================================
+| Este componente utiliza 'react-native-tab-view', que não tem compatibilidade com React Native Hooks e limitação com Typescript |
+| Todas as interações realizadas foram feitas para contornar e viabilizar o componente.                                          |
+================================================================================================================================*/
 
 interface ArrayGrade {
   [index: number]: string;
@@ -19,6 +22,7 @@ interface ArrayGrade {
   dataUltimoLancFreq: string;
 }
 
+// iniciando o array e setando uma tipagem nele 
 let itensGradeSegunda = new Array<ArrayGrade>();
 let itensGradeTerca = new Array<ArrayGrade>();
 let itensGradeQuarta = new Array<ArrayGrade>();
@@ -37,6 +41,11 @@ objGradeSemanal();
 
     if(stringGradeSemanal !== null){
 
+    /*=====================================================================================================================
+    | O AsyncStorage grava apenas Strings, objetos não. Lá no contexto de autenticação o objeto foi convertido para String |
+    | Então após pegar os dados da Grade Semanal do AsyncStorage, ele deve ser reescrito como objeto JSON.                 |
+    ======================================================================================================================*/
+
       const arrayGradeSemanal = JSON.parse(stringGradeSemanal);
       
       itensGradeSegunda = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 2; });
@@ -48,6 +57,7 @@ objGradeSemanal();
       itensGradeDomingo = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 1; }); 
     }
 
+    // Como a função é executada antes do usuário logar, ela precisa ser chamada outras vezes até receber valores
     if(stringGradeSemanal === null){
       setTimeout(objGradeSemanal, 3000) 
     }

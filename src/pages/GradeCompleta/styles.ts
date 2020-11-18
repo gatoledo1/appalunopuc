@@ -1,4 +1,4 @@
-import { RectButton } from 'react-native-gesture-handler';
+import { RectButton, TouchableOpacity } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -8,6 +8,27 @@ export const Container = styled.View`
 
 export const ContainerTable = styled.View`
     flex: 1;
+`;
+
+export const ContainerMap = styled.View`
+    flex: 1;
+    width: 90%;
+    height: 350px;
+    margin-top: 10px; 
+    margin-horizontal: 20px; 
+    border-radius: 16px; 
+    overflow: hidden; 
+`;
+
+export const ModalHeader = styled(TouchableOpacity)`
+    z-index: 9000;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 40px;
+    background-color: #ffdcdf;
+    border-top-right-radius: 11px;
+    border-bottom-left-radius: 11px;
 `;
 
 export const Cards = styled.View`
@@ -26,6 +47,16 @@ export const TableHead = styled.Text`
 export const TableHead2 = styled.Text`
     font-family: 'Poppins_400Regular';
     color: ${props => props.theme.colors.cinzaText};
+    font-size: 13px;
+    padding-top: 32px;
+    margin-horizontal: 25px;
+    padding-bottom: 30px;
+    text-align: justify;
+`;
+
+export const InfoMap = styled.Text`
+    font-family: 'Poppins_400Regular';
+    color: #555;
     font-size: 13px;
     padding-top: 32px;
     margin-horizontal: 25px;
@@ -59,6 +90,24 @@ export const ButtonText = styled.Text`
     font-family: 'Poppins_400Regular'; 
     color: #FFF;
     font-size: 18px;
+    justify-content: center;
+`;
+
+export const ButtonLocation = styled(RectButton)`
+    height: 20px;
+    width: 250px;
+    background-color: #d3e3ff;
+    border-radius: 18px; 
+    padding-vertical: 20px;  
+    align-items: center;
+    justify-content: center;
+    margin: 25px auto 0px;
+`;
+
+export const ButtonTextLocation = styled.Text`
+    font-family: 'Poppins_400Regular'; 
+    color: #367DFF;
+    font-size: 16px;
     justify-content: center;
 `;
 

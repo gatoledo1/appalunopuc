@@ -19,6 +19,12 @@ function GradeSemanal() {
             <PageHeader title="Grade Semanal" backColor={colors.headerAmarelo}></PageHeader>
             
                 <TabViewScroll/>
+
+            <Footer>
+                <FooterText>
+                    PUC-CAMPINAS
+                </FooterText>
+            </Footer>
             
         </Container>
     );

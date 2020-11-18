@@ -12,6 +12,8 @@ import CentralAtendimento from '../pages/CentralAtendimento';
 
 const AppStack = createStackNavigator();
 
+//Na tela PWDAreaLogada, a variavel returnUrl é obrigatória, então setar um "initialParams" é necessário
+
 const AppRoutes: React.FC = () => (
     <AppStack.Navigator screenOptions={{ headerShown: false }}>
         <AppStack.Screen name="HomeItens" component={HomeItens} />

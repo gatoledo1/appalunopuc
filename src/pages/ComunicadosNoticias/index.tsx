@@ -43,12 +43,12 @@ function ComunicadosNoticias() {
         );
     }
 
-    const [animaTop, setTop] = useState(new Animated.Value(150));
+    const [animaTop, setTop] = useState(new Animated.Value(0));
 
     Animated.timing(
         animaTop,
         {
-            toValue: -100,
+            toValue: -90,
             duration: 800,
             delay: 100,
             easing: Easing.bezier(0.33, 1, 0.68, 1),
@@ -66,8 +66,8 @@ function ComunicadosNoticias() {
                     paddingBottom: 16,
                 }}
             >
-                <ActivityIndicator animating={load} size="large" color="#367DFF" style={styles.activityIndicator} />
                 <FeedNewsPortalPUC />
+                <ActivityIndicator animating={load} size="large" color="#367DFF" style={styles.activityIndicator} />
 
             </Animated.ScrollView>
             
