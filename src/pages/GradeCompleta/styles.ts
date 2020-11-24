@@ -13,7 +13,7 @@ export const ContainerTable = styled.View`
 export const ContainerMap = styled.View`
     flex: 1;
     width: 90%;
-    height: 350px;
+    height: 400px;
     margin-top: 10px; 
     margin-horizontal: 20px; 
     border-radius: 16px; 
@@ -26,7 +26,7 @@ export const ModalHeader = styled(TouchableOpacity)`
     justify-content: center;
     width: 75px;
     height: 40px;
-    background-color: #ffdcdf;
+    background-color: rgba(248, 22, 41, 0.2);
     border-top-right-radius: 11px;
     border-bottom-left-radius: 11px;
 `;
@@ -56,7 +56,7 @@ export const TableHead2 = styled.Text`
 
 export const InfoMap = styled.Text`
     font-family: 'Poppins_400Regular';
-    color: #555;
+    color: ${props => props.theme.colors.cinzaText};
     font-size: 13px;
     padding-top: 32px;
     margin-horizontal: 25px;
@@ -96,7 +96,7 @@ export const ButtonText = styled.Text`
 export const ButtonLocation = styled(RectButton)`
     height: 20px;
     width: 250px;
-    background-color: #d3e3ff;
+    background-color: ${props => props.theme.colors.azulPrimaryBtn};
     border-radius: 18px; 
     padding-vertical: 20px;  
     align-items: center;
@@ -106,7 +106,7 @@ export const ButtonLocation = styled(RectButton)`
 
 export const ButtonTextLocation = styled.Text`
     font-family: 'Poppins_400Regular'; 
-    color: #367DFF;
+    color: #FFF;
     font-size: 16px;
     justify-content: center;
 `;

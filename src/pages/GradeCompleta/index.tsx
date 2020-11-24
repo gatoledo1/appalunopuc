@@ -15,6 +15,7 @@ import { ThemeContext } from 'styled-components';
 import AuthContext from '../../Contexts/auth';
 import { Modalize } from 'react-native-modalize';
 import * as Location from 'expo-location';
+import { useColorScheme } from 'react-native-appearance';
 
 import styleMap from './styleMap';
 
@@ -41,6 +42,7 @@ function GradeCompleta({ navigation }) {
     const [latitudePessoa, setlatitudePessoa] = useState<number>(0);
     const [longitudePessoa, setlongitudePessoa] = useState<number>(0);
 
+    const scheme = useColorScheme();
     const { colors } = useContext(ThemeContext);
     const { latitudeSala, longitudeSala, modalizeRef } = useContext(AuthContext);
 
@@ -157,7 +159,7 @@ function GradeCompleta({ navigation }) {
 
                 <TableHead2 style={{paddingTop: 0}}>Toque na disciplina para visualizar o local da sua sala de aula no mapa</TableHead2>
               
-                <TableHead2 style={{borderTopWidth: 1, borderColor: '#B6CEFF'}}>Para mais informações de sua grade, inclusive sobre Práticas de Formação, acesse a Área Logada.</TableHead2>
+                <TableHead2 style={{borderTopWidth: 1, borderColor: scheme === 'dark' ? '#002871' : '#B6CEFF'}}>Para mais informações de sua grade, inclusive sobre Práticas de Formação, acesse a Área Logada.</TableHead2>
 
                 <Button onPress={() => {
                     hundleNavigateAreaLogada('https://arealogada.sis.puc-campinas.edu.br/wl/websist/academico/grade_disciplinas/index.asp')
@@ -173,7 +175,7 @@ function GradeCompleta({ navigation }) {
             </Animated.ScrollView>
 
             
-            <Modalize ref={modalizeRef}>
+            <Modalize ref={modalizeRef} modalStyle={{backgroundColor: colors.cardsTable}}>
                 
                 <Cards style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
                     <ModalHeader onPress={handleClose} >
@@ -185,7 +187,8 @@ function GradeCompleta({ navigation }) {
                     
                 <ContainerMap style={{borderWidth: 1, borderColor: '#ccc'}}>
                     
-                    <MapView style={{ width: '100%', height: 350 }} loadingEnabled={true} providor={PROVIDER_GOOGLE}
+                    <MapView style={{ width: '100%', height: 400 }} loadingEnabled={true} providor={PROVIDER_GOOGLE}
+                        customMapStyle={scheme === 'dark' ? styleMap : undefined}
                         initialRegion={{
                             latitude: Number(latitudeSala),
                             longitude: Number(longitudeSala),
@@ -194,7 +197,7 @@ function GradeCompleta({ navigation }) {
                         }}>
                         
                         <Marker
-                            icon={mapMarker}
+                            pinColor="#e71808"
                             coordinate={{
                                 latitude: Number(latitudeSala),
                                 longitude: Number(longitudeSala),
@@ -203,7 +206,7 @@ function GradeCompleta({ navigation }) {
                         />
 
                         <Marker
-                            icon={pessoaMarker}
+                            pinColor="#146eff"
                             coordinate={{
                                 latitude: latitudePessoa,
                                 longitude: longitudePessoa,
