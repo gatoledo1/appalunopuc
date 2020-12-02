@@ -1,13 +1,14 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import { View, Image, Text, ImageBackground } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
-
+import {useRoute} from '@react-navigation/native';
 import styles from './styles';
-
+import { Feather } from '@expo/vector-icons'; 
 import backIcon from '../../assets/images/icons/arrow.png';
 import headerBackground from '../../assets/images/back-header.png';
 import LogoImg from '../../assets/images/header-puc-campinas.png';
 import { useNavigation } from '@react-navigation/native';
+import AuthContext from '../../Contexts/auth';
 
 interface PageHeaderProps {
     title: string;
@@ -19,17 +20,44 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, backColor, headerRight, 
 
     const { navigate } = useNavigation();
 
+    const {signOut} = useContext(AuthContext);
+
+    function hundleSignOut(){
+        signOut();
+    }
+
     function hudleGoBack() {
         navigate('HomeItens');
+    }
+
+    const route = useRoute();
+
+    function ArrowBackOrSignOut(){
+        if(route.name !== 'HomeItens'){
+            return (
+                <BorderlessButton onPress={hudleGoBack} style={{padding: 6}}>
+                    <Image source={backIcon} style={styles.arrowHeader} resizeMode="contain" />
+                </BorderlessButton>
+            );
+        }else{
+            return (
+                <BorderlessButton onPress={hundleSignOut} style={{flexDirection: 'row'}}>
+                    <Feather name="log-out" size={22} color="#dadada" />
+                    <Text style={{fontFamily: 'Poppins_400Regular', color: '#dadada',fontSize: 15, paddingLeft: 5}}>
+                        Sair
+                    </Text>
+                </BorderlessButton>
+            );
+        }
+        
     }
 
     return (
         <View style={[styles.container, {backgroundColor: backColor}]}>
             <ImageBackground resizeMode="cover" source={headerBackground} style={styles.headerBackground}>  
             <View style={styles.topBar}>
-                <BorderlessButton onPress={hudleGoBack} style={{padding: 6}}>
-                    <Image source={backIcon} style={styles.arrowHeader} resizeMode="contain" />
-                </BorderlessButton>
+                
+                <ArrowBackOrSignOut></ArrowBackOrSignOut>
 
                 <Image source={LogoImg} style={styles.imgHeader} resizeMode="contain" />
             </View>

@@ -92,7 +92,7 @@ function HomeItens() {
 
     return (
         <Container>
-            <PageHeader title={`Olá ${firstName}!`} backColor={colors.headerAzul}
+            <PageHeader title={`Olá, ${firstName}!`} backColor={colors.headerAzul}
             headerRight={(
                 <View style={{position: 'absolute', right: 15, top: 10}}>
                     <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 8, paddingTop: 12}}>
@@ -203,16 +203,20 @@ function HomeItens() {
                 </Row>
 
                 <Row>
-                    <Links>
+                    <Links onPress={() => {
+                        Linking.openURL(
+                            'http://catalogolvmen.puc-campinas.edu.br/pergamum/mobile/resultado.php'
+                            );
+                        }}>
                         <Card>
                             <Icon source={bookAlt} />
                             <TextCard>
-                                Biblioteca
+                                Biblioteca: Pesquisa Geral
                             </TextCard>
                         </Card>
                     </Links>
 
-                    <Links onPress={hundleNavigateAreaFinanceira}>
+                    <Links onPress={ () => { hundleNavigatePWDAreaLogada('https://arealogada.sis.puc-campinas.edu.br/wl/websist/academico/demonstrativo_financeiro/index.asp?mobile_view=true') }}>
                         <Card>
                             <Icon source={card} />
                             <TextCard>

@@ -46,7 +46,7 @@ function GradeCompleta({ navigation }) {
     const { colors } = useContext(ThemeContext);
     const { latitudeSala, longitudeSala, modalizeRef } = useContext(AuthContext);
 
-    let timeout = useRef<number>();
+    let timeout = useRef();
 
     function hundleNavigateAreaLogada(link:string) {
         navigation.navigate('PWDAreaLogada', {
@@ -187,7 +187,7 @@ function GradeCompleta({ navigation }) {
                     
                 <ContainerMap style={{borderWidth: 1, borderColor: '#ccc'}}>
                     
-                    <MapView style={{ width: '100%', height: 400 }} loadingEnabled={true} providor={PROVIDER_GOOGLE}
+                    <MapView style={{ width: '100%', height: 400 }} loadingEnabled={true} provider={PROVIDER_GOOGLE}
                         customMapStyle={scheme === 'dark' ? styleMap : undefined}
                         initialRegion={{
                             latitude: Number(latitudeSala),
@@ -197,7 +197,7 @@ function GradeCompleta({ navigation }) {
                         }}>
                         
                         <Marker
-                            pinColor="#e71808"
+                            image={mapMarker}
                             coordinate={{
                                 latitude: Number(latitudeSala),
                                 longitude: Number(longitudeSala),
@@ -206,7 +206,7 @@ function GradeCompleta({ navigation }) {
                         />
 
                         <Marker
-                            pinColor="#146eff"
+                            image={pessoaMarker}
                             coordinate={{
                                 latitude: latitudePessoa,
                                 longitude: longitudePessoa,

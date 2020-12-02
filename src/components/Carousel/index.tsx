@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import { View, Text, Image, Dimensions } from 'react-native';
-import Img1 from '../../assets/images/campus-i-1.jpg';
-import Img2 from '../../assets/images/campus-i-2.jpg';
+import Img1 from '../../assets/images/CampusI_01.jpg';
+import Img2 from '../../assets/images/CampusI_02.jpg';
+import Img3 from '../../assets/images/CampusI_03.jpg';
+import Img4 from '../../assets/images/CCHSA_3.jpg';
+import Img5 from '../../assets/images/CampusII_01.jpg';
+import Img6 from '../../assets/images/CampusII_04.jpg';
 import Swiper from 'react-native-swiper';
 import styles from './styles';
 
@@ -55,7 +59,7 @@ export default class extends Component {
           <View
             style={styles.slide}
             title={
-              <Text style={styles.text} numberOfLines={2}>Campus I - CLC e CEATEC</Text>
+              <Text style={styles.text} numberOfLines={2}>Campus I - CEATEC</Text>
             }
           >
             <Image
@@ -67,13 +71,61 @@ export default class extends Component {
           <View
             style={styles.slide}
             title={
-              <Text style={styles.text} numberOfLines={2}>Campus I - CEATEC e Biblioteca</Text>
+              <Text style={styles.text} numberOfLines={2}>Campus I - Biblioteca e Mescla</Text>
             }
           >
             <Image
               resizeMode="stretch"
               style={styles.image}
               source={Img2}
+            />
+          </View>
+          <View
+            style={styles.slide}
+            title={
+              <Text style={styles.text} numberOfLines={2}>Campus I - CLC e CEATEC</Text>
+            }
+          >
+            <Image
+              resizeMode="stretch"
+              style={styles.image}
+              source={Img3}
+            />
+          </View>
+          <View
+            style={styles.slide}
+            title={
+              <Text style={styles.text} numberOfLines={2}>Campus I - CCHSA</Text>
+            }
+          >
+            <Image
+              resizeMode="stretch"
+              style={styles.image}
+              source={Img4}
+            />
+          </View>
+          <View
+            style={styles.slide}
+            title={
+              <Text style={styles.text} numberOfLines={2}>Campus II - Ciências da Vida</Text>
+            }
+          >
+            <Image
+              resizeMode="stretch"
+              style={styles.image}
+              source={Img5}
+            />
+          </View>
+          <View
+            style={styles.slide}
+            title={
+              <Text style={styles.text} numberOfLines={2}>Campus II - Ciências da Vida</Text>
+            }
+          >
+            <Image
+              resizeMode="stretch"
+              style={styles.image}
+              source={Img6}
             />
           </View>
           

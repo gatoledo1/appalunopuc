@@ -27,7 +27,12 @@
       "bundleIdentifier": "com.puccampinas.appaluno"
     },
     "android": {
-      "package": "com.puccampinas.appaluno"
+      "package": "com.puccampinas.appaluno",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAfvkgR-RyZxVtZn5perEEHf5fvEN74rMU"
+        }
+      }
     }
   }
 }
