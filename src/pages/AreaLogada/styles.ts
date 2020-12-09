@@ -1,10 +1,9 @@
 import { StyleSheet } from 'react-native';
-import Colors from "../cores-global";
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.azulBack,
+        backgroundColor: '#f1f6ff',
     },
     backgroungLogin: {
         flex: 1,
@@ -25,7 +24,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         paddingHorizontal: 60,
         paddingBottom: 40,
-        color: Colors.azulPrimary,
+        color: '#367DFF',
         textAlign: 'center',
     },
     content: {
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
     },
     button: { 
         height: 24, 
-        backgroundColor: Colors.azulPrimary, 
+        backgroundColor: '#367DFF', 
         borderRadius: 25, 
         paddingVertical: 24, 
         paddingHorizontal: 60,
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     label: { 
-        color: Colors.azulPrimary,
+        color: '#367DFF',
         fontFamily: 'Poppins_400Regular',
     },
     input: { 
@@ -73,7 +72,7 @@ const styles = StyleSheet.create({
     fontSize: 18, 
     justifyContent: 'center', 
     paddingHorizontal: 16, 
-    borderBottomColor: Colors.azulShadow,
+    borderBottomColor: '#367DFF',
     borderBottomWidth: 1,
     width: '93%'
     },

@@ -30,9 +30,10 @@ const styles = StyleSheet.create({
         marginBottom: 40,
         marginTop: 10,
         marginLeft: 20,
+        textTransform: 'capitalize',
     },
     imgHeader: {
-        width: 90,
+        width: 120,
     },
     arrowHeader: {
         height: 30,

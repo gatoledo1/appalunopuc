@@ -22,7 +22,7 @@ export default function App() {
     return (
       <NavigationContainer>
         <StatusBar style="light" />
-          <AuthProvider>
+          <AuthProvider> 
             <Routes />
           </AuthProvider>
       </NavigationContainer>

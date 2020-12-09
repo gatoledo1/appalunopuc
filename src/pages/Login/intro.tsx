@@ -11,14 +11,14 @@ import AuthContext from '../../Contexts/auth';
 const data: PaperOnboardingItemType[] = [
     {
         title: 'Bem-vindo',
-        description: 'Em comemoração aos 80 anos de PUC-Campinas, criamos um novo app para os alunos que trás novos recursos e uma interface renovada, muito mais intuitiva. 😄',
+        description: 'Em comemoração aos 80 anos de PUC-Campinas, criamos um novo app para os alunos que apresenta novos recursos e uma interface renovada, muito mais intuitiva. 😄',
         backgroundColor: '#ffb207',
         image: () => <Image source={logoLogin} style={{height: 130, resizeMode: 'contain'}} />,
         icon: () => <Feather name="info" size={30} color="#ffc107" />,
     },
     {
         title: 'Novos recursos',
-        description: 'Receba notificações e veja informações das aulas, mensagens da coordenação, mapa de sala e muito mais. Disponibilizamos também, o modo escuro para maior acessibilidade.',
+        description: 'Receba notificações e veja informações das aulas, mensagens, mapa de sala e muito mais. Disponibilizamos também o modo escuro para mais acessibilidade.',
         backgroundColor: '#1b69f8',
         image: () => <Image source={recursos} style={{height: 250, resizeMode: 'contain'}} />,
         icon: () => <Feather name="check-circle" size={30} color="#1b69f8" />,

@@ -8,7 +8,7 @@ import { Feather } from '@expo/vector-icons';
 import styles from './styles';
 
 import backLogin from '../../assets/images/back-login.png';
-import logoLogin from '../../assets/images/logo-login.png';
+import logoLogin from '../../assets/images/80anos_puc-unido.png';
 import loginImg from '../../assets/images/login.png';
 import AsyncStorage from '@react-native-community/async-storage';
 import base64 from 'react-native-base64';
@@ -76,14 +76,14 @@ const Login: React.FC = () => {
             }
          }
          catch (error) {
-            console.log("Desmontado");
+            //console.log("Desmontado");
          }
 
     }
 
     return (
         <View style={styles.container} >
-          <StatusBar style="dark" />
+          
             <ImageBackground source={backLogin} style={styles.backgroungLogin}>
                 <View style={styles.imgCover}>
                     <Image source={logoLogin} style={styles.banner} />

@@ -6,7 +6,7 @@ import styles from './styles';
 import { Feather } from '@expo/vector-icons'; 
 import backIcon from '../../assets/images/icons/arrow.png';
 import headerBackground from '../../assets/images/back-header.png';
-import LogoImg from '../../assets/images/header-puc-campinas.png';
+import LogoImg from '../../assets/images/PUC-80anos_logo-unido.png';
 import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../../Contexts/auth';
 
@@ -42,8 +42,8 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, backColor, headerRight, 
         }else{
             return (
                 <BorderlessButton onPress={hundleSignOut} style={{flexDirection: 'row'}}>
-                    <Feather name="log-out" size={22} color="#dadada" />
-                    <Text style={{fontFamily: 'Poppins_400Regular', color: '#dadada',fontSize: 15, paddingLeft: 5}}>
+                    <Feather name="log-out" size={22} color="rgba(255, 255, 255, 0.6)" />
+                    <Text style={{fontFamily: 'Poppins_400Regular', color: 'rgba(255, 255, 255, 0.6)',fontSize: 15, paddingLeft: 5}}>
                         Sair
                     </Text>
                 </BorderlessButton>

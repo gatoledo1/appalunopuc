@@ -88,7 +88,7 @@ export const Button = styled(RectButton)`
 
 export const ButtonText = styled.Text`
     font-family: 'Poppins_400Regular'; 
-    color: #FFF;
+    color: ${props => props.theme.colors.azulPrimary};
     font-size: 18px;
     justify-content: center;
 `;
@@ -106,7 +106,7 @@ export const ButtonLocation = styled(RectButton)`
 
 export const ButtonTextLocation = styled.Text`
     font-family: 'Poppins_400Regular'; 
-    color: #FFF;
+    color: ${props => props.theme.colors.azulPrimary};
     font-size: 16px;
     justify-content: center;
 `;

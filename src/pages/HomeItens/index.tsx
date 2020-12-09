@@ -162,7 +162,7 @@ function HomeItens() {
                         <Card>
                             <Icon source={paper} />
                             <TextCard>
-                                Comunicados e Notícias
+                                Notícias PUC-Campinas
                             </TextCard>
                         </Card>
                     </Links>

@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Image, Text, Linking } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import { Linking } from 'react-native';
 
-import styles from './styles';
+import { Container, HeaderText, Title, LinhaFina, Resumo, Footer, FavoriteButton, 
+    Favorited, ButtonsContainer, ButtonLerMais, ButtonText } from './styles';
 import heartIcon from '../../assets/images/icons/heart-outline.png';
 import unfavoriteIcon from '../../assets/images/icons/unfavorite.png';
 import symbolPUC from '../../assets/images/symbol-logo-puc.png';
@@ -16,36 +16,36 @@ interface CardsComunicadosProps {
 
 const CardsComunicados: React.FC<CardsComunicadosProps> = ({ title, subject, bodyText, link }) => {
     return (
-        <View style={styles.container}>
+        <Container>
 
-                <View style={styles.profileInfo}>
-                    <Text style={styles.title}>{ title }</Text>
-                    <Text style={styles.subject}>{  subject }</Text>
-                </View>
+                <HeaderText>
+                    <Title>{ title }</Title>
+                    <LinhaFina>{  subject }</LinhaFina>
+                </HeaderText>
 
 
-                <Text style={styles.bio}>
+                <Resumo>
                     { bodyText }
-                </Text> 
+                </Resumo> 
 
-            <View style={styles.footer}>
-                <View style={styles.buttonsContainer}>
+            <Footer>
+                <ButtonsContainer>
                    {/* <RectButton style={[styles.favoriteButton, styles.favorited]}>
                         <Image source={heartIcon} /> 
                         <Image source={unfavoriteIcon} />           
                     </RectButton> */}
 
-                    <RectButton style={styles.contactButton}
+                    <ButtonLerMais
                     onPress={() => {
                         Linking.openURL(
                           link
                         );
                     }}>
-                        <Text style={styles.contactButtonText}> Ler mais</Text>                      
-                    </RectButton>
-                </View>
-            </View>
-        </View>
+                        <ButtonText> Ler mais</ButtonText>                      
+                    </ButtonLerMais>
+                </ButtonsContainer>
+            </Footer>
+        </Container>
     );
 }
 

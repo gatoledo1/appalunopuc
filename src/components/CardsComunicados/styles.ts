@@ -1,109 +1,79 @@
-import { StyleSheet } from 'react-native';
-import Colors from "../../pages/cores-global";
+import { RectButton } from 'react-native-gesture-handler';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#fff', 
-        borderWidth: 1, 
-        borderColor: '#e6e6f0',
-        borderRadius: 12, 
-        marginBottom: 25, 
-        overflow: 'hidden',
-    },
-    profile: { 
-        flexDirection: 'row', 
-        alignItems: 'center', 
-        padding: 24, 
-        width: '100%',
-    },
-    imgProfile: {
-        padding: 12,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 12,
-        elevation: 6,
-        borderRadius: 25,
-        backgroundColor: '#F7FAFF',
-    },
-    avatar: { 
-        width: 42, 
-        height: 42, 
-    },
-    profileInfo: {
-        alignItems: 'center', 
-        padding: 24, 
-        width: '100%',
-    },
-    title: {
-        fontFamily: 'Poppins_600SemiBold',
-        color: '#32264d',
-        fontSize: 18,
-    },
-    subject: {
-        fontFamily: 'Poppins_400Regular',
-        color: '#6a6180',
-        fontSize: 12,
-        maxWidth: '100%'
-    },
-    bio: {
-        fontFamily: 'Poppins_400Regular',
-        color: '#6a6180',
-        fontSize: 13,
-        marginHorizontal: 24,
-        lineHeight: 27,
-        textAlign: 'left',
-    },
-    footer: {
-        paddingHorizontal: 24,
-        paddingBottom: 32, 
-        alignItems: 'stretch',
-        marginTop: 22,
-    }, 
+export const Container = styled.View`
+    background-color: ${props => props.theme.colors.cardsTable};
+    border-radius: 12px;
+    margin-bottom: 25px; 
+    overflow: hidden;
+`;
 
-    buttonsContainer: {
-        flexDirection: 'row', 
-        justifyContent: 'space-between'
-    },
-    favoriteButton: {
-        backgroundColor: Colors.vermelho,
-        width: 42, 
-        height: 42, 
-        borderRadius: 25, 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-    },
-    favorited: {
-        backgroundColor: Colors.vermelho,
-    },
-    
-    contactButton: {
-        backgroundColor: '#FFC300', 
-        width: 130,
-        height: 42, 
-        borderRadius: 25, 
-        flexDirection: 'row', 
-        justifyContent: 'center', 
-        alignItems: 'center',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 12,
-        elevation: 4,
-    },
-    contactButtonText: {
-        color: '#fff',
-        fontFamily: 'Poppins_600SemiBold', 
-        fontSize: 16, 
-    }, 
+export const HeaderText = styled.View`
+    align-items: center;
+    padding: 24px; 
+    width: 100%;
+`;
+
+export const Title = styled.Text`
+    font-family: 'Poppins_600SemiBold';
+    color: ${props => props.theme.colors.cinzaText};
+    font-size: 18px;
+`;
+
+export const LinhaFina = styled.Text`
+    font-family: 'Poppins_400Regular';
+    color: ${props => props.theme.colors.cinzaText};
+    font-size: 12px;
+    max-width: 100%;
+`;
+
+export const Resumo = styled.Text`
+    font-family: 'Poppins_400Regular';
+    color: ${props => props.theme.colors.cinzaText};
+    font-size: 13px;
+    margin-horizontal: 24px;
+    line-height: 27px;
+    text-align: left;
+`;
+
+export const Footer = styled.View`
+    padding-horizontal: 24px;
+    padding-bottom: 32px; 
+    align-items: stretch;
+    margin-top: 22px;
+`;
+
+export const ButtonsContainer = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+export const FavoriteButton = styled.View`
+    background-color: ${props => props.theme.colors.cinzaText};
+    width: 42px; 
+    height: 42px;
+    border-radius: 25px;
+    justify-content: center; 
+    align-items: center;
+`;
+
+export const Favorited = styled.View`
+    background-color: ${props => props.theme.colors.vermelho};
+`;
 
 
-});
+export const ButtonLerMais = styled(RectButton)`
+    background-color: rgba(244, 187, 0, 0.14);
+    width: 130px;
+    height: 42px;
+    border-radius: 25px; 
+    flex-direction: row; 
+    justify-content: center; 
+    align-items: center;
+`;
 
-export default styles;
+export const ButtonText = styled.Text`
+    color: #FFC300;
+    font-family: 'Poppins_600SemiBold'; 
+    font-size: 16px;
+`;

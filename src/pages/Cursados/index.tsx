@@ -1,10 +1,12 @@
-import React, {Component, useState, useContext, useEffect} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { View, Text, ScrollView, Animated, Easing, ActivityIndicator } from 'react-native';
-import styles from './styles';
 import PageHeader from '../../components/PageHeader';
 import DisciplinasCursadas from '../../components/DisciplinasCursadas';
 import AuthContext from '../../Contexts/auth';
+import { ThemeContext } from 'styled-components';
 import { EnviaDisciplinasCursadas } from '../../Services/disciplinasCursadas';
+import {Container, Card, Footer, FooterText } from './styles';
+import { StatusBar } from 'expo-status-bar';
 
 function Cursados() {
 
@@ -12,6 +14,7 @@ function Cursados() {
     const [listaDisciplinas, setListaDisciplinas] = useState([]);
     const {authToken} = useContext(AuthContext);
     const [load, setLoad] = useState(true);
+    const { colors } = useContext(ThemeContext);
     
 
     useEffect(() => {
@@ -52,7 +55,7 @@ function Cursados() {
     Animated.timing(
         animaTop,
         {
-            toValue: -80,
+            toValue: -90,
             duration: 800,
             easing: Easing.bezier(0.33, 1, 0.68, 1),
             useNativeDriver: false
@@ -60,8 +63,9 @@ function Cursados() {
     ).start();
 
     return (
-        <View style={styles.container}>
-            <PageHeader title="Disciplinas Cursadas" backColor="#767676"></PageHeader>
+        <Container>
+            <StatusBar style="light" />
+            <PageHeader title="Disciplinas Cursadas" backColor={colors.headerCinza}></PageHeader>
             
             <Animated.ScrollView style={{ marginTop: animaTop }}
                 contentContainerStyle={{
@@ -70,22 +74,22 @@ function Cursados() {
                 }}
             >
                     
-                <View style={styles.card}>
-                    <ActivityIndicator animating={load} size="large" color="#367DFF" style={styles.activityIndicator} />    
+                <Card>
+                    <ActivityIndicator animating={load} size="large" color="#367DFF" style={{position: 'absolute',right: 0,left: 0,}} />    
                         
                         <Disciplinas />
 
-                </View>
+                </Card>
                 
-                <View style={styles.footer}>
-                    <Text style={styles.footerText}>
+                <Footer>
+                    <FooterText>
                         PUC-CAMPINAS
-                    </Text>
-                </View>
+                    </FooterText>
+                </Footer>
 
             </Animated.ScrollView>
             
-        </View>
+        </Container>
     );
 }
 

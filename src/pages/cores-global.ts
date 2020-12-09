@@ -8,5 +8,3 @@ export default {
     vermelho: '#F12020',
     cinzaText: '#767676',
   };
-
-  

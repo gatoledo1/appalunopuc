@@ -1,20 +1,22 @@
-import React, {useState, useEffect} from 'react';
-import { View, ScrollView, Animated, Easing, ActivityIndicator } from 'react-native';
-import styles from './styles';
+import React, {useState, useEffect, useContext} from 'react';
+import { View, ScrollView, Animated, Easing, ActivityIndicator, Linking } from 'react-native';
+import { Container, Card, ButtonMaisNoticias, ButtonTextMaisNoticias, Footer, FooterText } from './styles';
 import PageHeader from '../../components/PageHeader';
 import CardsComunicados from '../../components/CardsComunicados';
 import * as rssParser from 'react-native-rss-parser';
+import { ThemeContext } from 'styled-components';
 
 
 function ComunicadosNoticias() {
     const [feedPortal, setFeedPortal] = useState([])
     const [load, setLoad] = useState(true);
+    const { colors } = useContext(ThemeContext);
 
     useEffect(() => {
 
         async function getRSSFeed(){
             
-            const feed = await fetch('https://www.puc-campinas.edu.br/filtro/acontece-home/feed/')
+            const feed = await fetch('https://www.puc-campinas.edu.br/sobre/noticias-home/feed/')
     
             const response = await feed.text()
             const responseData = await rssParser.parse(response)
@@ -27,18 +29,19 @@ function ComunicadosNoticias() {
         getRSSFeed()
 
     }, []);
+    
 
    function FeedNewsPortalPUC(){
         return(
-            <View>
+            <Card>
                 {
                     feedPortal.map((Info, index) => (
                         <CardsComunicados key={index} title={Info.title} subject={Info.description} 
-                        bodyText={Info.content.replace(/(<([^>]+)>)/gi, '').replace(/(^\s+|\s+$)/g, '').substring(0, 240) + " . . . leia mais"} 
+                        bodyText={Info.content.replace(/(<([^>]+)>)/gi, '').replace(/(^\s+|\s+$)/g, '').substring(0, 240) + "  . . . leia mais"} 
                         link={Info.id}
                     />))
                 }
-            </View>
+            </Card>
                   
         );
     }
@@ -57,8 +60,8 @@ function ComunicadosNoticias() {
     ).start();
 
     return (
-        <View style={styles.container}>
-            <PageHeader title="Notícias e Comunicados" backColor="#ca1313"></PageHeader>
+        <Container>
+            <PageHeader title="Notícias PUC-Campinas" backColor={colors.headerVermelho}></PageHeader>
             
             <Animated.ScrollView style={{ marginTop: animaTop }}
                 contentContainerStyle={{
@@ -67,11 +70,26 @@ function ComunicadosNoticias() {
                 }}
             >
                 <FeedNewsPortalPUC />
-                <ActivityIndicator animating={load} size="large" color="#367DFF" style={styles.activityIndicator} />
+                <ActivityIndicator animating={load} size="large" color="#367DFF" />
+
+                <ButtonMaisNoticias onPress={() => {
+                    Linking.openURL(
+                    'https://www.puc-campinas.edu.br/sobre/noticias-home/'
+                    );
+                }}>
+                    <ButtonTextMaisNoticias>Acessar mais notícias</ButtonTextMaisNoticias>
+                
+                </ButtonMaisNoticias>
+
+                <Footer>
+                    <FooterText>
+                        PUC-CAMPINAS
+                    </FooterText>
+                </Footer>
 
             </Animated.ScrollView>
             
-        </View>
+        </Container>
     );
 }
 

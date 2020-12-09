@@ -1,7 +1,7 @@
-import React, {constructor, useState} from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import { useColorScheme } from 'react-native-appearance';
 
-import styles from './styles';
+import {Container, Ano, Condicao, Title, Footer, Horas} from './styles';
 
 
 interface DisciplinasCursadasProps {
@@ -15,15 +15,16 @@ interface DisciplinasCursadasProps {
 
 const DisciplinasCursadas: React.FC<DisciplinasCursadasProps> = ({ codCurso, nome, media, decSitcli, cargaHoraria, ano }) => {
 
+    const scheme = useColorScheme();
     
     return (
-        <View style={styles.container}>
+        <Container>
             
-            <Text style={styles.ano}>{ ano }</Text>
-            <Text style={styles.title}>{ nome }</Text>
-            <Text style={styles.condicao}>{ [media, " - ", decSitcli] }</Text>
-            <Text style={styles.horas}>{ [codCurso, " - ", cargaHoraria ] }</Text>  
-        </View>
+            <Ano>{ ano }</Ano>
+            <Title>{ nome }</Title>
+            <Condicao>{ [media, " - ", decSitcli] }</Condicao>
+            <Horas style={{borderBottomWidth: 1, borderColor: scheme === 'dark' ? '#496391' : '#e7f0ff'}}>{ [codCurso, " - ", cargaHoraria ] }</Horas>  
+        </Container>
     );
 }
 

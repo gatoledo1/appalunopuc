@@ -10,7 +10,8 @@ import pessoaMarker from '../../assets/images/icons/marker-pessoa.png';
 //import backIconBlue from '../../assets/images/icons/arrow-blue.png';
 import AsyncStorage from '@react-native-community/async-storage';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { Container, ContainerTable, ContainerMap, Head, Cards, TableHead, TableHead2, ModalHeader, InfoMap, Button, ButtonText, ButtonLocation, ButtonTextLocation, Footer, FooterText, ArrowRotate } from './styles';
+import { Container, ContainerTable, ContainerMap, Head, Cards, TableHead, TableHead2, ModalHeader, 
+    InfoMap, Button, ButtonText, ButtonLocation, ButtonTextLocation, Footer, FooterText, ArrowRotate } from './styles';
 import { ThemeContext } from 'styled-components';
 import AuthContext from '../../Contexts/auth';
 import { Modalize } from 'react-native-modalize';
