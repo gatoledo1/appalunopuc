@@ -22,7 +22,9 @@ export default function PWDAreaLogada({ route }) {
 
     useEffect(() => {
 
+      if(authTokenAreaLogada == '' || authTokenAreaLogada == undefined || authTokenAreaLogada == null){
         tokenAreaLogada(authToken);
+      }
 
     }, []);
 

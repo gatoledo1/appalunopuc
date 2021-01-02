@@ -44,7 +44,7 @@ function CentralAtendimento({ navigation }) {
                     paddingBottom: 16,
                 }}
             >
-                <CardItem onPress={() => { hundleNavigateAreaLogada('https://wl.sis.puc-campinas.edu.br/sistemas/puc/academico/CAA') }}>
+                <CardItem onPress={() => { hundleNavigateAreaLogada('https://wl.sis.puc-campinas.edu.br/sistemas/puc/academico/CAA/Modulos/Protocolo/Historico.aspx') }}>
                     <View>
                         <Icon>
                             <Feather name="package" size={24} color="#2CC272" />

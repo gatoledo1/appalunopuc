@@ -1,5 +1,3 @@
-import light from "./light";
-
 export default {
   title: 'dark',
 
@@ -7,7 +5,8 @@ export default {
     headerAzul: '#0c2d92',
     headerVerde: '#005c40',
     headerVermelho: '#690000',
-    headerAmarelo: '#382970',
+    headerAmarelo: 'rgba(242, 191, 28, 0.4)',
+    headerRoxo: '#382970',
     headerCinza: '#444',
     cardsTable: '#232D3E',
     azulPrimary: '#94BAFF',

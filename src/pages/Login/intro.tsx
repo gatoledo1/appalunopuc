@@ -43,7 +43,7 @@ const Slider: React.FC = () => {
     | Então a função introOuLogin() é chamada para que ela set um novo valor no estado "introLogin", assim mudando a rota de login  |
     ===============================================================================================================================*/
 
-        AsyncStorage.setItem('teste6', 'ok');
+        AsyncStorage.setItem('intro', 'ok');
 
         introOuLogin();
 

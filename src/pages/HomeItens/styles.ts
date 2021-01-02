@@ -19,8 +19,7 @@ export const TitleChildren = styled.Text`
 export const Row = styled.View`
     width: 100%;
     flex-direction: row;
-    padding-horizontal: 32px;
-    padding-vertical: 15px;
+    padding: 5px 32px 15px 32px;
     align-items: center;
     justify-content: space-between;
 `;
@@ -83,13 +82,16 @@ export const FooterText = styled.Text`
 
 export const Logout = styled(RectButton)`
     height: 45px;
+    width: 180px;
     justify-content: center;
+    margin: 25px auto 32px;
     align-items: center;
-    margin-bottom: 25px; 
+    background-color: rgba(248, 22, 41, 0.07);
+    border-radius: 22px;
 `;
 
 export const LoguotText = styled.Text`
-    margin-vertical: 15px;
+    margin-vertical: 18px;
     color: ${props => props.theme.colors.vermelho};
     font-family: 'Poppins_400Regular';
     font-size: 14px;

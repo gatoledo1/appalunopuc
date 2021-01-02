@@ -9,6 +9,7 @@ import Cursados from '../pages/Cursados';
 import NotifyTabs from './NotifyTabs';
 import AreaFinanceira from '../pages/AreaFinanceira';
 import CentralAtendimento from '../pages/CentralAtendimento';
+import LocaisPUC from '../pages/LocaisPUC';
 
 const AppStack = createStackNavigator();
 
@@ -25,6 +26,7 @@ const AppRoutes: React.FC = () => (
         <AppStack.Screen name="NotifyTabs" component={NotifyTabs} />
         {/*<AppStack.Screen name="AreaFinanceira" component={AreaFinanceira} /> */}
         <AppStack.Screen name="CentralAtendimento" component={CentralAtendimento} />
+        <AppStack.Screen name="LocaisPUC" component={LocaisPUC} />
     </AppStack.Navigator>
 );
 

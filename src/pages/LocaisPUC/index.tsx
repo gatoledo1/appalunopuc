@@ -1,17 +1,16 @@
-import React, {useState, useEffect, useContext, useRef} from 'react';
+import React, {ReactNode, useState, useEffect, useContext, useRef} from 'react';
 import { Animated, Easing, ActivityIndicator, StyleSheet, Text, Alert } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import PageHeader from '../../components/PageHeader';
-import TableDisciplinas from '../../components/TableDisciplinas';
-//import TableHorarios from '../../components/TableHorarios';
+import ImagemCards from '../../components/LocaisPucImg';
 import backIcon from '../../assets/images/icons/arrow.png';
 import mapMarker from '../../assets/images/icons/marker-puc.png';
 import pessoaMarker from '../../assets/images/icons/marker-pessoa.png';
-//import backIconBlue from '../../assets/images/icons/arrow-blue.png';
-import AsyncStorage from '@react-native-community/async-storage';
+import back from '../../assets/images/icons/back.png';
+//import AsyncStorage from '@react-native-community/async-storage';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { Container, ContainerTable, ContainerMap, Head, Cards, TableHead, TableHead2, ModalHeader, 
-    InfoMap, Button, ButtonText, ButtonLocation, ButtonTextLocation, Footer, FooterText, ArrowRotate } from './styles';
+    InfoMap, TitleChildren, ButtonLocation, ButtonTextLocation, Footer, FooterText, ArrowRotate } from './styles';
 import { ThemeContext } from 'styled-components';
 import AuthContext from '../../Contexts/auth';
 import { Modalize } from 'react-native-modalize';
@@ -20,26 +19,23 @@ import { useColorScheme } from 'react-native-appearance';
 
 import styleMap from './styleMap';
 
-interface ArrayGradeItens {
-    [index: number]: string;
-    codigoDisciplina: string;
-    nomeDisciplina: string;
-    codCurso: string;
-    predio: string;
-    turno: string;
-    sala: string;
-    aulasDadas: string;
-    turma: string;
-    professor: string;
-    latitude: string;
-    longitude: string;
-  }
+
+  let imagensCampi  = new Array();
+  let imagensCampi2 = new Array();
+
+  imagensCampi = [
+    { id: 1, nome: 'Auditório Cardeal Agnelo Rossiss Cardoso', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/auditorio-agnelo.jpg') },
+    { id: 2, nome: 'Capela do CCHSA', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/capela-cchsa.jpg') }
+  ];
+
+  imagensCampi2 = [
+    { id: 1, nome: 'Auditório Dom Gilberto', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/CampusII_01.jpg') },
+    { id: 2, nome: 'Auditório Dom Gilberto', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/CampusII_04.jpg') }
+  ];
 
 
-function GradeCompleta({ navigation }) {
+function LocaisPUC() {
 
-    const [listaDisciplinas, setListaDisciplinas] = useState(new Array<ArrayGradeItens>());
-    const [load, setLoad] = useState(true);
     const [latitudePessoa, setlatitudePessoa] = useState<number>(0);
     const [longitudePessoa, setlongitudePessoa] = useState<number>(0);
 
@@ -49,41 +45,27 @@ function GradeCompleta({ navigation }) {
 
     let timeout = useRef();
 
-    function hundleNavigateAreaLogada(link:string) {
-        navigation.navigate('PWDAreaLogada', {
-            returnUrl: link
-        });
-    }
-    
-    useEffect(() => {
 
-        objGradeCompleta();
-
-    }, []);
-    
-    async function objGradeCompleta(){
-
-        let arrayGradeCompleta = []
-        
-        const stringGradeSemanal = await AsyncStorage.getItem('gradeSemanal');
-
-            arrayGradeCompleta = await JSON.parse(stringGradeSemanal)
-
-            setListaDisciplinas(arrayGradeCompleta);
-
-            setLoad(false)
-
-    }
-
-    function TableDisciplinasWrapper(){
+    function ImagemScroll(){
 
         return(
             <Cards>
                 {
-                    listaDisciplinas.map((Info, index) => (
-                        <TableDisciplinas key={index} codigoDisciplina={Info.codigoDisciplina} nomeDisciplina={Info.nomeDisciplina}
-                        codCurso={Info.codCurso} turno={Info.turno} predio={Info.predio} sala={Info.sala} aulasDadas={Info.aulasDadas}
-                        professor={Info.professor} turma={Info.turma} latitude={Info.latitude} longitude={Info.longitude}
+                    imagensCampi.map((Info, index) => (
+                        <ImagemCards key={index} id={Info.id} imagem={Info.imagem} nome={Info.nome} latitude={Info.latitude} longitude={Info.longitude}
+                    />))
+                }
+            </Cards>
+        )
+    }
+
+    function ImagemScroll2(){
+
+        return(
+            <Cards>
+                {
+                    imagensCampi2.map((Info, index) => (
+                        <ImagemCards key={index} id={Info.id} imagem={Info.imagem} nome={Info.nome} latitude={Info.latitude} longitude={Info.longitude}
                     />))
                 }
             </Cards>
@@ -123,7 +105,7 @@ function GradeCompleta({ navigation }) {
     Animated.timing(
         animaTop,
         {
-            toValue: -100,
+            toValue: -60,
             duration: 800,
             easing: Easing.bezier(0.33, 1, 0.68, 1),
             useNativeDriver: false
@@ -133,7 +115,9 @@ function GradeCompleta({ navigation }) {
 
     return (
         <Container>
-            <PageHeader title="Disciplinas" backColor={colors.headerVerde}></PageHeader>
+            <PageHeader title="Espaços PUC-Campinas" backColor={colors.headerRoxo}>
+                <TitleChildren>Toque na imagem para visualizar o local no mapa</TitleChildren>
+            </PageHeader>
    
             <Animated.ScrollView style={{ marginTop: animaTop }}
                 contentContainerStyle={{
@@ -141,7 +125,7 @@ function GradeCompleta({ navigation }) {
                 }}
             >
                 <Head>
-                    <TableHead> Navegue entre os itens </TableHead>
+                    <TableHead> Campus I </TableHead>
                     <ArrowRotate source={backIcon}/>
                 </Head>
                 
@@ -149,25 +133,28 @@ function GradeCompleta({ navigation }) {
                 
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 
-                        <TableDisciplinasWrapper />
+                        <ImagemScroll />
             
                     </ScrollView>
-
-                    <ActivityIndicator animating={load} size="large" color="#367DFF" />
                
                 </ContainerTable>
 
-                <TableHead2 style={{paddingTop: 0}}>Toque na disciplina para visualizar o local da sua sala de aula no mapa</TableHead2>
-              
-                <TableHead2 style={{borderTopWidth: 1, borderColor: scheme === 'dark' ? '#002871' : '#B6CEFF'}}>Para mais informações de sua grade, inclusive sobre Práticas de Formação, acesse a Área Logada.</TableHead2>
+                <Head>
+                    <TableHead2> Campus II </TableHead2>
+                    <ArrowRotate source={back}/>
+                </Head>
+                
+                <ContainerTable>
+                
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 
-                <Button onPress={() => {
-                    hundleNavigateAreaLogada('https://arealogada.sis.puc-campinas.edu.br/wl/websist/academico/grade_disciplinas/index.asp')
-                }}>
-                    <ButtonText>Acessar Área Logada</ButtonText>
-                </Button>
+                        <ImagemScroll2 />
+            
+                    </ScrollView>
+               
+                </ContainerTable>
 
-
+                
                 <Footer>
                     <FooterText>PUC-CAMPINAS</FooterText>
                 </Footer>
@@ -229,4 +216,4 @@ function GradeCompleta({ navigation }) {
     );
 }
 
-export default GradeCompleta;
+export default LocaisPUC;

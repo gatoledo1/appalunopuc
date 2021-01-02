@@ -22,7 +22,7 @@
     "@types/react-native-table-component": "^1.2.0",
     "@types/styled-components": "^5.1.4",
     "base-64": "^0.1.0",
-    "expo": "^39.0.0",
+    "expo": "^39.0.5",
     "expo-asset": "~8.2.0",
     "expo-cli": "^4.0.4",
     "expo-font": "~8.3.0",

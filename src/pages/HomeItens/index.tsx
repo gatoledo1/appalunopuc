@@ -22,6 +22,8 @@ import cap from '../../assets/images/icons/hat-alt.png';
 import paper from '../../assets/images/icons/paper.png';
 import calendar from '../../assets/images/icons/ui-calendar.png';
 import caa from '../../assets/images/icons/caa-help.png';
+import eventos from '../../assets/images/icons/eventos.png';
+import espacosPUC from '../../assets/images/icons/espacos-puc.png';
 
 import { Container, TitleChildren, Row, Badge, Links, Card, Icon, TextCard, Footer, FooterText, Logout, LoguotText } from './styles';
 
@@ -64,6 +66,9 @@ function HomeItens() {
     }
     function hundleNavigateCentralAtendimento() {
         navigate('CentralAtendimento');
+    }
+    function hundleNavigateLocais() {
+        navigate('LocaisPUC');
     }
 
 
@@ -108,6 +113,7 @@ function HomeItens() {
 
             <Animated.ScrollView style={{ marginTop: animaTop }}
                 scrollEventThrottle={16}
+                showsVerticalScrollIndicator ={false}
                 contentContainerStyle={{
                     paddingBottom: 16,
                 }}
@@ -142,7 +148,7 @@ function HomeItens() {
                         <Card>
                             <Icon source={gradeSemanalImg}/>
                             <TextCard>
-                                Grade Semanal
+                                Aulas da Semana
                             </TextCard>
                         </Card>
                     </Links>
@@ -151,7 +157,7 @@ function HomeItens() {
                         <Card>
                             <Icon source={gradeCompleta} />
                             <TextCard>
-                                Grade de Disciplinas
+                                Disciplinas
                             </TextCard>
                         </Card>
                     </Links>
@@ -172,6 +178,26 @@ function HomeItens() {
                             <Icon source={caa} />
                             <TextCard>
                                 Central de Atendimento ao Aluno
+                            </TextCard>
+                        </Card>
+                    </Links>
+                </Row>
+
+                <Row>
+                    <Links onPress={hundleNavigateLocais}>
+                        <Card>
+                            <Icon source={espacosPUC} />
+                            <TextCard>
+                                Espaços PUC
+                            </TextCard>
+                        </Card>
+                    </Links>
+
+                    <Links onPress={hundleNavigateCentralAtendimento}>
+                        <Card>
+                            <Icon source={eventos} />
+                            <TextCard>
+                                Eventos PUC
                             </TextCard>
                         </Card>
                     </Links>
@@ -226,13 +252,6 @@ function HomeItens() {
                     </Links>
                 </Row>
 
-
-                <Footer>
-                    <FooterText>
-                        PUC-CAMPINAS
-                    </FooterText>
-                </Footer>
-
                 <Logout onPress={hundleSignOut}>
                     <LoguotText>
                         Desconectar app
@@ -240,6 +259,12 @@ function HomeItens() {
                 </Logout>
 
                 <Carousel />
+
+                <Footer>
+                    <FooterText>
+                        PUC-CAMPINAS
+                    </FooterText>
+                </Footer>
 
             </Animated.ScrollView>
         </Container>

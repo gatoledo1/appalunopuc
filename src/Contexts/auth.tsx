@@ -4,6 +4,7 @@ import { EnviaGrade } from '../Services/gradeSemanal';
 import { RetornaTokenAreaLogada } from '../Services/tokenAreaLogada';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Modalize } from 'react-native-modalize';
+import { InfoMap } from '../pages/GradeCompleta/styles';
 
 
 interface AuthContextData {
@@ -83,9 +84,12 @@ export const AuthProvider: React.FC = ({ children }) => {
 
         const responsePessoa = await RetornaTokenAreaLogada(token);
  
-        const responseresponsePessoaJson = await responsePessoa.json();
- 
-        setAuthTokenAreaLogada(responseresponsePessoaJson.token);
+        const responsePessoaJson = await responsePessoa.json();
+
+        //Como o EndPoint retorna um array com o objeto, é necessario usar um Map() para setar o estado
+        responsePessoaJson.map((Info: { token: React.SetStateAction<string>; }) => {
+            setAuthTokenAreaLogada(Info.token);
+        });
  
     }
 
@@ -99,7 +103,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     async function introOuLogin() {
         
-        const intro = await AsyncStorage.getItem('teste6');
+        const intro = await AsyncStorage.getItem('intro');
 
         setIntroLogin(intro);  
     }

@@ -13,7 +13,7 @@ function GradeSemanal() {
     return (
         
         <Container>
-            <PageHeader title="Grade Semanal" backColor={colors.headerAmarelo}></PageHeader>
+            <PageHeader title="Aulas da Semana" backColor={colors.headerAmarelo}></PageHeader>
             
                 <TabViewScroll/>
 

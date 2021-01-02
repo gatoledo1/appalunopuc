@@ -19,13 +19,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: 'Poppins_400Regular',
     lineHeight: 20,
-    marginTop: 20
+    marginTop: 5
   },
 
   image: {
     width: '100%',
     flex: 1,
-    borderRadius: 12
+    borderRadius: 8
   },
 
 });

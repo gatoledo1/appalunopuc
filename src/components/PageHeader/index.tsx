@@ -68,7 +68,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, backColor, headerRight, 
             </View>
 
             
-            { children }
+            <Text style={styles.description}>{ children }</Text>
             
             </ImageBackground>
         </View>
