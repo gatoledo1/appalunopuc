@@ -11,7 +11,7 @@ import pessoaMarker from '../../assets/images/icons/marker-pessoa.png';
 import AsyncStorage from '@react-native-community/async-storage';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { Container, ContainerTable, ContainerMap, Head, Cards, TableHead, TableHead2, ModalHeader, 
-    InfoMap, Button, ButtonText, ButtonLocation, ButtonTextLocation, Footer, FooterText, ArrowRotate } from './styles';
+    InfoMap, Button, ButtonText, ButtonLocation, ButtonTextLocation, Footer, FooterText, ArrowRotate, CardEmpty, TextEmpty } from './styles';
 import { ThemeContext } from 'styled-components';
 import AuthContext from '../../Contexts/auth';
 import { Modalize } from 'react-native-modalize';
@@ -76,18 +76,31 @@ function GradeCompleta({ navigation }) {
     }
 
     function TableDisciplinasWrapper(){
+        
+        if (listaDisciplinas == ''){
 
-        return(
-            <Cards>
-                {
-                    listaDisciplinas.map((Info, index) => (
-                        <TableDisciplinas key={index} codigoDisciplina={Info.codigoDisciplina} nomeDisciplina={Info.nomeDisciplina}
-                        codCurso={Info.codCurso} turno={Info.turno} predio={Info.predio} sala={Info.sala} aulasDadas={Info.aulasDadas}
-                        professor={Info.professor} turma={Info.turma} latitude={Info.latitude} longitude={Info.longitude}
-                    />))
-                }
-            </Cards>
-        )
+            return(
+                <CardEmpty>
+                    <TextEmpty> Não há informações para listar no momento 😟</TextEmpty>
+                </CardEmpty>
+            );
+
+        }else{
+
+            return(
+                <Cards>
+                    {
+                        listaDisciplinas.map((Info, index) => (
+                            <TableDisciplinas key={index} codigoDisciplina={Info.codigoDisciplina} nomeDisciplina={Info.nomeDisciplina}
+                            codCurso={Info.codCurso} turno={Info.turno} predio={Info.predio} sala={Info.sala} aulasDadas={Info.aulasDadas}
+                            professor={Info.professor} turma={Info.turma} latitude={Info.latitude} longitude={Info.longitude}
+                        />))
+                    }
+                </Cards>
+            );
+
+        }
+       
     }
 
     async function localizacaoAluno(){

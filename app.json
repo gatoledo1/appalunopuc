@@ -9,7 +9,7 @@
       "ios",
       "android"
     ],
-    "orientation": "default",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
@@ -24,7 +24,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.puccampinas.appaluno"
+      "bundleIdentifier": "com.puccampinas.appaluno",
+      "config": {
+        "googleMapsApiKey": "AIzaSyAHAQvaW-1xr1yYNo_PwXjYDOuqZVnaSWc"
+      }
     },
     "android": {
       "package": "com.puccampinas.appaluno",

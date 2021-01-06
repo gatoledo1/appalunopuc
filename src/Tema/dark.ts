@@ -6,6 +6,7 @@ export default {
     headerVerde: '#005c40',
     headerVermelho: '#690000',
     headerAmarelo: 'rgba(242, 191, 28, 0.4)',
+    headerLaranja: 'rgba(254, 137, 8, 0.45)',
     headerRoxo: '#382970',
     headerCinza: '#444',
     cardsTable: '#232D3E',

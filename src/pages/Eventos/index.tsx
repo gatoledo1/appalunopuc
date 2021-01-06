@@ -16,7 +16,7 @@ function Eventos() {
 
         async function getRSSFeed(){
             
-            const feed = await fetch('https://www.puc-campinas.edu.br/sobre/noticias-home/feed/')
+            const feed = await fetch('https://www.puc-campinas.edu.br/?call_custom_simple_rss=1&csrp_posts_per_page=6&csrp_orderby=date&csrp_order=DESC')
     
             const response = await feed.text()
             const responseData = await rssParser.parse(response)
@@ -36,7 +36,7 @@ function Eventos() {
             <Card>
                 {
                     feedPortal.map((Info, index) => (
-                        <CardsComunicados key={index} title={Info.title} subject={Info.description} 
+                        <CardsComunicados key={index} title={Info.title}
                         bodyText={Info.content.replace(/(<([^>]+)>)/gi, '').replace(/(^\s+|\s+$)/g, '').substring(0, 240) + "  . . . leia mais"} 
                         link={Info.id}
                     />))
@@ -61,7 +61,7 @@ function Eventos() {
 
     return (
         <Container>
-            <PageHeader title="Notícias PUC-Campinas" backColor={colors.headerVermelho}></PageHeader>
+            <PageHeader title="Eventos PUC-Campinas" backColor={colors.headerLaranja}></PageHeader>
             
             <Animated.ScrollView style={{ marginTop: animaTop }}
                 contentContainerStyle={{
@@ -74,10 +74,10 @@ function Eventos() {
 
                 <ButtonMaisNoticias onPress={() => {
                     Linking.openURL(
-                    'https://www.puc-campinas.edu.br/sobre/noticias-home/'
+                    'https://www.puc-campinas.edu.br/eventos/'
                     );
                 }}>
-                    <ButtonTextMaisNoticias>Eventos anteriores</ButtonTextMaisNoticias>
+                    <ButtonTextMaisNoticias>Todos os eventos</ButtonTextMaisNoticias>
                 
                 </ButtonMaisNoticias>
 

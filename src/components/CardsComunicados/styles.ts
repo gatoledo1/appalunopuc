@@ -9,7 +9,6 @@ export const Container = styled.View`
 `;
 
 export const HeaderText = styled.View`
-    align-items: center;
     padding: 24px; 
     width: 100%;
 `;
@@ -63,7 +62,7 @@ export const Favorited = styled.View`
 
 
 export const ButtonLerMais = styled(RectButton)`
-    background-color: rgba(244, 187, 0, 0.14);
+    background-color: rgba(244, 187, 0, 0.2);
     width: 130px;
     height: 42px;
     border-radius: 25px; 

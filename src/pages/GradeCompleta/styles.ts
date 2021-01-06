@@ -36,6 +36,25 @@ export const Cards = styled.View`
     margin-bottom: 15px;
 `;
 
+export const CardEmpty = styled.View`
+    flex: 1;
+    background-color: ${props => props.theme.colors.cardsTable};
+    width: 300px;
+    height: 100px;
+    border-radius: 12px;
+    justify-content: center;
+    margin-horizontal: 15px;
+`;
+
+export const TextEmpty = styled.Text`
+    font-family: 'Poppins_400Regular';
+    color: ${props => props.theme.colors.cinzaText};
+    font-size: 13px;
+    padding-top: 30px;
+    margin-horizontal: 24px;
+    padding-bottom: 30px;
+`;
+
 export const TableHead = styled.Text`
     font-family: 'Poppins_400Regular';
     color: #fff;
@@ -77,10 +96,9 @@ export const Head = styled.View`
 `;
 
 export const Button = styled(RectButton)`
-    height: 24px;
+    height: 45px;
     background-color: ${props => props.theme.colors.azulPrimaryBtn};
     border-radius: 25px; 
-    padding: 24px; 
     align-items: center;
     justify-content: center;
     margin-horizontal: 30px;
@@ -94,11 +112,10 @@ export const ButtonText = styled.Text`
 `;
 
 export const ButtonLocation = styled(RectButton)`
-    height: 20px;
+    height: 45px;
     width: 250px;
     background-color: ${props => props.theme.colors.azulPrimaryBtn};
-    border-radius: 18px; 
-    padding-vertical: 20px;  
+    border-radius: 22px;  
     align-items: center;
     justify-content: center;
     margin: 25px auto 0px;

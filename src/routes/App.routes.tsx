@@ -10,6 +10,7 @@ import NotifyTabs from './NotifyTabs';
 import AreaFinanceira from '../pages/AreaFinanceira';
 import CentralAtendimento from '../pages/CentralAtendimento';
 import LocaisPUC from '../pages/LocaisPUC';
+import Eventos from '../pages/Eventos';
 
 const AppStack = createStackNavigator();
 
@@ -27,6 +28,7 @@ const AppRoutes: React.FC = () => (
         {/*<AppStack.Screen name="AreaFinanceira" component={AreaFinanceira} /> */}
         <AppStack.Screen name="CentralAtendimento" component={CentralAtendimento} />
         <AppStack.Screen name="LocaisPUC" component={LocaisPUC} />
+        <AppStack.Screen name="Eventos" component={Eventos} />
     </AppStack.Navigator>
 );
 

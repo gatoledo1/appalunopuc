@@ -9,7 +9,7 @@ import symbolPUC from '../../assets/images/symbol-logo-puc.png';
 
 interface CardsComunicadosProps {
     title: string;
-    subject: string;
+    subject?: string;
     bodyText: string;
     link: string;
 }
@@ -20,7 +20,7 @@ const CardsComunicados: React.FC<CardsComunicadosProps> = ({ title, subject, bod
 
                 <HeaderText>
                     <Title>{ title }</Title>
-                    <LinhaFina>{  subject }</LinhaFina>
+                    <LinhaFina>{ subject }</LinhaFina>
                 </HeaderText>
 
 

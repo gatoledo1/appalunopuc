@@ -24,8 +24,21 @@ import styleMap from './styleMap';
   let imagensCampi2 = new Array();
 
   imagensCampi = [
-    { id: 1, nome: 'Auditório Cardeal Agnelo Rossiss Cardoso', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/auditorio-agnelo.jpg') },
-    { id: 2, nome: 'Capela do CCHSA', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/capela-cchsa.jpg') }
+    { id: 1, nome: 'Auditório Cardeal Agnelo Rossi Cardoso', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/auditorio-agnelo.jpg') },
+    { id: 2, nome: 'Auditório Dom Gilberto', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/auditorio-dom-gilberto.jpg') },
+    { id: 3, nome: 'Biblioteca do CCHSA', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/biblioteca-cchsa.jpg') },
+    { id: 4, nome: 'Biblioteca Dom Airton', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/bilioteca-dom-airton.jpg') },
+    { id: 5, nome: 'Capela do CCHSA', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/capela-cchsa.jpg') },
+    { id: 6, nome: 'Capela Santo Tomás de Aquino', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/capela-santo-tomas-aquino.jpg') },
+    { id: 7, nome: 'Laboratório de fotografica', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/lab-fotografia.jpg') },
+    { id: 8, nome: 'Capela do CCHSA', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/lab-imagem-som.jpg') },
+    { id: 9, nome: 'Laboratório de informática bloco E', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/lab-info-bloco-e.jpg') },
+    { id: 10, nome: 'Laboratório de química CEATEC', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/lab-quimica-ceatec.jpg') },
+    { id: 11, nome: 'Mescla', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/mescla.jpg') },
+    { id: 12, nome: 'Piscina da Faculdade de Ed. Física', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/piscina-faef.jpg') },
+    { id: 13, nome: 'Praça de Alimentação CEATEC', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/praca-alimentacao-1.jpg') },
+    { id: 14, nome: 'Salão Ambiental', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/salao-ambiental.jpg') },
+    { id: 15, nome: 'Teatro - Sala 803', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/espacos-puc/campus1/teatro-sala-803.jpg') },
   ];
 
   imagensCampi2 = [
@@ -170,7 +183,7 @@ function LocaisPUC() {
                     </ModalHeader>
                 </Cards>
 
-                <InfoMap style={{position: 'absolute', top: 20, fontSize: 18, paddingBottom: 10, paddingTop: -6}}>Local da sala de aula</InfoMap>
+                <InfoMap style={{position: 'absolute', top: 20, fontSize: 18, paddingBottom: 10, paddingTop: -6}}>Localize o local</InfoMap>
                     
                 <ContainerMap style={{borderWidth: 1, borderColor: '#ccc'}}>
                     

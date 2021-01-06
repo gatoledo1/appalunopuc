@@ -91,7 +91,6 @@ export const Logout = styled(RectButton)`
 `;
 
 export const LoguotText = styled.Text`
-    margin-vertical: 18px;
     color: ${props => props.theme.colors.vermelho};
     font-family: 'Poppins_400Regular';
     font-size: 14px;

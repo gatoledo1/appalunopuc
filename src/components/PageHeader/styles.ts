@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         paddingTop: 40,
         paddingBottom: 40,
         paddingHorizontal: 20,
-        borderBottomRightRadius: 120,
+        borderBottomRightRadius: 80,
     },
     topBar: {
         flexDirection:'row',

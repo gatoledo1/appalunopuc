@@ -1,90 +1,92 @@
-import { StyleSheet } from 'react-native';
+import { RectButton, TouchableOpacity } from 'react-native-gesture-handler';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f1f6ff',
-    },
-    backgroungLogin: {
-        flex: 1,
-        width: '100%',
-        justifyContent: 'space-evenly',
-    },
-    titleChildren: {
-        fontFamily: 'Poppins_400Regular',
-        color: '#fff',
-        fontSize: 14,
-        lineHeight: 18,
-        marginBottom: 40,
-        marginTop: -30,
-        marginLeft: 20,
-    },
-    titleBold: {
-        fontFamily: 'Poppins_400Regular',
-        fontSize: 15,
-        paddingHorizontal: 60,
-        paddingBottom: 40,
-        color: '#367DFF',
-        textAlign: 'center',
-    },
-    content: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    biometria: {
-        flexDirection: 'row',
-        width: 210,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingVertical: 12,
-    },
-    button: { 
-        height: 24, 
-        backgroundColor: '#367DFF', 
-        borderRadius: 25, 
-        paddingVertical: 24, 
-        paddingHorizontal: 60,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 20,
-    }, 
+export const Container = styled.View`
+    flex: 1;
+    background-color: ${props => props.theme.colors.azulBack};
+`;
 
-    buttonText: { 
-        fontFamily: 'Poppins_400Regular', 
-        color: '#FFF',
-        fontSize: 18, 
-        justifyContent: 'center'
-    },
-    fingerText: { 
-        fontFamily: 'Poppins_400Regular', 
-        color: '#aaa',
-        fontSize: 14, 
-        justifyContent: 'center'
-    },
-    label: { 
-        color: '#367DFF',
-        fontFamily: 'Poppins_400Regular',
-    },
-    input: { 
-    height: 40, 
-    borderRadius: 8,
-    fontSize: 18, 
-    justifyContent: 'center', 
-    paddingHorizontal: 16, 
-    borderBottomColor: '#367DFF',
-    borderBottomWidth: 1,
-    width: '93%'
-    },
-    passwordContainer: {
-        flexDirection: 'row',
-        width: '70%'
-    },
-    iconEye: {
+export const Button = styled(RectButton)`
+    height: 45px;
+    width: 250px;
+    background-color: #367DFF;
+    border-radius: 22px; 
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto 0;
+`;
 
-        
-    },
+export const ButtonText = styled.Text`
+    font-family: 'Poppins_400Regular'; 
+    color: #fff;
+    font-size: 17px;
+    justify-content: center;
+`;
 
-});
+export const BackgroungLogin = styled.ImageBackground`
+    flex: 1;
+    width: 100%;
+    justifyContent: space-evenly;
+`;
 
-export default styles;
+export const TitleChildren = styled.Text`
+    font-family: 'Poppins_400Regular';
+    color: #fff;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 40px;
+    margin-top: -30px;
+    margin-left: 20px;
+`;
+
+export const Title = styled.Text`
+    font-family: 'Poppins_400Regular';
+    font-size: 15px;
+    padding: 0 60px 10px;
+    color: ${props => props.theme.colors.cinzaText};
+    text-align: center;
+`;
+
+export const Content = styled.View`
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const Biometria = styled.TouchableOpacity`
+    flex-direction: row;
+    width: 210px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+`;
+
+export const FingerText = styled.Text`
+    font-family: 'Poppins_400Regular';
+    font-size: 14px;
+    color: ${props => props.theme.colors.cinzaText};
+    justify-content: center;
+`;
+
+export const Label = styled.Text`
+    font-family: 'Poppins_400Regular';
+    font-size: 14px;
+    color: ${props => props.theme.colors.azulPrimary};
+
+`;
+
+export const Input = styled.TextInput`
+    height: 40px; 
+    font-size: 16px;
+    justify-content: center; 
+    padding: 0 16px; 
+    width: 93%;
+`;
+
+export const PasswordContainer = styled.View`
+    flex-direction: row;
+    width: 70%;
+`;
+
+
+

@@ -61,84 +61,156 @@ objGradeSemanal();
     if(stringGradeSemanal === null){
       setTimeout(objGradeSemanal, 3000) 
     }
+
   }
 
 
 function PrimeiraRota() {
+  if (itensGradeSegunda != ''){
     return (
       <ScrollView>
-        {itensGradeSegunda.map((Info, index) => (
-          <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+        {
+          itensGradeSegunda.map((Info, index) => (
+            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
             data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
-        ))}
+          ))
+        }
       </ScrollView>
-    );  
+    );
+  }else{
+    return(
+      <View style={{paddingTop: 100, alignItems: 'center'}}>
+          <Text style={{color: "#999"}}> Não há aulas para segunda-feira </Text>
+      </View>
+    );
+  }
+  
 }
 
 function SegundaRota() {
-  return (
-    <ScrollView>
-      {itensGradeTerca.map((Info, index) => (
-        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
-          data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
-      ))}
-    </ScrollView>
-  );  
+  if (itensGradeTerca != ''){
+    return (
+      <ScrollView>
+        {
+          itensGradeTerca.map((Info, index) => (
+            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+          ))
+        }
+      </ScrollView>
+    );
+  }else{
+    return(
+      <View style={{paddingTop: 100, alignItems: 'center'}}>
+          <Text style={{color: "#999"}}> Não há aulas para terça-feira </Text>
+      </View>
+    );
+  } 
 }
 
 function TerceiraRota() {
-  return (
-    <ScrollView>
-      {itensGradeQuarta.map((Info, index) => (
-        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
-          data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
-      ))}
-    </ScrollView>
-  );  
+  if (itensGradeQuarta != ''){
+    return (
+      <ScrollView>
+        {
+          itensGradeQuarta.map((Info, index) => (
+            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+          ))
+        }
+      </ScrollView>
+    );
+  }else{
+    return(
+      <View style={{paddingTop: 100, alignItems: 'center'}}>
+          <Text style={{color: "#999"}}> Não há aulas para quarta-feira </Text>
+      </View>
+    );
+  }
 }
 
 function QuartaRota() {
-  return (
-    <ScrollView>
-      {itensGradeQuinta.map((Info, index) => (
-        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
-          data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
-      ))}
-    </ScrollView>
-  );  
+  if (itensGradeQuinta != ''){
+    return (
+      <ScrollView>
+        {
+          itensGradeQuinta.map((Info, index) => (
+            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+          ))
+        }
+      </ScrollView>
+    );
+  }else{
+    return(
+      <View style={{paddingTop: 100, alignItems: 'center'}}>
+          <Text style={{color: "#999"}}> Não há aulas para quinta-feira </Text>
+      </View>
+    );
+  } 
 }
 
 function QuintaRota() {
-  return (
-    <ScrollView>
-      {itensGradeSexta.map((Info, index) => (
-        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
-          data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
-      ))}
-    </ScrollView>
-  );  
+  if (itensGradeSexta != ''){
+    return (
+      <ScrollView>
+        {
+          itensGradeSexta.map((Info, index) => (
+            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+          ))
+        }
+      </ScrollView>
+    );
+  }else{
+    return(
+      <View style={{paddingTop: 100, alignItems: 'center'}}>
+          <Text style={{color: "#999"}}> Não há aulas para sexta-feira </Text>
+      </View>
+    );
+  }
 }
 
 function SextaRota() {
-  return (
-    <ScrollView>
-      {itensGradeSabado.map((Info, index) => (
-        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
-          data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
-      ))}
-    </ScrollView>
-  );  
+  if (itensGradeSabado != ''){
+    return (
+      <ScrollView>
+        {
+          itensGradeSabado.map((Info, index) => (
+            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+          ))
+        }
+      </ScrollView>
+    );
+  }else{
+    return(
+      <View style={{paddingTop: 100, alignItems: 'center'}}>
+          <Text style={{color: "#999"}}> Não há aulas para sábado </Text>
+      </View>
+    );
+  }  
 }
 
 function SetimaRota() {
-  return (
-    <ScrollView>
-      {itensGradeDomingo.map((Info, index) => (
-        <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
-          data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
-      ))}
-    </ScrollView>
-  );  
+  if (itensGradeDomingo != ''){
+    return (
+      <ScrollView>
+        {
+          itensGradeDomingo.map((Info, index) => (
+            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
+          ))
+        }
+      </ScrollView>
+    );
+  }else{
+    return(
+      <View style={{paddingTop: 100, alignItems: 'center'}}>
+          <Text style={{color: "#999"}}> Não há aulas para domingo </Text>
+      </View>
+    );
+  }  
 }
 
 const initialLayout = { width: Dimensions.get('window').width };

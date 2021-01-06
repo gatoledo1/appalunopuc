@@ -11,11 +11,10 @@ export const Card = styled.View`
 `;
 
 export const ButtonMaisNoticias = styled(RectButton)`
-    height: 20px;
+    height: 45px;
     width: 250px;
     background-color: ${props => props.theme.colors.azulPrimaryBtn};
-    border-radius: 18px; 
-    padding-vertical: 20px;  
+    border-radius: 22px; 
     align-items: center;
     justify-content: center;
     margin: 0px auto 10px;

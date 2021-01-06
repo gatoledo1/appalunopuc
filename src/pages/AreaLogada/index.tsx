@@ -1,12 +1,13 @@
 import React, {useState, useEffect, useContext} from "react";
-import { Image, Text, View, ImageBackground, TextInput, Linking } from "react-native";
-import { RectButton, TouchableOpacity } from 'react-native-gesture-handler';
-import styles from "./styles";
+import { Text, Linking } from "react-native";
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Container, Content, BackgroungLogin, Biometria, Button, ButtonText, Title, TitleChildren, FingerText, Label, Input, PasswordContainer } from "./styles";
 import PageHeader from '../../components/PageHeader';
 import backLogin from '../../assets/images/back-login.png';
 import AuthContext from '../../Contexts/auth';
 import { Ionicons } from '@expo/vector-icons';
 import base64 from 'react-native-base64';
+import { ThemeContext } from 'styled-components';
 import * as LocalAuthentication from 'expo-local-authentication';
 
 
@@ -19,6 +20,7 @@ export default function PWDAreaLogada({ route }) {
   const [erroPwd, setErroPwd] = useState('');
   const [pwd, setPwd] = useState< string | null>('');
   const {ra, authToken, authTokenAreaLogada, tokenAreaLogada} = useContext(AuthContext);
+  const { colors } = useContext(ThemeContext);
 
     useEffect(() => {
 
@@ -68,55 +70,53 @@ export default function PWDAreaLogada({ route }) {
       function ShowHidePWD() {
         if(passwordShow == false){
             return (
-                <Ionicons name="md-eye-off" size={30} color="#367DFF" style={styles.iconEye} />
+                <Ionicons name="md-eye-off" size={30} color="#367DFF" />
             )   
         }else{
             return (
-                <Ionicons name="md-eye" size={30} color="#367DFF" style={styles.iconEye} />
+                <Ionicons name="md-eye" size={30} color="#367DFF" />
             )
         }
     }
   
 
     return (
-      <View style={styles.container}>
-        <PageHeader title="Verificação de Segurança" backColor="#2CC272">
-          <Text style={styles.titleChildren}>Para sua segurança, sempre perguntaremos sua senha.</Text>
+      <Container>
+        <PageHeader title="Verificação de Segurança" backColor={colors.headerVerde}>
+          <TitleChildren>Sempre perguntaremos sua senha. {'\n'}{'\n'}Para acessar a área logada, digite sua senha novamente</TitleChildren>
         </PageHeader>
-        
-        <ImageBackground source={backLogin} style={styles.backgroungLogin}>
-            <View style={styles.content}>
-                <Text style={styles.titleBold}>
-                Para acessar a área logada, digite sua senha novamente
-                </Text>
 
-                <Text style={styles.label}>Senha</Text>
-                    <View style={styles.passwordContainer}>
-                        <TextInput style={styles.input}
-                            secureTextEntry={passwordShow ? false : true}
-                            value={pwd}
-                            onChangeText={text => setPwd(text)}
-                        />
-                        <TouchableOpacity onPress={togglePasswordVisiblity}>
-                            <ShowHidePWD />
-                        </TouchableOpacity>
-                        
-                    </View>  
+          <Content>
+              <Title>
+              
+              </Title>
 
-                    <Text style={{marginTop: 16, color: 'red'}}> { erroPwd } </Text>
+              <Label>Senha de seu login</Label>
+                  <PasswordContainer>
+                      <Input style={{borderBottomColor: '#367DFF', borderBottomWidth: 1,}}
+                          secureTextEntry={passwordShow ? false : true}
+                          value={pwd}
+                          onChangeText={text => setPwd(text)}
+                      />
+                      <TouchableOpacity onPress={togglePasswordVisiblity}>
+                          <ShowHidePWD />
+                      </TouchableOpacity>
+                      
+                  </PasswordContainer>  
 
-                <TouchableOpacity onPress={Biometric} style={styles.biometria}>
-                  <Text style={styles.fingerText}>Acessar com biometria</Text>
-                  <Ionicons name="md-finger-print" size={28} color="#aaa" />
-                </TouchableOpacity>    
-                
-                <RectButton onPress={SubmitAreaLogada} style={styles.button}>
-                  <Text style={styles.buttonText}>Acessar</Text>
-                </RectButton>      
+                  <Text style={{marginTop: 16, color: 'red'}}> { erroPwd } </Text>
 
-            </View>
+              <Biometria onPress={Biometric}>
+                <FingerText>Acessar com biometria</FingerText>
+                <Ionicons name="md-finger-print" size={28} color="#aaa" />
+              </Biometria>    
+              
+              <Button onPress={SubmitAreaLogada}>
+                <ButtonText>Acessar</ButtonText>
+              </Button>      
 
-        </ImageBackground>
-      </View>
+          </Content>
+
+      </Container>
     );
   }

@@ -70,6 +70,9 @@ function HomeItens() {
     function hundleNavigateLocais() {
         navigate('LocaisPUC');
     }
+    function hundleNavigateEventos() {
+        navigate('Eventos');
+    }
 
 
     useEffect(() => {
@@ -193,7 +196,7 @@ function HomeItens() {
                         </Card>
                     </Links>
 
-                    <Links onPress={hundleNavigateCentralAtendimento}>
+                    <Links onPress={hundleNavigateEventos}>
                         <Card>
                             <Icon source={eventos} />
                             <TextCard>
