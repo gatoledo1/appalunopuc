@@ -31,10 +31,10 @@ export const Badge = styled.Text`
     color: #fff;
     padding-vertical: 4px;
     padding-horizontal: 6px;
-    line-height: 9px;
+    line-height: 10px;
     border-radius: 24px;
     top: -35px;
-    font-size: 9px;
+    font-size: 10px;
 `;
 
 export const Links = styled(RectButton)`

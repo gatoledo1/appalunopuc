@@ -1,55 +1,108 @@
-import React, { Component, useState } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
-import { ScrollView, RectButton } from 'react-native-gesture-handler';
+import React, {useContext, useState, useEffect} from 'react';
+import { View, Text, Animated, Easing, ActivityIndicator } from 'react-native';
 import PageHeader from '../../../components/PageHeader';
-import { Feather } from '@expo/vector-icons'; 
-import styles from '../styles'
+import CardsNotify from '../Components/index'; 
+import {Container, ModalContainer, ModalText, ModalTitulo, Footer, FooterText} from '../styles';
+import { ThemeContext } from 'styled-components';
+import { Modalize } from 'react-native-modalize';
+import AuthContext from '../../../Contexts/auth';
+import { ListaNotificacoes } from '../../../Services/Notificacoes';
 
-export default class NotifyCurso extends Component {
-
-    
-  state = {
-    data: [
-      { id: 0, title: 'Etiam interdum justo ut aliquet', text: 'Etiam interdum justo ut aliquet pulvinar.' },
-      { id: 1, title: 'Nunc facilisis tristique viverra', text: 'Mauris quis pellentesque est. Nunc facilisis tristique viverra.' },
-      { id: 2, title: 'Praesent vel elit vel purus maximus', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-      { id: 3, title: 'Lorem Ipsum Dolor', text: 'Etiam interdum justo ut aliquet pulvinar. Praesent vel elit vel purus maximus dictum blandit quis nisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-      { id: 4, title: 'Mauris quis pellentesque est', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Etiam interdum justo ut aliquet pulvinar.' },
-      { id: 5, title: 'Lorem Ipsum Dolor', text: 'Mauris quis pellentesque est. Nunc facilisis tristique viverra.' },
-      { id: 6, title: 'Nunc facilisis tristique viverra', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum justo ut aliquet pulvinar. Praesent vel elit vel purus maximus dictum blandit quis nisi. Mauris quis pellentesque est. Nunc facilisis tristique viverra.' },
-      { id: 7, title: 'Mauris quis pellentesque est', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum justo ut aliquet pulvinar.' },
-      { id: 8, title: 'Praesent vel elit vel purus maximus', text: 'Etiam interdum justo ut aliquet pulvinar. Praesent vel elit vel purus maximus dictum blandit quis nisi.' },
-      { id: 9, title: 'Lorem Ipsum Dolor', text: 'Praesent vel elit vel purus maximus dictum blandit quis nisi. Mauris quis pellentesque est. Nunc facilisis tristique viverra.' },
-      
-    ],
-  };
-
-  renderItem = ({ item }) => (
-    <RectButton style={styles.cardItem}>
-        <View style={styles.listItem}>
-          <View style={styles.icon}>
-            <Feather name="info" size={24} color="#2CC272" />
-          </View>
-          <Text style={styles.titleItem}>{item.title}</Text>
-          <Text style={styles.textItem}>{item.text}</Text>
-        </View>
-    </RectButton>
-    
-  );
-
-  render() {
-    return (
-
-        <View style={styles.container}>
-            <PageHeader title="Notificações" backColor="#367DFF"></PageHeader>
-                <FlatList style={{ marginTop: -100 }}
-                    contentContainerStyle={styles.list}
-                    data={this.state.data}
-                    renderItem={this.renderItem}
-                    keyExtractor={item => item.id.toString()}
-                />
-        </View>
-      
-    );
-  }
+interface ArrayNotifyItens {
+  [index: number]: string;
+  pessoaTipoNotificacao: object;
+  dataNotificacao: string;
+  mensagem: string;
+  visualizado: boolean;
+  codPessoaNotificacao: number;
 }
+
+function Notify() {
+    const [animaTop, setTop] = useState(new Animated.Value(150));
+    const { colors } = useContext(ThemeContext);
+    const [load, setLoad] = useState(true);
+    const { authToken, modalizeRef, currentNotify } = useContext(AuthContext);
+    const [listaNotificacoes, setListaNotificacoes] = useState(new Array<ArrayNotifyItens>());
+
+
+  useEffect(() => {
+
+    consultaNotificacao(authToken);
+
+  }, []);
+
+
+  async function consultaNotificacao(token){
+
+      const responseNotificacoes = await ListaNotificacoes(token);
+
+      const notificacaoIndividual = await responseNotificacoes.json();
+      
+      setListaNotificacoes(notificacaoIndividual);
+
+      setLoad(false)
+
+  }
+
+  function Notificacoes(){
+      return (
+          <View>
+              {
+                  listaNotificacoes.map((Info, index) => (
+                      <CardsNotify key={index} title={Info.pessoaTipoNotificacao.nome} bodyText={Info.pessoaTipoNotificacao.observacao}
+                      subject={Info.mensagem} visualizada={Info.visualizado} codigo={Info.codPessoaNotificacao}
+                      data={`Data: ${Info.dataNotificacao.slice(8, 10)}${Info.dataNotificacao.slice(4, 8)}${Info.dataNotificacao.slice(0, 4)}   Hora: ${Info.dataNotificacao.slice(11, 19)}`} ></CardsNotify>
+                  ))
+              }
+          </View>
+      );
+  }
+
+
+    Animated.timing(
+        animaTop,
+        {
+            toValue: -90,
+            duration: 800,
+            easing: Easing.bezier(0.33, 1, 0.68, 1),
+            useNativeDriver: false
+        }
+    ).start();
+
+    return (
+        <Container>
+            <PageHeader title="Suas notificações" backColor={colors.headerAzul}></PageHeader>
+            
+            <Animated.ScrollView style={{ marginTop: animaTop }}
+                contentContainerStyle={{
+                    paddingHorizontal: 16,
+                    paddingBottom: 16,
+                }}
+            >
+              <ActivityIndicator animating={load} size="large" color="#367DFF" style={{position: 'absolute',right: 0,left: 0,}} />
+
+                <Notificacoes />
+
+                <Footer>
+                <FooterText>
+                    PUC-CAMPINAS
+                </FooterText>
+            </Footer>
+
+            </Animated.ScrollView>
+
+            <Modalize ref={modalizeRef} adjustToContentHeight={true} modalStyle={{backgroundColor: colors.cardsTable}}>
+                        
+                <ModalContainer>
+                    <ModalTitulo> { currentNotify.titulo } </ModalTitulo>
+                    <ModalText> { currentNotify.mensagem } </ModalText>
+                    <ModalText style={{ paddingTop: 20 }}> { currentNotify.data } </ModalText>
+                </ModalContainer>
+
+            </Modalize>
+            
+        </Container>
+    );
+}
+
+export default Notify;

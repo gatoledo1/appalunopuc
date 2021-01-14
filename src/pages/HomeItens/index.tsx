@@ -24,6 +24,7 @@ import calendar from '../../assets/images/icons/ui-calendar.png';
 import caa from '../../assets/images/icons/caa-help.png';
 import eventos from '../../assets/images/icons/eventos.png';
 import espacosPUC from '../../assets/images/icons/espacos-puc.png';
+import { ListaNotificacoes } from '../../Services/Notificacoes';
 
 import { Container, TitleChildren, Row, Badge, Links, Card, Icon, TextCard, Footer, FooterText, Logout, LoguotText } from './styles';
 
@@ -34,6 +35,25 @@ function HomeItens() {
     const {nome, authToken, signOut, gradeSemanal} = useContext(AuthContext);
     const { colors } = useContext(ThemeContext);
     const firstName = nome.split(' ')[0];
+    const [badgeNotificacoes, setBadgeNotificacoes] = useState<number | null>(null);
+
+    async function consultaNotificacao(token){
+
+        let responseNotificacoes = await ListaNotificacoes(token);
+  
+        let notificacaoIndividual = await responseNotificacoes.json();
+
+        let visualizados = notificacaoIndividual.filter((notify) => { return notify.visualizado === false; });
+
+        let CountNotRead = 0
+
+        visualizados.map(() => (
+            CountNotRead = CountNotRead + 1
+        ))
+        
+        setBadgeNotificacoes(CountNotRead)   
+  
+    }
 
 
     function hundleSignOut(){
@@ -82,6 +102,8 @@ function HomeItens() {
         // "authToken" já é o valor do formulario em Base64
         gradeSemanal(authToken)
 
+        consultaNotificacao(authToken)
+
     }, []);
 
 
@@ -105,7 +127,9 @@ function HomeItens() {
                 <View style={{position: 'absolute', right: 15, top: 10}}>
                     <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 8, paddingTop: 12}}>
                         <Feather name="bell" size={30} color="#FFF" />
-                        <Badge>3</Badge>
+                        <Badge>
+                            { badgeNotificacoes }                           
+                        </Badge>
                     </BorderlessButton>
                 </View>
             )}>

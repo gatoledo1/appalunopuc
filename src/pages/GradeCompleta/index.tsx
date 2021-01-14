@@ -202,6 +202,7 @@ function GradeCompleta({ navigation }) {
                     
                     <MapView style={{ width: '100%', height: 400 }} loadingEnabled={true} provider={PROVIDER_GOOGLE}
                         customMapStyle={scheme === 'dark' ? styleMap : undefined}
+                        mapType="hybrid"
                         initialRegion={{
                             latitude: Number(latitudeSala),
                             longitude: Number(longitudeSala),

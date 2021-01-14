@@ -18,6 +18,8 @@ interface AuthContextData {
     signOut(): void;
     gradeSemanal(token: string): Promise<void>;
     tokenAreaLogada(token: string): Promise<void>;
+    VisualizarNotificacao(title: string, subject: string, data: string, codigo: number): void;
+    currentNotify: {titulo: string, mensagem: string, data: string};
     localizacaoSala(lat: string, long: string): void;
     latitudeSala: string;
     longitudeSala: string;
@@ -39,6 +41,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     const [longitudeSala, setlongitudeSala] = useState<string>('-47.0503008');
     const modalizeRef = useRef<Modalize>(null);
     const [introLogin, setIntroLogin] = useState<string | null>('iniciou');
+    const [currentNotify, setCurrentNotify] = useState({ });
 
 
     async function signIn(token){
@@ -101,6 +104,24 @@ export const AuthProvider: React.FC = ({ children }) => {
         modalizeRef.current?.open();
     }
 
+    function VisualizarNotificacao(title: string, subject: string, data: string, codigo: number){
+
+        let arrayVizualizar = { titulo: title, mensagem: subject, data: data };
+
+        setCurrentNotify(arrayVizualizar);
+
+            fetch(`https://gateway-publico.pucapi.puc-campinas.edu.br/mobile/v4/notificacoes/setdataleitura?codNotificacao=${codigo}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                }
+            }) /* .then(response => response.json())
+                .then(json => console.log(json)) */
+
+
+        modalizeRef.current?.open();
+    }
+
     async function introOuLogin() {
         
         const intro = await AsyncStorage.getItem('intro');
@@ -110,7 +131,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{ signed: !!nome, erroLogin, nome, ra, authToken, authTokenAreaLogada, signIn, 
-        signOut, gradeSemanal, tokenAreaLogada, localizacaoSala, latitudeSala, longitudeSala, modalizeRef, introOuLogin, introLogin}}>
+        signOut, gradeSemanal, tokenAreaLogada, VisualizarNotificacao, currentNotify, localizacaoSala, latitudeSala, longitudeSala, modalizeRef, introOuLogin, introLogin}}>
             {children}
         </AuthContext.Provider>
     );

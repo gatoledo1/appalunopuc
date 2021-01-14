@@ -16,7 +16,7 @@ export default {
     azulShadow: '#B6CEFF',
     amareloSecundary: '#FFC300',
     verdeText: '#2CC272',
-    verdeIcon: ' #e5fff1',
+    verdeIcon: '#e5fff1',
     vermelho: '#F12020',
     cinzaText: '#767676',
   },
