@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import { View, Text, Animated, Easing, ActivityIndicator } from 'react-native';
 import PageHeader from '../../../components/PageHeader';
 import CardsNotify from '../Components/index'; 
-import {Container, Footer, FooterText} from '../styles';
+import {Container, ModalContainer, ModalText, ModalTitulo, Footer, FooterText} from '../styles';
 import { ThemeContext } from 'styled-components';
 import { Modalize } from 'react-native-modalize';
 import AuthContext from '../../../Contexts/auth';
@@ -13,15 +13,16 @@ interface ArrayNotifyItens {
   pessoaTipoNotificacao: object;
   dataNotificacao: string;
   mensagem: string;
+  visualizado: boolean;
+  codPessoaNotificacao: number;
 }
 
 function NotifyCurso() {
     const [animaTop, setTop] = useState(new Animated.Value(150));
     const { colors } = useContext(ThemeContext);
-    const { modalizeRef } = useContext(AuthContext);
     const [load, setLoad] = useState(true);
-    const {authToken} = useContext(AuthContext);
-    const [listaNotificacoes, setListaNotificacoes] = useState(new Array<ArrayNotifyItens>());
+    const { authToken, modalizeRef, currentNotify } = useContext(AuthContext);
+    const [listaNotificacoesCurso, setListaNotificacoesCurso] = useState(new Array<ArrayNotifyItens>());
 
 
   useEffect(() => {
@@ -35,23 +36,22 @@ function NotifyCurso() {
 
       const responseNotificacoes = await ListaNotificacoes(token);
 
-      const notificacaoIndividual = await responseNotificacoes.json();
-
-      const listaIndividual = notificacaoIndividual.filter((data) => { return data.dataNotificacao; });
+      const notificacaoCurso = await responseNotificacoes.json();
       
-      setListaNotificacoes(listaIndividual.sort((a, b) => parseFloat(b.dataNotificacao) - parseFloat(a.dataNotificacao)));
+      setListaNotificacoesCurso(notificacaoCurso);
 
       setLoad(false)
 
   }
 
-  function Notificacoes(){
+  function NotificacoesCurso(){
       return (
           <View>
               {
-                  listaNotificacoes.map((Info, index) => (
-                      <CardsNotify key={index} title={Info.pessoaTipoNotificacao.nome} bodyText={Info.mensagem}
-                      data={`Data: ${Info.dataNotificacao.slice(8, 10)}${Info.dataNotificacao.slice(4, 8)}${Info.dataNotificacao.slice(0, 4)}`} ></CardsNotify>
+                  listaNotificacoesCurso.map((Info, index) => (
+                      <CardsNotify key={index} title={Info.pessoaTipoNotificacao.nome} bodyText={Info.pessoaTipoNotificacao.observacao}
+                      subject={Info.mensagem} visualizada={Info.visualizado} codigo={Info.codPessoaNotificacao}
+                      data={`Data: ${Info.dataNotificacao.slice(8, 10)}${Info.dataNotificacao.slice(4, 8)}${Info.dataNotificacao.slice(0, 4)}   Hora: ${Info.dataNotificacao.slice(11, 19)}`} ></CardsNotify>
                   ))
               }
           </View>
@@ -81,7 +81,7 @@ function NotifyCurso() {
             >
               <ActivityIndicator animating={load} size="large" color="#367DFF" style={{position: 'absolute',right: 0,left: 0,}} />
 
-                <Notificacoes />
+                <NotificacoesCurso />
 
                 <Footer>
                 <FooterText>
@@ -91,8 +91,13 @@ function NotifyCurso() {
 
             </Animated.ScrollView>
 
-            <Modalize ref={modalizeRef} modalStyle={{backgroundColor: colors.cardsTable}}>
-
+            <Modalize ref={modalizeRef} adjustToContentHeight={true} modalStyle={{backgroundColor: colors.cardsTable}}>
+                        
+                <ModalContainer>
+                    <ModalTitulo> { currentNotify.titulo } </ModalTitulo>
+                    <ModalText> { currentNotify.mensagem } </ModalText>
+                    <ModalText style={{ paddingTop: 20 }}> { currentNotify.data } </ModalText>
+                </ModalContainer>
 
             </Modalize>
             

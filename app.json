@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "App do Aluno",
-    "slug": "app-aluno",
+    "slug": "app-aluno-puc",
     "userInterfaceStyle": "automatic",
     "version": "0.8.5",
     "privacy": "public",
@@ -22,15 +22,22 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "notification": {
+      "icon": "./assets/icon-push.png",
+      "androidMode": "default"
+    },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.puccampinas.appaluno",
+      "bundleIdentifier": "br.edu.puccampinas.appdoaluno",
+      "googleServicesFile": "./GoogleService-Info.plist",
       "config": {
         "googleMapsApiKey": "AIzaSyAHAQvaW-1xr1yYNo_PwXjYDOuqZVnaSWc"
       }
     },
     "android": {
-      "package": "com.puccampinas.appaluno",
+      "useNextNotificationsApi": true,
+      "googleServicesFile": "./google-services.json",
+      "package": "br.edu.puccampinas.appdoaluno",
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyBmocRKEFFuN6HFIG1nAyeZMoD3tOcuA5U"

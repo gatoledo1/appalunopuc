@@ -4,7 +4,9 @@ import { EnviaGrade } from '../Services/gradeSemanal';
 import { RetornaTokenAreaLogada } from '../Services/tokenAreaLogada';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Modalize } from 'react-native-modalize';
-import { InfoMap } from '../pages/GradeCompleta/styles';
+import * as Notifications from 'expo-notifications';
+import { Platform, Alert } from 'react-native';
+import Constants from 'expo-constants';
 
 
 interface AuthContextData {
@@ -26,6 +28,7 @@ interface AuthContextData {
     modalizeRef: any;
     introOuLogin(): void;
     introLogin: string | null;
+    EnviaTokenPushNotification(token: string): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -122,6 +125,53 @@ export const AuthProvider: React.FC = ({ children }) => {
         modalizeRef.current?.open();
     }
 
+    async function EnviaTokenPushNotification(token: string){
+
+        const ExponentToken = await AsyncStorage.getItem('idDevice');
+        const historicoEnvioTokenPush = await AsyncStorage.getItem('idDeviceEnviado');
+    
+        if(ExponentToken !== null){
+
+            const createThreeButtonAlert = () =>
+            Alert.alert(
+                "Troquei o titulo",
+                ExponentToken,
+                [
+                    {
+                    text: "Ask me later",
+                    onPress: () => console.log("Ask me later pressed")
+                    },
+                    {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                    },
+                    { text: "OK", onPress: () => console.log("OK Pressed") }
+                ],
+                { cancelable: false }
+            );
+
+            createThreeButtonAlert();
+
+            if(historicoEnvioTokenPush == null || historicoEnvioTokenPush == undefined || historicoEnvioTokenPush == '' ){
+                
+                AsyncStorage.setItem('idDeviceEnviado', 'ok');
+
+                const sistemaoperacional = Platform.OS;
+                                
+                await fetch(`https://gateway-publico.pucapi.puc-campinas.edu.br/mobile/v4/usuarios/vincularDispositivo?identificacaoDispositivo=${ExponentToken}&tipoDispositivo=${sistemaoperacional.toUpperCase()}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": `${token}`
+                },
+                }).then(response => response.json())
+                .then(json => console.log(json));
+
+            }
+        }
+    }
+
     async function introOuLogin() {
         
         const intro = await AsyncStorage.getItem('intro');
@@ -131,7 +181,8 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{ signed: !!nome, erroLogin, nome, ra, authToken, authTokenAreaLogada, signIn, 
-        signOut, gradeSemanal, tokenAreaLogada, VisualizarNotificacao, currentNotify, localizacaoSala, latitudeSala, longitudeSala, modalizeRef, introOuLogin, introLogin}}>
+        signOut, gradeSemanal, tokenAreaLogada, VisualizarNotificacao, currentNotify, localizacaoSala, latitudeSala, 
+        longitudeSala, modalizeRef, introOuLogin, introLogin, EnviaTokenPushNotification }}>
             {children}
         </AuthContext.Provider>
     );

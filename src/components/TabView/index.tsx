@@ -80,7 +80,7 @@ function PrimeiraRota() {
   }else{
     return(
       <View style={{paddingTop: 100, alignItems: 'center'}}>
-          <Text style={{color: "#999"}}> Não há aulas para segunda-feira </Text>
+          <Text style={{color: "#999"}}> Não há informações para exibir </Text>
       </View>
     );
   }
@@ -102,7 +102,7 @@ function SegundaRota() {
   }else{
     return(
       <View style={{paddingTop: 100, alignItems: 'center'}}>
-          <Text style={{color: "#999"}}> Não há aulas para terça-feira </Text>
+          <Text style={{color: "#999"}}> Não há informações para exibir </Text>
       </View>
     );
   } 
@@ -123,7 +123,7 @@ function TerceiraRota() {
   }else{
     return(
       <View style={{paddingTop: 100, alignItems: 'center'}}>
-          <Text style={{color: "#999"}}> Não há aulas para quarta-feira </Text>
+          <Text style={{color: "#999"}}> Não há informações para exibir </Text>
       </View>
     );
   }
@@ -144,7 +144,7 @@ function QuartaRota() {
   }else{
     return(
       <View style={{paddingTop: 100, alignItems: 'center'}}>
-          <Text style={{color: "#999"}}> Não há aulas para quinta-feira </Text>
+          <Text style={{color: "#999"}}> Não há informações para exibir </Text>
       </View>
     );
   } 
@@ -165,7 +165,7 @@ function QuintaRota() {
   }else{
     return(
       <View style={{paddingTop: 100, alignItems: 'center'}}>
-          <Text style={{color: "#999"}}> Não há aulas para sexta-feira </Text>
+          <Text style={{color: "#999"}}> Não há informações para exibir </Text>
       </View>
     );
   }
@@ -186,7 +186,7 @@ function SextaRota() {
   }else{
     return(
       <View style={{paddingTop: 100, alignItems: 'center'}}>
-          <Text style={{color: "#999"}}> Não há aulas para sábado </Text>
+          <Text style={{color: "#999"}}> Não há informações para exibir </Text>
       </View>
     );
   }  
@@ -207,7 +207,7 @@ function SetimaRota() {
   }else{
     return(
       <View style={{paddingTop: 100, alignItems: 'center'}}>
-          <Text style={{color: "#999"}}> Não há aulas para domingo </Text>
+          <Text style={{color: "#999"}}> Não há informações para exibir </Text>
       </View>
     );
   }  

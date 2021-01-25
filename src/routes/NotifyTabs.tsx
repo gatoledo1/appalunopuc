@@ -4,11 +4,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import NotifyCurso from '../pages/Notificacoes/Curso';
 import NotifyIndividual from '../pages/Notificacoes/Individual';
+import { useColorScheme } from 'react-native-appearance';
 
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
 function NotifyTabs() {
+    const scheme = useColorScheme();
+
     return (
          <Navigator tabBarOptions={{
             style: {
@@ -16,6 +19,7 @@ function NotifyTabs() {
                 bottom: 10,
                 marginHorizontal: 30,
                 borderRadius: 25,
+                backgroundColor: scheme === 'dark' ? '#445166' : '#e0e4f0',
             },
             tabStyle: {
                 width: '80%',
@@ -35,9 +39,9 @@ function NotifyTabs() {
                 fontSize: 11,
                 marginLeft: 6,
             },
-            activeBackgroundColor: '#f1f6ff',
-            inactiveTintColor: '#c1bccc',
-            activeTintColor: '#32264d',
+            activeBackgroundColor: scheme === 'dark' ? '#232D3E' : '#ebf1ff',
+            inactiveTintColor: scheme === 'dark' ? '#bbb' : '#999',
+            activeTintColor: scheme === 'dark' ? '#fff' : '#32264d',
         }}>
             <Screen name="NotifyIndividual" component={NotifyIndividual} 
             options={{
@@ -49,7 +53,7 @@ function NotifyTabs() {
                 }
             }}
             />
-            <Screen name="NotifyCurso" component={NotifyCurso}
+            {/* <Screen name="NotifyCurso" component={NotifyCurso}
             options={{
                 tabBarLabel: 'De seu Curso',
                 tabBarIcon: ({ color, size, focused }) => {
@@ -57,7 +61,7 @@ function NotifyTabs() {
                         <Ionicons name="ios-school" size={size} color={focused ? '#367DFF' : color} />
                     );
                 }
-            }} />
+            }} /> */}
         </Navigator> 
     );
 }

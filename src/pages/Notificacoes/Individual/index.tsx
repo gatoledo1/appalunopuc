@@ -45,17 +45,30 @@ function Notify() {
   }
 
   function Notificacoes(){
-      return (
-          <View>
-              {
-                  listaNotificacoes.map((Info, index) => (
-                      <CardsNotify key={index} title={Info.pessoaTipoNotificacao.nome} bodyText={Info.pessoaTipoNotificacao.observacao}
-                      subject={Info.mensagem} visualizada={Info.visualizado} codigo={Info.codPessoaNotificacao}
-                      data={`Data: ${Info.dataNotificacao.slice(8, 10)}${Info.dataNotificacao.slice(4, 8)}${Info.dataNotificacao.slice(0, 4)}   Hora: ${Info.dataNotificacao.slice(11, 19)}`} ></CardsNotify>
-                  ))
-              }
-          </View>
-      );
+      if(listaNotificacoes != ''){
+        return (
+            <View>
+                {
+                    listaNotificacoes.map((Info, index) => (
+                        <CardsNotify key={index} title={Info.pessoaTipoNotificacao.nome} bodyText={Info.pessoaTipoNotificacao.observacao}
+                        subject={Info.mensagem} visualizada={Info.visualizado} codigo={Info.codPessoaNotificacao}
+                        data={`Data: ${Info.dataNotificacao.slice(8, 10)}${Info.dataNotificacao.slice(4, 8)}${Info.dataNotificacao.slice(0, 4)}   Hora: ${Info.dataNotificacao.slice(11, 19)}`} ></CardsNotify>
+                    ))
+                }
+            </View>
+        );
+      }else{
+        return (
+            <View>
+                {
+                    <View style={{paddingBottom: 100, alignItems: 'center'}}>
+                        <Text style={{color: "#dadada"}}> Sem notificações nos últimos 28 dias </Text>
+                    </View>
+                }
+            </View>
+        );
+      }
+      
   }
 
 

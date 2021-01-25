@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { Image } from 'react-native';
 import PaperOnboarding, {PaperOnboardingItemType} from "@gorhom/paper-onboarding";
 import logoLogin from '../../assets/images/PUC-80anos_logo-branco.png';
@@ -7,6 +7,10 @@ import pwdImg from '../../assets/images/password.png';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
 import AuthContext from '../../Contexts/auth';
+import Constants from 'expo-constants';
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
+import { Platform } from 'react-native';
 
 const data: PaperOnboardingItemType[] = [
     {
@@ -35,7 +39,71 @@ const data: PaperOnboardingItemType[] = [
 
 const Slider: React.FC = () => {
     
-    const { introOuLogin } = useContext(AuthContext);
+    const { introOuLogin } = useContext(AuthContext);    
+    const [gravaPushToken, setGravaPushToken] = useState('');
+
+    
+    useEffect(() => {
+
+        registerForPushNotificationsAsync();
+
+    }, [gravaPushToken]);
+
+    async function registerForPushNotificationsAsync() {
+        
+        if (Constants.isDevice) {
+          const { status: existingStatus } = await Notifications.getPermissionsAsync();
+          let finalStatus = existingStatus;
+          if (existingStatus !== 'granted') {
+            const { status } = await Notifications.requestPermissionsAsync();
+            finalStatus = status;
+          }
+          if (finalStatus !== 'granted') {
+            alert('Falha ao pegar permissão de notificação push');
+            return;
+          }
+          const token = (await Notifications.getExpoPushTokenAsync()).data;
+          // const token = (await Notifications.getDevicePushTokenAsync()).data;
+          
+          setGravaPushToken(token);
+          console.log(gravaPushToken)
+
+        } else {
+          alert('Must use physical device for Push Notifications');
+        }
+
+          await fetch('https://exp.host/--/api/v2/push/send', {       
+              method: 'POST', 
+              headers: {
+                    Accept: 'application/json',  
+                    'Content-Type': 'application/json', 
+                    'accept-encoding': 'gzip, deflate',   
+                    'host': 'exp.host'      
+                }, 
+              body: JSON.stringify({                 
+                    to: gravaPushToken,                        
+                    title: 'New Notification',                  
+                    body: 'The notification worked!',             
+                    priority: "high",            
+                    sound:"default",              
+                    channelId:"default",   
+                        }),        
+            }).then((response) => response.json())   
+                    /*.then((responseJson) => { console.log(responseJson) })
+                            .catch((error) => { console.log(error) }); */
+            
+      
+      
+        if (Platform.OS === 'android') {
+          Notifications.setNotificationChannelAsync('default', {
+            name: 'default',
+            importance: Notifications.AndroidImportance.MAX,
+            vibrationPattern: [0, 250, 250, 250],
+            lightColor: '#FF231F7C',
+          });
+        }
+      
+      }
 
     const handleOnClosePress = () => {
     /*==============================================================================================================================
@@ -44,6 +112,10 @@ const Slider: React.FC = () => {
     ===============================================================================================================================*/
 
         AsyncStorage.setItem('intro', 'ok');
+
+        AsyncStorage.setItem('idDevice', JSON.stringify(gravaPushToken));
+
+        alert(gravaPushToken);
 
         introOuLogin();
 

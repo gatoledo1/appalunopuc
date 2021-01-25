@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext, useEffect, useRef} from 'react';
 import { View, Image, Text, Linking, Animated, Easing} from 'react-native';
 import { ThemeContext } from 'styled-components';
 import { BorderlessButton } from 'react-native-gesture-handler';
@@ -32,16 +32,31 @@ import { Container, TitleChildren, Row, Badge, Links, Card, Icon, TextCard, Foot
 function HomeItens() {
     const { navigate } = useNavigation();
 
-    const {nome, authToken, signOut, gradeSemanal} = useContext(AuthContext);
+    const {nome, authToken, signOut, gradeSemanal, EnviaTokenPushNotification} = useContext(AuthContext);
     const { colors } = useContext(ThemeContext);
     const firstName = nome.split(' ')[0];
     const [badgeNotificacoes, setBadgeNotificacoes] = useState<number | null>(null);
 
+    useEffect(() => {
+        // A grade de disciplinas é gravada no AsyncStorage, então demora um pouco, por esse motivo a função é chamada
+        // logo na tela inicial, evitando delay no carregamento das informações nas telas
+
+        // "authToken" já é o valor do formulario em Base64
+        gradeSemanal(authToken);
+
+        consultaNotificacao(authToken);
+
+        EnviaTokenPushNotification(authToken);
+
+
+    }, []);
+
+
     async function consultaNotificacao(token){
 
-        let responseNotificacoes = await ListaNotificacoes(token);
+        const responseNotificacoes = await ListaNotificacoes(token);
   
-        let notificacaoIndividual = await responseNotificacoes.json();
+        const notificacaoIndividual = await responseNotificacoes.json();
 
         let visualizados = notificacaoIndividual.filter((notify) => { return notify.visualizado === false; });
 
@@ -54,7 +69,6 @@ function HomeItens() {
         setBadgeNotificacoes(CountNotRead)   
   
     }
-
 
     function hundleSignOut(){
         signOut();
@@ -95,18 +109,6 @@ function HomeItens() {
     }
 
 
-    useEffect(() => {
-        // A grade de disciplinas é gravada no AsyncStorage, então demora um pouco, por esse motivo a função é chamada
-        // logo na tela inicial, evitando delay no carregamento das informações nas telas
-
-        // "authToken" já é o valor do formulario em Base64
-        gradeSemanal(authToken)
-
-        consultaNotificacao(authToken)
-
-    }, []);
-
-
     const [animaTop, setTop] = useState(new Animated.Value(80));
 
     Animated.timing(
@@ -127,7 +129,7 @@ function HomeItens() {
                 <View style={{position: 'absolute', right: 15, top: 10}}>
                     <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 8, paddingTop: 12}}>
                         <Feather name="bell" size={30} color="#FFF" />
-                        <Badge>
+                        <Badge  style={{ display: badgeNotificacoes === 0 ? 'none' : 'flex' }}>
                             { badgeNotificacoes }                           
                         </Badge>
                     </BorderlessButton>

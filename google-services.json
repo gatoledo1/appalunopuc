@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "118784170171",
+    "project_id": "app-aluno-puc",
+    "storage_bucket": "app-aluno-puc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118784170171:android:77f15f97ae516721db719e",
+        "android_client_info": {
+          "package_name": "br.edu.puccampinas.appdoaluno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118784170171-sb67b971icmjiqc7uti9lpltd4n51evm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLllkTs90nUjReXAY2FiDeO-LHF5WvvrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118784170171-sb67b971icmjiqc7uti9lpltd4n51evm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
