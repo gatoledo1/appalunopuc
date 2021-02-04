@@ -64,9 +64,9 @@ const Slider: React.FC = () => {
           }
           const token = (await Notifications.getExpoPushTokenAsync()).data;
           // const token = (await Notifications.getDevicePushTokenAsync()).data;
-          
+          //const tokenLimpo = token.replaceAll('/"', "");
+
           setGravaPushToken(token);
-          console.log(gravaPushToken)
 
         } else {
           alert('Must use physical device for Push Notifications');
@@ -82,14 +82,14 @@ const Slider: React.FC = () => {
                 }, 
               body: JSON.stringify({                 
                     to: gravaPushToken,                        
-                    title: 'New Notification',                  
-                    body: 'The notification worked!',             
+                    title: 'Notificações PUC-Campinas',                  
+                    body: 'Você receberá atualizações acadêmicas e mensagens da PUC-Campinas, através do aplicativo. 😉',             
                     priority: "high",            
                     sound:"default",              
                     channelId:"default",   
                         }),        
-            }).then((response) => response.json())   
-                    /*.then((responseJson) => { console.log(responseJson) })
+            })/*.then((response) => response.json())   
+                    .then((responseJson) => { console.log(responseJson) })
                             .catch((error) => { console.log(error) }); */
             
       
@@ -114,8 +114,6 @@ const Slider: React.FC = () => {
         AsyncStorage.setItem('intro', 'ok');
 
         AsyncStorage.setItem('idDevice', JSON.stringify(gravaPushToken));
-
-        alert(gravaPushToken);
 
         introOuLogin();
 

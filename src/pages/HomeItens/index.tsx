@@ -10,6 +10,7 @@ import PageHeader from '../../components/PageHeader';
 import Carousel from '../../components/Carousel';
 
 import canvasIcon from '../../assets/images/icons/canvas.png';
+import teamsIcon from '../../assets/images/icons/teams.png';
 import areaLogada from '../../assets/images/icons/area-logada.png';
 import gradeSemanalImg from '../../assets/images/icons/listine-dots.png';
 import gradeCompleta from '../../assets/images/icons/list.png';
@@ -126,8 +127,8 @@ function HomeItens() {
         <Container>
             <PageHeader title={`Olá, ${firstName}!`} backColor={colors.headerAzul}
             headerRight={(
-                <View style={{position: 'absolute', right: 15, top: 10}}>
-                    <BorderlessButton onPress={hundleNavigateNotrify} style={{marginRight: 12, marginTop: 8, paddingTop: 12}}>
+                <View style={{position: 'absolute', right: 15, top: 25}}>
+                    <BorderlessButton onPress={hundleNavigateNotrify} style={{ height: 36, width: 36}}>
                         <Feather name="bell" size={30} color="#FFF" />
                         <Badge  style={{ display: badgeNotificacoes === 0 ? 'none' : 'flex' }}>
                             { badgeNotificacoes }                           
@@ -148,15 +149,25 @@ function HomeItens() {
                 }}
             >
                 <Row>
-                    <Links onPress={ () => { hundleNavigatePWDAreaLogada('https://arealogada.sis.puc-campinas.edu.br') }}>
+                                        
+                    <Links 
+                        onPress={() => {
+                            Linking.canOpenURL("msteams://teams.microsoft.com").then(supported => {
+                                if (supported) {
+                                    Linking.openURL("msteams://teams.microsoft.com");
+                                } else {
+                                    Linking.openURL("https://teams.microsoft.com");
+                                }
+                            });
+                        }}>
                         <Card>
-                            <Icon source={areaLogada}/>
+                            <Icon source={teamsIcon}/>
                             <TextCard>
-                                Área Logada
+                                Microsoft Teams
                             </TextCard>
                         </Card>
                     </Links>
-                    
+
                     <Links 
                         onPress={() => {
                             Linking.openURL(
@@ -170,6 +181,7 @@ function HomeItens() {
                             </TextCard>
                         </Card>
                     </Links>
+
                 </Row>
 
                 <Row>
@@ -193,6 +205,15 @@ function HomeItens() {
                 </Row>
 
                 <Row>
+                    <Links onPress={ () => { hundleNavigatePWDAreaLogada('https://arealogada.sis.puc-campinas.edu.br') }}>
+                        <Card>
+                            <Icon source={areaLogada}/>
+                            <TextCard>
+                                Área Logada
+                            </TextCard>
+                        </Card>
+                    </Links>
+
                     <Links onPress={hundleNavigateNews}>
                         <Card>
                             <Icon source={paper} />
@@ -202,14 +223,6 @@ function HomeItens() {
                         </Card>
                     </Links>
 
-                    <Links onPress={hundleNavigateCentralAtendimento}>
-                        <Card>
-                            <Icon source={caa} />
-                            <TextCard>
-                                Central de Atendimento ao Aluno
-                            </TextCard>
-                        </Card>
-                    </Links>
                 </Row>
 
                 <Row>
@@ -258,15 +271,11 @@ function HomeItens() {
                 </Row>
 
                 <Row>
-                    <Links onPress={() => {
-                        Linking.openURL(
-                            'http://catalogolvmen.puc-campinas.edu.br/pergamum/mobile/resultado.php'
-                            );
-                        }}>
+                    <Links onPress={hundleNavigateCentralAtendimento}>
                         <Card>
-                            <Icon source={bookAlt} />
+                            <Icon source={caa} />
                             <TextCard>
-                                Biblioteca: Pesquisa Geral
+                                Central de Atendimento ao Aluno
                             </TextCard>
                         </Card>
                     </Links>
@@ -276,6 +285,21 @@ function HomeItens() {
                             <Icon source={card} />
                             <TextCard>
                                 Área Financeira
+                            </TextCard>
+                        </Card>
+                    </Links>
+                </Row>
+
+                <Row>
+                    <Links onPress={() => {
+                        Linking.openURL(
+                            'http://catalogolvmen.puc-campinas.edu.br/pergamum/mobile/resultado.php'
+                            );
+                        }}>
+                        <Card>
+                            <Icon source={bookAlt} />
+                            <TextCard>
+                                Biblioteca: Pesquisa Geral
                             </TextCard>
                         </Card>
                     </Links>

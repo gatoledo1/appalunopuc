@@ -132,27 +132,6 @@ export const AuthProvider: React.FC = ({ children }) => {
     
         if(ExponentToken !== null){
 
-            const createThreeButtonAlert = () =>
-            Alert.alert(
-                "Troquei o titulo",
-                ExponentToken,
-                [
-                    {
-                    text: "Ask me later",
-                    onPress: () => console.log("Ask me later pressed")
-                    },
-                    {
-                    text: "Cancel",
-                    onPress: () => console.log("Cancel Pressed"),
-                    style: "cancel"
-                    },
-                    { text: "OK", onPress: () => console.log("OK Pressed") }
-                ],
-                { cancelable: false }
-            );
-
-            createThreeButtonAlert();
-
             if(historicoEnvioTokenPush == null || historicoEnvioTokenPush == undefined || historicoEnvioTokenPush == '' ){
                 
                 AsyncStorage.setItem('idDeviceEnviado', 'ok');

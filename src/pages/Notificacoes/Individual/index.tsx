@@ -62,7 +62,7 @@ function Notify() {
             <View>
                 {
                     <View style={{paddingBottom: 100, alignItems: 'center'}}>
-                        <Text style={{color: "#dadada"}}> Sem notificações nos últimos 28 dias </Text>
+                        <Text style={{color: "#dadada"}}> Sem notificações nos últimos 30 dias </Text>
                     </View>
                 }
             </View>

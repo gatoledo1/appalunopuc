@@ -3,7 +3,7 @@
     "name": "App do Aluno",
     "slug": "app-aluno-puc",
     "userInterfaceStyle": "automatic",
-    "version": "0.8.5",
+    "version": "4.0.0",
     "privacy": "public",
     "platforms": [
       "ios",
@@ -28,7 +28,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "br.edu.puccampinas.appdoaluno",
+      "bundleIdentifier": "br.edu.puccampinas.mobile.ios.App-do-Aluno",
       "googleServicesFile": "./GoogleService-Info.plist",
       "config": {
         "googleMapsApiKey": "AIzaSyAHAQvaW-1xr1yYNo_PwXjYDOuqZVnaSWc"

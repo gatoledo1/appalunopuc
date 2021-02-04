@@ -53,7 +53,7 @@ function ComunicadosNoticias() {
         {
             toValue: -90,
             duration: 800,
-            delay: 100,
+            delay: 400,
             easing: Easing.bezier(0.33, 1, 0.68, 1),
             useNativeDriver: false
         }

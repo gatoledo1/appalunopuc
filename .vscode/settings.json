@@ -1,3 +1,4 @@
 {
-    "time-tracker.saveWorkSessionBetweenStartups": true
+    "time-tracker.saveWorkSessionBetweenStartups": true,
+    "git.ignoreLimitWarning": true
 }

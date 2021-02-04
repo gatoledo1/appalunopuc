@@ -15,8 +15,8 @@ import base64 from 'react-native-base64';
 
 const Login: React.FC = () => {
     const {erroLogin, signIn} = useContext(AuthContext); 
-    const [ra, setRa] = useState< string | null>('18125401');
-    const [pwd, setPwd] = useState< string | null>('S@lua520');
+    const [ra, setRa] = useState< string | null>('');
+    const [pwd, setPwd] = useState< string | null>('');
     const [load, setLoad] = useState(false);
     const [passwordShow, setPasswordShow] = useState(false);
 

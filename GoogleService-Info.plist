@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>714969138986-2f42qduol6ejiq7q3ia5qrijnpriimj5.apps.googleusercontent.com</string>
+	<string>118784170171-m06i1mb28m62acenq9kg3d1kuse7a2c7.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.714969138986-2f42qduol6ejiq7q3ia5qrijnpriimj5</string>
+	<string>com.googleusercontent.apps.118784170171-m06i1mb28m62acenq9kg3d1kuse7a2c7</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBG2-VEPNIduXH8JUQZEy3SWKHzQFSrrBI</string>
+	<string>AIzaSyCM8wMYBiy9UZi3bOMrafBXYdKMUiUpsTc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>714969138986</string>
+	<string>118784170171</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>br.edu.puccampinas.appdoaluno</string>
 	<key>PROJECT_ID</key>
-	<string>app-aluno-2014</string>
+	<string>app-aluno-puc</string>
 	<key>STORAGE_BUCKET</key>
-	<string>app-aluno-2014.appspot.com</string>
+	<string>app-aluno-puc.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:714969138986:ios:d792d6bdc57dae03284053</string>
-	<key>DATABASE_URL</key>
-	<string>https://app-aluno-2014.firebaseio.com</string>
+	<string>1:118784170171:ios:e491c6d3c9c3b02ddb719e</string>
 </dict>
 </plist>

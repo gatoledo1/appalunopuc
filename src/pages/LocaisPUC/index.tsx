@@ -1,4 +1,4 @@
-import React, {ReactNode, useState, useEffect, useContext, useRef} from 'react';
+import React, {useState, useEffect, useContext, useRef} from 'react';
 import { Animated, Easing, ActivityIndicator, StyleSheet, Text, Alert } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import PageHeader from '../../components/PageHeader';
@@ -26,24 +26,27 @@ import styleMap from './styleMap';
   imagensCampi = [
     { id: 1, nome: 'Auditório Cardeal Agnelo Rossi Cardoso', latitude: '-22.834027', longitude: '-47.045481', imagem: require('../../assets/images/espacos-puc/campus1/auditorio-agnelo.jpg') },
     { id: 2, nome: 'Auditório Campus I', latitude: '-22.8332755', longitude: '-47.0531016', imagem: require('../../assets/images/espacos-puc/campus1/auditorio-dom-gilberto.jpg') },
-    { id: 3, nome: 'Unidade 1 - Prédio H13, portão 2', latitude: '-22.8347296', longitude: '-47.0500646', imagem: require('../../assets/images/espacos-puc/campus1/bilioteca-dom-airton.jpg') },
-    { id: 4, nome: 'Unidade 2 - Complexo CCHSA, pavimento térreo', latitude: '-22.8329019', longitude: '-47.0461215', imagem: require('../../assets/images/espacos-puc/campus1/biblioteca-cchsa.jpg') },
-    { id: 5, nome: 'Capela do CCHSA', latitude: '1', longitude: '8', imagem: require('../../assets/images/espacos-puc/campus1/capela-cchsa.jpg') },
-    { id: 6, nome: 'Capela Santo Tomás de Aquino', latitude: '-22.8333952', longitude: '-47.0520785', imagem: require('../../assets/images/espacos-puc/campus1/capela-santo-tomas-aquino.jpg') },
-    { id: 7, nome: 'Laboratório de fotografica', latitude: '1', longitude: '8', imagem: require('../../assets/images/espacos-puc/campus1/lab-fotografia.jpg') },
-    { id: 8, nome: 'Capela do CCHSA', latitude: '1', longitude: '8', imagem: require('../../assets/images/espacos-puc/campus1/lab-imagem-som.jpg') },
-    { id: 9, nome: 'Laboratório de informática bloco E', latitude: '1', longitude: '8', imagem: require('../../assets/images/espacos-puc/campus1/lab-info-bloco-e.jpg') },
-    { id: 10, nome: 'Laboratório de química CEATEC', latitude: '1', longitude: '8', imagem: require('../../assets/images/espacos-puc/campus1/lab-quimica-ceatec.jpg') },
+    { id: 3, nome: 'Biblioteca Unidade 1 - Prédio H13, portão 2', latitude: '-22.8334482', longitude: '-47.0521361', imagem: require('../../assets/images/espacos-puc/campus1/bilioteca-dom-airton.jpg') },
+    { id: 4, nome: 'Biblioteca Unidade 2 - Complexo CCHSA, pavimento térreo', latitude: '-22.8329019', longitude: '-47.0461215', imagem: require('../../assets/images/espacos-puc/campus1/biblioteca-cchsa.jpg') },
+    { id: 5, nome: 'Capela do CCHSA', latitude: '-22.8341558', longitude: '-47.0449835', imagem: require('../../assets/images/espacos-puc/campus1/capela-cchsa.jpg') },
+    { id: 6, nome: 'Capela Santo Tomás de Aquino', latitude: '-22.8330654', longitude: '-47.0508333', imagem: require('../../assets/images/espacos-puc/campus1/capela-santo-tomas-aquino.jpg') },
+    /*{ id: 7, nome: 'Laboratório de fotografica', latitude: '1', longitude: '8', imagem: require('../../assets/images/espacos-puc/campus1/lab-fotografia.jpg') },*/
+    { id: 8, nome: 'Laboratório de Imagem e Som', latitude: '-22.8334773', longitude: '-47.0502947', imagem: require('../../assets/images/espacos-puc/campus1/lab-imagem-som.jpg') },
+    { id: 9, nome: 'Laboratório de informática bloco E', latitude: '-22.833146', longitude: '-47.044362', imagem: require('../../assets/images/espacos-puc/campus1/lab-info-bloco-e.jpg') },
+    /*{ id: 10, nome: 'Laboratório de química CEATEC', latitude: '1', longitude: '8', imagem: require('../../assets/images/espacos-puc/campus1/lab-quimica-ceatec.jpg') },*/
     { id: 11, nome: 'Mescla', latitude: '-22.8341886', longitude: '-47.0514321', imagem: require('../../assets/images/espacos-puc/campus1/mescla.jpg') },
     { id: 12, nome: 'Piscina da Faculdade de Ed. Física', latitude: '-22.8342967', longitude: '-47.0465004', imagem: require('../../assets/images/espacos-puc/campus1/piscina-faef.jpg') },
     { id: 13, nome: 'Praça de Alimentação CEATEC', latitude: '-22.8329689', longitude: '-47.0522093', imagem: require('../../assets/images/espacos-puc/campus1/praca-alimentacao-1.jpg') },
-    { id: 14, nome: 'Salão Ambiental', latitude: '1', longitude: '8', imagem: require('../../assets/images/espacos-puc/campus1/salao-ambiental.jpg') },
-    { id: 15, nome: 'Teatro - Sala 803', latitude: '1', longitude: '8', imagem: require('../../assets/images/espacos-puc/campus1/teatro-sala-803.jpg') },
+    { id: 14, nome: 'Salão Ambiental', latitude: '-22.8336496', longitude: '-47.0453495', imagem: require('../../assets/images/espacos-puc/campus1/salao-ambiental.jpg') },
+    { id: 15, nome: 'Teatro - Sala 803', latitude: '-22.8334974', longitude: '-47.050279', imagem: require('../../assets/images/espacos-puc/campus1/teatro-sala-803.jpg') },
   ];
 
   imagensCampi2 = [
-    { id: 1, nome: 'Auditório Dom Gilberto', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/CampusII_01.jpg') },
-    { id: 2, nome: 'Auditório Dom Gilberto', latitude: '-22.833951', longitude: '-47.0503008', imagem: require('../../assets/images/CampusII_04.jpg') }
+    { id: 1, nome: 'Auditorio Monsenhor Salim', latitude: '-22.9217859', longitude: '-47.1211472', imagem: require('../../assets/images/espacos-puc/campus2/auditorio-monsenhor-salim.jpg') },
+    { id: 2, nome: 'Biblioteca Campus II', latitude: '-22.9207058', longitude: '-47.1214767', imagem: require('../../assets/images/espacos-puc/campus2/biblioteca.jpg') },
+    { id: 3, nome: 'Clinica Odontologica', latitude: '-22.9216526', longitude: '-47.1214552', imagem: require('../../assets/images/espacos-puc/campus2/clinica-odontologica.jpg') },
+    { id: 4, nome: 'Hospital PUC-Campinas', latitude: '-22.9208866', longitude: '-47.1201874', imagem: require('../../assets/images/espacos-puc/campus2/hospital-puc.jpg') },
+    { id: 5, nome: 'Praça de Alimentação', latitude: '-22.9219537', longitude: '-47.1203074', imagem: require('../../assets/images/espacos-puc/campus2/praca-alimentacao.jpg') }
   ];
 
 
@@ -203,7 +206,7 @@ function LocaisPUC() {
                                 latitude: Number(latitudeSala),
                                 longitude: Number(longitudeSala),
                             }}
-                            title="Sua sala está aqui!"
+                            title="Local de interesse"
                         />
 
                         <Marker
