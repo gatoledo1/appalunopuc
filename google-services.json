@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:118784170171:android:77f15f97ae516721db719e",
+        "mobilesdk_app_id": "1:118784170171:android:a2b7a96cfe3cd5a2db719e",
         "android_client_info": {
-          "package_name": "br.edu.puccampinas.appdoaluno"
+          "package_name": "br.edu.puccampinas.appalunopuc"
         }
       },
       "oauth_client": [
@@ -29,6 +29,14 @@
             {
               "client_id": "118784170171-sb67b971icmjiqc7uti9lpltd4n51evm.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "118784170171-bk09vlb8ehe5f5v5v9610s6vrhilvbf5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.edu.puccampinas.mobile.ios.App-do-Aluno",
+                "app_store_id": "1039809722"
+              }
             }
           ]
         }

@@ -32,8 +32,6 @@ let itensGradeSabado = new Array<ArrayGrade>();
 let itensGradeDomingo = new Array<ArrayGrade>();
 
 
-objGradeSemanal();
-
 
   async function objGradeSemanal(){
     
@@ -228,6 +226,8 @@ function renderTabBar(props) {
 }
 
 export default function TabViewScroll() {
+
+  objGradeSemanal();
 
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([

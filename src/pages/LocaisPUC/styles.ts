@@ -92,11 +92,10 @@ export const ButtonText = styled.Text`
 `;
 
 export const ButtonLocation = styled(RectButton)`
-    height: 20px;
+    height: 45px;
     width: 250px;
     background-color: ${props => props.theme.colors.azulPrimaryBtn};
-    border-radius: 18px; 
-    padding-vertical: 20px;  
+    border-radius: 20px; 
     align-items: center;
     justify-content: center;
     margin: 25px auto 0px;

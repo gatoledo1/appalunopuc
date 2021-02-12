@@ -17,6 +17,14 @@ interface GradeSegundaProps {
 const ItensGradeSemanal: React.FC<GradeSegundaProps> = ({ frequencia, materia, horario, local, data, atualizacao }) => {
     
     const { colors } = useContext(ThemeContext);
+
+    if(frequencia == undefined){
+        frequencia = 0;
+    }
+    if(atualizacao == 'Frequência atualizada: undefined'){
+        atualizacao = "Frequência não atualizada"
+    }
+
     return(
         <Container>
                 
@@ -32,9 +40,9 @@ const ItensGradeSemanal: React.FC<GradeSegundaProps> = ({ frequencia, materia, h
                             <Texto style={{fontFamily: 'Poppins_600SemiBold', color: '#367DFF'}}> { horario } </Texto>
                             <Texto>
                                 { local } {'\n'}
-                                { data } {'\n'}{'\n'}
-                                <Texto style={{fontSize: 10}}> { atualizacao } </Texto>
+                                { data }    
                             </Texto>
+                            <Texto style={{fontSize: 10}}> { atualizacao } </Texto>
                         </Content>
                     </Grid>
                 

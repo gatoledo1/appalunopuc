@@ -51,26 +51,36 @@ export const AuthProvider: React.FC = ({ children }) => {
 
        setAuthToken(token);
 
-       const response = await Envia(token);
+        const response = await Envia(token);
 
        const responseJson = await response.json();
 
         if(responseJson.nome == null || responseJson.nome == undefined){
             
             setErrologin('RA ou senha incorretos');
+
+            return erroLogin;
        
         }else{
 
+            setErrologin('ok');
             setNome(responseJson.nome);
             setRa(responseJson.ra);
        
             await AsyncStorage.setItem('token', token);
+
+            return erroLogin;
        }
     }
 
     async function signOut(){
-        await AsyncStorage.setItem('gradeSemanal', '');
-        await AsyncStorage.setItem('token', '');
+        try {
+            await AsyncStorage.removeItem('gradeSemanal');
+            await AsyncStorage.removeItem('token');
+          
+          } catch(e) {
+            // remove error
+          }
         
         setErrologin('Desconectado');
         

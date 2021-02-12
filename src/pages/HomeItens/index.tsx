@@ -25,6 +25,7 @@ import calendar from '../../assets/images/icons/ui-calendar.png';
 import caa from '../../assets/images/icons/caa-help.png';
 import eventos from '../../assets/images/icons/eventos.png';
 import espacosPUC from '../../assets/images/icons/espacos-puc.png';
+import pearson from '../../assets/images/icons/pearson.png';
 import { ListaNotificacoes } from '../../Services/Notificacoes';
 
 import { Container, TitleChildren, Row, Badge, Links, Card, Icon, TextCard, Footer, FooterText, Logout, LoguotText } from './styles';
@@ -300,6 +301,15 @@ function HomeItens() {
                             <Icon source={bookAlt} />
                             <TextCard>
                                 Biblioteca: Pesquisa Geral
+                            </TextCard>
+                        </Card>
+                    </Links>
+
+                    <Links onPress={() => { hundleNavigatePWDAreaLogada('https://arealogada.sis.puc-campinas.edu.br/wl/websist/sbi/pearson.asp') }}>
+                        <Card>
+                            <Icon source={pearson} />
+                            <TextCard>
+                                Biblioteca Virtual Pearson
                             </TextCard>
                         </Card>
                     </Links>

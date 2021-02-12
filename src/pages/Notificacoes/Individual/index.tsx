@@ -18,7 +18,7 @@ interface ArrayNotifyItens {
 }
 
 function Notify() {
-    const [animaTop, setTop] = useState(new Animated.Value(150));
+    const [animaTop, setTop] = useState(new Animated.Value(30));
     const { colors } = useContext(ThemeContext);
     const [load, setLoad] = useState(true);
     const { authToken, modalizeRef, currentNotify } = useContext(AuthContext);
@@ -77,6 +77,7 @@ function Notify() {
         {
             toValue: -90,
             duration: 800,
+            delay: 400,
             easing: Easing.bezier(0.33, 1, 0.68, 1),
             useNativeDriver: false
         }

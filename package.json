@@ -20,7 +20,6 @@
     "@types/react-native-maps": "^0.24.0",
     "@types/react-native-rss-parser": "^1.4.0",
     "@types/react-native-table-component": "^1.2.0",
-    "@types/styled-components": "^5.1.7",
     "babel-loader": "^8.2.2",
     "base-64": "^0.1.0",
     "expo": "^40.0.1",
@@ -64,6 +63,7 @@
     "@babel/core": "~7.9.0",
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
+    "@types/styled-components": "^5.1.7",
     "typescript": "~4.0.0"
   },
   "private": true

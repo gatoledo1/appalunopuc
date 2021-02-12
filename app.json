@@ -28,6 +28,10 @@
     },
     "ios": {
       "supportsTablet": true,
+      "buildNumber": "2.1",
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "This app uses Face ID to verify the user before the app redirects to systems."
+      },
       "bundleIdentifier": "br.edu.puccampinas.mobile.ios.App-do-Aluno",
       "googleServicesFile": "./GoogleService-Info.plist",
       "config": {
@@ -37,7 +41,8 @@
     "android": {
       "useNextNotificationsApi": true,
       "googleServicesFile": "./google-services.json",
-      "package": "br.edu.puccampinas.appdoaluno",
+      "package": "br.edu.puccampinas.appalunopuc",
+      "versionCode": 3,
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyBmocRKEFFuN6HFIG1nAyeZMoD3tOcuA5U"

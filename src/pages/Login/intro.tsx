@@ -29,7 +29,7 @@ const data: PaperOnboardingItemType[] = [
     },
     {
         title: 'Atenção',
-        description: 'Seu login e sua senha são informações que não devem ser compartilhadas. A PUC-Campinas não se responsabilza pelo uso indevido dos seus dados, acessados por meios de responsabilidade dos estudantes.',
+        description: 'Seu login e sua senha são informações que não devem ser compartilhadas ou inseridas no celular de colegas. A PUC-Campinas não se responsabilza pelo uso indevido dos seus dados, acessados por meios de responsabilidade dos estudantes.',
         backgroundColor: '#ff6151',
         image: () => <Image source={pwdImg} style={{height: 250, resizeMode: 'contain'}} />,
         icon: () => <Feather name="eye-off" size={30} color="#e74c3c" />,

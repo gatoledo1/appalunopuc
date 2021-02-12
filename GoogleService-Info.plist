@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>118784170171-m06i1mb28m62acenq9kg3d1kuse7a2c7.apps.googleusercontent.com</string>
+	<string>118784170171-bk09vlb8ehe5f5v5v9610s6vrhilvbf5.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.118784170171-m06i1mb28m62acenq9kg3d1kuse7a2c7</string>
+	<string>com.googleusercontent.apps.118784170171-bk09vlb8ehe5f5v5v9610s6vrhilvbf5</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCM8wMYBiy9UZi3bOMrafBXYdKMUiUpsTc</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>br.edu.puccampinas.appdoaluno</string>
+	<string>br.edu.puccampinas.mobile.ios.App-do-Aluno</string>
 	<key>PROJECT_ID</key>
 	<string>app-aluno-puc</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:118784170171:ios:e491c6d3c9c3b02ddb719e</string>
+	<string>1:118784170171:ios:6dd17cb6f40f01badb719e</string>
 </dict>
 </plist>

@@ -14,9 +14,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 import base64 from 'react-native-base64';
 
 const Login: React.FC = () => {
-    const {erroLogin, signIn} = useContext(AuthContext); 
-    const [ra, setRa] = useState< string | null>('');
-    const [pwd, setPwd] = useState< string | null>('');
+    const {erroLogin, signIn, nome} = useContext(AuthContext); 
+    const [ra, setRa] = useState< string | null>(null);
+    const [pwd, setPwd] = useState< string | null>(null);
     const [load, setLoad] = useState(false);
     const [passwordShow, setPasswordShow] = useState(false);
 
@@ -46,12 +46,19 @@ const Login: React.FC = () => {
         | A autenticação dos EndPoints do NTIC são feitas apenas com informações criptografadas em Base64           |
         ===========================================================================================================*/
 
-        setLoad(true);
+        if(pwd !== null){
+            
+            setLoad(true);
+            const token = `Basic ${base64.encode(`${ra}:${pwd}`)}`;
 
-        const token = `Basic ${base64.encode(`${ra}:${pwd}`)}`;
-
-        //Envia o token para o contexto de autenticação
-        signIn(token);
+            //Envia o token para o contexto de autenticação
+            signIn(token);            
+           
+        }else{
+            //console.log("vazio")
+        }   
+        
+        
     }
 
     useEffect(() => {
@@ -73,6 +80,7 @@ const Login: React.FC = () => {
                 setLoad(true);
                 
                 signIn(token);
+
             }
          }
          catch (error) {
@@ -102,7 +110,7 @@ const Login: React.FC = () => {
                             onChangeText={text => setRa(text)}
                         />
                     <Text>
-                        {'\n'}{'\n'}
+
                     </Text>
                     <Text style={styles.label}>Senha</Text>
                     <View style={styles.passwordContainer}>
@@ -125,6 +133,7 @@ const Login: React.FC = () => {
                         <ActivityIndicator animating={load} size="large" color="#ffffff" style={styles.activityIndicator} />
                     </RectButton>
             </ImageBackground>
+
         </View>
     );
 }

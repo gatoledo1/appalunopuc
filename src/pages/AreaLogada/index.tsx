@@ -51,7 +51,7 @@ export default function PWDAreaLogada({ route }) {
           if(!biometricRecords){
               alert('Biometria não cadastrada');
           }else{
-              let result = await  LocalAuthentication.authenticateAsync();
+              let result = await  LocalAuthentication.authenticateAsync({promptMessage: 'Verificação de usuário' });
               if(result.success){
                 Linking.openURL(
                   `https://arealogada.sis.puc-campinas.edu.br/login-silencioso?token=${authTokenAreaLogada}&returnUrl=${UrlAreaLogada}`

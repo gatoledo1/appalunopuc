@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
      },
     container: {
         flex: 1,
-        /*backgroundColor: Colors.azulBack,*/
+        backgroundColor: Colors.azulBack,
         paddingHorizontal: 40,
         justifyContent: 'center'
     },
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     },
 
     banner: {
-        height: 120,
-        marginBottom: 24,
+        marginBottom: 10,
+        height: 100,
         resizeMode: 'contain',
     },
 
@@ -37,10 +37,11 @@ const styles = StyleSheet.create({
     },
 
     input: { 
-        height: 40, 
+        height: 30, 
         borderRadius: 8, 
         justifyContent: 'center', 
-        paddingHorizontal: 16, 
+        paddingHorizontal: 16,
+        marginBottom: 5,
         borderBottomColor: Colors.azulShadow,
         borderBottomWidth: 1,
         width: '100%'
@@ -54,7 +55,6 @@ const styles = StyleSheet.create({
         
     },
     title: {
-        paddingBottom: 45,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
 
     button: { 
         backgroundColor: Colors.azulPrimary, 
-        borderRadius: 24, 
+        borderRadius: 22, 
         height: 45, 
         alignItems: 'center',
         justifyContent: 'center',
@@ -79,24 +79,6 @@ const styles = StyleSheet.create({
         fontSize: 18, 
         justifyContent: 'center'
     },
-
-    logo: {
-        alignItems: 'center',
-        width: '100%',
-        bottom: 0,
-        top: 60,
-        position: 'absolute'
-    },
-    imgLogo: {
-        resizeMode: 'contain',
-        width: 100,
-    },
-
-    footer: {
-        flex: 1,
-        justifyContent: 'space-between',
-        paddingHorizontal: 34,
-    }
 });
 
 export default styles;

@@ -71,8 +71,8 @@ function GradeCompleta({ navigation }) {
 
             setListaDisciplinas(arrayGradeCompleta);
 
-            setLoad(false)
-
+                setLoad(false)
+            
     }
 
     function TableDisciplinasWrapper(){
@@ -131,13 +131,14 @@ function GradeCompleta({ navigation }) {
     };
 
 
-    const [animaTop, setTop] = useState(new Animated.Value(50));
+    const [animaTop, setTop] = useState(new Animated.Value(0));
 
     Animated.timing(
         animaTop,
         {
             toValue: -100,
             duration: 800,
+            delay: 300,
             easing: Easing.bezier(0.33, 1, 0.68, 1),
             useNativeDriver: false
         }
@@ -166,7 +167,7 @@ function GradeCompleta({ navigation }) {
             
                     </ScrollView>
 
-                    <ActivityIndicator animating={load} size="large" color="#367DFF" />
+                    <ActivityIndicator animating={load} size="large" color="#367DFF" style={{position: 'absolute',right: 0,left: 0,top: 50}} />
                
                 </ContainerTable>
 

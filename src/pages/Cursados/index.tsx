@@ -10,7 +10,7 @@ import { StatusBar } from 'expo-status-bar';
 
 function Cursados() {
 
-    const [animaTop, setTop] = useState(new Animated.Value(150));
+    const [animaTop, setTop] = useState(new Animated.Value(30));
     const [listaDisciplinas, setListaDisciplinas] = useState([]);
     const {authToken} = useContext(AuthContext);
     const [load, setLoad] = useState(true);
@@ -57,6 +57,7 @@ function Cursados() {
         {
             toValue: -90,
             duration: 800,
+            delay: 500,
             easing: Easing.bezier(0.33, 1, 0.68, 1),
             useNativeDriver: false
         }

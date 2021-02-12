@@ -6,9 +6,14 @@ export async function Envia(token:string){
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
+            'Cookie': '',
+            'Set-Cookie': '',
+            'Cache-Control':'no-cache',
+            'Cache': 'no-cache',
             "Authorization": `${token}`
         }
     });
+    ///console.log(response.headers);
     return response;
     //const responseJson = await response.json();
     //const firstName = responseJson.nome.split(' ')[0];
