@@ -7,6 +7,7 @@ import { Modalize } from 'react-native-modalize';
 import * as Notifications from 'expo-notifications';
 import { Platform, Alert } from 'react-native';
 import Constants from 'expo-constants';
+import { objGradeSemanal } from '../components/TabView';
 
 
 interface AuthContextData {
@@ -94,6 +95,8 @@ export const AuthProvider: React.FC = ({ children }) => {
         const responseGradeSemanalJson = await responseGradeSemanal.json();
 
         await AsyncStorage.setItem('gradeSemanal', JSON.stringify(responseGradeSemanalJson));
+
+        objGradeSemanal();
     }
 
     async function tokenAreaLogada(token: string){

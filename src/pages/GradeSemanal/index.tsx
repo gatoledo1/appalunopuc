@@ -16,12 +16,6 @@ function GradeSemanal() {
             <PageHeader title="Aulas da Semana" backColor={colors.headerAmarelo}></PageHeader>
             
                 <TabViewScroll/>
-
-            <Footer>
-                <FooterText>
-                    PUC-CAMPINAS
-                </FooterText>
-            </Footer>
             
         </Container>
     );

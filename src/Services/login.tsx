@@ -1,13 +1,11 @@
 
 export async function Envia(token:string){  
 
-    const response = await fetch('http://mobile-pucapi-v3.docker1.puc-campinas.edu.br/alunos/autenticado', {
+    const response = await fetch('https://gateway-publico.pucapi.puc-campinas.edu.br/mobile/v4/alunos/autenticado', {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            'Cookie': '',
-            'Set-Cookie': '',
             'Cache-Control':'no-cache',
             'Cache': 'no-cache',
             "Authorization": `${token}`

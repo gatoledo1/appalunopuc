@@ -10,13 +10,11 @@ export const Content = styled.View`
 `;
 
 export const Footer = styled.View`
-    margin-top: 22px;
     justify-content: center;
     alignItems: center;
 `;
 
 export const FooterText = styled.Text`
-    margin-top: -80px;
     color: #DADADA;
     font-family: 'Poppins_400Regular';
     font-size: 14px;

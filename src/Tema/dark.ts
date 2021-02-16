@@ -5,7 +5,7 @@ export default {
     headerAzul: '#0c2d92',
     headerVerde: '#005c40',
     headerVermelho: '#690000',
-    headerAmarelo: 'rgba(242, 191, 28, 0.4)',
+    headerAmarelo: 'rgba(240, 203, 0, 0.45)',
     headerLaranja: 'rgba(254, 137, 8, 0.45)',
     headerRoxo: '#382970',
     headerCinza: '#444',

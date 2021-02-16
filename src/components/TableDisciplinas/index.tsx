@@ -1,14 +1,17 @@
 import React, { useContext } from 'react';
 import AuthContext from '../../Contexts/auth';
-import { Card, Codigos, CodText, TitleCard, TextCard, TextProf } from './styles';
+import { ScrollView } from 'react-native-gesture-handler';
+import { Card, Codigos, CodText, TitleCard, TextCard, TextBold, TextProf, Ementa } from './styles';
  
 interface TableDisciplinasProps {
   codigoDisciplina: string;
   nomeDisciplina: string;
   //crd: string;
   codCurso: string;
+  ementa: string;
   turma: string;
   turno: string;
+  campus: string;
   predio: string;
   sala: string;
   professor: string;
@@ -17,7 +20,7 @@ interface TableDisciplinasProps {
   longitude: string;
 }
 
-const TableDisciplinas: React.FC<TableDisciplinasProps> = ({ codigoDisciplina, nomeDisciplina, codCurso, turma, turno, predio, sala, professor, aulasDadas, latitude, longitude }) => {
+const TableDisciplinas: React.FC<TableDisciplinasProps> = ({ codigoDisciplina, nomeDisciplina, codCurso, ementa, turma, turno, campus, predio, sala, professor, aulasDadas, latitude, longitude }) => {
   
   const { localizacaoSala } = useContext(AuthContext);
 
@@ -26,15 +29,21 @@ const TableDisciplinas: React.FC<TableDisciplinasProps> = ({ codigoDisciplina, n
           ()=>{ localizacaoSala(latitude, longitude); }
         }>
           <Codigos>
-            <CodText>Cod: { codigoDisciplina }   Curso: { codCurso } </CodText>
+            <CodText>Código: { codigoDisciplina }   Curso: { codCurso } </CodText>
           </Codigos>
           <TitleCard> { nomeDisciplina } </TitleCard>
-          <TextProf>Professor: { professor } </TextProf>
-          <TextCard>Turma: { turma } </TextCard>
-          <TextCard>Turno: { turno } </TextCard>
-          <TextCard>Prédio: { predio } </TextCard>
-          <TextCard>Sala: { sala } </TextCard>
-          <TextCard>Aulas dadas: { aulasDadas } </TextCard>
+          <Ementa style={{borderColor: 'rgba(200,200,200,0.4)', borderTopWidth: 1, borderBottomWidth: 1}}>
+            <ScrollView showsVerticalScrollIndicator={true}>
+              <TextCard style={{fontSize: 13}}>{ ementa }</TextCard>
+            </ScrollView>
+          </Ementa>
+          <TextProf><TextBold>Professor: </TextBold>{ professor } </TextProf>
+          <TextCard><TextBold>Turma: </TextBold>{ turma } </TextCard>
+          <TextCard><TextBold>Turno: </TextBold>{ turno } </TextCard>
+          <TextCard><TextBold>{ campus } </TextBold></TextCard>
+          <TextCard><TextBold>Prédio: </TextBold>{ predio } </TextCard>
+          <TextCard><TextBold>Sala: </TextBold>{ sala } </TextCard>
+          <TextCard><TextBold>Aulas dadas: </TextBold>{ aulasDadas } </TextCard>
         </Card>
   )
 }

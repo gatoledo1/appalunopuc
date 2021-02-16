@@ -57,8 +57,7 @@ const Login: React.FC = () => {
         }else{
             //console.log("vazio")
         }   
-        
-        
+     
     }
 
     useEffect(() => {
@@ -107,6 +106,7 @@ const Login: React.FC = () => {
                     <Text style={styles.label}>Seu RA</Text>
                         <TextInput style={styles.input}
                             value={ra}
+                            keyboardType="numeric"
                             onChangeText={text => setRa(text)}
                         />
                     <Text>
@@ -126,7 +126,7 @@ const Login: React.FC = () => {
                     </View>
                 </View>
 
-                    <Text style={{color: 'red'}}> { erroLogin } </Text>
+                    <Text style={{color: 'red', textAlign: 'center'}}> { erroLogin } </Text>
 
                     <RectButton onPress={SubmitLogin} style={styles.button}>
                         <Text style={styles.buttonText}>Entrar</Text>

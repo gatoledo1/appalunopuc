@@ -9,7 +9,7 @@ export const Container = styled.View`
 export const Button = styled(RectButton)`
     height: 45px;
     width: 250px;
-    background-color: #367DFF;s
+    background-color: #367DFF;
     border-radius: 22px; 
     align-items: center;
     justify-content: center;

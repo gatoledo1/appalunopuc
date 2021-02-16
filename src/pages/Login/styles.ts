@@ -1,6 +1,4 @@
-import { StyleSheet, ViewProps } from 'react-native';
-import Colors from "../cores-global";
-
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     activityIndicator: {
@@ -9,7 +7,7 @@ const styles = StyleSheet.create({
      },
     container: {
         flex: 1,
-        backgroundColor: Colors.azulBack,
+        backgroundColor: "#e7f0fe",
         paddingHorizontal: 40,
         justifyContent: 'center'
     },
@@ -32,7 +30,7 @@ const styles = StyleSheet.create({
     },
 
     label: { 
-        color: Colors.azulPrimary,
+        color: "#367DFF",
         fontFamily: 'Poppins_400Regular',
     },
 
@@ -42,7 +40,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center', 
         paddingHorizontal: 16,
         marginBottom: 5,
-        borderBottomColor: Colors.azulShadow,
+        borderBottomColor: "#B6CEFF",
         borderBottomWidth: 1,
         width: '100%'
     },
@@ -65,7 +63,7 @@ const styles = StyleSheet.create({
     },
 
     button: { 
-        backgroundColor: Colors.azulPrimary, 
+        backgroundColor: "#367DFF", 
         borderRadius: 22, 
         height: 45, 
         alignItems: 'center',

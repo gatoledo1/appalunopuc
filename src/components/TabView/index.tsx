@@ -32,8 +32,7 @@ let itensGradeSabado = new Array<ArrayGrade>();
 let itensGradeDomingo = new Array<ArrayGrade>();
 
 
-
-  async function objGradeSemanal(){
+  export async function objGradeSemanal(){
     
     const stringGradeSemanal = await AsyncStorage.getItem('gradeSemanal');
 
@@ -46,18 +45,18 @@ let itensGradeDomingo = new Array<ArrayGrade>();
 
       const arrayGradeSemanal = JSON.parse(stringGradeSemanal);
       
-      itensGradeSegunda = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 2; });
-      itensGradeTerca = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 3; });
-      itensGradeQuarta = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 4; });
-      itensGradeQuinta = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 5; });
-      itensGradeSexta = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 6; });
-      itensGradeSabado = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 7; });
-      itensGradeDomingo = arrayGradeSemanal.filter((dia) => { return dia.diaSemana === 1; }); 
+      itensGradeSegunda = arrayGradeSemanal.filter((dia) => { return dia.diaSemana == 2; });
+      itensGradeTerca   = arrayGradeSemanal.filter((dia) => { return dia.diaSemana == 3; });
+      itensGradeQuarta  = arrayGradeSemanal.filter((dia) => { return dia.diaSemana == 4; });
+      itensGradeQuinta  = arrayGradeSemanal.filter((dia) => { return dia.diaSemana == 5; });
+      itensGradeSexta   = arrayGradeSemanal.filter((dia) => { return dia.diaSemana == 6; });
+      itensGradeSabado  = arrayGradeSemanal.filter((dia) => { return dia.diaSemana == 7; });
+      itensGradeDomingo = arrayGradeSemanal.filter((dia) => { return dia.diaSemana == 1; }); 
     }
 
     // Como a função é executada antes do usuário logar, ela precisa ser chamada outras vezes até receber valores
     if(stringGradeSemanal === null){
-      setTimeout(objGradeSemanal, 3000) 
+      setTimeout(objGradeSemanal, 500) 
     }
 
   }
@@ -226,8 +225,6 @@ function renderTabBar(props) {
 }
 
 export default function TabViewScroll() {
-
-  objGradeSemanal();
 
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([

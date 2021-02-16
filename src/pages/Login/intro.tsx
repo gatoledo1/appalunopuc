@@ -15,7 +15,7 @@ import { Platform } from 'react-native';
 const data: PaperOnboardingItemType[] = [
     {
         title: 'Bem-vindo',
-        description: 'Em comemoração aos 80 anos de PUC-Campinas, criamos um novo app para os alunos que apresenta novos recursos e uma interface renovada, muito mais intuitiva. 😄',
+        description: 'Em comemoração aos 80 anos da PUC-Campinas, criamos um novo app para os alunos que apresenta novos recursos e uma interface renovada, muito mais intuitiva. 😄',
         backgroundColor: '#ffb207',
         image: () => <Image source={logoLogin} style={{height: 130, resizeMode: 'contain'}} />,
         icon: () => <Feather name="info" size={30} color="#ffc107" />,

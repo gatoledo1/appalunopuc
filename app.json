@@ -42,7 +42,7 @@
       "useNextNotificationsApi": true,
       "googleServicesFile": "./google-services.json",
       "package": "br.edu.puccampinas.appalunopuc",
-      "versionCode": 3,
+      "versionCode": 4,
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyBmocRKEFFuN6HFIG1nAyeZMoD3tOcuA5U"

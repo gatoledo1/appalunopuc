@@ -60,6 +60,8 @@ export default function PWDAreaLogada({ route }) {
                 
               }
           }
+      }else{
+        alert('Seu dispositivo não é compatível 😢 digite sua senha.');
       }
   }
 

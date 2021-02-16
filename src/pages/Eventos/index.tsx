@@ -36,8 +36,8 @@ function Eventos() {
             <Card>
                 {
                     feedPortal.map((Info, index) => (
-                        <CardsComunicados key={index} title={Info.title}
-                        bodyText={Info.content.replace(/(<([^>]+)>)/gi, '').replace(/(^\s+|\s+$)/g, '').substring(0, 240) + "  . . . leia mais"} 
+                        <CardsComunicados key={index} title={Info.title.replace(/&#8211;/g, '-')}
+                        bodyText={Info.content.replace(/(<([^>]+)>)/gi, '').replace(/(^\s+|\s+$)/g, '').replace(/&#8211;/g, '-').substring(0, 240) + "  . . . leia mais"} 
                         link={Info.id}
                     />))
                 }

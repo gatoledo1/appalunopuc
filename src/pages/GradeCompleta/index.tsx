@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext, useRef} from 'react';
-import { Animated, Easing, ActivityIndicator, StyleSheet, Text, Alert } from 'react-native';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { Animated, Easing, ActivityIndicator, Text } from 'react-native';
+import { ScrollView} from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
 import TableDisciplinas from '../../components/TableDisciplinas';
 //import TableHorarios from '../../components/TableHorarios';
@@ -25,6 +26,8 @@ interface ArrayGradeItens {
     codigoDisciplina: string;
     nomeDisciplina: string;
     codCurso: string;
+    ementa: string;
+    campus: string;
     predio: string;
     turno: string;
     sala: string;
@@ -36,7 +39,7 @@ interface ArrayGradeItens {
   }
 
 
-function GradeCompleta({ navigation }) {
+function GradeCompleta() {
 
     const [listaDisciplinas, setListaDisciplinas] = useState(new Array<ArrayGradeItens>());
     const [load, setLoad] = useState(true);
@@ -49,8 +52,11 @@ function GradeCompleta({ navigation }) {
 
     let timeout = useRef();
 
+    const { navigate } = useNavigation();
+
     function hundleNavigateAreaLogada(link:string) {
-        navigation.navigate('PWDAreaLogada', {
+        //Na tela PWDAreaLogada, a variavel returnUrl é obrigatória
+        navigate('PWDAreaLogada', {
             returnUrl: link
         });
     }
@@ -92,8 +98,8 @@ function GradeCompleta({ navigation }) {
                     {
                         listaDisciplinas.map((Info, index) => (
                             <TableDisciplinas key={index} codigoDisciplina={Info.codigoDisciplina} nomeDisciplina={Info.nomeDisciplina}
-                            codCurso={Info.codCurso} turno={Info.turno} predio={Info.predio} sala={Info.sala} aulasDadas={Info.aulasDadas}
-                            professor={Info.professor} turma={Info.turma} latitude={Info.latitude} longitude={Info.longitude}
+                            codCurso={Info.codCurso} ementa={Info.ementa} turno={Info.turno} campus={Info.campus} predio={Info.predio} sala={Info.sala} 
+                            aulasDadas={Info.aulasDadas} professor={Info.professor} turma={Info.turma} latitude={Info.latitude} longitude={Info.longitude}
                         />))
                     }
                 </Cards>
@@ -167,7 +173,7 @@ function GradeCompleta({ navigation }) {
             
                     </ScrollView>
 
-                    <ActivityIndicator animating={load} size="large" color="#367DFF" style={{position: 'absolute',right: 0,left: 0,top: 50}} />
+                    <ActivityIndicator animating={load} size="large" color="#367DFF" />
                
                 </ContainerTable>
 
@@ -175,7 +181,7 @@ function GradeCompleta({ navigation }) {
               
                 <TableHead2 style={{borderTopWidth: 1, borderColor: scheme === 'dark' ? '#002871' : '#B6CEFF'}}>Para mais informações de sua grade, inclusive sobre Práticas de Formação, acesse a Área Logada.</TableHead2>
 
-                <Button onPress={() => {
+                <Button onPress={() => { 
                     hundleNavigateAreaLogada('https://arealogada.sis.puc-campinas.edu.br/wl/websist/academico/grade_disciplinas/index.asp')
                 }}>
                     <ButtonText>Acessar Área Logada</ButtonText>
