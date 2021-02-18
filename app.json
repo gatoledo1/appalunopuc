@@ -28,7 +28,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "buildNumber": "2.1",
+      "buildNumber": "2.2",
       "infoPlist": {
         "NSFaceIDUsageDescription": "This app uses Face ID to verify the user before the app redirects to systems."
       },
@@ -42,7 +42,7 @@
       "useNextNotificationsApi": true,
       "googleServicesFile": "./google-services.json",
       "package": "br.edu.puccampinas.appalunopuc",
-      "versionCode": 4,
+      "versionCode": 5,
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyBmocRKEFFuN6HFIG1nAyeZMoD3tOcuA5U"

@@ -1,5 +1,13 @@
 import { RectButton } from 'react-native-gesture-handler';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components/native'
+
+let tablet;
+const window = Dimensions.get("window");
+
+if(window.width >= 768){
+    tablet = true;  
+}
 
 export const Container = styled.View`
     flex: 1;
@@ -19,6 +27,7 @@ export const TitleChildren = styled.Text`
 export const Row = styled.View`
     width: 100%;
     flex-direction: row;
+    flex-wrap: wrap;
     padding: 5px 32px 15px 32px;
     align-items: center;
     justify-content: space-between;
@@ -38,8 +47,9 @@ export const Badge = styled.Text`
 `;
 
 export const Links = styled(RectButton)`
-    width: 47%;
+    width: ${tablet ? '32%' : '47%'}
     max-height: 165px; 
+    margin-bottom: 20px;
 `;
 
 export const Card = styled.View`

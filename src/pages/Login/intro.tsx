@@ -68,8 +68,6 @@ const Slider: React.FC = () => {
 
           setGravaPushToken(token);
 
-        } else {
-          alert('Must use physical device for Push Notifications');
         }
 
           await fetch('https://exp.host/--/api/v2/push/send', {       

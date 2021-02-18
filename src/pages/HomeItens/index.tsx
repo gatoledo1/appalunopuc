@@ -1,5 +1,5 @@
-import React, {useState, useContext, useEffect, useRef} from 'react';
-import { View, Image, Text, Linking, Animated, Easing} from 'react-native';
+import React, {useState, useContext, useEffect} from 'react';
+import { View, Linking, Animated, Easing} from 'react-native';
 import { ThemeContext } from 'styled-components';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -29,7 +29,6 @@ import pearson from '../../assets/images/icons/pearson.png';
 import { ListaNotificacoes } from '../../Services/Notificacoes';
 
 import { Container, TitleChildren, Row, Badge, Links, Card, Icon, TextCard, Footer, FooterText, Logout, LoguotText } from './styles';
-
 
 function HomeItens() {
     const { navigate } = useNavigation();
@@ -149,8 +148,7 @@ function HomeItens() {
                     paddingBottom: 16,
                 }}
             >
-                <Row>
-                                        
+                <Row>                    
                     <Links 
                         onPress={() => {
                             Linking.canOpenURL("msteams://teams.microsoft.com").then(supported => {
@@ -183,9 +181,6 @@ function HomeItens() {
                         </Card>
                     </Links>
 
-                </Row>
-
-                <Row>
                     <Links onPress={hundleNavigateGradeSemanal}>
                         <Card>
                             <Icon source={gradeSemanalImg}/>
@@ -203,9 +198,7 @@ function HomeItens() {
                             </TextCard>
                         </Card>
                     </Links>
-                </Row>
 
-                <Row>
                     <Links onPress={ () => { hundleNavigatePWDAreaLogada('https://arealogada.sis.puc-campinas.edu.br') }}>
                         <Card>
                             <Icon source={areaLogada}/>
@@ -224,9 +217,7 @@ function HomeItens() {
                         </Card>
                     </Links>
 
-                </Row>
 
-                <Row>
                     <Links onPress={hundleNavigateLocais}>
                         <Card>
                             <Icon source={espacosPUC} />
@@ -244,9 +235,7 @@ function HomeItens() {
                             </TextCard>
                         </Card>
                     </Links>
-                </Row>
 
-                <Row>
                     <Links
                         onPress={() => {
                             Linking.openURL(
@@ -269,9 +258,7 @@ function HomeItens() {
                             </TextCard>
                         </Card>
                     </Links>
-                </Row>
 
-                <Row>
                     <Links onPress={hundleNavigateCentralAtendimento}>
                         <Card>
                             <Icon source={caa} />
@@ -289,9 +276,7 @@ function HomeItens() {
                             </TextCard>
                         </Card>
                     </Links>
-                </Row>
 
-                <Row>
                     <Links onPress={() => {
                         Linking.openURL(
                             'http://catalogolvmen.puc-campinas.edu.br/pergamum/mobile/resultado.php'
