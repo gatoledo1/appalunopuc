@@ -47,9 +47,11 @@ const Login: React.FC = () => {
         ===========================================================================================================*/
 
         if(pwd !== null){
+
             
             setLoad(true);
             const token = `Basic ${base64.encode(`${ra}:${pwd}`)}`;
+
 
             //Envia o token para o contexto de autenticação
             signIn(token);            

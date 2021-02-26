@@ -9,6 +9,7 @@ import headerBackground from '../../assets/images/back-header.png';
 import LogoImg from '../../assets/images/PUC-80anos_logo-unido.png';
 import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../../Contexts/auth';
+import AsyncStorage from '@react-native-community/async-storage';
 
 interface PageHeaderProps {
     title: string;
@@ -31,6 +32,35 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, backColor, headerRight, 
     }
 
     const route = useRoute();
+
+    let contTouch = 0
+
+    function EasterEgg(){
+
+       /* const now = new Date;
+        const days = [1, 2, 3, 4, 5, 6, 7];
+        const day = days[ now.getDay() ];
+
+        const stringGradeSemanal = await AsyncStorage.getItem('gradeSemanal');
+
+        if(stringGradeSemanal !== null){
+
+            const arrayGradeSemanal = JSON.parse(stringGradeSemanal);
+            let aulasDia = arrayGradeSemanal.filter((dia: { diaSemana: number; }) => { return dia.diaSemana == day; });
+
+            let horarioAula = aulasDia.map((Info, index) => ( Info.horario ));
+
+            console.log(horarioAula);
+        } */
+
+        contTouch = contTouch * 1 + 1
+        
+        if(contTouch == 10){
+            contTouch = 0;
+            navigate('Basketball');
+        }
+
+    }
 
     function ArrowBackOrSignOut(){
         if(route.name !== 'HomeItens'){
@@ -59,7 +89,10 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, backColor, headerRight, 
                 
                 <ArrowBackOrSignOut></ArrowBackOrSignOut>
 
-                <Image source={LogoImg} style={styles.imgHeader} resizeMode="contain" />
+                <BorderlessButton onPress={EasterEgg}>
+                    <Image source={LogoImg} style={styles.imgHeader} resizeMode="contain" />
+                </BorderlessButton>
+
             </View>
 
             <View style={styles.header}>

@@ -94,7 +94,7 @@ function HomeItens() {
         });
     }
     function hundleNavigateNotrify() {
-        navigate('NotifyTabs');
+        navigate('Notify');
     }
     function hundleNavigateAreaFinanceira() {
         navigate('AreaFinanceira');

@@ -31,7 +31,7 @@ const TableDisciplinas: React.FC<TableDisciplinasProps> = ({ codigoDisciplina, n
           <Codigos>
             <CodText>Código: { codigoDisciplina }   Curso: { codCurso } </CodText>
           </Codigos>
-          <TitleCard> { nomeDisciplina } </TitleCard>
+          <TitleCard>{ nomeDisciplina } </TitleCard>
           <Ementa style={{borderColor: 'rgba(200,200,200,0.4)', borderTopWidth: 1, borderBottomWidth: 1}}>
             <ScrollView showsVerticalScrollIndicator={true}>
               <TextCard style={{fontSize: 13}}>{ ementa }</TextCard>

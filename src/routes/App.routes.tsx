@@ -6,7 +6,9 @@ import ComunicadosNoticias from '../pages/ComunicadosNoticias';
 import GradeCompleta from '../pages/GradeCompleta';
 import GradeSemanal from '../pages/GradeSemanal';
 import Cursados from '../pages/Cursados';
-import NotifyTabs from './NotifyTabs';
+import Notify from '../pages/Notificacoes/Individual';
+//@ts-ignore
+import { Basketball } from '../../react-native-basketball';
 import AreaFinanceira from '../pages/AreaFinanceira';
 import CentralAtendimento from '../pages/CentralAtendimento';
 import LocaisPUC from '../pages/LocaisPUC';
@@ -22,9 +24,10 @@ const AppRoutes: React.FC = () => (
         <AppStack.Screen name="ComunicadosNoticias" component={ComunicadosNoticias} />
         <AppStack.Screen name="GradeCompleta" component={GradeCompleta} />
         <AppStack.Screen name="GradeSemanal" component={GradeSemanal} />
+        <AppStack.Screen name="Basketball" component={Basketball} />
         <AppStack.Screen name="Cursados" component={Cursados} />
         <AppStack.Screen name="PWDAreaLogada" component={PWDAreaLogada} initialParams={{ returnUrl: 'https://arealogada.sis.puc-campinas.edu.br' }}/>
-        <AppStack.Screen name="NotifyTabs" component={NotifyTabs} />
+        <AppStack.Screen name="Notify" component={Notify} />
         {/*<AppStack.Screen name="AreaFinanceira" component={AreaFinanceira} /> */}
         <AppStack.Screen name="CentralAtendimento" component={CentralAtendimento} />
         <AppStack.Screen name="LocaisPUC" component={LocaisPUC} />

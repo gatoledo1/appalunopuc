@@ -14,6 +14,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 interface ArrayGrade {
   [index: number]: string;
   frequencia: number;
+  codigoDisciplina: string;
   nomeDisciplina: string;
   horario: string;
   sala: string;
@@ -90,7 +91,7 @@ function SegundaRota() {
       <ScrollView>
         {
           itensGradeTerca.map((Info, index) => (
-            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            <ItensGradeSemanal key={index} codigo={Info.codigoDisciplina} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
             data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
           ))
         }
@@ -111,7 +112,7 @@ function TerceiraRota() {
       <ScrollView>
         {
           itensGradeQuarta.map((Info, index) => (
-            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            <ItensGradeSemanal key={index} codigo={Info.codigoDisciplina} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
             data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
           ))
         }
@@ -132,7 +133,7 @@ function QuartaRota() {
       <ScrollView>
         {
           itensGradeQuinta.map((Info, index) => (
-            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            <ItensGradeSemanal key={index} codigo={Info.codigoDisciplina} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
             data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
           ))
         }
@@ -153,7 +154,7 @@ function QuintaRota() {
       <ScrollView>
         {
           itensGradeSexta.map((Info, index) => (
-            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            <ItensGradeSemanal key={index} codigo={Info.codigoDisciplina} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
             data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
           ))
         }
@@ -174,7 +175,7 @@ function SextaRota() {
       <ScrollView>
         {
           itensGradeSabado.map((Info, index) => (
-            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            <ItensGradeSemanal key={index} codigo={Info.codigoDisciplina} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
             data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
           ))
         }
@@ -195,7 +196,7 @@ function SetimaRota() {
       <ScrollView>
         {
           itensGradeDomingo.map((Info, index) => (
-            <ItensGradeSemanal key={index} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
+            <ItensGradeSemanal key={index} codigo={Info.codigoDisciplina} frequencia={Info.frequencia} materia={Info.nomeDisciplina} horario={Info.horario} local={`Sala: ${Info.sala} / Prédio: ${Info.predio}`}
             data={Info.dataRodizio} atualizacao={`Frequência atualizada: ${Info.dataUltimoLancFreq}`}></ItensGradeSemanal>
           ))
         }

@@ -1,4 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+let smallScreen;
+const window = Dimensions.get("window");
+
+if(window.width <= 360){
+    smallScreen = true;  
+}
 
 const styles = StyleSheet.create({
     activityIndicator: {
@@ -7,7 +14,7 @@ const styles = StyleSheet.create({
      },
     container: {
         flex: 1,
-        backgroundColor: "#e7f0fe",
+        backgroundColor: "#eef5ff",
         paddingHorizontal: 40,
         justifyContent: 'center'
     },
@@ -25,7 +32,7 @@ const styles = StyleSheet.create({
 
     banner: {
         marginBottom: 10,
-        height: 100,
+        height: smallScreen ? 50 : 100,
         resizeMode: 'contain',
     },
 
@@ -55,11 +62,12 @@ const styles = StyleSheet.create({
     title: {
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop: -30,
     },
 
     titleBold: {
         fontFamily: 'Poppins_600SemiBold',
-        fontSize: 22,
+        fontSize: smallScreen ? 16 : 22,
     },
 
     button: { 
