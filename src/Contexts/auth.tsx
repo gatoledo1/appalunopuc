@@ -126,7 +126,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
         setCurrentNotify(arrayVizualizar);
 
-            fetch(`https://gateway-publico.pucapi.puc-campinas.edu.br/mobile/v4/notificacoes/setdataleitura?codNotificacao=${codigo}`, {
+            fetch(`LINK CENSURADO`, {
                 method: 'PUT',
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8'
@@ -151,7 +151,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
                 const sistemaoperacional = Platform.OS;
                                 
-                await fetch(`https://gateway-publico.pucapi.puc-campinas.edu.br/mobile/v4/usuarios/vincularDispositivo?identificacaoDispositivo=${ExponentToken}&tipoDispositivo=${sistemaoperacional.toUpperCase()}`, {
+                await fetch(`LINK CENSURADO`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
