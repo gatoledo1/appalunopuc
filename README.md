@@ -1,4 +1,4 @@
-# appalunopuc
+# App dos Alunos da PUC-Campinas
 Criação do novo app dos alunos da PUC-Campinas
 
 Neste Git publico faltam os End-points dos serviços
