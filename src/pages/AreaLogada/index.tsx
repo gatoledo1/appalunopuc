@@ -36,7 +36,7 @@ export default function PWDAreaLogada({ route }) {
 
     if(compara == authToken){
         Linking.openURL(
-          `https://arealogada.sis.puc-campinas.edu.br/login-silencioso?token=${authTokenAreaLogada}&returnUrl=${UrlAreaLogada}`
+          `END-POINT CENSURADO`
         );
     }else{
       setErroPwd('A senha informada, não corresponde senha de login');
@@ -54,7 +54,7 @@ export default function PWDAreaLogada({ route }) {
               let result = await  LocalAuthentication.authenticateAsync({promptMessage: 'Verificação de usuário' });
               if(result.success){
                 Linking.openURL(
-                  `https://arealogada.sis.puc-campinas.edu.br/login-silencioso?token=${authTokenAreaLogada}&returnUrl=${UrlAreaLogada}`
+                  `END-POINT CENSURADO`
                 );
               }else{
                 
